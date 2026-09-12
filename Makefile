@@ -649,6 +649,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== canonical fuzzer execution ==="
 	@python3 tests/test_fuzz_runner.py
 	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_bench_adaptive; fi
+	@if [ -n "$(HAVE_ZIMG)" ]; then bash tests/test_benchmark_output.sh "$(BUILD)"; fi
 
 $(BUILD)/test_usm_pool_dispatch: tests/test_usm_pool_dispatch.c src/usm_pool_dispatch.c src/usm_pool_variants.h src/usm_pool.h src/cpu_level.h tests/test_harness.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
@@ -667,6 +668,7 @@ $(BUILD)/test_usm_adaptive: tests/test_usm_adaptive.c src/usm_adaptive.h src/wor
 
 ifdef HAVE_ZIMG
 test: $(BUILD)/test_bench_adaptive
+test: $(BUILD)/bench_adaptive $(BUILD)/profile_pipeline
 endif
 
 $(BUILD)/test_bench_adaptive: tests/test_bench_adaptive.c tests/bench_adaptive.c tests/zimg_test_util.h $(BUILD)/scaler_zimg_asan.o $(BUILD)/usm_pool_test.o $(BUILD_CONFIG) | $(BUILD)

@@ -223,7 +223,7 @@ static int report(const pipeline_t *p, const args_t *a)
            p->after.ru_nivcsw - p->before.ru_nivcsw,
            p->after.ru_minflt - p->before.ru_minflt, p->after.ru_maxrss,
            (unsigned long long)picture_hash(&p->output));
-    return ferror(stdout) ? -1 : 0;
+    return fflush(stdout) || ferror(stdout) ? -1 : 0;
 }
 
 static void trace_row(FILE *f, const up_profile_frame_t *t)

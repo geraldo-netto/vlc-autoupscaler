@@ -121,6 +121,7 @@ int main(int argc, char **argv)
     for (int i = 0; !rc && i < args.frames; i++)
         rc = frame(&bench, i, (int)args.frames);
     if (!rc) report(&bench, &args);
+    if (!rc && fflush(stdout)) rc = 1;
     destroy(&bench);
     return rc;
 }
