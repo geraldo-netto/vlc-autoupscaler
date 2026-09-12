@@ -283,7 +283,58 @@ static void init_filter(filter_t *filter)
     filter->fmt_in.video.i_height = 180;
     filter->fmt_in.video.i_visible_width = 320;
     filter->fmt_in.video.i_visible_height = 180;
+    filter->b_allow_fmt_out_change = true;
     filter->owner.video.buffer_new = lifecycle_buffer_new;
+}
+
+static void check_output_permission(video_format_t requested, bool allow,
+                                    bool matches)
+{
+    filter_t filter;
+    reset_state();
+    init_filter(&filter);
+    filter.fmt_out.video = requested;
+    filter.b_allow_fmt_out_change = allow;
+    const int rc = up_autoupscale_open_checked((vlc_object_t *)&filter);
+    CHECK(filter.b_allow_fmt_out_change == allow);
+    if (allow || matches) {
+        CHECK(rc == VLC_SUCCESS);
+        CHECK(filter.fmt_out.video.i_chroma == VLC_CODEC_I420);
+        CHECK(filter.fmt_out.video.i_width == 1280);
+        CHECK(filter.fmt_out.video.i_visible_width == 1280);
+        CHECK(filter.fmt_out.video.i_height == 720);
+        CHECK(filter.fmt_out.video.i_visible_height == 720);
+        CHECK(filter.fmt_out.video.i_x_offset == 0);
+        CHECK(filter.fmt_out.video.i_y_offset == 0);
+    } else {
+        CHECK(rc == VLC_EGENERIC);
+        CHECK(memcmp(&filter.fmt_out.video, &requested, sizeof requested) == 0);
+        CHECK(filter.p_sys == NULL && filter.pf_video_filter == NULL);
+        CHECK(g_zimg_open_calls == 0 && g_swscale_open_calls == 0);
+        CHECK(g_usm_requested_threads == 0);
+    }
+    if (rc == VLC_SUCCESS) Close((vlc_object_t *)&filter);
+}
+
+static void test_output_permission(void)
+{
+    BEGIN("REL-21: fixed output must match configured target and chroma");
+    const video_format_t requests[] = {
+        { VLC_CODEC_I420, 1280, 720, 1280, 720, 0, 0 },
+        { VLC_CODEC_I420, 320, 180, 320, 180, 0, 0 },
+        { VLC_CODEC_I422, 1280, 720, 1280, 720, 0, 0 },
+        { VLC_CODEC_I420, 1282, 720, 1280, 720, 0, 0 },
+        { VLC_CODEC_I420, 1280, 722, 1280, 720, 0, 0 },
+        { VLC_CODEC_I420, 1280, 720, 1278, 720, 0, 0 },
+        { VLC_CODEC_I420, 1280, 720, 1280, 718, 0, 0 },
+        { VLC_CODEC_I420, 1280, 720, 1280, 720, 2, 0 },
+        { VLC_CODEC_I420, 1280, 720, 1280, 720, 0, 2 },
+    };
+    for (size_t i = 0; i < sizeof requests / sizeof requests[0]; i++) {
+        check_output_permission(requests[i], false, i == 0);
+        check_output_permission(requests[i], true, i == 0);
+    }
+    END();
 }
 
 static void test_success_copies_properties_and_tears_down(void)
@@ -675,6 +726,7 @@ static void test_runtime_fallback(void)
 
 int main(void)
 {
+    test_output_permission();
     test_success_copies_properties_and_tears_down();
     test_cpu_gate_rejects_before_open();
     test_output_allocation_failure_releases_input();

@@ -184,6 +184,14 @@ display path described above. Users who build VLC themselves can instead apply
 `patches/vlc-3.0-raise-chain-level.patch`; it raises the VLC 3.0 chain limit but
 does not prevent the direct display chain from resizing output again.
 
+### Output-format permission
+
+The configured target remains authoritative. A caller that forbids output
+format changes must already request that target with matching chroma and
+uncropped coded/visible dimensions; otherwise the plugin declines before
+allocating state or workers. This does not prevent later VLC display
+converters from resizing an accepted frame again.
+
 ### Transcode display volume on VLC 3.0
 
 VLC 3.0's `:display` stream output owns a private audio output. The GUI, hotkeys,

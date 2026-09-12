@@ -391,6 +391,19 @@ static void InitProbe( filter_sys_t *p_sys, filter_t *p_filter,
     p_sys->probe.advice_logged = 0;
 }
 
+static bool OutputFormatAllowed( const filter_t *filter, vlc_fourcc_t chroma,
+                                 up_dims_t target )
+{
+    const video_format_t *out = &filter->fmt_out.video;
+    return filter->b_allow_fmt_out_change ||
+        (out->i_chroma == chroma &&
+         out->i_width == (unsigned)target.width &&
+         out->i_visible_width == (unsigned)target.width &&
+         out->i_height == (unsigned)target.height &&
+         out->i_visible_height == (unsigned)target.height &&
+         out->i_x_offset == 0 && out->i_y_offset == 0);
+}
+
 /* Wire fmt_out to the upscale target. Same chroma, new dimensions. */
 static void SetOutputFormat( filter_t *p_filter, vlc_fourcc_t chroma,
                              up_dims_t target )
@@ -461,6 +474,12 @@ int up_autoupscale_open( vlc_object_t *p_this )
     }
 
     const vlc_fourcc_t chroma = p_filter->fmt_in.video.i_chroma;
+    if( !OutputFormatAllowed( p_filter, chroma, target ) )
+    {
+        msg_Dbg( p_filter, "AutoUpscale: fixed output does not match %dx%d target",
+                 target.width, target.height );
+        return VLC_EGENERIC;
+    }
     const scaler_backend_t *be = PickBackendOrReject( p_filter, chroma,
                                                      algo, backend_pref );
     if( !be )

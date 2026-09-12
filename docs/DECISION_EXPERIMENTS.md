@@ -231,7 +231,7 @@ not establish a benefit for this current default profile or for paced video.
 | 6a | Backend fallback documentation names the production owner |
 | 7a | Shared versus independent notification/completion prototypes and paired measurements |
 | 8 | Plugin is video-only; launcher no longer requests audio re-encoding; volume ownership remains unresolved |
-| 9 | Output-format permission behavior left unchanged as requested |
+| 9, superseded by follow-up 4a | Output-format permission enforced with permanent regression coverage |
 | 10b | CI runs the canonical built fuzzer list, including plane-buffer mutation fuzzing |
 | 11a | Coverage union documented and complementary-binary fixture added |
 | 12 | Zero-copy implementation retained; measurements and same-grid limitation documented |
@@ -241,8 +241,7 @@ not establish a benefit for this current default profile or for paced video.
 
 Remaining blocked items are the ML paper's evaluation contradiction (SCAL-10),
 unstable evidence for changing performance defaults (PERF-15), VLC's private
-audio-output control ownership (REL-16), and the explicitly deferred output
-permission contract (REL-21). The first two require better evidence. REL-16
+audio-output control ownership (REL-16). The first two require better evidence. REL-16
 still needs a choice between the documented system-mixer workaround and a
 separate playback/control-routing integration; neither needs upscaler audio DSP.
 
