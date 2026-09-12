@@ -546,6 +546,13 @@ check: complexity test
 
 test: $(BUILD)/test_pipeline_metrics
 
+ifneq ($(strip $(VLC_LIBS)),)
+test: $(BUILD)/test_display_adapter
+
+$(BUILD)/test_display_adapter: tests/test_display_adapter.c tests/experiment_display.c $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(TEST_LDFLAGS) $(VLC_LIBS)
+endif
+
 $(BUILD)/test_pipeline_metrics: tests/test_pipeline_metrics.c src/pipeline_metrics.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
 
@@ -605,6 +612,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== autoupscale lifecycle ==="
 	@$(BUILD)/test_autoupscale_lifecycle
 	@$(BUILD)/test_pipeline_metrics
+	@$(if $(strip $(VLC_LIBS)),$(BUILD)/test_display_adapter,echo "display adapter: VLC SDK unavailable")
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_playback_runtime.py
 	@echo
 	@echo "=== picture_view ==="
@@ -1167,6 +1175,12 @@ BENCH_CFLAGS := -O3 $(MARCH_FLAG) $(WARN) -MMD -MP $(EXTRA_CFLAGS)
 
 build-bench: $(BUILD)/bench_usm_pool $(BUILD)/bench_usm_pool_flatskip $(BUILD)/bench_worker_pool $(if $(HAVE_ZIMG),$(BUILD)/bench_scaler_zimg $(BUILD)/bench_pipeline $(BUILD)/bench_adaptive)
 
+.PHONY: display-prototype
+display-prototype: plugin $(BUILD)/libautoupscale_display_plugin.so
+
+$(BUILD)/libautoupscale_display_plugin.so: tests/experiment_display.c $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(LOAD_SAFE_CFLAGS) -shared -Wl,-z,defs,-z,relro,-z,now -o $@ $< $(VLC_LIBS)
+
 $(BUILD)/usm_pool_bench.o: src/usm_pool.c $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(BENCH_CFLAGS) -c -o $@ $<
 $(BUILD)/usm_pool_bench_flatskip.o: src/usm_pool.c $(BUILD_CONFIG) | $(BUILD)
@@ -1446,6 +1460,7 @@ analyze: complexity semantic-analysis
 	# FORTIFY flags and forces a checked memcpy symbol for binary inspection.
 	cppcheck --enable=warning,style,performance,portability \
 		--inline-suppr --std=c11 --error-exitcode=2 \
+		--include=tests/lifecycle_stubs/vlc_plugin.h \
 		--suppress=missingIncludeSystem \
 		-i tests/test_autoupscale_lifecycle.c \
 		-i tests/hardening_fortify_probe.c \
