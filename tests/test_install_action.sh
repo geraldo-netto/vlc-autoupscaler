@@ -171,7 +171,7 @@ with open(sys.argv[1], encoding="utf-8") as fh:
     actual = fh.read().splitlines()
 
 sout = (
-    "--sout=#transcode{vcodec=h264,acodec=mp4a,vb=10000,ab=128,"
+    "--sout=#transcode{vcodec=h264,vb=10000,"
     "venc=x264{preset=ultrafast,tune=zerolatency},"
     "vfilter=autoupscale}:display"
 )
@@ -188,7 +188,7 @@ expected = [
     "--clip-two.mkv",
 ]
 if actual != expected:
-    raise AssertionError((actual, expected))
+    raise AssertionError(("REL-22: video-only transcode profile", actual, expected))
 PY
 
 direct_args_file="${tmp}/direct-args"

@@ -51,8 +51,8 @@ The **Play with VLC (AutoUpscale 1080p)** action has a fixed profile:
 - 1080p target, Spline36, and 20% USM;
 - software decoding to avoid VLC 3 hardware-converter chain failures;
 - a separate VLC instance so another player cannot absorb the action options;
-- real-time x264 and AAC transcoding to preserve the enlarged dimensions at
-  the display.
+- real-time x264 video transcoding to preserve the enlarged dimensions at
+  the display; audio passes through without requested re-encoding.
 
 The installed wrapper owns this profile. Run it independently with:
 

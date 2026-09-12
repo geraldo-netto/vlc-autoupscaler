@@ -17,7 +17,7 @@ frame dimensions.
 Transcode display path:
 
 ```sh
-vlc --avcodec-hw=none --autoupscale-target=2 --autoupscale-algo=3 --autoupscale-usm=20 --sout='#transcode{vcodec=h264,acodec=mp4a,vb=10000,ab=128,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display' path/to/video.mp4
+vlc --avcodec-hw=none --autoupscale-target=2 --autoupscale-algo=3 --autoupscale-usm=20 --sout='#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display' path/to/video.mp4
 ```
 
 Use this when direct playback reports `Too high level of recursion (3)` or when
@@ -31,7 +31,7 @@ AutoUpscale, x264, and FFmpeg encoder modules without starting playback.
 For damaged legacy video, test deblocking before scaling:
 
 ```sh
-vlc --postproc-q=6 --sout='#transcode{vcodec=h264,acodec=mp4a,vb=10000,ab=128,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=postproc:autoupscale}:display' path/to/video.mp4
+vlc --postproc-q=6 --sout='#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=postproc:autoupscale}:display' path/to/video.mp4
 ```
 
 Do not enable `postproc` by default. Missing decoder quantization data can make
@@ -42,7 +42,7 @@ it ineffective or unstable, and clean sources do not benefit.
 Force a 1080p display path:
 
 ```sh
-vlc --avcodec-hw=none --autoupscale-target=2 --autoupscale-algo=3 --autoupscale-usm=20 --sout='#transcode{vcodec=h264,acodec=mp4a,vb=10000,ab=128,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display' path/to/video.mp4
+vlc --avcodec-hw=none --autoupscale-target=2 --autoupscale-algo=3 --autoupscale-usm=20 --sout='#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display' path/to/video.mp4
 ```
 
 All targets retain the 4x linear scaling cap. For example, 640x360 reaches
@@ -194,7 +194,7 @@ unchanged. Use the system mixer for live volume control.
 For a fixed startup level, add the core `--gain` option before `--sout`:
 
 ```sh
-vlc --gain=0.50 --avcodec-hw=none --autoupscale-target=2 --autoupscale-algo=3 --autoupscale-usm=20 --sout='#transcode{vcodec=h264,acodec=mp4a,vb=10000,ab=128,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display' path/to/video.mp4
+vlc --gain=0.50 --avcodec-hw=none --autoupscale-target=2 --autoupscale-algo=3 --autoupscale-usm=20 --sout='#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display' path/to/video.mp4
 ```
 
 The value is a linear multiplier: `1.0` is unchanged, `0.5` is about -6 dB,
