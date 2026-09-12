@@ -183,58 +183,8 @@ jobs:
       - name: Build fuzzers
         run: make fuzz EXTRA_CFLAGS=-Werror
 
-      # BUILD-9: every built fuzzer gets at least a short libFuzzer pass;
-      # previously 8 of 13 were built but never run.
-      - name: Run libFuzzer (pure-logic targets, short pass)
-        run: |
-          for t in upscale_logic threading worker_pool copy_plane stripe_bounds \
-                   decide_tile_grid scaler_open picture_view; do
-            mkdir -p "corpus_$t"
-            "build/fuzz_$t" "corpus_$t" -max_total_time=30 -print_final_stats=1
-          done
-
-      - name: Run libFuzzer (usm_variants, curated corpus)
-        run: |
-          mkdir -p corpus_usm_variants_work
-          cp tests/corpus_usm_variants/* corpus_usm_variants_work/ 2>/dev/null || true
-          build/fuzz_usm_variants corpus_usm_variants_work \
-            -max_total_time=60 -print_final_stats=1
-
-      - name: Run libFuzzer (scaler_seam, curated corpus)
-        run: |
-          mkdir -p corpus_scaler_seam_work
-          cp tests/corpus_scaler_seam/* corpus_scaler_seam_work/ 2>/dev/null || true
-          build/fuzz_scaler_seam corpus_scaler_seam_work \
-            -max_total_time=90 -max_len=10 -print_final_stats=1
-
-      - name: Run libFuzzer (upscale_logic)
-        run: |
-          mkdir -p corpus_logic
-          if [ -d tests/corpus ]; then cp tests/corpus/* corpus_logic/ 2>/dev/null || true; fi
-          build/fuzz_upscale_logic corpus_logic \
-            -max_total_time=60 -max_len=24 -print_final_stats=1
-
-      - name: Run libFuzzer (usm)
-        run: |
-          mkdir -p corpus_usm
-          build/fuzz_usm corpus_usm -max_total_time=60 -max_len=64 -print_final_stats=1
-
-      - name: Run libFuzzer (frame_shape)
-        run: |
-          mkdir -p corpus_frame_shape
-          if [ -d tests/corpus_frame_shape ]; then cp tests/corpus_frame_shape/* corpus_frame_shape/ 2>/dev/null || true; fi
-          build/fuzz_frame_shape corpus_frame_shape -max_total_time=60 -max_len=24 -print_final_stats=1
-
-      - name: Run libFuzzer (scaler_chroma)
-        run: |
-          mkdir -p corpus_scaler_chroma
-          if [ -d tests/corpus_scaler_chroma ]; then cp tests/corpus_scaler_chroma/* corpus_scaler_chroma/ 2>/dev/null || true; fi
-          build/fuzz_scaler_chroma corpus_scaler_chroma -max_total_time=60 -max_len=17 -print_final_stats=1
-
-      - name: Run libFuzzer (content_probe)
-        run: |
-          mkdir -p corpus_content_probe
-          build/fuzz_content_probe corpus_content_probe -max_total_time=60 -max_len=64 -print_final_stats=1
+      - name: Run libFuzzer (all built targets)
+        run: make run-fuzz EXTRA_CFLAGS=-Werror
 
       - name: Upload findings
         if: failure()

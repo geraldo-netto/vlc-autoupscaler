@@ -642,6 +642,9 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo
 	@echo "=== Makefile phony coverage ==="
 	@sh tests/test_makefile_phony.sh
+	@echo
+	@echo "=== canonical fuzzer execution ==="
+	@python3 tests/test_fuzz_runner.py
 
 $(BUILD)/test_usm_pool_dispatch: tests/test_usm_pool_dispatch.c src/usm_pool_dispatch.c src/usm_pool_variants.h src/usm_pool.h src/cpu_level.h tests/test_harness.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
@@ -692,6 +695,10 @@ fuzz: $(FUZZ_TARGETS)
 	@echo ""
 	@echo "(Always copy seeds to a working dir; libFuzzer writes new finds back"
 	@echo " into whatever directory you pass it, polluting the curated corpus.)"
+
+.PHONY: run-fuzz
+run-fuzz: fuzz
+	@bash scripts/run_fuzzers.sh "$(BUILD)" $(FUZZ_TARGET_NAMES)
 
 $(BUILD)/fuzz_upscale_logic: tests/fuzz_upscale_logic.c src/upscale_logic.h $(BUILD_CONFIG) | $(BUILD)
 	$(CLANG) $(FUZZ_CFLAGS) -o $@ $<
