@@ -1,0 +1,245 @@
+{
+  "capture": "2026-09-12",
+  "binary_sha256": "708daed231efde5fd225adefc82d4f90a18b13044091fb789099581d5a1cd93e",
+  "cpu_samples": {
+    "12": 5996,
+    "32": 18771
+  },
+  "ibs_samples": {
+    "12": 370968,
+    "32": 686991
+  },
+  "lost_records_reported": false,
+  "limitations": [
+    "System-wide collection; only project source rows retained here.",
+    "perf c2c reports failed to find node; no NUMA interpretation.",
+    "Many IBS records lack parseable data source; counts are not exhaustive or normalized per frame.",
+    "perf script with --comms segfaulted; working perf report/c2c source attribution used instead."
+  ],
+  "rows": [
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b65d780",
+      "line_remote_hitm": 1,
+      "line_local_hitm": 3,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                0x2c     0       1      0x5caa493547a3         0       105       528        5         4  [.] up__pool_worker_main        profile_pipeline  pool_gate.h:298          0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b83ea00",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 2,
+      "source_row": "0.00%   50.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583a0         0        20         0        1         1  [.] usm_pool_run_worker         profile_pipeline  usm.h:79                         0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b83ea00",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 2,
+      "source_row": "0.00%   50.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583e4         0        41         0        1         1  [.] usm_pool_run_worker         profile_pipeline  usm.h:79                         0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b7ec740",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                0x10     0       1      0x5caa49358116         0        59         0        1         1  [.] up_pool_gate_wait_for_go  profile_pipeline  pool_gate.h:226   0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b7ec740",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%    0.00%    0.00%    0.00%  100.00%                0x10     0       1      0x5caa4935814f         0         0         0        1         1  [.] up_pool_gate_wait_for_go  profile_pipeline  pool_gate.h:261   0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b8378c0",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x0     0       1      0x5caa493583b2         0        52         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b837980",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa49358403         0        43         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:78      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b839ec0",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583a0         0        52         0        1         1  [.] usm_pool_run_worker         profile_pipeline  usm.h:79                         0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b83a000",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583e4         0        67         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b83c3c0",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583e4         0        53         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b840ec0",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa493583bf         0        56       462        1         2  [.] usm_pool_run_worker         profile_pipeline  usm.h:78                         0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b841140",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa493583bf         0        31         0        1         1  [.] usm_pool_run_worker         profile_pipeline  usm.h:78                         0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b843440",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa493583bf         0       104         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:78      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b845900",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa493583bf         0        88         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:78      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b8459c0",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583a0         0        57         0        1         1  [.] usm_pool_run_worker         profile_pipeline  usm.h:79                         0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b845a80",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583e4         0        40         0        1         1  [.] usm_pool_run_worker         profile_pipeline  usm.h:79                         0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b848000",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa49358403         0        88         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:78      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x5caa6b848040",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583e4         0        46         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d22b3080",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583e4         0       115         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d22b3140",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa493583bf         0       106         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:78      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d22b3240",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa493583e4         0        33         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d22dc000",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x0     0       1      0x5caa49358a8b         0        45         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d22df000",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa49358ae5         0        26         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:78      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d22e12c0",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa49358a80         0        50         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d22fe200",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa49358ac6         0        47         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d2301240",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa49358ac6         0        48         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d23073c0",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%    0.00%    0.00%    0.00%  100.00%                0x20     0       1      0x5caa4935902c         0         0         0        1         1  [.] usm_pool_run_worker         profile_pipeline  usm.h:152                        0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d231ee00",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa49358aa1         0        29         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:78      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d2400100",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x1     0       1      0x5caa49358ae5         0        94         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:78      0"
+    },
+    {
+      "workers": 12,
+      "cache_line": "0x7272d2402000",
+      "line_remote_hitm": 0,
+      "line_local_hitm": 1,
+      "source_row": "0.00%  100.00%    0.00%    0.00%    0.00%                 0x2     0       1      0x5caa49358ac6         0        77         0        1         1  [.] usm_pool_run_worker  profile_pipeline  usm.h:79      0"
+    },
+    {
+      "workers": 32,
+      "cache_line": "0x561aa4f58a80",
+      "line_remote_hitm": 5,
+      "line_local_hitm": 10,
+      "source_row": "100.00%  100.00%    0.00%    0.00%    0.00%                0x14     0       1      0x561a76750453      1586       402      1157       18        14  [.] up__pool_worker_main      profile_pipeline  pool_gate.h:298   0"
+    },
+    {
+      "workers": 32,
+      "cache_line": "0x561aa4f58780",
+      "line_remote_hitm": 7,
+      "line_local_hitm": 3,
+      "source_row": "100.00%  100.00%    0.00%    0.00%    0.00%                0x2c     0       1      0x561a7674b7a3       875        97       318       13        12  [.] up__pool_worker_main        profile_pipeline  pool_gate.h:298             0"
+    }
+  ]
+}

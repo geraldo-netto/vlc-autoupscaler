@@ -643,6 +643,9 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== Makefile phony coverage ==="
 	@sh tests/test_makefile_phony.sh
 	@echo
+	@echo "=== perf capture contract ==="
+	@bash tests/test_profile_perf.sh
+	@echo
 	@echo "=== canonical fuzzer execution ==="
 	@python3 tests/test_fuzz_runner.py
 

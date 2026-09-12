@@ -68,16 +68,22 @@ for workers in 12 32; do
     fi
 done
 
+c2c_failed=0
 for workers in 12 32; do
 echo "Cache-to-cache capture: $workers workers"
-if perf c2c record -u -m 1024 -o "$output/w$workers.c2c.data" -- \
+if perf c2c record -a -m 1024 -o "$output/w$workers.c2c.data" -- \
     runuser -u "$SUDO_USER" -- "$build/profile_pipeline" \
     "$workers" "$workers" 1920 1080 20000 1 0 1 0 \
     > "$output/w$workers.c2c.stdout" 2> "$output/w$workers.c2c.stderr"; then
     perf c2c report -i "$output/w$workers.c2c.data" --stdio \
         > "$output/w$workers.c2c.txt" 2> "$output/w$workers.c2c-report.stderr"
 else
+    c2c_failed=1
     echo 'Cache-to-cache capture unavailable; its diagnostic was retained.'
 fi
 done
+if [[ $mode == attribution && $c2c_failed == 1 ]]; then
+    echo 'Attribution incomplete: cache-to-cache capture failed.' >&2
+    exit 1
+fi
 echo "Capture complete: $output"

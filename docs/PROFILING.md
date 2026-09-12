@@ -6,6 +6,32 @@ production scheduling, image partitioning, or pixel kernels. The profiling
 executables compile private copies of the production backends; dispatch tracing
 exists only in those executables.
 
+## Follow-up: 12 September 2026
+
+Authenticated CPU and system-wide AMD IBS collection completed at 12 and 32
+workers. CPU captures contain 5,996 and 18,771 samples; IBS captures contain
+370,968 and 686,991. `perf report --stats` reports no lost records in any of
+the four files. This is a capture diagnostic, not proof that all hardware
+accesses were sampled or decoded.
+
+The [project-only source attribution](benchmarks/cache-attribution-2026-09-12.json)
+maps two 32-worker cache lines to `pool_gate.h:298`, the shared `pending`
+completion counter. Their reported local/remote HITM counts are 10/5 and 3/7;
+the corresponding source offsets are `0x14` and `0x2c`. Multiple workers
+intentionally update the same object: this establishes true sharing at the
+completion barrier, not false sharing between independent worker payloads.
+The 12-worker report also contains a completion-counter site, wait-generation
+accesses and sparse USM pixel sites. Counts are not normalized per frame and
+do not establish a speedup, a bandwidth limit, or the size of removable cost.
+
+IBS collection must use `perf c2c record -a` on this host. Attribution mode
+now fails when either capture fails; permanent script tests cover both
+requirements. `perf c2c` warns that it cannot find a node, so no NUMA conclusion
+is drawn. Many records lack a parseable data source. A separate `perf script
+--comms` decoding attempt crashed in perf 7.0.14; working `perf report` and
+`perf c2c report` supplied the source evidence above. Raw system-wide traces
+remain local. These limits are retained with the extracted data.
+
 ## Evaluation: 7 September 2026
 
 The existing per-worker ownership suits this workload. A broader shared-nothing
@@ -220,15 +246,16 @@ including mean/p95/p99, CPU time, paced input and cancellation/shutdown tests.
 Per-worker mailboxes could reduce shared-lock traffic but still require wakeups
 and a completion join; spinning may shorten wake delay at substantial idle CPU
 and power cost. A tree or batching can add hops or frame latency. None has an
-established speedup here. Complete cache-line attribution before selecting the
-mechanism.
+established speedup in this September 7 collection. The September 12
+[follow-up](#follow-up-12-september-2026) supplies attribution.
 
 Affinity is a separate bounded experiment suggested by the placement sweep.
 Test consistent USM placement and stage-to-stage locality before introducing
 Linux topology discovery into production policy. Any zimg tuning must preserve
 the graph grid: a faster configuration with changed seams does not satisfy a
-constant-quality tuning contract. `TODO.md` retains these follow-ups and the
-existing mean-versus-median controller issue.
+constant-quality tuning contract. `TODO.md` retains unresolved follow-ups;
+[BENCHMARKS.md](BENCHMARKS.md#adaptive-usm) describes the updated
+mean/tail controller and its regression coverage.
 
 ### Validation
 
@@ -406,8 +433,11 @@ sudo bash scripts/profile_perf.sh "$(realpath build-profile)" \
 ```
 
 The script collects repeated hardware-event counts, sampled CPU call stacks,
-scheduler latency traces, and an AMD IBS cache-to-cache attempt. An unsupported
-IBS capture is retained as a diagnostic. Inspect event availability and running
+scheduler latency traces, and an AMD IBS cache-to-cache attempt. IBS requires
+system-wide recording (`perf c2c record -a`); per-thread recording is rejected
+even with elevated privileges. An unsupported IBS capture is retained as a
+diagnostic; attribution mode returns failure if either cache-line capture fails.
+Inspect event availability and running
 percentages before interpreting rates. Cache misses alone do not establish
 false sharing; cache-line addresses and access sites are needed, as described
 in the [kernel false-sharing guide](https://www.kernel.org/doc/html/latest/kernel-hacking/false-sharing.html).
@@ -417,7 +447,8 @@ cache-to-cache captures in a fresh output directory. It skips hardware-stat and
 scheduler recordings. The current script uses 199 Hz CPU sampling and a larger
 perf buffer; the initial captures above used 499 Hz and the default buffer.
 
-Kernel scheduler traces may contain other host tasks. Keep the raw trace local
-and publish only the benchmark's extracted statistics. Syscall tracing and CPU
+System-wide cache-line and kernel scheduler traces may contain other host tasks.
+Keep raw traces local and publish only the benchmark's extracted statistics.
+Syscall tracing and CPU
 sampling are separate diagnostic runs; their elapsed times must not replace
 the ordinary frame-latency measurements.
