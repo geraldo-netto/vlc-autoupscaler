@@ -32,6 +32,9 @@ is drawn. Many records lack a parseable data source. A separate `perf script
 `perf c2c report` supplied the source evidence above. Raw system-wide traces
 remain local. These limits are retained with the extracted data.
 
+[DECISION_EXPERIMENTS.md](DECISION_EXPERIMENTS.md) compares notification,
+fixed-grid scheduling, pinning, copying and USM presets on paced decoded clips.
+
 ## Evaluation: 7 September 2026
 
 The existing per-worker ownership suits this workload. A broader shared-nothing
@@ -247,7 +250,8 @@ Per-worker mailboxes could reduce shared-lock traffic but still require wakeups
 and a completion join; spinning may shorten wake delay at substantial idle CPU
 and power cost. A tree or batching can add hops or frame latency. None has an
 established speedup in this September 7 collection. The September 12
-[follow-up](#follow-up-12-september-2026) supplies attribution.
+[follow-up](#follow-up-12-september-2026) supplies attribution and prototype
+measurements.
 
 Affinity is a separate bounded experiment suggested by the placement sweep.
 Test consistent USM placement and stage-to-stage locality before introducing

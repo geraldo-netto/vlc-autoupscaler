@@ -1,0 +1,21 @@
+{
+  "revision": "c4f3a221d0d93c732f7d328319be7e5a4c80dfed",
+  "worktree": "uncommitted selected fixes and benchmark experiments on develop",
+  "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "kernel": "7.0.0-31-generic",
+  "zimg_flags": "-O2 -g -march=native -Werror",
+  "driver_usm_flags": "-O3 -g -march=native -Werror",
+  "profile_pipeline_sha256": "f8759b4c90f1a1e93a058ce4cd6dcf313a96f1b83fb92fad34193d16553be608",
+  "bench_adaptive_sha256": "07bd11bd8dafcd80dd78af3cc9bd4e0b842b425499a50037e3790647eb987365",
+  "clips": {
+    "animation.yuv": "7b747936b97021642811e4e8714b3e9558b53b5dffad86dc551f62377aa5081a",
+    "live-action-540.yuv": "39c0abed168795295a152a62b8869fb3f9c869e6d570750e8afe402321a1e62d",
+    "live-action.yuv": "75e0ccf18be68ba945d9e294f0cbbf55eed5dd28d584dfb9510c990e5d8ac4ee",
+    "motion.yuv": "799ce52c93efdb4c8ece1bdba29656075896a59efac5a1a28365d9cf88f4f9de"
+  },
+  "governor": "performance",
+  "paced_runs": 102,
+  "adaptive_runs": 24,
+  "frame_samples": 102,
+  "perf_attribution": "../cache-attribution-2026-09-12.json"
+}

@@ -4,6 +4,7 @@
 
 #include "profile_stage.h"
 #include "../src/worker_pool.h"
+#include "experiment_executor.h"
 #include <stdio.h>
 #include <sys/syscall.h>
 #include <unistd.h>
@@ -23,6 +24,26 @@ typedef struct {
 } up_profile_trace_t;
 
 static up_profile_trace_t up_profile_trace;
+static up_experiment_executor_t up_profile_executor;
+static int up_profile_executor_mode, up_profile_executor_workers;
+
+static inline void up_profile_experiment_finish(void)
+{
+    up_experiment_stop(&up_profile_executor);
+    up_profile_executor = (up_experiment_executor_t){0};
+    up_profile_executor_mode = up_profile_executor_workers = 0;
+}
+
+static int up_profile_experiment_dispatch(up_worker_pool_t *pool)
+{
+    if (up_profile_executor.broken) return -1;
+    const int count = up_profile_executor_workers ? up_profile_executor_workers
+                                                  : pool->n_workers;
+    if (!up_profile_executor.slots &&
+        up_experiment_start(&up_profile_executor, pool, count,
+                             up_profile_executor_mode == 2)) return -1;
+    return up_experiment_dispatch(&up_profile_executor, count);
+}
 
 static double up_profile_clock(clockid_t clock)
 {
@@ -71,6 +92,7 @@ static up_profile_frame_t up_profile_reduce(const up_profile_trace_t *t, int n)
 static int up_profile_dispatch(up_worker_pool_t *pool)
 {
     up_profile_trace_t *t = &up_profile_trace;
+    if (up_profile_executor_mode) return up_profile_experiment_dispatch(pool);
     if (!t->mode) return up_worker_pool_dispatch(pool);
     if (!t->original) {
         t->original = pool->ops;
@@ -106,6 +128,10 @@ static int up_profile_pool_sched(const up_worker_pool_t *pool,
                                  up_profile_sched_t *out)
 {
     out->workers = up_worker_pool_count(pool);
+    if (up_profile_executor_mode) {
+        out->workers = up_profile_executor.active;
+        return 0;
+    }
     if (!up_profile_trace.mode) return 0;
     for (int i = 0; i < out->workers; i++)
         if (up_profile_read_sched(up_profile_trace.slots[i].tid, out)) return -1;

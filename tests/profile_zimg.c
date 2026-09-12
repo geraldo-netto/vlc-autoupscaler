@@ -5,6 +5,12 @@
 #undef up_worker_pool_dispatch
 
 void up_profile_zimg_mode(int mode) { up_profile_trace.mode = mode; }
+void up_profile_zimg_experiment(int mode, int workers)
+{
+    up_profile_executor_mode = mode;
+    up_profile_executor_workers = workers;
+}
+void up_profile_zimg_finish(void) { up_profile_experiment_finish(); }
 up_profile_frame_t up_profile_zimg_frame(void) { return up_profile_trace.frame; }
 
 int up_profile_zimg_sched(const scaler_ctx_t *ctx, up_profile_sched_t *out)

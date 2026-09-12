@@ -649,6 +649,9 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== canonical fuzzer execution ==="
 	@python3 tests/test_fuzz_runner.py
 	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_bench_adaptive; fi
+	@$(BUILD)/test_experiment_executor
+	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_experiment_zimg; fi
+	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_profile_input; fi
 	@if [ -n "$(HAVE_ZIMG)" ]; then bash tests/test_benchmark_output.sh "$(BUILD)"; fi
 
 $(BUILD)/test_usm_pool_dispatch: tests/test_usm_pool_dispatch.c src/usm_pool_dispatch.c src/usm_pool_variants.h src/usm_pool.h src/cpu_level.h tests/test_harness.h $(BUILD_CONFIG) | $(BUILD)
@@ -666,10 +669,27 @@ $(BUILD)/test_worker_tuner: tests/test_worker_tuner.c src/worker_tuner.h src/thr
 $(BUILD)/test_usm_adaptive: tests/test_usm_adaptive.c src/usm_adaptive.h src/worker_tuner.h src/usm_pool.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
 
+test: $(BUILD)/test_experiment_executor
+
+$(BUILD)/test_experiment_executor: tests/test_experiment_executor.c tests/experiment_executor.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS) -lpthread -Wl,--wrap=pthread_create
+
 ifdef HAVE_ZIMG
-test: $(BUILD)/test_bench_adaptive
+test: $(BUILD)/test_bench_adaptive $(BUILD)/test_experiment_zimg $(BUILD)/test_profile_input
 test: $(BUILD)/bench_adaptive $(BUILD)/profile_pipeline
 endif
+
+$(BUILD)/test_profile_input: tests/test_profile_input.c tests/profile_input.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(TEST_LDFLAGS) $(VLC_LIBS)
+
+$(BUILD)/experiment_zimg_asan.o: tests/profile_zimg.c tests/profile_internal.h tests/experiment_executor.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -c -o $@ $<
+
+$(BUILD)/experiment_usm_asan.o: tests/profile_usm.c tests/profile_internal.h tests/experiment_executor.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -c -o $@ $<
+
+$(BUILD)/test_experiment_zimg: tests/test_experiment_zimg.c $(BUILD)/experiment_zimg_asan.o $(BUILD)/experiment_usm_asan.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(BUILD)/experiment_zimg_asan.o $(BUILD)/experiment_usm_asan.o $(TEST_LDFLAGS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -Wl,--wrap=sched_getaffinity
 
 $(BUILD)/test_bench_adaptive: tests/test_bench_adaptive.c tests/bench_adaptive.c tests/zimg_test_util.h $(BUILD)/scaler_zimg_asan.o $(BUILD)/usm_pool_test.o $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(BUILD)/scaler_zimg_asan.o $(BUILD)/usm_pool_test.o $(TEST_LDFLAGS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -Wl,--wrap=up_usm_pool_create
@@ -1390,7 +1410,8 @@ complexity:
 	lizard -C 10 src/ tests/
 
 MARKDOWN_FILES := README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md \
-                  docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md
+                  docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md \
+                  docs/DECISION_EXPERIMENTS.md
 
 semantic-analysis:
 	@command -v shellcheck >/dev/null 2>&1 || { \

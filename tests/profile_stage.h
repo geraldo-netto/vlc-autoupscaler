@@ -19,6 +19,10 @@ typedef struct {
 
 void up_profile_zimg_mode(int mode);
 void up_profile_usm_mode(int mode);
+void up_profile_zimg_experiment(int mode, int workers);
+void up_profile_usm_experiment(int mode);
+void up_profile_zimg_finish(void);
+void up_profile_usm_finish(void);
 up_profile_frame_t up_profile_zimg_frame(void);
 up_profile_frame_t up_profile_usm_frame(void);
 int up_profile_zimg_sched(const scaler_ctx_t *ctx, up_profile_sched_t *out);

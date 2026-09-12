@@ -3,6 +3,8 @@
 #include "zimg_test_util.h"
 #include "profile_stage.h"
 #include "cli_parse.h"
+#include "profile_input.h"
+#include "../src/content_probe.h"
 #include <stdio.h>
 #include <sys/resource.h>
 #include <time.h>
@@ -12,6 +14,7 @@
 
 typedef struct {
     long zimg, usm, width, height, frames, pin, detail, content, period;
+    int source_width, source_height, executor, active, zerocopy, sharp_threshold;
 } args_t;
 
 typedef struct {
@@ -27,6 +30,9 @@ typedef struct {
     up_profile_sched_t zbefore, ubefore, zafter, uafter;
     struct rusage before, after;
     double elapsed_us, cpu_us;
+    up_profile_input_t raw;
+    up_probe_accum_t probe;
+    int sharp_threshold, skip_usm;
 } pipeline_t;
 
 static double clock_us(clockid_t id)
@@ -34,6 +40,23 @@ static double clock_us(clockid_t id)
     struct timespec ts;
     if (clock_gettime(id, &ts) != 0) { perror("clock_gettime"); abort(); }
     return (double)ts.tv_sec * 1e6 + (double)ts.tv_nsec / 1e3;
+}
+
+static int parse_environment(args_t *a)
+{
+    const struct { const char *name; long low, high, fallback; int *value; } options[] = {
+        { "UP_PROFILE_WIDTH", 8, 4096, a->width / 2, &a->source_width },
+        { "UP_PROFILE_HEIGHT", 8, 2160, a->height / 2, &a->source_height },
+        { "UP_PROFILE_EXECUTOR", 0, 2, 0, &a->executor },
+        { "UP_PROFILE_ACTIVE", 0, 64, 0, &a->active },
+        { "UP_PROFILE_ZEROCOPY", 0, 1, 1, &a->zerocopy },
+        { "UP_PROFILE_SHARP_THRESHOLD", 0, 20000, 0, &a->sharp_threshold },
+    };
+    for (size_t i = 0; i < sizeof options / sizeof *options; i++)
+        if (up_profile_env(options[i].name, options[i].low, options[i].high,
+                             options[i].fallback, options[i].value)) return -1;
+    return a->source_width % 2 || a->source_height % 2 || (a->executor && a->detail)
+             ? -1 : 0;
 }
 
 static int parse(int argc, char **argv, args_t *a)
@@ -45,7 +68,7 @@ static int parse(int argc, char **argv, args_t *a)
                        &a->pin, &a->detail, &a->content, &a->period };
     for (int i = 0; i < 9; i++)
         if (!up_cli_parse_long(argv[i + 1], low[i], high[i], fields[i])) return -1;
-    return a->width % 4 || a->height % 4 ? -1 : 0;
+    return a->width % 4 || a->height % 4 ? -1 : parse_environment(a);
 }
 
 static void fill_smooth(zt_pic_t *pic, int frame)
@@ -62,12 +85,15 @@ static int initialize(pipeline_t *p, const args_t *a)
 {
     const int w = (int)a->width, h = (int)a->height;
     for (int i = 0; i < PROFILE_INPUTS; i++) {
-        if (zt_pic_alloc(&p->input[i], VLC_CODEC_I420, w / 2, h / 2)) return -1;
+        if (zt_pic_alloc(&p->input[i], VLC_CODEC_I420,
+                         a->source_width, a->source_height)) return -1;
         if (a->content) fill_smooth(&p->input[i], i);
         else zt_pic_fill(&p->input[i], 0x12345678u + (uint32_t)i);
     }
     if (zt_pic_alloc(&p->output, VLC_CODEC_I420, w, h)) return -1;
-    zt_ctx_init(&p->ctx, VLC_CODEC_I420, w / 2, h / 2, w, h, (int)a->zimg, 1);
+    zt_ctx_init(&p->ctx, VLC_CODEC_I420, a->source_width, a->source_height,
+                w, h, (int)a->zimg, a->zerocopy);
+    p->ctx.zimg.src_zerocopy = a->zerocopy;
     p->ctx.algo = UP_ALGO_SPLINE36;
     p->ctx.pin_cpus = (int)a->pin;
     if (p->ctx.backend->open(&p->ctx)) return -1;
@@ -76,30 +102,53 @@ static int initialize(pipeline_t *p, const args_t *a)
         if (!p->usm) return -1;
     }
     p->samples = calloc((size_t)a->frames, sizeof *p->samples);
-    return p->samples ? 0 : -1;
+    p->sharp_threshold = a->sharp_threshold;
+    if (!p->samples) return -1;
+    return up_profile_input_open(&p->raw, getenv("UP_PROFILE_INPUT"),
+                                   a->source_width, a->source_height);
 }
 
 static void destroy(pipeline_t *p)
 {
+    up_profile_zimg_finish();
+    up_profile_usm_finish();
     up_usm_pool_destroy(p->usm);
     if (p->ctx.priv) p->ctx.backend->close(&p->ctx);
     for (int i = 0; i < PROFILE_INPUTS; i++) zt_pic_free(&p->input[i]);
     zt_pic_free(&p->output);
     free(p->samples);
+    if (p->raw.file) fclose(p->raw.file);
+}
+
+static void probe_source(pipeline_t *p, const zt_pic_t *source)
+{
+    if (!p->sharp_threshold || p->probe.frames >= UP_PROBE_WINDOW_FRAMES) return;
+    const plane_t *luma = &source->pic.p[0];
+    up_probe_metrics_t metrics;
+    up_probe_metrics(luma->p_pixels, luma->i_pitch, p->ctx.src_w, p->ctx.src_h, &metrics);
+    up_probe_observe(&p->probe, metrics.lap_sum, metrics.lap_n,
+                     metrics.edge_sum, metrics.edge_n);
+    if (p->probe.frames == UP_PROBE_WINDOW_FRAMES)
+        p->skip_usm = up_should_skip_usm_for_sharpness(&p->probe, p->sharp_threshold);
 }
 
 static int frame(pipeline_t *p, int index, sample_t *sample)
 {
+    zt_pic_t *source = &p->input[index % PROFILE_INPUTS];
+    if (up_profile_input_read(&p->raw, index, source)) return -1;
     const double start = clock_us(CLOCK_MONOTONIC);
-    if (p->ctx.backend->process(&p->ctx, &p->input[index % PROFILE_INPUTS].pic,
+    probe_source(p, source);
+    if (p->ctx.backend->process(&p->ctx, &source->pic,
                                 &p->output.pic) != SCALER_PROCESS_OK) return -1;
     const double scaled = clock_us(CLOCK_MONOTONIC);
     plane_t *luma = &p->output.pic.p[0];
-    if (p->usm && up_usm_pool_apply(p->usm, luma->p_pixels, luma->i_pitch,
+    if (p->usm && !p->skip_usm && up_usm_pool_apply(p->usm, luma->p_pixels, luma->i_pitch,
                                    luma->p_pixels, luma->i_pitch, 51)) return -1;
     const double end = clock_us(CLOCK_MONOTONIC);
+    up_profile_frame_t usm_trace = up_profile_usm_frame();
+    if (p->skip_usm) usm_trace = (up_profile_frame_t){0};
     *sample = (sample_t){ end - start, scaled - start, end - scaled,
-                          up_profile_zimg_frame(), up_profile_usm_frame() };
+                          up_profile_zimg_frame(), usm_trace };
     return 0;
 }
 
@@ -208,7 +257,11 @@ static int report(const pipeline_t *p, const args_t *a)
 {
     double *sorted = malloc((size_t)a->frames * sizeof *sorted);
     if (!sorted) return -1;
-    printf("{\"zimg_effective\":%d,\"usm_effective\":%d,\"rows\":%d,\"cols\":%d,",
+    printf("{\"executor\":%d,\"zerocopy\":%d,\"sharp_threshold\":%d,\"skip_usm\":%d,"
+           "\"lap_mean\":%llu,", a->executor, a->zerocopy, a->sharp_threshold,
+           p->skip_usm, (unsigned long long)(p->probe.lap_samples
+                             ? p->probe.lap_sum / p->probe.lap_samples : 0));
+    printf("\"zimg_effective\":%d,\"usm_effective\":%d,\"rows\":%d,\"cols\":%d,",
            p->zafter.workers, p->uafter.workers, p->zafter.rows, p->zafter.cols);
     const char *names[] = { "frame", "zimg", "usm" };
     for (int i = 0; i < 3; i++) report_times(p->samples, (int)a->frames, i, names[i], sorted);
@@ -261,6 +314,8 @@ int main(int argc, char **argv)
     pipeline_t p = {0};
     up_profile_zimg_mode((int)a.detail);
     up_profile_usm_mode((int)a.detail);
+    up_profile_zimg_experiment(a.executor, a.active);
+    up_profile_usm_experiment(a.executor);
     int rc = initialize(&p, &a);
     if (!rc) rc = run(&p, &a);
     if (!rc) rc = report(&p, &a);

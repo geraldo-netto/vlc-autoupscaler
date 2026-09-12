@@ -144,7 +144,8 @@ Exclude fallback runs from claims about successful adaptation.
 The synthetic noise fixture deliberately keeps sharpening active. Matching
 VLC playback requires `--autoupscale-usm-sharp-threshold=0`: with the default
 3500 cutoff, this fixture's high Laplacian energy disables sharpening and
-adaptation after the 60-frame probe.
+adaptation after the 60-frame probe. The decoded-video experiments in
+[DECISION_EXPERIMENTS.md](DECISION_EXPERIMENTS.md) also exercise that default gate.
 
 ### Experimental snapshot
 
@@ -198,7 +199,27 @@ fairness and latency classification. Its reported classifier accuracy does not
 establish better closed-loop worker control. A trained model would add dataset,
 generalization and inference-cost requirements without demonstrated benefit to
 this plugin. Contradictory loss and evaluation descriptions in the references
-are recorded in `TODO.md` as SCAL-10; zimg adaptation is tracked as SCAL-11.
+are recorded in `TODO.md` as SCAL-10. The fixed-grid scheduling experiment is
+described in [DECISION_EXPERIMENTS.md](DECISION_EXPERIMENTS.md).
+
+For a concrete BBRv1 reference, Linux v6.8's
+[`tcp_bbr.c`](https://github.com/torvalds/linux/blob/v6.8/net/ipv4/tcp_bbr.c)
+uses loss in `bbr_set_cwnd_to_recover_or_restore` (deducting newly lost packets
+and entering packet conservation), `bbr_is_next_cycle_phase` (ending an
+upward probe), and `bbr_lt_bw_sampling` (traffic-policer detection and rate
+estimation). Its core bandwidth/minimum-RTT model is not the same as ignoring
+all loss. This agrees with Google's IETF 101 slide 17 and resolves that
+interpretation of the survey. None of those network quantities defines a
+worker-count control signal for this plugin.
+
+The NJIT paper's §3.2 says evaluation uses the training data; §4 describes
+validation accuracy. The paper does not provide enough reproducible split,
+data and code information to establish an independent held-out result here.
+That evidence remains unresolved. Current experiments collect processing
+means, tail latency, CPU cost and probe metrics; they neither train a model
+nor change default control behavior. Future metric selection needs separate
+clips and hosts for evaluation, a held-out split by clip rather than adjacent
+frames, and end-to-end measurements including exploration and inference cost.
 
 ## Compare
 

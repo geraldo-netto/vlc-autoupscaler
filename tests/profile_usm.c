@@ -5,6 +5,11 @@
 #undef up_worker_pool_dispatch
 
 void up_profile_usm_mode(int mode) { up_profile_trace.mode = mode; }
+void up_profile_usm_experiment(int mode)
+{
+    up_profile_executor_mode = mode;
+}
+void up_profile_usm_finish(void) { up_profile_experiment_finish(); }
 up_profile_frame_t up_profile_usm_frame(void) { return up_profile_trace.frame; }
 
 int up_profile_usm_sched(const usm_pool_t *pool, up_profile_sched_t *out)
