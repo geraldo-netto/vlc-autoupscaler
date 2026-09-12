@@ -44,7 +44,8 @@ separately verifies the linked USM variants and dispatcher.
 ## Backend contract
 
 `scaler.h` defines a small strategy interface: `supports`, `open`, `process`,
-and `close`. `scaler.c` owns selection and fallback.
+and `close`. `scaler.c` owns backend selection. `OpenScalerOrFallback` and
+`TryBackendFallback` in `autoupscale.c` own open-time and runtime recovery.
 
 - zimg supports planar YUV and provides Spline36. It uses persistent worker
   graphs arranged as row stripes or a row/column grid.

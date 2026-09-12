@@ -50,7 +50,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| ARCH-13 | blocked | S | Correct the documented owner of backend fallback. | `docs/ARCHITECTURE.md:47` says `scaler.c` owns selection and fallback; `src/scaler.c` only selects a supported backend, while `OpenScalerOrFallback` and `TryBackendFallback` in `src/autoupscale.c:235,652` own open/runtime recovery. Unblock by aligning the backend-contract description with those production call sites. |
 | ARCH-14 | blocked | M | Benchmark a bounded notification/completion alternative before extending shared-nothing isolation. | [Profiling](docs/PROFILING.md) finds the current private graphs/scratch/stripes suitable: at 1080p, 12-to-32-worker zimg last-start delay rises from 23.45 to 68.77 us and USM from 14.31 to 79.54 us, while final handoff remains about 5 us. Unpinned empty dispatch grows from 19.99 to 50.58 to 108.56 us at 12/32/64 workers. Complete PERF-12, then compare per-worker notification/completion with the existing gate at identical grid, pixels, worker counts and kernels; require mean/p95/p99, CPU cost, paced input and shutdown/failure checks. These measurements do not establish removable overhead or a shared-nothing speedup. Per-worker ownership already exists; a process/distributed rewrite has no demonstrated single-frame latency benefit and adds IPC/buffering. Revisit prior alternate-wake rejections only against this new high-count evidence. |
 
 ## decoupling
