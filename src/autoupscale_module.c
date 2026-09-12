@@ -124,8 +124,10 @@
     "(fewer workers), since tiles need direct source reads. Set to 0 if " \
     "you see garbled output, crashes, or instability - reading VLC's " \
     "pool-managed source buffers from worker threads has been verified " \
-    "byte-identical to the copy-in path in our harness but, like " \
-    "zerocopy-dst, cannot be fully verified across every VLC build " \
+    "byte-identical to copy-in when the graph grid stays unchanged. " \
+    "Disabling source zero-copy can change the grid and resampling seams. " \
+    "Like " \
+    "zerocopy-dst, this cannot be fully verified across every VLC build " \
     "configuration.")
 
 #define USM_STRIPE_MIN_ROWS_TEXT N_("Minimum rows per USM stripe")

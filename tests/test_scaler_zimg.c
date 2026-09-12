@@ -97,13 +97,15 @@ enum zt_topology_mode {
     ZT_TOPOLOGY_REAL,
     ZT_TOPOLOGY_FOUR_CPUS,
     ZT_TOPOLOGY_UNAVAILABLE,
+    ZT_TOPOLOGY_32_CPUS,
 };
 
 static atomic_int g_topology_mode;
 static atomic_int g_pin_success_limit = ATOMIC_VAR_INIT(-1);
 static atomic_int g_pin_call_count;
 static atomic_int g_pin_log_count;
-static char g_pin_log[256];
+static char g_pin_log[512];
+static char g_scratch_log[512];
 
 #if UP_HAVE_CPU_AFFINITY
 static atomic_int g_cpu_alloc_success_limit = ATOMIC_VAR_INIT(-1);
@@ -131,7 +133,8 @@ int __wrap_sched_getaffinity(pid_t pid, size_t size, cpu_set_t *set)
         return -1;
     }
     CPU_ZERO_S(size, set);
-    for (int cpu = 0; cpu < 4; cpu++) CPU_SET_S((size_t)cpu, size, set);
+    const int count = mode == ZT_TOPOLOGY_32_CPUS ? 32 : 4;
+    for (int cpu = 0; cpu < count; cpu++) CPU_SET_S((size_t)cpu, size, set);
     return 0;
 }
 #endif
@@ -142,7 +145,8 @@ long __wrap_sysconf(int name)
     if (name == _SC_NPROCESSORS_ONLN &&
         atomic_load_explicit(&g_topology_mode, memory_order_relaxed)
             != ZT_TOPOLOGY_REAL)
-        return 4;
+        return atomic_load_explicit(&g_topology_mode, memory_order_relaxed)
+            == ZT_TOPOLOGY_32_CPUS ? 32 : 4;
     return __real_sysconf(name);
 }
 
@@ -166,11 +170,13 @@ void __wrap_vlc_Log(vlc_object_t *obj, int prio, const char *module,
                     const char *format, ...)
 {
     (void)obj; (void)prio; (void)module; (void)file; (void)line; (void)func;
-    char rendered[sizeof g_pin_log];
+    char rendered[sizeof g_scratch_log];
     va_list ap;
     va_start(ap, format);
     (void)vsnprintf(rendered, sizeof rendered, format, ap);
     va_end(ap);
+    if (strstr(rendered, "scratch") != NULL)
+        (void)snprintf(g_scratch_log, sizeof g_scratch_log, "%s", rendered);
     if (strstr(rendered, "CPU pinning") == NULL) return;
     (void)snprintf(g_pin_log, sizeof g_pin_log, "%s", rendered);
     atomic_fetch_add_explicit(&g_pin_log_count, 1, memory_order_relaxed);
@@ -508,12 +514,11 @@ static void test_zerocopy_matches_copyout(void)
     END();
 }
 
-/* Source zero-copy (graph reads the src picture directly) must produce output
- * byte-identical to the copy-in path; and full zero-copy (src+dst) must match
- * full copy. Validates the new src_zerocopy plumbing end to end. */
+/* Copy/direct identity requires the same graph grid; changing source mode can
+ * replace column tiling with rows and change resampling seams. */
 static void test_src_zerocopy_matches_copy(void)
 {
-    BEGIN("source zero-copy + full zero-copy byte-identical to copy path");
+    BEGIN("source/full zero-copy match copy at unchanged grid; tiled modes agree");
     for (size_t i = 0; i < NCFG; i++) {
         zt_pic_t a, b, c;
         int r0 = run_zimg(&CFGS[i], 0, 0, 0x00, 0x70DDu, &a);  /* all copy */
@@ -1165,12 +1170,49 @@ static void test_pin_diagnostics(void)
     }
     END();
 }
+
+static void test_tile_scratch_diagnostic(void)
+{
+    BEGIN("OBS-15: tile scratch and graph memory appear in exact byte totals");
+    zt_pin_scenario(ZT_TOPOLOGY_32_CPUS, -1, -1);
+    zt_pic_t src = { 0 }, dst = { 0 };
+    vlc_object_t log_obj = { 0 };
+    scaler_ctx_t ctx;
+    zt_ctx_init(&ctx, VLC_CODEC_I420, 4096, 32, 16384, 128, 32, 1);
+    ctx.log_obj = &log_obj;
+    g_scratch_log[0] = '\0';
+    const int allocated = zt_pic_alloc(&src, VLC_CODEC_I420, 4096, 32) == 0
+        && zt_pic_alloc(&dst, VLC_CODEC_I420, 16384, 128) == 0;
+    CHECK(allocated);
+    const int opened = allocated && ctx.backend->open(&ctx) == 0;
+    CHECK(opened);
+    if (opened) {
+        zt_pic_fill(&src, 0x0B515u);
+        CHECK(ctx.backend->process(&ctx, &src.pic, &dst.pic) == SCALER_PROCESS_OK);
+        size_t source = 0, shared = 0, tiles = 0, graphs = 0, total = 0;
+        const char *fields = strstr(g_scratch_log, "scratch bytes:");
+        CHECK(fields != NULL);
+        if (fields != NULL) {
+            CHECK(sscanf(fields, "scratch bytes: src=%zu dst=%zu tiles=%zu "
+                          "graph-tmp=%zu total=%zu", &source, &shared, &tiles,
+                          &graphs, &total) == 5);
+            CHECK(source == 0 && shared == 0 && tiles == 5242880);
+            CHECK(graphs > 0 && total == tiles + graphs);
+        }
+        ctx.backend->close(&ctx);
+    }
+    zt_pic_free(&src);
+    zt_pic_free(&dst);
+    zt_pin_scenario_reset();
+    END();
+}
 #else
 static void test_pin_diagnostics(void)
 {
     BEGIN("CPU pinning reports inline, unavailable, and partial outcomes");
     END();
 }
+static void test_tile_scratch_diagnostic(void) { }
 #endif
 
 /* SCAL-4: pinning is an optimization only — output must be byte-identical to
@@ -1338,6 +1380,7 @@ int main(void)
     test_construction_pthread_fail();
     test_barrier_failure_drains_and_sticks();
     test_pin_diagnostics();
+    test_tile_scratch_diagnostic();
     test_pin_cpus_matches();
     test_tiling_matches_untiled();
     test_process_failure_emits_nothing();

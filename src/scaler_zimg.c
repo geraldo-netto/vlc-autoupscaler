@@ -104,8 +104,8 @@ _Static_assert(UP_TILE_THREADS_MAX == UP_THREADS_MAX,
                "tile-grid and worker caps must match");
 
 /*
- * SCAL-4: best-effort pin one worker thread to a single CPU core. Opt-in
- * (--autoupscale-pin-threads), isolates the non-portable pthread_setaffinity_np
+ * SCAL-4: best-effort pin one worker thread to a single CPU core. Enabled by
+ * default (--autoupscale-pin-threads=1); isolates pthread_setaffinity_np
  * here. Failure is reported after startup: pinning is an optimization, never
  * a correctness requirement, and can fail benignly (CPU offline, cgroup
  * cpuset, container limits). No-op where the CPU-affinity capability is
@@ -687,7 +687,7 @@ static int init_stripe_worker(stripe_worker_t *w, const zimg_priv_t *p,
     return build_worker_graph_and_tmp(w, p, c, sub_w, sub_h, filt);
 }
 
-/* Pool hook: SCAL-4 best-effort pin (opt-in), right after the pool spawns the
+/* Pool hook: SCAL-4 best-effort pin (enabled by default), after the pool spawns the
  * thread. Round-robin so a worker count above the core count still spreads
  * evenly. The creator invokes this hook sequentially, so plain counters are
  * sufficient. */
@@ -800,29 +800,28 @@ static void log_zimg_pinning(vlc_object_t *log_obj, const zimg_priv_t *p)
 static void log_zimg_open(vlc_object_t *log_obj, const zimg_priv_t *p)
 {
     if (!log_obj) return;
-    /* Only scratch that is actually allocated (the copy side) counts. */
-    size_t src_mb = p->plan.src_zerocopy ? 0 : (plane_buffer_bytes(&p->src) >> 20);
-    /* Column tiling uses per-worker tile dst scratch, not the shared p->dst. */
-    size_t dst_mb = (p->plan.dst_zerocopy || p->plan.col_tiled) ? 0
-        : (plane_buffer_bytes(&p->dst) >> 20);
-    /* OBS-5: every cell owns a persistent zimg graph tmp buffer; at high thread
-     * counts this dominates the reported scratch, so account for it here. */
-    size_t tmp_bytes = 0;
+    const size_t src_bytes = p->plan.src_zerocopy ? 0 : plane_buffer_bytes(&p->src);
+    const size_t dst_bytes = (p->plan.dst_zerocopy || p->plan.col_tiled) ? 0
+        : plane_buffer_bytes(&p->dst);
+    size_t tmp_bytes = 0, tile_bytes = 0;
     const stripe_worker_t *workers =
         (const stripe_worker_t *)up_worker_pool_slot(&p->pool, 0);
     const int worker_count = up_worker_pool_count(&p->pool);
-    for (int i = 0; i < worker_count; i++)
+    for (int i = 0; i < worker_count; i++) {
         tmp_bytes += workers[i].tmp_size;
+        tile_bytes += plane_buffer_bytes(&workers[i].tile_dst);
+    }
     msg_Info(log_obj,
              "zimg: %d worker%s (grid %dx%d), %dx%d -> %dx%d, "
-             "scratch %zu MB (src %s, dst %s), graph-tmp %zu MB",
+             "src %s, dst %s, scratch bytes: src=%zu dst=%zu tiles=%zu "
+             "graph-tmp=%zu total=%zu",
              worker_count, worker_count == 1 ? "" : "s",
              p->plan.n_rows, p->plan.n_cols,
              p->src_w, p->src_h, p->dst_w, p->dst_h,
-             src_mb + dst_mb,
              p->plan.src_zerocopy ? "zero-copy" : "copy",
              p->plan.col_tiled ? "tiled+copy" : (p->plan.dst_zerocopy ? "zero-copy" : "copy"),
-             tmp_bytes >> 20);
+             src_bytes, dst_bytes, tile_bytes, tmp_bytes,
+             src_bytes + dst_bytes + tile_bytes + tmp_bytes);
     log_zimg_pinning(log_obj, p);
 }
 
