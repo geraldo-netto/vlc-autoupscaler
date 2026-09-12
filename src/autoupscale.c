@@ -605,8 +605,8 @@ static int RunUsm( filter_t *p_filter, filter_sys_t *p_sys,
     if( changes != a->tuner.changes )
         msg_Info( p_filter, "Adaptive USM: selected %d workers", a->tuner.best );
     if( phase != UP_TUNER_SETTLED && a->tuner.phase == UP_TUNER_SETTLED )
-        msg_Info( p_filter, "Adaptive USM: settled on %d workers, %.1f us/frame",
-                  a->tuner.best, a->tuner.steady_us );
+        msg_Info( p_filter, "Adaptive USM: settled on %d workers, %.1f us/frame mean",
+                  a->tuner.best, a->tuner.steady.mean_us );
     return status;
 }
 

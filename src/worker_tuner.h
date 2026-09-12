@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-#define UP_TUNER_SAMPLES 16
+#define UP_TUNER_SAMPLES 64
 #define UP_TUNER_WARMUP 2
 #define UP_TUNER_RECHECK_FRAMES 16384
 #define UP_TUNER_COOLDOWN_FRAMES 256
@@ -20,11 +20,15 @@ typedef enum {
 } up_tuner_phase_t;
 
 typedef struct {
+    double mean_us, p95_us, p99_us;
+} up_tuner_score_t;
+
+typedef struct {
     int limit, best, current, candidate, cursor;
     int used, warmup, remaining, drift;
     unsigned changes;
     double samples[UP_TUNER_SAMPLES];
-    double base_us, trial_us, steady_us;
+    up_tuner_score_t base, trial, steady;
     up_tuner_phase_t phase;
 } up_worker_tuner_t;
 
@@ -51,10 +55,12 @@ static inline int up_tuner_next_count(int previous, int limit)
     return 0;
 }
 
-static inline double up_tuner_median(double *values, int count)
+static inline up_tuner_score_t up_tuner_score(double *values, int count)
 {
+    double mean = values[0];
     for (int i = 1; i < count; i++) {
         const double value = values[i];
+        mean += (value - mean) / (i + 1);
         int j = i;
         while (j > 0 && values[j - 1] > value) {
             values[j] = values[j - 1];
@@ -62,36 +68,52 @@ static inline double up_tuner_median(double *values, int count)
         }
         values[j] = value;
     }
-    return values[count / 2 - 1] / 2.0 + values[count / 2] / 2.0;
+    return (up_tuner_score_t){ mean, values[count - count / 20 - 1],
+                               values[count - count / 100 - 1] };
 }
 
-static inline void up_tuner_settle(up_worker_tuner_t *t, double elapsed)
+static inline bool up_tuner_tail_regressed(up_tuner_score_t score,
+                                           up_tuner_score_t baseline)
+{
+    return score.p95_us / 1.05 > baseline.p95_us
+        || score.p99_us / 1.05 > baseline.p99_us;
+}
+
+static inline bool up_tuner_improves(up_tuner_score_t score,
+                                     up_tuner_score_t baseline)
+{
+    return score.mean_us < baseline.mean_us * 0.95
+        && !up_tuner_tail_regressed(score, baseline);
+}
+
+static inline void up_tuner_settle(up_worker_tuner_t *t, up_tuner_score_t score)
 {
     t->phase = UP_TUNER_SETTLED;
     t->current = t->best;
-    t->steady_us = elapsed;
+    t->steady = score;
     t->remaining = UP_TUNER_RECHECK_FRAMES;
     t->drift = 0;
 }
 
-static inline void up_tuner_begin_trial(up_worker_tuner_t *t, double elapsed)
+static inline void up_tuner_begin_trial(up_worker_tuner_t *t,
+                                        up_tuner_score_t score)
 {
     t->cursor = up_tuner_next_count(t->cursor, t->limit);
     if (t->cursor == t->best)
         t->cursor = up_tuner_next_count(t->cursor, t->limit);
     if (t->cursor == 0) {
-        up_tuner_settle(t, elapsed);
+        up_tuner_settle(t, score);
         return;
     }
-    t->base_us = elapsed;
+    t->base = score;
     t->candidate = t->current = t->cursor;
     t->phase = UP_TUNER_TRIAL;
 }
 
-static inline void up_tuner_confirm(up_worker_tuner_t *t, double elapsed)
+static inline void up_tuner_confirm(up_worker_tuner_t *t, up_tuner_score_t score)
 {
-    const double reference = t->base_us < elapsed ? t->base_us : elapsed;
-    if (t->trial_us < reference * 0.95) {
+    if (up_tuner_improves(t->trial, t->base)
+        && up_tuner_improves(t->trial, score)) {
         t->best = t->candidate;
         t->changes++;
     }
@@ -99,12 +121,13 @@ static inline void up_tuner_confirm(up_worker_tuner_t *t, double elapsed)
     t->phase = UP_TUNER_BASE;
 }
 
-static inline void up_tuner_monitor(up_worker_tuner_t *t, double elapsed)
+static inline void up_tuner_monitor(up_worker_tuner_t *t, up_tuner_score_t score)
 {
     if (t->remaining > UP_TUNER_RECHECK_FRAMES - UP_TUNER_COOLDOWN_FRAMES)
         return;
-    const bool shifted = elapsed > t->steady_us * 1.35
-                      || elapsed < t->steady_us * 0.65;
+    const bool shifted = score.mean_us / 1.35 > t->steady.mean_us
+                      || score.mean_us < t->steady.mean_us * 0.65
+                      || up_tuner_tail_regressed(score, t->steady);
     t->drift = shifted ? t->drift + 1 : 0;
     if (t->remaining > 0 && t->drift < 3) return;
     t->cursor = 0;
@@ -112,22 +135,22 @@ static inline void up_tuner_monitor(up_worker_tuner_t *t, double elapsed)
     t->drift = 0;
 }
 
-static inline void up_tuner_window(up_worker_tuner_t *t, double elapsed)
+static inline void up_tuner_window(up_worker_tuner_t *t, up_tuner_score_t score)
 {
     switch (t->phase) {
         case UP_TUNER_BASE:
-            up_tuner_begin_trial(t, elapsed);
+            up_tuner_begin_trial(t, score);
             break;
         case UP_TUNER_TRIAL:
-            t->trial_us = elapsed;
+            t->trial = score;
             t->current = t->best;
             t->phase = UP_TUNER_CONFIRM;
             break;
         case UP_TUNER_CONFIRM:
-            up_tuner_confirm(t, elapsed);
+            up_tuner_confirm(t, score);
             break;
         case UP_TUNER_SETTLED:
-            up_tuner_monitor(t, elapsed);
+            up_tuner_monitor(t, score);
             break;
     }
 }
@@ -135,7 +158,7 @@ static inline void up_tuner_window(up_worker_tuner_t *t, double elapsed)
 static inline bool up_tuner_trial_too_slow(up_worker_tuner_t *t)
 {
     return t->phase == UP_TUNER_TRIAL && t->used == 4
-        && up_tuner_median(t->samples, 4) > t->base_us * 1.5;
+        && up_tuner_score(t->samples, 4).mean_us / 1.5 > t->base.mean_us;
 }
 
 static inline void up_worker_tuner_observe(up_worker_tuner_t *t, double elapsed)
@@ -146,7 +169,7 @@ static inline void up_worker_tuner_observe(up_worker_tuner_t *t, double elapsed)
     t->samples[t->used++] = elapsed;
     if (t->used < UP_TUNER_SAMPLES && !up_tuner_trial_too_slow(t)) return;
     const int previous = t->current;
-    up_tuner_window(t, up_tuner_median(t->samples, t->used));
+    up_tuner_window(t, up_tuner_score(t->samples, t->used));
     t->used = 0;
     if (previous != t->current) t->warmup = UP_TUNER_WARMUP;
 }

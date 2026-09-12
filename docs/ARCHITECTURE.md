@@ -99,7 +99,8 @@ allowed for USM and repartitions its stripes; zimg uses all-or-nothing startup
 because its graph grid is precomputed.
 
 With `adaptive-usm=1` and `threads=0`, `worker_tuner.h` scores combined scaling
-and sharpening time while testing USM worker counts. `usm_adaptive.h` owns at most one
+and sharpening time using 64-frame means and observed p95/p99 guards while
+testing USM worker counts. `usm_adaptive.h` owns at most one
 trial pool beside the working pool; only one dispatches a frame. Pool switches
 and retirement occur after dispatch completion. Rejected trials are released;
 accepted trials replace the working pool. Allocation or trial initialization

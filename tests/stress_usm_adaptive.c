@@ -25,6 +25,7 @@ static int adapter_clock(clockid_t id, struct timespec *time)
 }
 
 enum { WIDTH = 65, HEIGHT = 513, PITCH = 71, BYTES = PITCH * HEIGHT };
+enum { PHASE_FRAMES = 50 * UP_TUNER_SAMPLES };
 typedef struct { uint8_t pixels[BYTES], reference[BYTES], scratch[BYTES]; } frames_t;
 
 static int one_frame(frames_t *f, usm_pool_t **pool, int frame)
@@ -44,16 +45,16 @@ int main(void)
     usm_pool_t *pool = up_usm_pool_create(12, WIDTH, HEIGHT, 8);
     up_usm_adaptive_init(&adaptive, 12, 64, WIDTH, HEIGHT, 8);
     int rc = frames == NULL || pool == NULL;
-    for (int i = 0; !rc && i < 1600; i++) {
-        if (i == 800) optimum = 4;
+    for (int i = 0; !rc && i < 2 * PHASE_FRAMES; i++) {
+        if (i == PHASE_FRAMES) optimum = 4;
         rc = one_frame(frames, &pool, i);
-        if (i == 799 && adaptive.tuner.best != 16) rc = 1;
+        if (i == PHASE_FRAMES - 1 && adaptive.tuner.best != 16) rc = 1;
     }
     if (adaptive.tuner.best != 4) rc = 1;
     up_usm_adaptive_stop(&adaptive);
     up_usm_pool_destroy(pool);
     free(frames);
-    printf("adaptive pools: 1600 changing frames, 1..64 workers, %s\n",
-           rc ? "FAILED" : "byte-identical");
+    printf("adaptive pools: %d changing frames, 1..64 workers, %s\n",
+           2 * PHASE_FRAMES, rc ? "FAILED" : "byte-identical");
     return rc;
 }

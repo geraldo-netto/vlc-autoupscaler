@@ -89,14 +89,26 @@ retain the policy and source revision used when collected.
 
 The search tries 1, 2, 4, 8, 12, 16, 24, 32, 48 and 64 workers, clipped to CPU
 and stripe limits. It skips two warmup frames after each switch and compares
-16-frame medians. A candidate must beat both neighboring baseline windows by
-5%. A trial whose first four measured frames have a median over 1.5 times the
-baseline returns early. Settled operation lasts at least 256 measured frames;
-three windows outside 65–135% of the settled timing trigger a new search.
+64-frame arithmetic means. A candidate must improve the mean by more than 5%
+against both neighboring baseline windows, with neither observed p95 nor p99
+more than 5% above either baseline. Percentiles use nearest ranks; with 64
+samples, p99 is the window maximum. This conservative guard can reject a
+candidate after an isolated stall and does not establish its long-run p99.
+A trial whose first four measured frames average over 1.5 times the baseline
+returns early. Settled operation lasts at least 256 measured frames; three
+consecutive windows with means outside 65–135% of the settled mean, or p95/p99
+more than 5% above their settled values, trigger a new search. A window within
+all limits resets the drift count.
 Periodic exploration resumes after 16,384 measured frames. Samples cover both
 scaling and sharpening on frames that execute USM, so a local USM improvement
 must also improve the combined processing time. Playback pacing and idle time
 do not contribute samples.
+
+PERF-10 regression cases in `tests/test_worker_tuner.c` cover recurring stalls,
+mean regressions with unchanged tails, faster means with worse tails, sustained
+gains, mean/tail drift and early abort. These policy checks do not establish a
+playback speedup. The 2026-09-07 snapshot below used the earlier 16-frame median
+controller and does not measure the current mean/tail policy.
 
 Pool creation/retirement is excluded from the controller's steady samples but
 included in this benchmark's frame totals. Resource or clock failure stops
@@ -154,8 +166,9 @@ For this serial frame pipeline, completed work per processing second is useful;
 display FPS is capped by the source and is a poor capacity signal. There is no
 independent network propagation delay or in-flight byte window from which to
 derive a worker count. Minimum frame time is also not a reliable estimate of
-typical processing cost under cache, scheduler and content variation. Medians
-and confirmation are deliberate choices here, rather than BBR's extrema filters.
+typical processing cost under cache, scheduler and content variation. Arithmetic
+means, observed tail guards and baseline confirmation serve this frame-processing
+objective; BBR's extrema filters are not copied into the worker tuner.
 
 [Google's IETF 101 update](https://www.ietf.org/proceedings/101/slides/slides-101-iccrg-an-update-on-bbr-work-at-google-00.pdf)
 motivates bounded probing, time to recover after probes and avoiding synchronized

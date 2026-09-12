@@ -82,7 +82,7 @@ static void test_accept_reject(void)
     BEGIN("bounded ownership across rejected and accepted trials");
     up_usm_adaptive_t a;
     usm_pool_t *best = setup(&a);
-    for (int i = 0; i < 250; i++)
+    for (int i = 0; i < 16 * UP_TUNER_SAMPLES; i++)
         CHECK(up_usm_adaptive_apply(&a, &best, NULL, 64, 20) == 0);
     CHECK(a.tuner.best == 4 && best->workers == 4);
     CHECK(a.tuner.phase == UP_TUNER_SETTLED && a.enabled);
