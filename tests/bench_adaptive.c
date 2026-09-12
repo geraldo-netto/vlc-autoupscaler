@@ -5,7 +5,7 @@
 #include "cli_parse.h"
 
 typedef struct {
-    long workers, frames, width, height, zimg_workers;
+    long workers, frames, width, height, zimg_workers, algorithm, pin;
 } args_t;
 
 typedef struct {
@@ -19,12 +19,13 @@ typedef struct {
 
 static int parse(int argc, char **argv, args_t *args)
 {
-    *args = (args_t){ -1, 4096, 1920, 1080, 12 };
-    const long minimum[] = { -1, 1024, 64, 64, 1 };
-    const long maximum[] = { 64, 1000000, 4096, 2160, 64 };
+    *args = (args_t){ -1, 4096, 1920, 1080, 12, UP_ALGO_SPLINE36, 1 };
+    const long minimum[] = { -1, 1024, 64, 64, 1, 0, 0 };
+    const long maximum[] = { 64, 1000000, 4096, 2160, 64, UP_ALGO_MAX, 1 };
     long *values[] = { &args->workers, &args->frames, &args->width,
-                      &args->height, &args->zimg_workers };
-    if (argc < 2 || argc > 6) return 1;
+                      &args->height, &args->zimg_workers,
+                      &args->algorithm, &args->pin };
+    if (argc < 2 || argc > 8) return 1;
     for (int i = 1; i < argc; i++)
         if (!up_cli_parse_long(argv[i], minimum[i - 1], maximum[i - 1],
                                 values[i - 1])) return 1;
@@ -51,6 +52,8 @@ static int initialize(bench_t *b, const args_t *a)
     zt_pic_fill(&b->src, 0x12345678u);
     zt_ctx_init(&b->scaler, VLC_CODEC_I420, width / 2, height / 2,
                 width, height, (int)a->zimg_workers, 1);
+    b->scaler.algo = (int)a->algorithm;
+    b->scaler.pin_cpus = (int)a->pin;
     b->usm = up_usm_pool_create(initial, width, height, 0);
     if (a->workers < 0)
         up_usm_adaptive_init(&b->adaptive, initial,
@@ -86,25 +89,38 @@ static int frame(bench_t *b, int index, int frames)
     return 0;
 }
 
+static const char *outcome(const bench_t *b, const args_t *a)
+{
+    if (a->workers >= 0) return "fixed";
+    if (b->adaptive.stopped) return "fallback";
+    if (!b->adaptive.enabled) return "disabled";
+    return b->adaptive.tuner.phase == UP_TUNER_SETTLED ? "settled" : "searching";
+}
+
+static void report(const bench_t *b, const args_t *a)
+{
+    printf("%ld,%ld,%ld,%ld,%ld,%d,%d,%u,%.2f,%.2f,%.2f,%.2f,%d,%d,%s\n",
+        a->workers, a->frames, a->width, a->height, a->zimg_workers,
+        up_usm_pool_effective_threads(b->usm), b->settled_frame,
+        b->adaptive.tuner.changes, b->total_us / (double)a->frames,
+        b->tail_us / 512.0, b->zimg_us / (double)a->frames,
+        b->usm_us / (double)a->frames, b->scaler.algo,
+        b->scaler.pin_cpus, outcome(b, a));
+}
+
 int main(int argc, char **argv)
 {
     args_t args;
     if (parse(argc, argv, &args)) {
         fprintf(stderr, "usage: %s <USM-workers|-1=adaptive> [frames>=1024] "
-            "[width] [height] [zimg-workers]\n", argv[0]);
+            "[width] [height] [zimg-workers] [algorithm=3] [pin=1]\n", argv[0]);
         return 2;
     }
     bench_t bench = { 0 };
     int rc = initialize(&bench, &args);
     for (int i = 0; !rc && i < args.frames; i++)
         rc = frame(&bench, i, (int)args.frames);
-    if (!rc)
-        printf("%ld,%ld,%ld,%ld,%ld,%d,%d,%u,%.2f,%.2f,%.2f,%.2f\n",
-            args.workers, args.frames, args.width, args.height, args.zimg_workers,
-            up_usm_pool_effective_threads(bench.usm), bench.settled_frame,
-            bench.adaptive.tuner.changes, bench.total_us / (double)args.frames,
-            bench.tail_us / 512.0, bench.zimg_us / (double)args.frames,
-            bench.usm_us / (double)args.frames);
+    if (!rc) report(&bench, &args);
     destroy(&bench);
     return rc;
 }

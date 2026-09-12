@@ -98,8 +98,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| OBS-16 | open | S | Report when the adaptive benchmark falls back to a fixed pool. | `tests/bench_adaptive.c:72-110` checks frame success but never reports `adaptive.stopped` or `adaptive.enabled`. Link-wrap fault injection rejecting the second `up_usm_pool_create` call produces exit 0 and an ordinary `-1` adaptive CSV row despite adaptation stopping before its first trial. `first_settled_frame=0` is ambiguous with unfinished exploration and cannot reveal a failure after settling. Add explicit run outcome/stop reason to the CSV and distinguish fallback runs in comparisons; test failures both before and after settling. |
-| OBS-17 | blocked | S | Reconcile the adaptive benchmark's actual profile with its published measurements and playback defaults. | `docs/BENCHMARKS.md:120-123` labels the committed experiment Spline36, but `tests/bench_adaptive.c:52-53` calls `zt_ctx_init`, which sets `UP_ALGO_LANCZOS` and leaves `pin_cpus=0`; neither value is overridden. The plugin defaults are Spline36 and pinning enabled (`src/autoupscale_module.c:219,235`). The CSV omits both settings, so the reported 10.4% gain does not establish the result for that claimed/default profile. Unblock by exposing and recording algorithm/pinning, correcting the existing experiment label, and repeating comparisons for the intended playback profile. |
 
 ## wiring gaps
 

@@ -122,12 +122,13 @@ build/bench_adaptive -1 4096 1920 1080 12
 ```
 
 Arguments: USM count (`-1` adaptive), frames (minimum 1024), output width,
-output height, fixed zimg count. Input is half the output dimensions, I420,
+output height, fixed zimg count, algorithm (`2` Lanczos, `3` Spline36; default
+`3`), and zimg pinning (`0` off, `1` on; default `1`). Input is half the output dimensions, I420,
 with deterministic noise and 20% sharpening. Width/height must be multiples
 of four. CSV columns:
 
 ```text
-usm_request,frames,width,height,zimg_workers,effective_usm,first_settled_frame,changes,total_us,tail_us,zimg_us,usm_us
+usm_request,frames,width,height,zimg_workers,effective_usm,first_settled_frame,changes,total_us,tail_us,zimg_us,usm_us,algorithm,pin,outcome
 ```
 
 `total_us` includes lazy startup and all transitions. `tail_us` covers the final
@@ -136,11 +137,20 @@ startup costs. These are processing measurements, excluding decoding, display,
 audio and VLC output-picture allocation. Compare rotated repeated runs on the
 deployment host; a final selected count alone does not prove an improvement.
 
+`outcome` distinguishes `fixed`, `searching`, `settled`, `disabled` and
+`fallback`. A fallback remains visible even if an earlier search settled.
+Exclude fallback runs from claims about successful adaptation.
+
+The synthetic noise fixture deliberately keeps sharpening active. Matching
+VLC playback requires `--autoupscale-usm-sharp-threshold=0`: with the default
+3500 cutoff, this fixture's high Laplacian energy disables sharpening and
+adaptation after the 60-frame probe.
+
 ### Experimental snapshot
 
 On 2026-09-07, an AMD Ryzen 9 7945HX with GCC 13.3 (`-O3 -march=native`)
 ran five rotated repetitions per count, each with 4096 frames at 960×540 to
-1920×1080, I420, Spline36 and 20% USM. The zimg count stayed at the static
+1920×1080, I420, Lanczos, zimg pinning disabled and 20% USM. The zimg count stayed at the static
 AUTO value for each affinity mask. These are medians of run means, including
 startup and exploration, in microseconds per frame:
 

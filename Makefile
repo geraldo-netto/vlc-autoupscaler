@@ -648,6 +648,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo
 	@echo "=== canonical fuzzer execution ==="
 	@python3 tests/test_fuzz_runner.py
+	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_bench_adaptive; fi
 
 $(BUILD)/test_usm_pool_dispatch: tests/test_usm_pool_dispatch.c src/usm_pool_dispatch.c src/usm_pool_variants.h src/usm_pool.h src/cpu_level.h tests/test_harness.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
@@ -663,6 +664,13 @@ $(BUILD)/test_worker_tuner: tests/test_worker_tuner.c src/worker_tuner.h src/thr
 
 $(BUILD)/test_usm_adaptive: tests/test_usm_adaptive.c src/usm_adaptive.h src/worker_tuner.h src/usm_pool.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
+
+ifdef HAVE_ZIMG
+test: $(BUILD)/test_bench_adaptive
+endif
+
+$(BUILD)/test_bench_adaptive: tests/test_bench_adaptive.c tests/bench_adaptive.c tests/zimg_test_util.h $(BUILD)/scaler_zimg_asan.o $(BUILD)/usm_pool_test.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(BUILD)/scaler_zimg_asan.o $(BUILD)/usm_pool_test.o $(TEST_LDFLAGS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -Wl,--wrap=up_usm_pool_create
 
 $(BUILD)/test_upscale_logic: tests/test_upscale_logic.c src/upscale_logic.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
