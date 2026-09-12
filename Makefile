@@ -1411,7 +1411,7 @@ complexity:
 
 MARKDOWN_FILES := README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md \
                   docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md \
-                  docs/DECISION_EXPERIMENTS.md
+                  docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md
 
 semantic-analysis:
 	@command -v shellcheck >/dev/null 2>&1 || { \

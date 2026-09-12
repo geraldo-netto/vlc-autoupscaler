@@ -199,6 +199,12 @@ and RC `volume` commands can report a changed value while controlling the
 playlist's different audio output, leaving the audible transcoded stream
 unchanged. Use the system mixer for live volume control.
 
+The [stock CLI follow-up](PLAYBACK_VULKAN_EVALUATION.md#audio-command-checks)
+tests `--audio-filter= --no-audio-time-stretch --audio-replay-gain-mode=none`.
+These remove optional processing but do not restore ownership of native volume
+controls. `--no-sout-audio` removes the audio stream. The upscaler itself has no
+audio processing; playback still requires VLC's ordinary audio output.
+
 For a fixed startup level, add the core `--gain` option before `--sout`:
 
 ```sh

@@ -241,11 +241,11 @@ not establish a benefit for this current default profile or for paced video.
 | 14b | Scratch diagnostics report source, shared destination, tiles, graph temporary bytes and total |
 | 15b | Algorithm/pinning/outcome CSV fields, failure regression coverage and all four profiles measured |
 
-Remaining blocked items are unstable evidence for changing performance defaults
-(PERF-15) and VLC's private audio-output control ownership (REL-16).
-PERF-15 requires better evidence. REL-16
-still needs a choice between the documented system-mixer workaround and a
-separate playback/control-routing integration; neither needs upscaler audio DSP.
+The [playback/Vulkan follow-up](PLAYBACK_VULKAN_EVALUATION.md) implements the
+new output permission decision, rejects the ML accuracy claim as a design
+dependency, and tests stock VLC commands without optional audio effects.
+Performance defaults remain unchanged. Stable policy evidence (PERF-15) and
+the native-volume/enlarged-display conflict (REL-16) remain unresolved.
 
 ## Validation
 

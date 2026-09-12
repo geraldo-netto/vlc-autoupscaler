@@ -1,0 +1,2294 @@
+[
+  {
+    "clip": "animation",
+    "pair": 0,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.68701171875,
+        1.32373046875,
+        1.03857421875
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 54000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 59500,
+        "/sys/class/hwmon/hwmon2/temp4_input": 52500,
+        "/sys/class/hwmon/hwmon2/temp1_input": 59625,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 67850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.5341796875,
+        1.30712890625,
+        1.037109375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 56000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 56625,
+        "/sys/class/hwmon/hwmon2/temp4_input": 53125,
+        "/sys/class/hwmon/hwmon2/temp1_input": 60125,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 67850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.0000820319983177,
+        "cpu": 1.32
+      },
+      {
+        "time": 4.00007223799912,
+        "cpu": 1.61
+      },
+      {
+        "time": 5.0000819220003905,
+        "cpu": 1.92
+      },
+      {
+        "time": 6.000082286001998,
+        "cpu": 2.27
+      },
+      {
+        "time": 7.000082421996922,
+        "cpu": 2.62
+      },
+      {
+        "time": 8.000077965996752,
+        "cpu": 2.97
+      },
+      {
+        "time": 9.00008200800221,
+        "cpu": 3.28
+      },
+      {
+        "time": 10.000070971000241,
+        "cpu": 3.52
+      },
+      {
+        "time": 11.00006788999599,
+        "cpu": 3.79
+      },
+      {
+        "time": 12.000069806999818,
+        "cpu": 4.08
+      },
+      {
+        "time": 13.000076192998677,
+        "cpu": 4.39
+      },
+      {
+        "time": 14.000071267997555,
+        "cpu": 4.77
+      },
+      {
+        "time": 15.00008303499635,
+        "cpu": 5.14
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1280x720"
+    ],
+    "cpu_percent_one_core": 31.833330672602656,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "animation",
+    "pair": 0,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.5341796875,
+        1.30712890625,
+        1.037109375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 56000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 58625,
+        "/sys/class/hwmon/hwmon2/temp4_input": 53375,
+        "/sys/class/hwmon/hwmon2/temp1_input": 60125,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.4150390625,
+        1.291015625,
+        1.03564453125
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 59625,
+        "/sys/class/hwmon/hwmon2/temp4_input": 52750,
+        "/sys/class/hwmon/hwmon2/temp1_input": 60500,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 67850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.0000701989993104,
+        "cpu": 1.26
+      },
+      {
+        "time": 4.000080932994024,
+        "cpu": 1.56
+      },
+      {
+        "time": 5.000080616999185,
+        "cpu": 1.87
+      },
+      {
+        "time": 6.000081412996224,
+        "cpu": 2.22
+      },
+      {
+        "time": 7.000079683995864,
+        "cpu": 2.59
+      },
+      {
+        "time": 8.000082932994701,
+        "cpu": 2.97
+      },
+      {
+        "time": 9.000068278997787,
+        "cpu": 3.27
+      },
+      {
+        "time": 10.000069504996645,
+        "cpu": 3.52
+      },
+      {
+        "time": 11.000080149999121,
+        "cpu": 3.79
+      },
+      {
+        "time": 12.000070463996963,
+        "cpu": 4.07
+      },
+      {
+        "time": 13.000075026997365,
+        "cpu": 4.36
+      },
+      {
+        "time": 14.00007507099508,
+        "cpu": 4.76
+      },
+      {
+        "time": 15.000068622997787,
+        "cpu": 5.12
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1280x720"
+    ],
+    "cpu_percent_one_core": 32.166670891226865,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "animation",
+    "pair": 1,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.4150390625,
+        1.291015625,
+        1.03564453125
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 56000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 62625,
+        "/sys/class/hwmon/hwmon2/temp4_input": 53125,
+        "/sys/class/hwmon/hwmon2/temp1_input": 60500,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.3291015625,
+        1.27734375,
+        1.03466796875
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 57750,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54875,
+        "/sys/class/hwmon/hwmon2/temp1_input": 61375,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 67850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.0000776119995862,
+        "cpu": 1.32
+      },
+      {
+        "time": 4.000073308001447,
+        "cpu": 1.6
+      },
+      {
+        "time": 5.0000745939978515,
+        "cpu": 1.91
+      },
+      {
+        "time": 6.000083824998001,
+        "cpu": 2.26
+      },
+      {
+        "time": 7.000068439003371,
+        "cpu": 2.63
+      },
+      {
+        "time": 8.000068954002927,
+        "cpu": 2.99
+      },
+      {
+        "time": 9.000075781004853,
+        "cpu": 3.31
+      },
+      {
+        "time": 10.000074761999713,
+        "cpu": 3.58
+      },
+      {
+        "time": 11.000074695999501,
+        "cpu": 3.86
+      },
+      {
+        "time": 12.000074118004704,
+        "cpu": 4.13
+      },
+      {
+        "time": 13.000087277003331,
+        "cpu": 4.46
+      },
+      {
+        "time": 14.000090457004262,
+        "cpu": 4.86
+      },
+      {
+        "time": 15.000076433003414,
+        "cpu": 5.25
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1280x720"
+    ],
+    "cpu_percent_one_core": 32.75000321767737,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "animation",
+    "pair": 1,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.3291015625,
+        1.27734375,
+        1.03466796875
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 58125,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54250,
+        "/sys/class/hwmon/hwmon2/temp1_input": 61375,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.19482421875,
+        1.248046875,
+        1.0283203125
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 57000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 60375,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54250,
+        "/sys/class/hwmon/hwmon2/temp1_input": 62125,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 67850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.0000926310021896,
+        "cpu": 1.31
+      },
+      {
+        "time": 4.000076312004239,
+        "cpu": 1.59
+      },
+      {
+        "time": 5.000072196999099,
+        "cpu": 1.88
+      },
+      {
+        "time": 6.000068594003096,
+        "cpu": 2.22
+      },
+      {
+        "time": 7.000099948003481,
+        "cpu": 2.58
+      },
+      {
+        "time": 8.000074011004472,
+        "cpu": 2.93
+      },
+      {
+        "time": 9.00009419300477,
+        "cpu": 3.24
+      },
+      {
+        "time": 10.000071581998782,
+        "cpu": 3.47
+      },
+      {
+        "time": 11.000068269000622,
+        "cpu": 3.73
+      },
+      {
+        "time": 12.000070656999014,
+        "cpu": 3.99
+      },
+      {
+        "time": 13.000073326002166,
+        "cpu": 4.31
+      },
+      {
+        "time": 14.000068009001552,
+        "cpu": 4.7
+      },
+      {
+        "time": 15.000071008005762,
+        "cpu": 5.08
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1280x720"
+    ],
+    "cpu_percent_one_core": 31.4167232769746,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "animation",
+    "pair": 2,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.19482421875,
+        1.248046875,
+        1.0283203125
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 58000,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54250,
+        "/sys/class/hwmon/hwmon2/temp1_input": 62125,
+        "/sys/class/hwmon/hwmon0/temp1_input": 45500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.009765625,
+        1.20263671875,
+        1.01611328125
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 56000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 55125,
+        "/sys/class/hwmon/hwmon2/temp4_input": 53750,
+        "/sys/class/hwmon/hwmon2/temp1_input": 64750,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 67850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.000069445995905,
+        "cpu": 1.27
+      },
+      {
+        "time": 4.000071051996201,
+        "cpu": 1.54
+      },
+      {
+        "time": 5.000071276001108,
+        "cpu": 1.84
+      },
+      {
+        "time": 6.000074354997196,
+        "cpu": 2.18
+      },
+      {
+        "time": 7.000067373999627,
+        "cpu": 2.55
+      },
+      {
+        "time": 8.000071135000326,
+        "cpu": 2.92
+      },
+      {
+        "time": 9.000083432001702,
+        "cpu": 3.22
+      },
+      {
+        "time": 10.000068025001383,
+        "cpu": 3.47
+      },
+      {
+        "time": 11.000072998001997,
+        "cpu": 3.73
+      },
+      {
+        "time": 12.000081737998698,
+        "cpu": 4.03
+      },
+      {
+        "time": 13.00008466700092,
+        "cpu": 4.4
+      },
+      {
+        "time": 14.000076675001765,
+        "cpu": 4.79
+      },
+      {
+        "time": 15.000073591996625,
+        "cpu": 5.15
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1280x720"
+    ],
+    "cpu_percent_one_core": 32.33332216216859,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "animation",
+    "pair": 2,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.009765625,
+        1.20263671875,
+        1.01611328125
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 65875,
+        "/sys/class/hwmon/hwmon2/temp4_input": 53750,
+        "/sys/class/hwmon/hwmon2/temp1_input": 64625,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.0068359375,
+        1.1923828125,
+        1.0146484375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 57000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 67375,
+        "/sys/class/hwmon/hwmon2/temp4_input": 53750,
+        "/sys/class/hwmon/hwmon2/temp1_input": 62250,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.000069708999945,
+        "cpu": 1.41
+      },
+      {
+        "time": 4.000078377001046,
+        "cpu": 1.72
+      },
+      {
+        "time": 5.000099000004411,
+        "cpu": 2.05
+      },
+      {
+        "time": 6.000089444001787,
+        "cpu": 2.43
+      },
+      {
+        "time": 7.000066944005084,
+        "cpu": 2.82
+      },
+      {
+        "time": 8.000079502999142,
+        "cpu": 3.23
+      },
+      {
+        "time": 9.000085560001025,
+        "cpu": 3.56
+      },
+      {
+        "time": 10.000068943998485,
+        "cpu": 3.84
+      },
+      {
+        "time": 11.000084311002865,
+        "cpu": 4.11
+      },
+      {
+        "time": 12.000073057002737,
+        "cpu": 4.39
+      },
+      {
+        "time": 13.000068066001404,
+        "cpu": 4.71
+      },
+      {
+        "time": 14.000069458001235,
+        "cpu": 5.12
+      },
+      {
+        "time": 15.0000985939987,
+        "cpu": 5.52
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1280x720"
+    ],
+    "cpu_percent_one_core": 34.249917557597826,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 0,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.0068359375,
+        1.1923828125,
+        1.0146484375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 59125,
+        "/sys/class/hwmon/hwmon2/temp4_input": 60875,
+        "/sys/class/hwmon/hwmon2/temp1_input": 65000,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.0048828125,
+        1.18212890625,
+        1.01318359375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 56000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 65250,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54875,
+        "/sys/class/hwmon/hwmon2/temp1_input": 63875,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.000085683001089,
+        "cpu": 3.19
+      },
+      {
+        "time": 4.000085866995505,
+        "cpu": 4.02
+      },
+      {
+        "time": 5.0000894679978956,
+        "cpu": 4.84
+      },
+      {
+        "time": 6.0000728809973225,
+        "cpu": 5.61
+      },
+      {
+        "time": 7.000069459994847,
+        "cpu": 6.38
+      },
+      {
+        "time": 8.000072552000347,
+        "cpu": 7.18
+      },
+      {
+        "time": 9.000070415000664,
+        "cpu": 7.98
+      },
+      {
+        "time": 10.000086473999545,
+        "cpu": 8.75
+      },
+      {
+        "time": 11.000071374000981,
+        "cpu": 9.53
+      },
+      {
+        "time": 12.000070611997216,
+        "cpu": 10.23
+      },
+      {
+        "time": 13.000070050999057,
+        "cpu": 10.93
+      },
+      {
+        "time": 14.000070442998549,
+        "cpu": 11.62
+      },
+      {
+        "time": 15.000066797001637,
+        "cpu": 12.31
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1920x1080"
+    ],
+    "cpu_percent_one_core": 76.00011961151812,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 0,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.0048828125,
+        1.18212890625,
+        1.01318359375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 63625,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54750,
+        "/sys/class/hwmon/hwmon2/temp1_input": 63875,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.00341796875,
+        1.17236328125,
+        1.01171875
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 58000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 59000,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54250,
+        "/sys/class/hwmon/hwmon2/temp1_input": 64125,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.0000713979970897,
+        "cpu": 3.28
+      },
+      {
+        "time": 4.000070269998105,
+        "cpu": 4.2
+      },
+      {
+        "time": 5.000071859001764,
+        "cpu": 5.14
+      },
+      {
+        "time": 6.000070041001891,
+        "cpu": 6.06
+      },
+      {
+        "time": 7.000067433000368,
+        "cpu": 7.0
+      },
+      {
+        "time": 8.00006996600132,
+        "cpu": 7.9
+      },
+      {
+        "time": 9.000067950997618,
+        "cpu": 8.79
+      },
+      {
+        "time": 10.000071185997513,
+        "cpu": 9.63
+      },
+      {
+        "time": 11.000069952999183,
+        "cpu": 10.54
+      },
+      {
+        "time": 12.00006900200242,
+        "cpu": 11.24
+      },
+      {
+        "time": 13.000075896998169,
+        "cpu": 11.85
+      },
+      {
+        "time": 14.000079956000263,
+        "cpu": 12.45
+      },
+      {
+        "time": 15.00007938699855,
+        "cpu": 13.06
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1920x1080"
+    ],
+    "cpu_percent_one_core": 81.49994574140122,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 1,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.00341796875,
+        1.17236328125,
+        1.01171875
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 57000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 67875,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54250,
+        "/sys/class/hwmon/hwmon2/temp1_input": 64125,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.23046875,
+        1.2138671875,
+        1.02734375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 62250,
+        "/sys/class/hwmon/hwmon2/temp4_input": 55125,
+        "/sys/class/hwmon/hwmon2/temp1_input": 62625,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.0000706189966877,
+        "cpu": 3.09
+      },
+      {
+        "time": 4.0000702339966665,
+        "cpu": 3.94
+      },
+      {
+        "time": 5.000067424996814,
+        "cpu": 4.84
+      },
+      {
+        "time": 6.000070588001108,
+        "cpu": 5.71
+      },
+      {
+        "time": 7.000071889000537,
+        "cpu": 6.61
+      },
+      {
+        "time": 8.00006768899766,
+        "cpu": 7.47
+      },
+      {
+        "time": 9.00007268799527,
+        "cpu": 8.36
+      },
+      {
+        "time": 10.000071235001087,
+        "cpu": 9.13
+      },
+      {
+        "time": 11.000071415997809,
+        "cpu": 9.97
+      },
+      {
+        "time": 12.000069763998908,
+        "cpu": 10.74
+      },
+      {
+        "time": 13.000076178999734,
+        "cpu": 11.51
+      },
+      {
+        "time": 14.000068395995186,
+        "cpu": 12.25
+      },
+      {
+        "time": 15.000070554000558,
+        "cpu": 13.03
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1920x1080"
+    ],
+    "cpu_percent_one_core": 82.83333378198718,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 1,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.23046875,
+        1.2138671875,
+        1.02734375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 58000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 63375,
+        "/sys/class/hwmon/hwmon2/temp4_input": 55125,
+        "/sys/class/hwmon/hwmon2/temp1_input": 62625,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 36000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 36000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.46240234375,
+        1.26806640625,
+        1.04833984375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 56000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 59125,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54750,
+        "/sys/class/hwmon/hwmon2/temp1_input": 63500,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.000078798002505,
+        "cpu": 2.95
+      },
+      {
+        "time": 4.0000709390005795,
+        "cpu": 3.73
+      },
+      {
+        "time": 5.000069653004175,
+        "cpu": 4.56
+      },
+      {
+        "time": 6.00006752700574,
+        "cpu": 5.36
+      },
+      {
+        "time": 7.000069077999797,
+        "cpu": 6.14
+      },
+      {
+        "time": 8.00007796400314,
+        "cpu": 6.92
+      },
+      {
+        "time": 9.000073054005043,
+        "cpu": 7.71
+      },
+      {
+        "time": 10.000069117006205,
+        "cpu": 8.49
+      },
+      {
+        "time": 11.000071923001087,
+        "cpu": 9.27
+      },
+      {
+        "time": 12.000069580004492,
+        "cpu": 10.01
+      },
+      {
+        "time": 13.000073499999417,
+        "cpu": 10.77
+      },
+      {
+        "time": 14.00007383400225,
+        "cpu": 11.49
+      },
+      {
+        "time": 15.000070059999416,
+        "cpu": 12.22
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1920x1080"
+    ],
+    "cpu_percent_one_core": 77.25005625093584,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 2,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.46240234375,
+        1.26806640625,
+        1.04833984375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 56000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 66625,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54750,
+        "/sys/class/hwmon/hwmon2/temp1_input": 63375,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46000,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 69850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.43359375,
+        1.27099609375,
+        1.052734375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 57000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 57750,
+        "/sys/class/hwmon/hwmon2/temp4_input": 55125,
+        "/sys/class/hwmon/hwmon2/temp1_input": 63750,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.0000688190048095,
+        "cpu": 2.64
+      },
+      {
+        "time": 4.000076992000686,
+        "cpu": 3.31
+      },
+      {
+        "time": 5.000080807003542,
+        "cpu": 4.05
+      },
+      {
+        "time": 6.0000801229980425,
+        "cpu": 4.81
+      },
+      {
+        "time": 7.00008179499855,
+        "cpu": 5.55
+      },
+      {
+        "time": 8.000081723999756,
+        "cpu": 6.25
+      },
+      {
+        "time": 9.00008227500075,
+        "cpu": 6.95
+      },
+      {
+        "time": 10.000075221003499,
+        "cpu": 7.63
+      },
+      {
+        "time": 11.000065182997787,
+        "cpu": 8.4
+      },
+      {
+        "time": 12.000069834000897,
+        "cpu": 9.09
+      },
+      {
+        "time": 13.000072301998443,
+        "cpu": 9.74
+      },
+      {
+        "time": 14.000067524997576,
+        "cpu": 10.4
+      },
+      {
+        "time": 15.00007076500333,
+        "cpu": 11.06
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1920x1080"
+    ],
+    "cpu_percent_one_core": 70.16665528798272,
+    "late_warning_count": 0
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 2,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "source_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "plugin_sha256": "4204f3a6621baa1d917c1f0a6afc8b112b1590a1ba507a6b0fb5ba80e4c4adb3",
+    "host_start": {
+      "loadavg": [
+        1.43359375,
+        1.27099609375,
+        1.052734375
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 55000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 66625,
+        "/sys/class/hwmon/hwmon2/temp4_input": 55125,
+        "/sys/class/hwmon/hwmon2/temp1_input": 63750,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "host_end": {
+      "loadavg": [
+        1.4853515625,
+        1.29052734375,
+        1.06298828125
+      ],
+      "temperature_millidegrees": {
+        "/sys/class/hwmon/hwmon8/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon10/temp1_input": 58000,
+        "/sys/class/hwmon/hwmon4/temp1_input": 31000,
+        "/sys/class/hwmon/hwmon2/temp3_input": 59500,
+        "/sys/class/hwmon/hwmon2/temp4_input": 54875,
+        "/sys/class/hwmon/hwmon2/temp1_input": 63375,
+        "/sys/class/hwmon/hwmon0/temp1_input": 46500,
+        "/sys/class/hwmon/hwmon9/temp3_input": 32000,
+        "/sys/class/hwmon/hwmon9/temp1_input": 35000,
+        "/sys/class/hwmon/hwmon9/temp2_input": 35000,
+        "/sys/class/hwmon/hwmon7/temp1_input": 34000,
+        "/sys/class/hwmon/hwmon5/temp1_input": 32000,
+        "/sys/class/hwmon/hwmon3/temp1_input": 39000,
+        "/sys/class/hwmon/hwmon1/temp3_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp1_input": 49850,
+        "/sys/class/hwmon/hwmon1/temp2_input": 68850
+      }
+    },
+    "process_samples": [
+      {
+        "time": 3.000079129000369,
+        "cpu": 2.91
+      },
+      {
+        "time": 4.00007003799692,
+        "cpu": 3.72
+      },
+      {
+        "time": 5.000066338994657,
+        "cpu": 4.58
+      },
+      {
+        "time": 6.000068130000727,
+        "cpu": 5.4
+      },
+      {
+        "time": 7.0000677880016156,
+        "cpu": 6.25
+      },
+      {
+        "time": 8.000065381995228,
+        "cpu": 7.05
+      },
+      {
+        "time": 9.000064950996602,
+        "cpu": 7.89
+      },
+      {
+        "time": 10.000069880996307,
+        "cpu": 8.7
+      },
+      {
+        "time": 11.000068039000325,
+        "cpu": 9.55
+      },
+      {
+        "time": 12.000070073998359,
+        "cpu": 10.36
+      },
+      {
+        "time": 13.000071219001256,
+        "cpu": 11.12
+      },
+      {
+        "time": 14.000070752001193,
+        "cpu": 11.87
+      },
+      {
+        "time": 15.000066116997914,
+        "cpu": 12.65
+      }
+    ],
+    "counters": {
+      "displayed": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "lost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "decoded": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "output": [
+      "destination (after video filters) 1920x1080"
+    ],
+    "cpu_percent_one_core": 81.16675467850092,
+    "late_warning_count": 0
+  }
+]

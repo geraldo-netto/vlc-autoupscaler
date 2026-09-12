@@ -297,3 +297,10 @@ threads,frames,pin,zimg_lines,usm_lines,lazy_us,max_rss_kb,us_per_frame
 Changing zimg stripe lines can change the row/column grid, including whether
 source-direct and copy-in modes use the same independent graphs. Compare output
 quality as well as timing before changing the validated 16-line default.
+
+## Actual playback and Vulkan follow-up
+
+See [PLAYBACK_VULKAN_EVALUATION.md](PLAYBACK_VULKAN_EVALUATION.md) for paired
+VLC process measurements, the private-vout counter limitation, and CPU versus
+Vulkan roundtrip scaling on both installed AMD GPUs. These experiments retain
+runtime defaults and do not establish pixel-equivalent GPU scaling/USM.

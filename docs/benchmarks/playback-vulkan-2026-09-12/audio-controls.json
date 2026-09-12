@@ -1,0 +1,186 @@
+[
+  {
+    "mode": "direct",
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--aout=pulse",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--gain=1",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--no-media-library",
+      "--no-dbus",
+      "--stats",
+      "--autoupscale-target=1",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "-vv",
+      "--video-filter=autoupscale",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/audio-clean/volume-input.mkv"
+    ],
+    "returncode": 0,
+    "stream_volumes": [
+      [
+        {
+          "mono": {
+            "value": 65536,
+            "value_percent": "100%",
+            "db": "0.00 dB"
+          }
+        }
+      ],
+      [
+        {
+          "mono": {
+            "value": 16384,
+            "value_percent": "25%",
+            "db": "-36.12 dB"
+          }
+        }
+      ],
+      [
+        {
+          "mono": {
+            "value": 32768,
+            "value_percent": "50%",
+            "db": "-18.06 dB"
+          }
+        }
+      ]
+    ],
+    "format_diagnostics": [
+      "[00007ea25401d3f0] main video output debug: original format sz 320x180, of (0,0), vsz 320x180, 4cc VAOP, sar 1:1, msk r0x0 g0x0 b0x0",
+      "[00007ea23402d830] autoupscale filter: AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=1 algo=3 threads_budget=12 cores=32 simd=default)",
+      "[00007ea23402e940] swscale filter debug: 1280x720 (1280x720) chroma: I420 -> 320x180 (320x180) chroma: I420 with scaling using Bicubic (good quality)",
+      "[00007ea23402e280] autoupscale filter: AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=1 algo=3 threads_budget=12 cores=32 simd=default)",
+      "[00007ea23405f130] swscale filter debug: 1280x720 (1280x720) chroma: I420 -> 320x180 (320x180) chroma: I420 with scaling using Bicubic (good quality)",
+      "[00007ea25401d3f0] main video output debug: original format sz 320x180, of (0,0), vsz 320x180, 4cc VDV0, sar 1:1, msk r0x0 g0x0 b0x0",
+      "[00007ea2340796c0] autoupscale filter: AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=1 algo=3 threads_budget=12 cores=32 simd=default)",
+      "[00007ea234078d20] swscale filter debug: 1280x720 (1280x720) chroma: I420 -> 320x180 (320x180) chroma: I420 with scaling using Bicubic (good quality)",
+      "[00007ea25401d3f0] main video output debug: original format sz 320x192, of (0,0), vsz 320x180, 4cc I420, sar 1:1, msk r0x0 g0x0 b0x0",
+      "[00007ea23405f4c0] autoupscale filter: AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=1 algo=3 threads_budget=12 cores=32 simd=default)",
+      "[00007ea23403da90] swscale filter debug: 1280x720 (1280x720) chroma: I420 -> 320x180 (320x192) chroma: I420 with scaling using Bicubic (good quality)"
+    ],
+    "audio_filters": []
+  },
+  {
+    "mode": "passthrough",
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--aout=pulse",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--gain=1",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--no-media-library",
+      "--no-dbus",
+      "--stats",
+      "--autoupscale-target=1",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "-vv",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/audio-clean/volume-input.mkv"
+    ],
+    "returncode": 0,
+    "stream_volumes": [
+      [
+        {
+          "mono": {
+            "value": 32768,
+            "value_percent": "50%",
+            "db": "-18.06 dB"
+          }
+        }
+      ],
+      [
+        {
+          "mono": {
+            "value": 32768,
+            "value_percent": "50%",
+            "db": "-18.06 dB"
+          }
+        }
+      ],
+      [
+        {
+          "mono": {
+            "value": 32768,
+            "value_percent": "50%",
+            "db": "-18.06 dB"
+          }
+        }
+      ]
+    ],
+    "format_diagnostics": [
+      "[000079b12c012650] autoupscale filter: AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=1 algo=3 threads_budget=12 cores=32 simd=default)",
+      "[000079b1100020e0] stream_out_transcode stream out debug: destination (after video filters) 1280x720",
+      "[000079b0e4067cd0] main video output debug: original format sz 1280x720, of (0,0), vsz 1280x720, 4cc VAOP, sar 1:1, msk r0x0 g0x0 b0x0",
+      "[000079b0e4067cd0] main video output debug: original format sz 1280x720, of (0,0), vsz 1280x720, 4cc VDV0, sar 1:1, msk r0x0 g0x0 b0x0",
+      "[000079b0e4067cd0] main video output debug: original format sz 1280x738, of (0,0), vsz 1280x720, 4cc I420, sar 1:1, msk r0x0 g0x0 b0x0"
+    ],
+    "audio_filters": []
+  },
+  {
+    "mode": "no-sout-audio",
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--aout=pulse",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--gain=1",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--no-media-library",
+      "--no-dbus",
+      "--stats",
+      "--autoupscale-target=1",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "-vv",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "--no-sout-audio",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/audio-clean/volume-input.mkv"
+    ],
+    "returncode": 0,
+    "stream_volumes": [
+      [],
+      [],
+      []
+    ],
+    "format_diagnostics": [
+      "[000075f1e40de8b0] autoupscale filter: AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=1 algo=3 threads_budget=12 cores=32 simd=default)",
+      "[000075f1c80020e0] stream_out_transcode stream out debug: destination (after video filters) 1280x720",
+      "[000075f1a0067cd0] main video output debug: original format sz 1280x720, of (0,0), vsz 1280x720, 4cc VAOP, sar 1:1, msk r0x0 g0x0 b0x0",
+      "[000075f1a0067cd0] main video output debug: original format sz 1280x720, of (0,0), vsz 1280x720, 4cc VDV0, sar 1:1, msk r0x0 g0x0 b0x0",
+      "[000075f1a0067cd0] main video output debug: original format sz 1280x738, of (0,0), vsz 1280x720, 4cc I420, sar 1:1, msk r0x0 g0x0 b0x0"
+    ],
+    "audio_filters": []
+  }
+]
