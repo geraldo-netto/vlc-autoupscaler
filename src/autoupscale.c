@@ -33,6 +33,7 @@
 #include "chroma_classify.h"
 #include "content_probe.h"
 #include "picture_view.h"
+#include "pipeline_metrics.h"
 
 /* ARCH-2: chroma_classify.h spells its chroma fourccs as UP_FOURCC() literals
  * so the tests can include it without VLC headers. Guard against drift from
@@ -81,6 +82,7 @@ typedef struct source_crop_s
 struct filter_sys_t
 {
     scaler_ctx_t  scaler;
+    up_pipeline_metrics_t *metrics;
 
     /* Post-pass unsharp mask. A zero amount or NULL pool makes the plugin skip
      * USM. A nonzero pool lazily owns its workers and private row scratch. */
@@ -500,6 +502,12 @@ int up_autoupscale_open( vlc_object_t *p_this )
 
     InitUsmPool( p_sys, p_filter, chroma, target, cores, usm_pct );
     InitProbe( p_sys, p_filter, chroma, usm_pct );
+    if( InheritIntSat( p_filter, UP_CFG_PREFIX "metrics" ) > 0 )
+    {
+        p_sys->metrics = calloc( 1, sizeof(*p_sys->metrics) );
+        if( !p_sys->metrics )
+            msg_Info( p_filter, "AutoUpscale: metrics allocation failed" );
+    }
     SetOutputFormat( p_filter, chroma, target );
 
     p_filter->p_sys           = p_sys;
@@ -669,8 +677,10 @@ static int ApplyUsmIfEnabled( filter_t *p_filter, filter_sys_t *p_sys,
 static picture_t *FinishScaledFrame( filter_t *p_filter, filter_sys_t *p_sys,
                                      picture_t *p_in, picture_t *p_out )
 {
-    if( ApplyUsmIfEnabled( p_filter, p_sys, p_out )
-        == UP_USM_APPLY_OUTPUT_UNCERTAIN )
+    const uint64_t start = up_metrics_mark( p_sys->metrics );
+    const int result = ApplyUsmIfEnabled( p_filter, p_sys, p_out );
+    up_metrics_stage( p_sys->metrics, UP_METRICS_USM, start );
+    if( result == UP_USM_APPLY_OUTPUT_UNCERTAIN )
     {
         picture_Release( p_out );
         picture_Release( p_in );
@@ -744,7 +754,7 @@ static void TryBackendFallback( filter_t *p_filter, filter_sys_t *p_sys )
              "dropping all frames for this playback" );
 }
 
-static picture_t *Filter( filter_t *p_filter, picture_t *p_in )
+static picture_t *FilterFrame( filter_t *p_filter, picture_t *p_in )
 {
     filter_sys_t *p_sys = p_filter->p_sys;
     if( !p_in ) return NULL;
@@ -778,8 +788,10 @@ static picture_t *Filter( filter_t *p_filter, picture_t *p_in )
     }
 
     up_usm_adaptive_begin( &p_sys->usm_adaptive );
+    const uint64_t start = up_metrics_mark( p_sys->metrics );
     scaler_process_status_t status = p_sys->scaler.backend->process(
         &p_sys->scaler, p_in, p_out );
+    up_metrics_stage( p_sys->metrics, UP_METRICS_SCALE, start );
     if( status != SCALER_PROCESS_OK )
     {
         if( !p_sys->process_fail_logged )
@@ -800,6 +812,38 @@ static picture_t *Filter( filter_t *p_filter, picture_t *p_in )
     return FinishScaledFrame( p_filter, p_sys, p_in, p_out );
 }
 
+static void ReportMetrics( filter_t *filter )
+{
+    up_pipeline_metrics_t *m = filter->p_sys->metrics;
+    if( !m || !m->attempts ) return;
+    msg_Info( filter, "AutoUpscale metrics: attempts=%u samples=%u failed=%u "
+              "invalid=%u; processing only, process CPU includes other VLC threads",
+              m->attempts, m->used, m->failed, m->invalid );
+    if( !m->used )
+    {
+        up_metrics_reset( m );
+        return;
+    }
+    static const char *const fields[] = { "scale", "usm", "total", "process_cpu" };
+    for( unsigned i = 0; i < UP_METRICS_FIELDS; i++ )
+    {
+        up_tuner_score_t score = up_metrics_score( m, i );
+        msg_Info( filter, "AutoUpscale metrics: %s mean_us=%.3f p95_us=%.3f p99_us=%.3f",
+                  fields[i], score.mean_us, score.p95_us, score.p99_us );
+    }
+    up_metrics_reset( m );
+}
+
+static picture_t *Filter( filter_t *filter, picture_t *input )
+{
+    if( !input ) return NULL;
+    up_pipeline_metrics_t *m = filter->p_sys->metrics;
+    up_metrics_begin( m );
+    picture_t *output = FilterFrame( filter, input );
+    if( up_metrics_end( m, output != NULL ) ) ReportMetrics( filter );
+    return output;
+}
+
 /*****************************************************************************
  * Close: tear down
  *****************************************************************************/
@@ -813,7 +857,8 @@ void up_autoupscale_close( vlc_object_t *p_this )
         if( p_sys->scaler.backend )
             p_sys->scaler.backend->close( &p_sys->scaler );
         DisableUsm( p_sys );
-
+        ReportMetrics( p_filter );
+        free( p_sys->metrics );
         free( p_sys );
     }
 }

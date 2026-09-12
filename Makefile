@@ -544,6 +544,11 @@ check-hardening: $(BUILD)/$(PLUGIN).so $(HARDENING_FORTIFY_PROBE)
 # works on machines without lizard installed.
 check: complexity test
 
+test: $(BUILD)/test_pipeline_metrics
+
+$(BUILD)/test_pipeline_metrics: tests/test_pipeline_metrics.c src/pipeline_metrics.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
+
 mutation-test:
 	@command -v python3 >/dev/null 2>&1 || { \
 		echo "python3 not installed"; exit 1; }
@@ -599,6 +604,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo
 	@echo "=== autoupscale lifecycle ==="
 	@$(BUILD)/test_autoupscale_lifecycle
+	@$(BUILD)/test_pipeline_metrics
 	@echo
 	@echo "=== picture_view ==="
 	@$(BUILD)/test_picture_view

@@ -96,7 +96,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| OBS-19 | blocked | M | Obtain actual transcode-display presentation counters before asserting frame-drop or tail improvements. | All 12 real VLC playback runs display enlarged video and log valid encoder/output geometry, while RC decoded/displayed/lost counters remain zero because the private sout resource is outside the playlist counters. Sources: `docs/PLAYBACK_VULKAN_EVALUATION.md`, its recorded CLI samples, VLC 3.0.20 `modules/stream_out/display.c:102,150`. User excludes VLC patches and added player/control handling. Unblock with validated observation of the private vout under that scope; never treat its zero playlist counters as zero drops. |
 
 
 ## wiring gaps
@@ -111,6 +110,13 @@
 | UNUSED-6 | open | S | Remove obsolete variable-mutation shims from the lifecycle VLC stub. | `tests/lifecycle_stubs/vlc_common.h:10-12,19-43` declares `lifecycle_var_create/destroy/set_integer` and defines forwarding helpers/macros for `var_Create`, `var_Destroy`, and `var_SetInteger`, but repository-wide searches find no consumers or implementations. Only the inheritance shim is used by the current lifecycle code. |
 
 ## Audit picks deliberately rejected
+
+- **OBS-19, private sout presentation counters as a prerequisite for processing metrics:**
+  user choice 2A accepts plugin processing metrics. Optional bounded stage/total
+  latency and process CPU are implemented with permanent normal-suite tests.
+  They do not measure presentation or prove zero dropped frames. The private
+  sout counter limitation remains external; never interpret its zero counters
+  as observed zero drops.
 
 - **SCAL-10, NJIT classifier accuracy as a controller design dependency:** rejected
   by user follow-up choice 2a. Paper §3.2 describes evaluation on training data;

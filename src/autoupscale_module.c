@@ -216,6 +216,11 @@ vlc_module_begin()
     set_callbacks( up_autoupscale_open_checked, Close )
     add_shortcut( "autoupscale" )
 
+    add_integer_with_range( UP_CFG_PREFIX "metrics", 0, 0, 1,
+        N_("Log processing metrics"),
+        N_("Opt-in bounded processing latency and process CPU windows. "
+           "Includes other VLC threads; does not measure displayed or dropped frames."), false )
+
     add_integer_with_range( UP_CFG_PREFIX "target", UP_TARGET_AUTO,
                             UP_TARGET_AUTO, UP_TARGET_MAX,
                             TARGET_TEXT, TARGET_LONGTEXT, false )

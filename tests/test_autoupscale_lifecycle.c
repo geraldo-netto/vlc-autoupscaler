@@ -44,11 +44,12 @@ static lifecycle_config_t lifecycle_config[] = {
     { "autoupscale-zimg-stripe-lines", 0 },
     { "autoupscale-usm-sharp-threshold", 0 },
     { "autoupscale-adaptive-usm", 0 },
+    { "autoupscale-metrics", 0 },
 };
 
 static const int lifecycle_config_defaults[] = {
     720, 1, UP_ALGO_SPLINE36, SCALER_BACKEND_AUTO, 0, 1, 0,
-    1, 1, 0, 0, 0, 0, 0,
+    1, 1, 0, 0, 0, 0, 0, 0,
 };
 
 static picture_t *g_next_output;
@@ -351,6 +352,7 @@ static void test_success_copies_properties_and_tears_down(void)
 
     CHECK(up_autoupscale_open_checked((vlc_object_t *)&filter) == VLC_SUCCESS);
     CHECK(filter.pf_video_filter == Filter);
+    CHECK(filter.p_sys->metrics == NULL);
     CHECK(Filter(&filter, &input) == &output);
     CHECK(input.releases == 1);
     CHECK(output.releases == 0);
@@ -724,8 +726,36 @@ static void test_runtime_fallback(void)
     END();
 }
 
+static void test_processing_metrics(void)
+{
+    BEGIN("OBS-19: optional metrics track output and failures without changing ownership");
+    filter_t filter;
+    picture_t input, output;
+    reset_state();
+    init_filter(&filter);
+    set_config("autoupscale-metrics", 1);
+    CHECK(up_autoupscale_open_checked((vlc_object_t *)&filter) == VLC_SUCCESS);
+    CHECK(filter.p_sys->metrics != NULL);
+    init_picture(&input, 42);
+    init_picture(&output, 0);
+    g_next_output = &output;
+    CHECK(Filter(&filter, &input) == &output);
+    CHECK(filter.p_sys->metrics->used == 1);
+    CHECK(output.properties_tag == 42 && input.releases == 1);
+    CHECK(Filter(&filter, NULL) == NULL);
+    CHECK(filter.p_sys->metrics->attempts == 1);
+    init_picture(&input, 43);
+    g_next_output = NULL;
+    CHECK(Filter(&filter, &input) == NULL);
+    CHECK(filter.p_sys->metrics->failed == 1 && input.releases == 1);
+    Close((vlc_object_t *)&filter);
+    CHECK(g_zimg_close_calls == 1);
+    END();
+}
+
 int main(void)
 {
+    test_processing_metrics();
     test_output_permission();
     test_success_copies_properties_and_tears_down();
     test_cpu_gate_rejects_before_open();

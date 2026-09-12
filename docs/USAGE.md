@@ -156,6 +156,15 @@ Interpretation:
 If every command renders correctly but playback is late, use the tuning order
 above; this procedure isolates output-path failures, not throughput limits.
 
+Append `--autoupscale-metrics=1` to a working upscale command for optional
+processing metrics. Every 256 input attempts (and at close), the plugin logs
+successful-frame mean/p95/p99 microseconds for scaling, sharpening, total
+processing and process CPU, plus failed-frame and invalid-clock counts.
+Process CPU includes other VLC threads running during the callback. These
+numbers do not measure presentation latency or display drops. Summary sorting
+and logging occur after the measured callback. Default `0` allocates no metrics
+window and reads no metrics clocks; quality and worker policy stay unchanged.
+
 Capture a private diagnostic log:
 
 ```sh
