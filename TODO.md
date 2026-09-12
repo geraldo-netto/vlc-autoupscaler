@@ -95,7 +95,6 @@
 | id | status | effort | description | notes |
 |---|---|---|---|---|
 | BUILD-40 | open | S | Preserve or deliberately clear GNU Make jobserver state in shell regression fixtures. | `make -j4 check` reports jobserver-unavailable warnings from nested Make invocations in the install/benchmark shell tests. Mark recursive recipes appropriately or sanitize inherited jobserver flags for isolated fixtures; verify parallel checks without these warnings. |
-| BUILD-39 | blocked | S | Align the per-function coverage aggregation description with its actual gate. | `scripts/coverage_per_function.sh:7-10` promises the best coverage from one binary, but lines 127-150 union covered lines across binaries before computing each function's percentage. Complementary partial tests can therefore pass although neither binary meets the documented threshold alone. Unblock by selecting the intended aggregation contract and updating the description or implementation, with a complementary-coverage fixture. |
 
 ## observability
 

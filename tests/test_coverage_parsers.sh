@@ -119,4 +119,34 @@ for invalid_case in bool string float missing negative; do
         "$function_parser"
 done
 
+python3 - "$json_dir" "$repo_root" <<'PY'
+import gzip
+import json
+import os
+import sys
+
+directory, root = sys.argv[1:]
+for binary, filename in enumerate(("case.gcov.json.gz", "complement.gcov.json.gz")):
+    lines = [{"function_name": "complementary", "line_number": line,
+              "count": int((line <= 5) == (binary == 0))}
+             for line in range(1, 11)]
+    report = {"current_working_directory": root, "files": [{
+        "file": "src/upscale_logic.h",
+        "functions": [{"name": "complementary"}], "lines": lines}]}
+    with gzip.open(os.path.join(directory, filename), "wt", encoding="utf-8") as output:
+        json.dump(report, output)
+PY
+env COV_DIR="$cov_dir" THRESHOLD=80 COVERAGE_SCOPE_FILE="$scope" \
+    "$function_parser" >"$tmp/union-stdout" 2>"$tmp/union-stderr" ||
+    fail 'BUILD-39: complementary binaries must meet threshold collectively'
+test ! -s "$tmp/union-stderr" || fail 'BUILD-39: union wrote unexpected stderr'
+rm -- "$json_dir/complement.gcov.json.gz"
+set +e
+env COV_DIR="$cov_dir" THRESHOLD=80 COVERAGE_SCOPE_FILE="$scope" \
+    "$function_parser" >"$tmp/partial-stdout" 2>"$tmp/partial-stderr"
+partial_status=$?
+set -e
+test "$partial_status" -eq 1 ||
+    fail 'BUILD-39: one half-covered binary must fail the threshold'
+
 echo "coverage parser checks OK"

@@ -5,9 +5,9 @@
 # function in a tracked source file is below $THRESHOLD% line coverage.
 #
 # Aggregation: each instrumented test/fuzz binary emits its own gcov data, so
-# the same function appears multiple times. We keep the BEST (max) coverage
-# across runs - a function is "tested" if at least one test exercises
-# it adequately, regardless of which test it is.
+# the same function appears multiple times. Coverage is the union of executable
+# lines covered across all binaries; complementary suites can collectively meet
+# the threshold even when no single binary reaches it alone.
 #
 # Usage: COV_DIR=build/cov THRESHOLD=80 scripts/coverage_per_function.sh
 
