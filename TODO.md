@@ -28,7 +28,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| SCAL-10 | blocked | M | Resolve the ML paper's conflicting evaluation claims before using them to justify a trained controller. | [NJIT §3.2](https://arxiv.org/pdf/2312.11790) evaluates the neural model on the training data, whereas §4 attributes accuracy to validation data. Unblock with reproducible data, code and an independent held-out split plus end-to-end control measurements. [Primary-code review](docs/BENCHMARKS.md#bbr-research-and-transfer-limits) resolves the BBRv1 loss interpretation: Linux v6.8 uses loss in recovery, probe termination and policer estimation. User choice 4b authorizes experiments and metric collection only; default control behavior stays unchanged. |
 
 ## concurrency
 
@@ -110,6 +109,13 @@
 | UNUSED-6 | open | S | Remove obsolete variable-mutation shims from the lifecycle VLC stub. | `tests/lifecycle_stubs/vlc_common.h:10-12,19-43` declares `lifecycle_var_create/destroy/set_integer` and defines forwarding helpers/macros for `var_Create`, `var_Destroy`, and `var_SetInteger`, but repository-wide searches find no consumers or implementations. Only the inheritance shim is used by the current lifecycle code. |
 
 ## Audit picks deliberately rejected
+
+- **SCAL-10, NJIT classifier accuracy as a controller design dependency:** rejected
+  by user follow-up choice 2a. Paper §3.2 describes evaluation on training data;
+  §4 calls it validation. This unresolved external claim supplies no evidence
+  for this project. No trained controller or default metric change depends on
+  it; continue reproducible playback measurements. Reconsider only with source
+  data/code, an independent held-out split and measured control benefit.
 
 Recorded so future full-project rescans do not repeatedly promote the same
 non-findings:

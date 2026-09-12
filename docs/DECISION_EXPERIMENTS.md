@@ -116,8 +116,10 @@ notification alternatives; it does not predict a speedup.
 
 [Primary BBR code review](BENCHMARKS.md#bbr-research-and-transfer-limits)
 resolves the blanket claim that BBRv1 ignores loss. The ML paper's training
-versus validation contradiction remains unresolved. No model is trained and
-no production metric threshold is tuned from these clips.
+versus validation contradiction remains unresolved externally. User follow-up
+choice 2a rejects that accuracy claim as a design dependency (SCAL-10), so
+measurement research can proceed without it. No model is trained and no
+production metric threshold is tuned from these clips.
 
 ## Results
 
@@ -239,9 +241,9 @@ not establish a benefit for this current default profile or for paced video.
 | 14b | Scratch diagnostics report source, shared destination, tiles, graph temporary bytes and total |
 | 15b | Algorithm/pinning/outcome CSV fields, failure regression coverage and all four profiles measured |
 
-Remaining blocked items are the ML paper's evaluation contradiction (SCAL-10),
-unstable evidence for changing performance defaults (PERF-15), VLC's private
-audio-output control ownership (REL-16). The first two require better evidence. REL-16
+Remaining blocked items are unstable evidence for changing performance defaults
+(PERF-15) and VLC's private audio-output control ownership (REL-16).
+PERF-15 requires better evidence. REL-16
 still needs a choice between the documented system-mixer workaround and a
 separate playback/control-routing integration; neither needs upscaler audio DSP.
 

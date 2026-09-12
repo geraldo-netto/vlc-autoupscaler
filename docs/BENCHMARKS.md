@@ -198,8 +198,12 @@ The [NJIT ML paper](https://arxiv.org/pdf/2312.11790) concerns inter-protocol
 fairness and latency classification. Its reported classifier accuracy does not
 establish better closed-loop worker control. A trained model would add dataset,
 generalization and inference-cost requirements without demonstrated benefit to
-this plugin. Contradictory loss and evaluation descriptions in the references
-are recorded in `TODO.md` as SCAL-10. The fixed-grid scheduling experiment is
+this plugin. User choice 2a rejects its accuracy claim as a design dependency
+(SCAL-10, retained under rejected audit picks in `TODO.md`). The paper calls
+its evaluation data training data in §3.2 and validation data in §4; this
+external contradiction remains unvalidated. It no longer blocks measurement
+research, and supplies no justification for changing runtime defaults.
+The fixed-grid scheduling experiment is
 described in [DECISION_EXPERIMENTS.md](DECISION_EXPERIMENTS.md).
 
 For a concrete BBRv1 reference, Linux v6.8's
