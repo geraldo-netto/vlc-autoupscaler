@@ -79,6 +79,16 @@ or control handling is added to the project.
 
 ## Controlled VLC playback
 
+**Attribution correction (BUILD-42):** these historical runs did not verify
+which AutoUpscale binary VLC selected. `VLC_PLUGIN_PATH` adds a recursive
+search to the installed plugin tree. A later reproduction loaded the current
+build, two nested scan-build variants and the installed plugin; its behavior
+did not match the requested current build. Preserve the numbers below as
+historical observations, but do not use them to accept current-code defaults.
+An isolated, unmodified VLC runtime and a runtime mapping check are required
+for replacement measurements. The standalone backend benchmarks do not load
+VLC plugins and are unaffected by this selection problem.
+
 Paired pinning-on/off runs use actual VLC decode, upscale, USM, H.264 encoding,
 decoding and X11 display. Two locally encoded public-sample excerpts cover
 320x180 animation and 960x540 live action, both 30 fps. Each clip runs three
@@ -100,8 +110,8 @@ These are process CPU measurements, not per-frame filter latency.
 | Live action / 1920x1080 | 76.00% | 81.50% |
 
 CPU percentages use one core as 100%. Pinning consumes less CPU in all six
-pairs. These short runs on one host support retaining current pinning; they
-do not establish universal optimality or a tail-latency improvement.
+pairs. Their ambiguous plugin selection prevents attributing that difference
+to the current build, or accepting current pinning from these runs.
 
 VLC's RC counters remain zero for this private transcode-display resource,
 despite active display and output-format diagnostics. Zero counters are not

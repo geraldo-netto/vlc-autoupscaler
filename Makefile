@@ -605,6 +605,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== autoupscale lifecycle ==="
 	@$(BUILD)/test_autoupscale_lifecycle
 	@$(BUILD)/test_pipeline_metrics
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_playback_runtime.py
 	@echo
 	@echo "=== picture_view ==="
 	@$(BUILD)/test_picture_view
