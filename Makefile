@@ -333,6 +333,8 @@ $(BUILD_CONFIG): FORCE | $(BUILD_MARKER)
 	        "ZIMG_H_LIBS=$(ZIMG_H_LIBS)" \
 	        "ZIMG_TEST_WRAP_LDFLAGS=$(ZIMG_TEST_WRAP_LDFLAGS)" \
 	        "BENCH_CFLAGS=$(BENCH_CFLAGS)" \
+	        "VULKAN_CFLAGS=$(VULKAN_CFLAGS)" \
+	        "VULKAN_LIBS=$(VULKAN_LIBS)" \
 	        "COV_CC=$(COV_CC)" \
 	        "COV_CFLAGS=$(COV_CFLAGS)" \
 	        "COV_LDFLAGS=$(COV_LDFLAGS)" \
@@ -544,7 +546,13 @@ check-hardening: $(BUILD)/$(PLUGIN).so $(HARDENING_FORTIFY_PROBE)
 # works on machines without lizard installed.
 check: complexity test
 
-test: $(BUILD)/test_pipeline_metrics
+test: $(BUILD)/test_pipeline_metrics $(BUILD)/test_vulkan_limits $(BUILD)/test_vulkan_timing
+
+$(BUILD)/test_vulkan_timing: tests/test_vulkan_timing.c tests/vulkan_timing.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
+
+$(BUILD)/test_vulkan_limits: tests/test_vulkan_limits.c tests/vulkan_limits.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
 
 ifneq ($(strip $(VLC_LIBS)),)
 test: $(BUILD)/test_display_adapter
@@ -612,6 +620,8 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== autoupscale lifecycle ==="
 	@$(BUILD)/test_autoupscale_lifecycle
 	@$(BUILD)/test_pipeline_metrics
+	@$(BUILD)/test_vulkan_limits
+	@$(BUILD)/test_vulkan_timing
 	@$(if $(strip $(VLC_LIBS)),$(BUILD)/test_display_adapter,echo "display adapter: VLC SDK unavailable")
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_playback_runtime.py
 	@echo
@@ -1175,7 +1185,37 @@ BENCH_CFLAGS := -O3 $(MARCH_FLAG) $(WARN) -MMD -MP $(EXTRA_CFLAGS)
 
 build-bench: $(BUILD)/bench_usm_pool $(BUILD)/bench_usm_pool_flatskip $(BUILD)/bench_worker_pool $(if $(HAVE_ZIMG),$(BUILD)/bench_scaler_zimg $(BUILD)/bench_pipeline $(BUILD)/bench_adaptive)
 
-.PHONY: display-prototype
+VULKAN_CFLAGS ?= $(shell pkg-config --cflags vulkan 2>/dev/null)
+VULKAN_LIBS ?= -lvulkan
+
+.PHONY: build-vulkan-bench display-prototype
+build-vulkan-bench: $(BUILD)/bench_vulkan $(BUILD)/bench_vulkan_scale $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_spline36.spv $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_fused.spv
+
+.PHONY: test-vulkan
+test-vulkan: $(BUILD)/test_vulkan_pipeline $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_fused.spv
+	$(BUILD)/test_vulkan_pipeline $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_fused.spv
+
+$(BUILD)/experiment_vulkan_test.o: tests/experiment_vulkan.c tests/experiment_vulkan.h tests/vulkan_limits.h tests/vulkan_timing.h tests/vulkan_coefficients.h tests/vulkan_bench_util.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VULKAN_CFLAGS) -c -o $@ $<
+
+$(BUILD)/test_vulkan_pipeline: tests/test_vulkan_pipeline.c $(BUILD)/experiment_vulkan_test.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) -o $@ $< $(BUILD)/experiment_vulkan_test.o $(TEST_LDFLAGS) $(VULKAN_LIBS) -lm
+
+$(BUILD)/vulkan_fused.spv: tests/vulkan_separable.comp scripts/compile_vulkan_shader.py | $(BUILD)
+	python3 scripts/compile_vulkan_shader.py $< $@ fused
+
+$(BUILD)/vulkan_%.spv: tests/vulkan_%.comp scripts/compile_vulkan_shader.py | $(BUILD)
+	python3 scripts/compile_vulkan_shader.py $< $@
+
+$(BUILD)/experiment_vulkan.o: tests/experiment_vulkan.c tests/experiment_vulkan.h tests/vulkan_limits.h tests/vulkan_timing.h tests/vulkan_bench_util.h tests/vulkan_coefficients.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(BENCH_CFLAGS) $(VULKAN_CFLAGS) -c -o $@ $<
+
+$(BUILD)/bench_vulkan: tests/bench_vulkan.c $(BUILD)/experiment_vulkan.o $(BUILD)/usm_pool_bench.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(BENCH_CFLAGS) -o $@ $< $(BUILD)/experiment_vulkan.o $(BUILD)/usm_pool_bench.o $(VULKAN_LIBS) -lpthread -lm
+
+$(BUILD)/bench_vulkan_scale: tests/bench_vulkan_scale.c $(BUILD)/experiment_vulkan.o $(BUILD)/scaler_zimg_bench.o $(BUILD)/usm_pool_bench.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(BENCH_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(BUILD)/experiment_vulkan.o $(BUILD)/scaler_zimg_bench.o $(BUILD)/usm_pool_bench.o $(VULKAN_LIBS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -lm
+
 display-prototype: plugin $(BUILD)/libautoupscale_display_plugin.so
 
 $(BUILD)/libautoupscale_display_plugin.so: tests/experiment_display.c $(BUILD_CONFIG) | $(BUILD)
@@ -1429,10 +1469,12 @@ complexity:
 	@command -v lizard >/dev/null 2>&1 || { \
 		echo "lizard not installed. pip: lizard"; exit 1; }
 	lizard -C 10 src/ tests/
+	lizard -l cpp -C 10 tests/vulkan_*.comp
 
 MARKDOWN_FILES := README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md \
                   docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md \
-                  docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md
+                  docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md \
+                  docs/VULKAN_LATENCY_EXPERIMENTS.md
 
 semantic-analysis:
 	@command -v shellcheck >/dev/null 2>&1 || { \

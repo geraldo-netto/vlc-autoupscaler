@@ -1,0 +1,64 @@
+LAYER:             Searching for implicit layer manifest files
+LAYER:                In following locations:
+LAYER:                   /home/netto/.config/vulkan/implicit_layer.d
+LAYER:                   /etc/xdg/xdg-cinnamon/vulkan/implicit_layer.d
+LAYER:                   /etc/xdg/vulkan/implicit_layer.d
+LAYER:                   /etc/vulkan/implicit_layer.d
+LAYER:                   /home/netto/.local/share/vulkan/implicit_layer.d
+LAYER:                   /usr/share/cinnamon/vulkan/implicit_layer.d
+LAYER:                   /home/netto/.local/share/flatpak/exports/share/vulkan/implicit_layer.d
+LAYER:                   /var/lib/flatpak/exports/share/vulkan/implicit_layer.d
+LAYER:                   /usr/local/share/vulkan/implicit_layer.d
+LAYER:                   /usr/share/vulkan/implicit_layer.d
+LAYER:                Found the following files:
+LAYER:                   /home/netto/.local/share/vulkan/implicit_layer.d/steamoverlay_i386.json
+LAYER:                   /home/netto/.local/share/vulkan/implicit_layer.d/steamfossilize_x86_64.json
+LAYER:                   /home/netto/.local/share/vulkan/implicit_layer.d/steamfossilize_i386.json
+LAYER:                   /home/netto/.local/share/vulkan/implicit_layer.d/steamoverlay_x86_64.json
+LAYER:                   /usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
+LAYER:                   /usr/share/vulkan/implicit_layer.d/VkLayer_MESA_anti_lag.json
+LAYER:             Searching for explicit layer manifest files
+LAYER:                In following locations:
+LAYER:                   /backups/disk2/projects/vlc-autoupscaler/build/decision-review/direct-vulkan/validation/usr/share/vulkan/explicit_layer.d
+LAYER:                Found the following files:
+LAYER:                   /backups/disk2/projects/vlc-autoupscaler/build/decision-review/direct-vulkan/validation/usr/share/vulkan/explicit_layer.d/VkLayer_khronos_validation.json
+WARNING | LAYER:   env var 'VK_INSTANCE_LAYERS' defined and adding layers "VK_LAYER_KHRONOS_validation"
+WARNING | LAYER:   env var 'VK_INSTANCE_LAYERS' defined and adding layers "VK_LAYER_KHRONOS_validation"
+DEBUG | LAYER:     Loading layer library libVkLayer_khronos_validation.so
+INFO | LAYER:      Insert instance layer "VK_LAYER_KHRONOS_validation" (libVkLayer_khronos_validation.so)
+DEBUG | LAYER:     Loading layer library libVkLayer_MESA_device_select.so
+INFO | LAYER:      Insert instance layer "VK_LAYER_MESA_device_select" (libVkLayer_MESA_device_select.so)
+LAYER:             vkCreateInstance layer callstack setup to:
+LAYER:                <Application>
+LAYER:                  ||
+LAYER:                <Loader>
+LAYER:                  ||
+LAYER:                VK_LAYER_MESA_device_select
+LAYER:                        Type: Implicit
+LAYER:                            Disable Env Var:  NODEVICE_SELECT
+LAYER:                        Manifest: /usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
+LAYER:                        Library:  libVkLayer_MESA_device_select.so
+LAYER:                  ||
+LAYER:                VK_LAYER_KHRONOS_validation
+LAYER:                        Type: Explicit
+LAYER:                        Manifest: /backups/disk2/projects/vlc-autoupscaler/build/decision-review/direct-vulkan/validation/usr/share/vulkan/explicit_layer.d/VkLayer_khronos_validation.json
+LAYER:                        Library:  libVkLayer_khronos_validation.so
+LAYER:                  ||
+LAYER:                <Drivers>
+INFO | LAYER:      Inserted device layer "VK_LAYER_KHRONOS_validation" (libVkLayer_khronos_validation.so)
+INFO | LAYER:      Failed to find vkGetDeviceProcAddr in layer "libVkLayer_MESA_device_select.so"
+DRIVER | LAYER:    vkCreateDevice layer callstack setup to:
+DRIVER | LAYER:       <Application>
+DRIVER | LAYER:         ||
+DRIVER | LAYER:       <Loader>
+DRIVER | LAYER:         ||
+LAYER:                VK_LAYER_KHRONOS_validation
+LAYER:                        Type: Explicit
+LAYER:                        Manifest: /backups/disk2/projects/vlc-autoupscaler/build/decision-review/direct-vulkan/validation/usr/share/vulkan/explicit_layer.d/VkLayer_khronos_validation.json
+LAYER:                        Library:  libVkLayer_khronos_validation.so
+LAYER:                  ||
+DRIVER | LAYER:       <Device>
+DRIVER | LAYER:           Using "AMD Radeon RX 6600 XT (RADV NAVI23)" with driver: "libvulkan_radeon.so"
+DEBUG | LAYER:     Unloading layer library libVkLayer_MESA_device_select.so
+DEBUG | LAYER:     Unloading layer library libVkLayer_khronos_validation.so
+{"device":"AMD Radeon RX 6600 XT (RADV NAVI23)","backend":"vulkan-usm","width":17,"height":9,"frames":1,"period_us":0,"mean_us":68.894,"p95_us":68.894,"p99_us":68.894,"process_cpu_us":25.648,"byte_exact":true}

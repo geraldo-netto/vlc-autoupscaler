@@ -21,8 +21,7 @@
 |---|---|---|---|---|
 | PERF-11 | open | M | Measure opt-in adaptive USM on paced decoded video. | `tests/bench_adaptive.c` deliberately keeps USM active on synthetic noise. [BENCHMARKS.md](docs/BENCHMARKS.md#adaptive-usm) now documents the matching `--autoupscale-usm-sharp-threshold=0` override and reports the actual algorithm/pinning/outcome. The [decoded-video matrix](docs/DECISION_EXPERIMENTS.md) exercises the default 3500 cutoff with fixed USM pools. Extend that paced harness to adaptive USM, retaining explicit fallback outcomes, exploration/retirement costs and mean/tail/CPU comparisons; fixed-pool video results do not establish adaptive playback gains. |
 | PERF-13 | open | M | Compare bounded USM affinity and stage-to-stage locality policies on representative paced input. | With the same 8x1 zimg grid and 12 USM workers at 1080p, five-run median means are 278.9 us on eight physical cores sharing one L3 versus 404.3 us across four physical cores in each of two L3 domains; the local placement also wins at USM counts 4/8/16/32. [Raw results and limits](docs/PROFILING.md) retain the identical-grid hashes and actual CPU masks. This changes whole-process placement and does not isolate cache effects from scheduler/coordinator/frequency effects. Compare a benchmark-only USM placement policy with the existing scheduler-managed pool before introducing production topology discovery, preserving pixels and measuring mean/tails/CPU on multiple hosts; no universal affinity policy is established. |
-| PERF-15 | blocked | M | Establish stable paced controls before changing presets or declaring pinning optimal. | Continuous-loop preset gains conflicted with earlier 60-fps regressions. The [102 decoded-video runs](docs/DECISION_EXPERIMENTS.md#results) now cover default sharpness gating, 30/60-fps cadence, CPU/tails, one-minute repeats and paired follow-ups. Identical 720p animation controls still give 227.12 versus 368.79 us/frame across three-run groups; native-cadence 8/12-worker means nearly tie, and pinning has mixed tail results. This also retains the repeated-control contradiction first recorded as PERF-16. User requires defaults unchanged during metric research. The subsequent 12 paired actual-VLC runs favor existing pinning in process CPU (animation 31.83/32.75%, live action 76.00/81.50%, pinned/unpinned medians), but private presentation counters are unavailable (OBS-19). Unblock a best-policy claim with reproducible CPU and presentation-tail evidence across representative clips/hosts; retain existing presets and pinning meanwhile. |
-
+| PERF-15 | blocked | M | Resolve mixed pinning, worker-preset and repeated-control evidence before claiming a better policy. | User accepts defaults only within demonstrated evidence; remaining settings are a reference, not proven winners. Standalone matching-grid direct/copy measurements support zero-copy. Corrected playback isolates the exact current plugin: animation median CPU is 32.52% pinned versus 32.85% unpinned, but live action is 73.79% versus 67.46%; the former blanket pinning benefit is withdrawn. The 8/12/16-worker presets remain unproven: short/long motion rankings differ and identical controls yielded 227.12 versus 368.79 us/frame. Optional processing metrics are implemented (choice 2A); private sout presentation remains unobserved. The [paced Vulkan/CPU follow-up](docs/VULKAN_LATENCY_EXPERIMENTS.md#cpu-worker-count-follow-up) finds eight scaler workers improve 1080p CPU/tails at nearly equal mean, while 12 beat 16 at 4K; one input/host and graph-seam differences still prevent a universal preset claim. Unblock stronger policy claims with stable matched repeats, CPU and processing tails, representative inputs and any presentation evidence the claim requires. Defaults remain unchanged during experiments. |
 
 ## scalability
 
@@ -89,14 +88,12 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| BUILD-41 | blocked | M | Validate the explicit FFmpeg Vulkan hardware-frame probe before using it to judge GPU interoperability. | Installed FFmpeg 6.1.1 advertises `hwupload`/`scale_vulkan`, but the RX 6600 XT upload path returns `VK_ERROR_DEVICE_LOST` and the 610M scale shader fails with an out-of-range array index. Reproductions and driver/library versions are retained in `docs/PLAYBACK_VULKAN_EVALUATION.md` and its evidence. CPU-frame libplacebo upload/render/download succeeds on both GPUs and supplies the reported timings. Unblock the explicit hardware-frame route with a compatible isolated tool build and a successful upload/scale/download smoke on these devices; no project or system patch is justified by the current evidence. A permanent project regression would need that supported tool/device fixture; no external bug is claimed fixed. |
 | BUILD-40 | open | S | Preserve or deliberately clear GNU Make jobserver state in shell regression fixtures. | `make -j4 check` reports jobserver-unavailable warnings from nested Make invocations in the install/benchmark shell tests. Mark recursive recipes appropriately or sanitize inherited jobserver flags for isolated fixtures; verify parallel checks without these warnings. |
 
 ## observability
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-
 
 ## wiring gaps
 
@@ -111,12 +108,26 @@
 
 ## Audit picks deliberately rejected
 
+- **BUILD-44, driver-unload allocations as project leaks:** a loader-only
+  `vkCreateInstance`/`vkEnumeratePhysicalDevices`/`vkDestroyInstance` program
+  reproduces 512 bytes in two external allocations. The full GPU suite passes
+  ASan, UBSan, leak detection and Vulkan synchronization validation with the
+  Radeon ICD selected and its library retained by `LD_PRELOAD`. This test-only
+  setup avoids unloading the driver's allocation roots; no project leak
+  suppression or disabled sanitizer is used. See the direct Vulkan report.
+
+
 - **OBS-19, private sout presentation counters as a prerequisite for processing metrics:**
   user choice 2A accepts plugin processing metrics. Optional bounded stage/total
   latency and process CPU are implemented with permanent normal-suite tests.
   They do not measure presentation or prove zero dropped frames. The private
   sout counter limitation remains external; never interpret its zero counters
   as observed zero drops.
+
+- **BUILD-41, FFmpeg hardware-frame interoperability as a project dependency:**
+  rejected by the user's direct-libvulkan choice. Retain external failure logs
+  as historical probe results; they do not block the direct Vulkan prototype
+  or establish the performance of a project Vulkan backend.
 
 - **SCAL-10, NJIT classifier accuracy as a controller design dependency:** rejected
   by user follow-up choice 2a. Paper §3.2 describes evaluation on training data;

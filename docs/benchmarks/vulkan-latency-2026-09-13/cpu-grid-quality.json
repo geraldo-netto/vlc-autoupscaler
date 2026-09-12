@@ -1,0 +1,60 @@
+{
+  "runs": [
+    {
+      "command": [
+        "build/decision-review/direct-vulkan/quality_dump",
+        "build-perf10/vulkan_separable.spv",
+        "0",
+        "2",
+        "cpu",
+        "build/decision-review/clips/live-action-540.yuv",
+        "separable",
+        "-",
+        "0",
+        "0",
+        "1"
+      ],
+      "returncode": 0,
+      "stdout": "{\"quality_plane\":0,\"max_error\":1,\"rmse\":0.034134}\n{\"quality_plane\":1,\"max_error\":3,\"rmse\":0.289955}\n{\"quality_plane\":2,\"max_error\":8,\"rmse\":0.305821}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":1149.985,\"p95_us\":1270.246,\"p99_us\":1419.806,\"process_cpu_us\":1148.728,\"variant\":\"separable\",\"combined\":false,\"timing\":false,\"period_us\":0}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "build/decision-review/direct-vulkan/quality_dump",
+        "build-perf10/vulkan_separable.spv",
+        "0",
+        "2",
+        "cpu",
+        "build/decision-review/clips/live-action-540.yuv",
+        "separable",
+        "-",
+        "0",
+        "0",
+        "12"
+      ],
+      "returncode": 0,
+      "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760838}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446127}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458537}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":154.257,\"p95_us\":176.733,\"p99_us\":205.690,\"process_cpu_us\":1441.514,\"variant\":\"separable\",\"combined\":false,\"timing\":false,\"period_us\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "difference": [
+    {
+      "plane": 0,
+      "max_error": 63,
+      "rmse": 2.7609257042881046,
+      "differing": 745693
+    },
+    {
+      "plane": 1,
+      "max_error": 8,
+      "rmse": 0.3938840894551669,
+      "differing": 57918
+    },
+    {
+      "plane": 2,
+      "max_error": 13,
+      "rmse": 0.39924456055881646,
+      "differing": 59713
+    }
+  ]
+}

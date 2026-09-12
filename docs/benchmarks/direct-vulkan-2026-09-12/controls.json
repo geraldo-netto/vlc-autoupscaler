@@ -1,0 +1,242 @@
+[
+  {
+    "mode": "sout",
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--video-title=AutoUpscaleAdapterProbe",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--aout=pulse",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--gain=1",
+      "--autoupscale-target=2",
+      "--autoupscale-metrics=1",
+      "--sub-file=/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/adapter-test.srt",
+      "-vv",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/audio-clean/volume-input.mkv"
+    ],
+    "volume": [
+      {
+        "value": 256,
+        "streams": [
+          {
+            "index": 2371,
+            "pid": "1047833",
+            "volume": {
+              "mono": {
+                "value": 32768,
+                "value_percent": "50%",
+                "db": "-18.06 dB"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "value": 64,
+        "streams": [
+          {
+            "index": 2371,
+            "pid": "1047833",
+            "volume": {
+              "mono": {
+                "value": 32768,
+                "value_percent": "50%",
+                "db": "-18.06 dB"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "value": 128,
+        "streams": [
+          {
+            "index": 2371,
+            "pid": "1047833",
+            "volume": {
+              "mono": {
+                "value": 32768,
+                "value_percent": "50%",
+                "db": "-18.06 dB"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "windows_before": {
+      "0x05600000": {
+        "geometry": "\nxwininfo: Window id: 0x5600000 \"AutoUpscaleAdapterProbe\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  82\n  Relative upper-left X:  10\n  Relative upper-left Y:  40\n  Width: 1280\n  Height: 720\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+82  -2510+82  -2510-1358  +50-1358\n  -geometry 1280x720+40+42\n\n",
+        "state": "_NET_WM_STATE(ATOM) = \n"
+      }
+    },
+    "subtitle_ocr": "AUMOURS@ABESS UBTITLE TiESII\n\n",
+    "windows_fullscreen": {
+      "0x05600000": {
+        "geometry": "\nxwininfo: Window id: 0x5600000 \"AutoUpscaleAdapterProbe\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  82\n  Relative upper-left X:  10\n  Relative upper-left Y:  40\n  Width: 1280\n  Height: 720\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+82  -2510+82  -2510-1358  +50-1358\n  -geometry 1280x720+40+42\n\n",
+        "state": "_NET_WM_STATE(ATOM) = \n"
+      }
+    },
+    "windows_restored": {
+      "0x05600000": {
+        "geometry": "\nxwininfo: Window id: 0x5600000 \"AutoUpscaleAdapterProbe\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  82\n  Relative upper-left X:  10\n  Relative upper-left Y:  40\n  Width: 1280\n  Height: 720\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+82  -2510+82  -2510-1358  +50-1358\n  -geometry 1280x720+40+42\n\n",
+        "state": "_NET_WM_STATE(ATOM) = \n"
+      }
+    },
+    "returncode": 0,
+    "windows_after_exit": [],
+    "geometry": [
+      "source 320x180, destination 320x180",
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "counters": {
+      "displayed": [
+        "0"
+      ],
+      "lost": [
+        "0"
+      ]
+    },
+    "time_responses": [
+      "10",
+      "1"
+    ]
+  },
+  {
+    "mode": "adapter",
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--video-title=AutoUpscaleAdapterProbe",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--aout=pulse",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--gain=1",
+      "--autoupscale-target=2",
+      "--autoupscale-metrics=1",
+      "--sub-file=/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/adapter-test.srt",
+      "-vv",
+      "--video-splitter=autoupscale-display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/audio-clean/volume-input.mkv"
+    ],
+    "volume": [
+      {
+        "value": 256,
+        "streams": [
+          {
+            "index": 2380,
+            "pid": "1047971",
+            "volume": {
+              "mono": {
+                "value": 65536,
+                "value_percent": "100%",
+                "db": "0.00 dB"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "value": 64,
+        "streams": [
+          {
+            "index": 2380,
+            "pid": "1047971",
+            "volume": {
+              "mono": {
+                "value": 16384,
+                "value_percent": "25%",
+                "db": "-36.12 dB"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "value": 128,
+        "streams": [
+          {
+            "index": 2380,
+            "pid": "1047971",
+            "volume": {
+              "mono": {
+                "value": 32768,
+                "value_percent": "50%",
+                "db": "-18.06 dB"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "windows_before": {
+      "0x05600000": {
+        "geometry": "\nxwininfo: Window id: 0x5600000 \"AutoUpscaleAdapterProbe\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  82\n  Relative upper-left X:  10\n  Relative upper-left Y:  40\n  Width: 1280\n  Height: 720\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+82  -2510+82  -2510-1358  +50-1358\n  -geometry 1280x720+40+42\n\n",
+        "state": "_NET_WM_STATE(ATOM) = _NET_WM_STATE_FOCUSED\n"
+      }
+    },
+    "subtitle_ocr": "",
+    "windows_fullscreen": {
+      "0x05600000": {
+        "geometry": "\nxwininfo: Window id: 0x5600000 \"AutoUpscaleAdapterProbe\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  82\n  Relative upper-left X:  10\n  Relative upper-left Y:  40\n  Width: 1280\n  Height: 720\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+82  -2510+82  -2510-1358  +50-1358\n  -geometry 1280x720+40+42\n\n",
+        "state": "_NET_WM_STATE(ATOM) = _NET_WM_STATE_FOCUSED\n"
+      }
+    },
+    "windows_restored": {
+      "0x05600000": {
+        "geometry": "\nxwininfo: Window id: 0x5600000 \"AutoUpscaleAdapterProbe\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  82\n  Relative upper-left X:  10\n  Relative upper-left Y:  40\n  Width: 1280\n  Height: 720\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+82  -2510+82  -2510-1358  +50-1358\n  -geometry 1280x720+40+42\n\n",
+        "state": "_NET_WM_STATE(ATOM) = _NET_WM_STATE_FOCUSED\n"
+      }
+    },
+    "returncode": 0,
+    "windows_after_exit": [],
+    "geometry": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "AutoUpscale experimental display: 320x180 -> 1280x720",
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "AutoUpscale experimental display: 320x180 -> 1280x720",
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "AutoUpscale experimental display: 320x180 -> 1280x720"
+    ],
+    "counters": {
+      "displayed": [
+        "146"
+      ],
+      "lost": [
+        "0"
+      ]
+    },
+    "time_responses": [
+      "10",
+      "1"
+    ]
+  }
+]

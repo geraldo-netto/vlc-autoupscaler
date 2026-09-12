@@ -1,0 +1,2786 @@
+[
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":137.376,\"p95_us\":169.529,\"p99_us\":173.687,\"process_cpu_us\":1374.463}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 137.376,
+        "p95_us": 169.529,
+        "p99_us": 173.687,
+        "process_cpu_us": 1374.463
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":1060.859,\"p95_us\":1482.798,\"p99_us\":1823.830,\"process_cpu_us\":161.691}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 1060.859,
+        "p95_us": 1482.798,
+        "p99_us": 1823.83,
+        "process_cpu_us": 161.691
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":1023.220,\"p95_us\":1323.859,\"p99_us\":1701.072,\"process_cpu_us\":134.289}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 1023.22,
+        "p95_us": 1323.859,
+        "p99_us": 1701.072,
+        "process_cpu_us": 134.289
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":130.899,\"p95_us\":149.821,\"p99_us\":159.149,\"process_cpu_us\":1378.894}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 130.899,
+        "p95_us": 149.821,
+        "p99_us": 159.149,
+        "process_cpu_us": 1378.894
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":128.932,\"p95_us\":144.400,\"p99_us\":220.999,\"process_cpu_us\":1347.499}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 128.932,
+        "p95_us": 144.4,
+        "p99_us": 220.999,
+        "process_cpu_us": 1347.499
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":1039.074,\"p95_us\":1364.228,\"p99_us\":1711.102,\"process_cpu_us\":140.189}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 1039.074,
+        "p95_us": 1364.228,
+        "p99_us": 1711.102,
+        "process_cpu_us": 140.189
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":132.746,\"p95_us\":175.120,\"p99_us\":178.697,\"process_cpu_us\":1344.683}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 132.746,
+        "p95_us": 175.12,
+        "p99_us": 178.697,
+        "process_cpu_us": 1344.683
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.7158203125,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "kind": "scale",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":11516.580,\"p95_us\":14705.996,\"p99_us\":16350.890,\"process_cpu_us\":303.081}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 11516.58,
+        "p95_us": 14705.996,
+        "p99_us": 16350.89,
+        "process_cpu_us": 303.081
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "host_load_end": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "kind": "scale",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":11741.145,\"p95_us\":16420.825,\"p99_us\":18227.141,\"process_cpu_us\":285.766}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 11741.145,
+        "p95_us": 16420.825,
+        "p99_us": 18227.141,
+        "process_cpu_us": 285.766
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "host_load_end": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "kind": "scale",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":147.362,\"p95_us\":194.066,\"p99_us\":212.753,\"process_cpu_us\":1362.851}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 147.362,
+        "p95_us": 194.066,
+        "p99_us": 212.753,
+        "process_cpu_us": 1362.851
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "host_load_end": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "kind": "scale",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":125.529,\"p95_us\":130.212,\"p99_us\":156.153,\"process_cpu_us\":1340.890}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 125.529,
+        "p95_us": 130.212,
+        "p99_us": 156.153,
+        "process_cpu_us": 1340.89
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "host_load_end": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "kind": "scale",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":63,\"rmse\":2.760826}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446140}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458554}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":11478.339,\"p95_us\":14759.551,\"p99_us\":16551.358,\"process_cpu_us\":254.106}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 63,
+        "rmse": 2.760826
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.44614
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458554
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 11478.339,
+        "p95_us": 14759.551,
+        "p99_us": 16551.358,
+        "process_cpu_us": 254.106
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "host_load_end": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "kind": "scale",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":346.876,\"p95_us\":386.220,\"p99_us\":441.307,\"process_cpu_us\":3867.255}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 346.876,
+        "p95_us": 386.22,
+        "p99_us": 441.307,
+        "process_cpu_us": 3867.255
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "host_load_end": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "kind": "scale",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "4",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":3903.253,\"p95_us\":5228.228,\"p99_us\":5459.548,\"process_cpu_us\":645.908}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 3903.253,
+        "p95_us": 5228.228,
+        "p99_us": 5459.548,
+        "process_cpu_us": 645.908
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.4775390625,
+      1.70361328125,
+      1.5068359375
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "4",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":3742.470,\"p95_us\":4110.820,\"p99_us\":4314.354,\"process_cpu_us\":538.881}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 3742.47,
+        "p95_us": 4110.82,
+        "p99_us": 4314.354,
+        "process_cpu_us": 538.881
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":369.779,\"p95_us\":440.104,\"p99_us\":593.151,\"process_cpu_us\":3892.721}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 369.779,
+        "p95_us": 440.104,
+        "p99_us": 593.151,
+        "process_cpu_us": 3892.721
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":348.686,\"p95_us\":387.222,\"p99_us\":432.249,\"process_cpu_us\":3880.862}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 348.686,
+        "p95_us": 387.222,
+        "p99_us": 432.249,
+        "process_cpu_us": 3880.862
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "0",
+      "4",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":3724.151,\"p95_us\":4126.470,\"p99_us\":4340.015,\"process_cpu_us\":513.411}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 3724.151,
+        "p95_us": 4126.47,
+        "p99_us": 4340.015,
+        "process_cpu_us": 513.411
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "kind": "scale",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":349.968,\"p95_us\":396.339,\"p99_us\":448.090,\"process_cpu_us\":3884.857}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 349.968,
+        "p95_us": 396.339,
+        "p99_us": 448.09,
+        "process_cpu_us": 3884.857
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.51953125,
+      1.708984375,
+      1.509765625
+    ],
+    "host_load_end": [
+      1.55810546875,
+      1.7138671875,
+      1.5126953125
+    ],
+    "kind": "scale",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "4",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":44451.556,\"p95_us\":48952.543,\"p99_us\":50224.733,\"process_cpu_us\":1585.122}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 44451.556,
+        "p95_us": 48952.543,
+        "p99_us": 50224.733,
+        "process_cpu_us": 1585.122
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.55810546875,
+      1.7138671875,
+      1.5126953125
+    ],
+    "host_load_end": [
+      1.75390625,
+      1.751953125,
+      1.5263671875
+    ],
+    "kind": "scale",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "4",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":45925.318,\"p95_us\":54988.981,\"p99_us\":72156.985,\"process_cpu_us\":1559.266}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 45925.318,
+        "p95_us": 54988.981,
+        "p99_us": 72156.985,
+        "process_cpu_us": 1559.266
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.75390625,
+      1.751953125,
+      1.5263671875
+    ],
+    "host_load_end": [
+      1.75390625,
+      1.751953125,
+      1.5263671875
+    ],
+    "kind": "scale",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":354.609,\"p95_us\":393.304,\"p99_us\":470.884,\"process_cpu_us\":3938.791}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 354.609,
+        "p95_us": 393.304,
+        "p99_us": 470.884,
+        "process_cpu_us": 3938.791
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.75390625,
+      1.751953125,
+      1.5263671875
+    ],
+    "host_load_end": [
+      1.75390625,
+      1.751953125,
+      1.5263671875
+    ],
+    "kind": "scale",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":345.755,\"p95_us\":366.351,\"p99_us\":397.372,\"process_cpu_us\":3897.070}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 345.755,
+        "p95_us": 366.351,
+        "p99_us": 397.372,
+        "process_cpu_us": 3897.07
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan_scale": "38d1c1158255319edd47724c282a8e5f56ed43cc02ea0c3e11c0dd5a3dc75ba9",
+      "build-perf10/vulkan_spline36.spv": "1ae45f381dd8df2839a69457fa5767c53ef07ae9dd268ecc3036edab9cbfc993",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.75390625,
+      1.751953125,
+      1.5263671875
+    ],
+    "host_load_end": [
+      2.02587890625,
+      1.81005859375,
+      1.54833984375
+    ],
+    "kind": "scale",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_spline36.spv",
+      "1",
+      "4",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"quality_plane\":0,\"max_error\":64,\"rmse\":2.762018}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489081}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507382}\n{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":44971.835,\"p95_us\":49706.897,\"p99_us\":50962.815,\"process_cpu_us\":1793.784}\n",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 64,
+        "rmse": 2.762018
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489081
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507382
+      },
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 44971.835,
+        "p95_us": 49706.897,
+        "p99_us": 50962.815,
+        "process_cpu_us": 1793.784
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.02587890625,
+      1.81005859375,
+      1.54833984375
+    ],
+    "host_load_end": [
+      2.0234375,
+      1.8134765625,
+      1.55078125
+    ],
+    "kind": "usm",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"cpu-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":214.727,\"p95_us\":260.485,\"p99_us\":269.663,\"process_cpu_us\":1494.569,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "cpu-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 214.727,
+        "p95_us": 260.485,
+        "p99_us": 269.663,
+        "process_cpu_us": 1494.569,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.0234375,
+      1.8134765625,
+      1.55078125
+    ],
+    "host_load_end": [
+      2.021484375,
+      1.81689453125,
+      1.55322265625
+    ],
+    "kind": "usm",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":933.040,\"p95_us\":1059.998,\"p99_us\":1134.663,\"process_cpu_us\":165.053,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 933.04,
+        "p95_us": 1059.998,
+        "p99_us": 1134.663,
+        "process_cpu_us": 165.053,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.021484375,
+      1.81689453125,
+      1.55322265625
+    ],
+    "host_load_end": [
+      2.01953125,
+      1.8203125,
+      1.5556640625
+    ],
+    "kind": "usm",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":906.209,\"p95_us\":1002.767,\"p99_us\":1144.892,\"process_cpu_us\":162.496,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 906.209,
+        "p95_us": 1002.767,
+        "p99_us": 1144.892,
+        "process_cpu_us": 162.496,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.01953125,
+      1.8203125,
+      1.5556640625
+    ],
+    "host_load_end": [
+      2.017578125,
+      1.82373046875,
+      1.55810546875
+    ],
+    "kind": "usm",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"cpu-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":246.966,\"p95_us\":276.106,\"p99_us\":296.706,\"process_cpu_us\":2111.336,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "cpu-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 246.966,
+        "p95_us": 276.106,
+        "p99_us": 296.706,
+        "process_cpu_us": 2111.336,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.017578125,
+      1.82373046875,
+      1.55810546875
+    ],
+    "host_load_end": [
+      2.0966796875,
+      1.84326171875,
+      1.56591796875
+    ],
+    "kind": "usm",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"cpu-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":270.322,\"p95_us\":301.285,\"p99_us\":313.078,\"process_cpu_us\":2381.564,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "cpu-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 270.322,
+        "p95_us": 301.285,
+        "p99_us": 313.078,
+        "process_cpu_us": 2381.564,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.0966796875,
+      1.84326171875,
+      1.56591796875
+    ],
+    "host_load_end": [
+      2.0966796875,
+      1.84326171875,
+      1.56591796875
+    ],
+    "kind": "usm",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":952.704,\"p95_us\":1045.740,\"p99_us\":1146.084,\"process_cpu_us\":171.726,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 952.704,
+        "p95_us": 1045.74,
+        "p99_us": 1146.084,
+        "process_cpu_us": 171.726,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.0966796875,
+      1.84326171875,
+      1.56591796875
+    ],
+    "host_load_end": [
+      2.16943359375,
+      1.86279296875,
+      1.57373046875
+    ],
+    "kind": "usm",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"cpu-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":169.141,\"p95_us\":222.342,\"p99_us\":232.592,\"process_cpu_us\":1216.549,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "cpu-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 169.141,
+        "p95_us": 222.342,
+        "p99_us": 232.592,
+        "process_cpu_us": 1216.549,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.16943359375,
+      1.86279296875,
+      1.57373046875
+    ],
+    "host_load_end": [
+      2.236328125,
+      1.8818359375,
+      1.58154296875
+    ],
+    "kind": "usm",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":2755.131,\"p95_us\":3383.768,\"p99_us\":3443.554,\"process_cpu_us\":195.244,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 2755.131,
+        "p95_us": 3383.768,
+        "p99_us": 3443.554,
+        "process_cpu_us": 195.244,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.236328125,
+      1.8818359375,
+      1.58154296875
+    ],
+    "host_load_end": [
+      2.2978515625,
+      1.90087890625,
+      1.58935546875
+    ],
+    "kind": "usm",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":2903.411,\"p95_us\":3232.715,\"p99_us\":3281.690,\"process_cpu_us\":172.659,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 2903.411,
+        "p95_us": 3232.715,
+        "p99_us": 3281.69,
+        "process_cpu_us": 172.659,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.2978515625,
+      1.90087890625,
+      1.58935546875
+    ],
+    "host_load_end": [
+      2.27392578125,
+      1.90283203125,
+      1.591796875
+    ],
+    "kind": "usm",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"cpu-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":133.881,\"p95_us\":162.455,\"p99_us\":167.225,\"process_cpu_us\":805.230,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "cpu-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 133.881,
+        "p95_us": 162.455,
+        "p99_us": 167.225,
+        "process_cpu_us": 805.23,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.27392578125,
+      1.90283203125,
+      1.591796875
+    ],
+    "host_load_end": [
+      2.251953125,
+      1.90478515625,
+      1.59423828125
+    ],
+    "kind": "usm",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"cpu-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":143.620,\"p95_us\":163.126,\"p99_us\":235.527,\"process_cpu_us\":1001.347,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "cpu-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 143.62,
+        "p95_us": 163.126,
+        "p99_us": 235.527,
+        "process_cpu_us": 1001.347,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.251953125,
+      1.90478515625,
+      1.59423828125
+    ],
+    "host_load_end": [
+      2.1513671875,
+      1.8896484375,
+      1.5908203125
+    ],
+    "kind": "usm",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1920",
+      "1080",
+      "12",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":1920,\"height\":1080,\"frames\":120,\"period_us\":33333,\"mean_us\":3887.811,\"p95_us\":7223.211,\"p99_us\":7775.312,\"process_cpu_us\":191.398,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-usm",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 3887.811,
+        "p95_us": 7223.211,
+        "p99_us": 7775.312,
+        "process_cpu_us": 191.398,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.1513671875,
+      1.8896484375,
+      1.5908203125
+    ],
+    "host_load_end": [
+      2.05908203125,
+      1.87451171875,
+      1.58740234375
+    ],
+    "kind": "usm",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"cpu-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":400.924,\"p95_us\":423.883,\"p99_us\":792.849,\"process_cpu_us\":4470.962,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "cpu-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 400.924,
+        "p95_us": 423.883,
+        "p99_us": 792.849,
+        "process_cpu_us": 4470.962,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.05908203125,
+      1.87451171875,
+      1.58740234375
+    ],
+    "host_load_end": [
+      2.05419921875,
+      1.876953125,
+      1.58984375
+    ],
+    "kind": "usm",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":3425.297,\"p95_us\":3766.351,\"p99_us\":4407.796,\"process_cpu_us\":922.373,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 3425.297,
+        "p95_us": 3766.351,
+        "p99_us": 4407.796,
+        "process_cpu_us": 922.373,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      2.05419921875,
+      1.876953125,
+      1.58984375
+    ],
+    "host_load_end": [
+      1.9697265625,
+      1.8623046875,
+      1.58642578125
+    ],
+    "kind": "usm",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":3366.892,\"p95_us\":3774.977,\"p99_us\":4203.780,\"process_cpu_us\":888.360,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 3366.892,
+        "p95_us": 3774.977,
+        "p99_us": 4203.78,
+        "process_cpu_us": 888.36,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.9697265625,
+      1.8623046875,
+      1.58642578125
+    ],
+    "host_load_end": [
+      1.8115234375,
+      1.8310546875,
+      1.57763671875
+    ],
+    "kind": "usm",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"cpu-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":405.800,\"p95_us\":504.880,\"p99_us\":747.972,\"process_cpu_us\":4486.559,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "cpu-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 405.8,
+        "p95_us": 504.88,
+        "p99_us": 747.972,
+        "process_cpu_us": 4486.559,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.8115234375,
+      1.8310546875,
+      1.57763671875
+    ],
+    "host_load_end": [
+      1.666015625,
+      1.80029296875,
+      1.56884765625
+    ],
+    "kind": "usm",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"cpu-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":485.071,\"p95_us\":668.287,\"p99_us\":694.328,\"process_cpu_us\":5011.063,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "cpu-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 485.071,
+        "p95_us": 668.287,
+        "p99_us": 694.328,
+        "process_cpu_us": 5011.063,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.666015625,
+      1.80029296875,
+      1.56884765625
+    ],
+    "host_load_end": [
+      1.6123046875,
+      1.78662109375,
+      1.5654296875
+    ],
+    "kind": "usm",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":3314.554,\"p95_us\":3521.836,\"p99_us\":3646.378,\"process_cpu_us\":873.550,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 3314.554,
+        "p95_us": 3521.836,
+        "p99_us": 3646.378,
+        "process_cpu_us": 873.55,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.6123046875,
+      1.78662109375,
+      1.5654296875
+    ],
+    "host_load_end": [
+      1.56298828125,
+      1.7734375,
+      1.56201171875
+    ],
+    "kind": "usm",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"cpu-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":580.498,\"p95_us\":706.651,\"p99_us\":749.074,\"process_cpu_us\":6841.171,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "cpu-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 580.498,
+        "p95_us": 706.651,
+        "p99_us": 749.074,
+        "process_cpu_us": 6841.171,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.56298828125,
+      1.7734375,
+      1.56201171875
+    ],
+    "host_load_end": [
+      1.4375,
+      1.74365234375,
+      1.55322265625
+    ],
+    "kind": "usm",
+    "pair": 0,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":8454.571,\"p95_us\":11087.042,\"p99_us\":12108.163,\"process_cpu_us\":1094.372,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 8454.571,
+        "p95_us": 11087.042,
+        "p99_us": 12108.163,
+        "process_cpu_us": 1094.372,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.4375,
+      1.74365234375,
+      1.55322265625
+    ],
+    "host_load_end": [
+      1.48291015625,
+      1.748046875,
+      1.5556640625
+    ],
+    "kind": "usm",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":9378.400,\"p95_us\":12697.718,\"p99_us\":14107.906,\"process_cpu_us\":1231.167,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 9378.4,
+        "p95_us": 12697.718,
+        "p99_us": 14107.906,
+        "process_cpu_us": 1231.167,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.48291015625,
+      1.748046875,
+      1.5556640625
+    ],
+    "host_load_end": [
+      1.36376953125,
+      1.71875,
+      1.546875
+    ],
+    "kind": "usm",
+    "pair": 1,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"cpu-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":537.484,\"p95_us\":665.041,\"p99_us\":782.890,\"process_cpu_us\":5580.813,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "cpu-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 537.484,
+        "p95_us": 665.041,
+        "p99_us": 782.89,
+        "process_cpu_us": 5580.813,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.36376953125,
+      1.71875,
+      1.546875
+    ],
+    "host_load_end": [
+      1.25439453125,
+      1.68994140625,
+      1.5380859375
+    ],
+    "kind": "usm",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "cpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"cpu-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":523.159,\"p95_us\":682.054,\"p99_us\":735.297,\"process_cpu_us\":5386.827,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "cpu-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 523.159,
+        "p95_us": 682.054,
+        "p99_us": 735.297,
+        "process_cpu_us": 5386.827,
+        "byte_exact": true
+      }
+    ]
+  },
+  {
+    "hashes": {
+      "build-perf10/bench_vulkan": "af2262a8006922092d3b2baaf9bf9d20f4fd078d55d1b2625ab1febb86c39a97",
+      "build-perf10/vulkan_usm.spv": "795d1d9f7cb23e21327afd4242517441745471a515c49f719acc3362574e4757",
+      "tests/experiment_vulkan.c": "da40aaeb2c33c07659d632a65531a5fb44db72fca38359463a009c9da9a240f0",
+      "tests/experiment_vulkan.h": "723b0a2f7e2b92c0beda3138c8dd0b24b0662b5fae15e9910a6b92bd66bfb51c",
+      "tests/vulkan_limits.h": "a24bc86b5c511e9da56772d9ced34e26772fd7a2031d1cff65dad904feed2190",
+      "tests/vulkan_bench_util.h": "4c9647e17afddbb2b76380b961ec4d3d9172ac9efec90af3e9209c9050433b4e",
+      "tests/bench_vulkan.c": "3ea09160a61ea6206b175896361385aa6c7279d4b92bd4c8d31dcd146a7f9dfb",
+      "tests/bench_vulkan_scale.c": "928076ac7fc99b9612b95c69e4d4b9816b12f67ec000652c1c42fe64cf56edf5"
+    },
+    "host_load_start": [
+      1.25439453125,
+      1.68994140625,
+      1.5380859375
+    ],
+    "host_load_end": [
+      1.15380859375,
+      1.66162109375,
+      1.52978515625
+    ],
+    "kind": "usm",
+    "pair": 2,
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "3840",
+      "2160",
+      "16",
+      "120",
+      "33333",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":3840,\"height\":2160,\"frames\":120,\"period_us\":33333,\"mean_us\":8314.701,\"p95_us\":9206.602,\"p99_us\":9587.581,\"process_cpu_us\":1288.207,\"byte_exact\":true}\n",
+    "measurements": [
+      {
+        "device": "AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)",
+        "backend": "vulkan-usm",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "period_us": 33333,
+        "mean_us": 8314.701,
+        "p95_us": 9206.602,
+        "p99_us": 9587.581,
+        "process_cpu_us": 1288.207,
+        "byte_exact": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,1298 @@
+[
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "4",
+      "32"
+    ],
+    "pair": 0,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":72,\"rmse\":2.486921}\n{\"quality_plane\":1,\"max_error\":6,\"rmse\":0.427638}\n{\"quality_plane\":2,\"max_error\":23,\"rmse\":0.456307}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":667.328,\"p95_us\":824.567,\"p99_us\":2045.422,\"process_cpu_us\":2675.245,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":4,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 72,
+        "rmse": 2.486921
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 6,
+        "rmse": 0.427638
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 23,
+        "rmse": 0.456307
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 667.328,
+        "p95_us": 824.567,
+        "p99_us": 2045.422,
+        "process_cpu_us": 2675.245,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 4,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "8",
+      "32"
+    ],
+    "pair": 0,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":101,\"rmse\":2.809323}\n{\"quality_plane\":1,\"max_error\":5,\"rmse\":0.437753}\n{\"quality_plane\":2,\"max_error\":19,\"rmse\":0.463808}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":542.097,\"p95_us\":629.685,\"p99_us\":1340.229,\"process_cpu_us\":3281.496,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":8,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 101,
+        "rmse": 2.809323
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 5,
+        "rmse": 0.437753
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 19,
+        "rmse": 0.463808
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 542.097,
+        "p95_us": 629.685,
+        "p99_us": 1340.229,
+        "process_cpu_us": 3281.496,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 8,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "12",
+      "32"
+    ],
+    "pair": 0,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844730}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446127}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458537}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":539.069,\"p95_us\":602.210,\"p99_us\":2289.620,\"process_cpu_us\":3686.799,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.84473
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446127
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458537
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 539.069,
+        "p95_us": 602.21,
+        "p99_us": 2289.62,
+        "process_cpu_us": 3686.799,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "16",
+      "32"
+    ],
+    "pair": 0,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":101,\"rmse\":3.140292}\n{\"quality_plane\":1,\"max_error\":6,\"rmse\":0.447692}\n{\"quality_plane\":2,\"max_error\":11,\"rmse\":0.464712}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":509.908,\"p95_us\":611.329,\"p99_us\":1592.773,\"process_cpu_us\":4192.138,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":16,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 101,
+        "rmse": 3.140292
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 6,
+        "rmse": 0.447692
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 11,
+        "rmse": 0.464712
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 509.908,
+        "p95_us": 611.329,
+        "p99_us": 1592.773,
+        "process_cpu_us": 4192.138,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 16,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "16",
+      "32"
+    ],
+    "pair": 1,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":101,\"rmse\":3.140292}\n{\"quality_plane\":1,\"max_error\":6,\"rmse\":0.447692}\n{\"quality_plane\":2,\"max_error\":11,\"rmse\":0.464712}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":569.962,\"p95_us\":612.751,\"p99_us\":1751.815,\"process_cpu_us\":5087.693,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":16,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 101,
+        "rmse": 3.140292
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 6,
+        "rmse": 0.447692
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 11,
+        "rmse": 0.464712
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 569.962,
+        "p95_us": 612.751,
+        "p99_us": 1751.815,
+        "process_cpu_us": 5087.693,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 16,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "12",
+      "32"
+    ],
+    "pair": 1,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844730}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446127}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458537}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":567.157,\"p95_us\":633.642,\"p99_us\":2727.718,\"process_cpu_us\":4135.822,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.84473
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446127
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458537
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 567.157,
+        "p95_us": 633.642,
+        "p99_us": 2727.718,
+        "process_cpu_us": 4135.822,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "8",
+      "32"
+    ],
+    "pair": 1,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":101,\"rmse\":2.809323}\n{\"quality_plane\":1,\"max_error\":5,\"rmse\":0.437753}\n{\"quality_plane\":2,\"max_error\":19,\"rmse\":0.463808}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":485.773,\"p95_us\":553.455,\"p99_us\":2167.219,\"process_cpu_us\":2765.885,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":8,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 101,
+        "rmse": 2.809323
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 5,
+        "rmse": 0.437753
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 19,
+        "rmse": 0.463808
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 485.773,
+        "p95_us": 553.455,
+        "p99_us": 2167.219,
+        "process_cpu_us": 2765.885,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 8,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "4",
+      "32"
+    ],
+    "pair": 1,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":72,\"rmse\":2.486921}\n{\"quality_plane\":1,\"max_error\":6,\"rmse\":0.427638}\n{\"quality_plane\":2,\"max_error\":23,\"rmse\":0.456307}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":789.095,\"p95_us\":861.730,\"p99_us\":1809.497,\"process_cpu_us\":3664.830,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":4,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 72,
+        "rmse": 2.486921
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 6,
+        "rmse": 0.427638
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 23,
+        "rmse": 0.456307
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 789.095,
+        "p95_us": 861.73,
+        "p99_us": 1809.497,
+        "process_cpu_us": 3664.83,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 4,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "4",
+      "32"
+    ],
+    "pair": 2,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":72,\"rmse\":2.486921}\n{\"quality_plane\":1,\"max_error\":6,\"rmse\":0.427638}\n{\"quality_plane\":2,\"max_error\":23,\"rmse\":0.456307}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":825.745,\"p95_us\":934.251,\"p99_us\":2287.775,\"process_cpu_us\":3949.110,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":4,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 72,
+        "rmse": 2.486921
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 6,
+        "rmse": 0.427638
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 23,
+        "rmse": 0.456307
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 825.745,
+        "p95_us": 934.251,
+        "p99_us": 2287.775,
+        "process_cpu_us": 3949.11,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 4,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "8",
+      "32"
+    ],
+    "pair": 2,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":101,\"rmse\":2.809323}\n{\"quality_plane\":1,\"max_error\":5,\"rmse\":0.437753}\n{\"quality_plane\":2,\"max_error\":19,\"rmse\":0.463808}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":542.433,\"p95_us\":593.824,\"p99_us\":1569.326,\"process_cpu_us\":3346.515,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":8,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 101,
+        "rmse": 2.809323
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 5,
+        "rmse": 0.437753
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 19,
+        "rmse": 0.463808
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 542.433,
+        "p95_us": 593.824,
+        "p99_us": 1569.326,
+        "process_cpu_us": 3346.515,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 8,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "12",
+      "32"
+    ],
+    "pair": 2,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844730}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446127}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458537}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":443.812,\"p95_us\":932.648,\"p99_us\":2927.067,\"process_cpu_us\":2834.581,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.84473
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446127
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458537
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 443.812,
+        "p95_us": 932.648,
+        "p99_us": 2927.067,
+        "process_cpu_us": 2834.581,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "16",
+      "32"
+    ],
+    "pair": 2,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":101,\"rmse\":3.140292}\n{\"quality_plane\":1,\"max_error\":6,\"rmse\":0.447692}\n{\"quality_plane\":2,\"max_error\":11,\"rmse\":0.464712}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":507.284,\"p95_us\":611.919,\"p99_us\":824.556,\"process_cpu_us\":4784.447,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":16,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 101,
+        "rmse": 3.140292
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 6,
+        "rmse": 0.447692
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 11,
+        "rmse": 0.464712
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 507.284,
+        "p95_us": 611.919,
+        "p99_us": 824.556,
+        "process_cpu_us": 4784.447,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 16,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "4",
+      "32"
+    ],
+    "pair": 0,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":71,\"rmse\":2.433258}\n{\"quality_plane\":1,\"max_error\":7,\"rmse\":0.470581}\n{\"quality_plane\":2,\"max_error\":25,\"rmse\":0.504460}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1930.223,\"p95_us\":2151.366,\"p99_us\":3539.537,\"process_cpu_us\":10822.859,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":4,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 71,
+        "rmse": 2.433258
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 7,
+        "rmse": 0.470581
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 25,
+        "rmse": 0.50446
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1930.223,
+        "p95_us": 2151.366,
+        "p99_us": 3539.537,
+        "process_cpu_us": 10822.859,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 4,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "8",
+      "32"
+    ],
+    "pair": 0,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":129,\"rmse\":3.607952}\n{\"quality_plane\":1,\"max_error\":7,\"rmse\":0.552501}\n{\"quality_plane\":2,\"max_error\":25,\"rmse\":0.586243}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1404.514,\"p95_us\":1618.852,\"p99_us\":1916.295,\"process_cpu_us\":10616.892,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":8,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 129,
+        "rmse": 3.607952
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 7,
+        "rmse": 0.552501
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 25,
+        "rmse": 0.586243
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1404.514,
+        "p95_us": 1618.852,
+        "p99_us": 1916.295,
+        "process_cpu_us": 10616.892,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 8,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "12",
+      "32"
+    ],
+    "pair": 0,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":66,\"rmse\":2.795024}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489053}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507352}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1267.498,\"p95_us\":1623.361,\"p99_us\":3043.815,\"process_cpu_us\":11708.294,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 66,
+        "rmse": 2.795024
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489053
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507352
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1267.498,
+        "p95_us": 1623.361,
+        "p99_us": 3043.815,
+        "process_cpu_us": 11708.294,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "16",
+      "32"
+    ],
+    "pair": 0,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":125,\"rmse\":4.018270}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.562507}\n{\"quality_plane\":2,\"max_error\":21,\"rmse\":0.590461}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1131.827,\"p95_us\":1413.500,\"p99_us\":1451.504,\"process_cpu_us\":12274.825,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":16,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 125,
+        "rmse": 4.01827
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.562507
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 21,
+        "rmse": 0.590461
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1131.827,
+        "p95_us": 1413.5,
+        "p99_us": 1451.504,
+        "process_cpu_us": 12274.825,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 16,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "16",
+      "32"
+    ],
+    "pair": 1,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":125,\"rmse\":4.018270}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.562507}\n{\"quality_plane\":2,\"max_error\":21,\"rmse\":0.590461}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1210.173,\"p95_us\":1481.443,\"p99_us\":3608.120,\"process_cpu_us\":12921.472,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":16,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 125,
+        "rmse": 4.01827
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.562507
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 21,
+        "rmse": 0.590461
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1210.173,
+        "p95_us": 1481.443,
+        "p99_us": 3608.12,
+        "process_cpu_us": 12921.472,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 16,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "12",
+      "32"
+    ],
+    "pair": 1,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":66,\"rmse\":2.795024}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489053}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507352}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1094.057,\"p95_us\":1341.629,\"p99_us\":1740.550,\"process_cpu_us\":9632.905,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 66,
+        "rmse": 2.795024
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489053
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507352
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1094.057,
+        "p95_us": 1341.629,
+        "p99_us": 1740.55,
+        "process_cpu_us": 9632.905,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "8",
+      "32"
+    ],
+    "pair": 1,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":129,\"rmse\":3.607952}\n{\"quality_plane\":1,\"max_error\":7,\"rmse\":0.552501}\n{\"quality_plane\":2,\"max_error\":25,\"rmse\":0.586243}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1176.645,\"p95_us\":1414.662,\"p99_us\":1550.207,\"process_cpu_us\":8770.613,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":8,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 129,
+        "rmse": 3.607952
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 7,
+        "rmse": 0.552501
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 25,
+        "rmse": 0.586243
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1176.645,
+        "p95_us": 1414.662,
+        "p99_us": 1550.207,
+        "process_cpu_us": 8770.613,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 8,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "4",
+      "32"
+    ],
+    "pair": 1,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":71,\"rmse\":2.433258}\n{\"quality_plane\":1,\"max_error\":7,\"rmse\":0.470581}\n{\"quality_plane\":2,\"max_error\":25,\"rmse\":0.504460}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1897.663,\"p95_us\":2224.057,\"p99_us\":2414.971,\"process_cpu_us\":10526.569,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":4,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 71,
+        "rmse": 2.433258
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 7,
+        "rmse": 0.470581
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 25,
+        "rmse": 0.50446
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1897.663,
+        "p95_us": 2224.057,
+        "p99_us": 2414.971,
+        "process_cpu_us": 10526.569,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 4,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "4",
+      "32"
+    ],
+    "pair": 2,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":71,\"rmse\":2.433258}\n{\"quality_plane\":1,\"max_error\":7,\"rmse\":0.470581}\n{\"quality_plane\":2,\"max_error\":25,\"rmse\":0.504460}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1544.438,\"p95_us\":1746.602,\"p99_us\":2494.998,\"process_cpu_us\":7657.791,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":4,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 71,
+        "rmse": 2.433258
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 7,
+        "rmse": 0.470581
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 25,
+        "rmse": 0.50446
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1544.438,
+        "p95_us": 1746.602,
+        "p99_us": 2494.998,
+        "process_cpu_us": 7657.791,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 4,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "8",
+      "32"
+    ],
+    "pair": 2,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":129,\"rmse\":3.607952}\n{\"quality_plane\":1,\"max_error\":7,\"rmse\":0.552501}\n{\"quality_plane\":2,\"max_error\":25,\"rmse\":0.586243}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1265.700,\"p95_us\":1417.797,\"p99_us\":3398.778,\"process_cpu_us\":8852.297,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":8,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 129,
+        "rmse": 3.607952
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 7,
+        "rmse": 0.552501
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 25,
+        "rmse": 0.586243
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1265.7,
+        "p95_us": 1417.797,
+        "p99_us": 3398.778,
+        "process_cpu_us": 8852.297,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 8,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "12",
+      "32"
+    ],
+    "pair": 2,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":66,\"rmse\":2.795024}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.489053}\n{\"quality_plane\":2,\"max_error\":17,\"rmse\":0.507352}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1028.542,\"p95_us\":1250.710,\"p99_us\":1524.426,\"process_cpu_us\":9083.200,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 66,
+        "rmse": 2.795024
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.489053
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 17,
+        "rmse": 0.507352
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1028.542,
+        "p95_us": 1250.71,
+        "p99_us": 1524.426,
+        "process_cpu_us": 9083.2,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "4",
+      "cpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "separable",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "33333",
+      "16",
+      "32"
+    ],
+    "pair": 2,
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":125,\"rmse\":4.018270}\n{\"quality_plane\":1,\"max_error\":9,\"rmse\":0.562507}\n{\"quality_plane\":2,\"max_error\":21,\"rmse\":0.590461}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"zimg-spline36\",\"width\":3840,\"height\":2160,\"frames\":120,\"mean_us\":1220.567,\"p95_us\":1474.378,\"p99_us\":2822.599,\"process_cpu_us\":12458.663,\"variant\":\"separable\",\"combined\":true,\"timing\":false,\"period_us\":33333,\"cpu_workers\":16,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 125,
+        "rmse": 4.01827
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 9,
+        "rmse": 0.562507
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 21,
+        "rmse": 0.590461
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "zimg-spline36",
+        "width": 3840,
+        "height": 2160,
+        "frames": 120,
+        "mean_us": 1220.567,
+        "p95_us": 1474.378,
+        "p99_us": 2822.599,
+        "process_cpu_us": 12458.663,
+        "variant": "separable",
+        "combined": true,
+        "timing": false,
+        "period_us": 33333,
+        "cpu_workers": 16,
+        "sequence_frames": 32
+      }
+    ]
+  }
+]

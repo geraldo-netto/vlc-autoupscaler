@@ -1,0 +1,194 @@
+[
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1",
+      "1",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":1,\"height\":1,\"frames\":1,\"period_us\":0,\"mean_us\":79.515,\"p95_us\":79.515,\"p99_us\":79.515,\"process_cpu_us\":38.643,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1",
+      "9",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":1,\"height\":9,\"frames\":1,\"period_us\":0,\"mean_us\":86.307,\"p95_us\":86.307,\"p99_us\":86.307,\"process_cpu_us\":41.388,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "17",
+      "1",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":17,\"height\":1,\"frames\":1,\"period_us\":0,\"mean_us\":86.418,\"p95_us\":86.418,\"p99_us\":86.418,\"process_cpu_us\":41.927,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "17",
+      "9",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":17,\"height\":9,\"frames\":1,\"period_us\":0,\"mean_us\":108.500,\"p95_us\":108.500,\"p99_us\":108.500,\"process_cpu_us\":63.879,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "1920",
+      "1080",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":1920,\"height\":1080,\"frames\":1,\"period_us\":0,\"mean_us\":600.125,\"p95_us\":600.125,\"p99_us\":600.125,\"process_cpu_us\":123.152,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "0",
+      "3840",
+      "2160",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-usm\",\"width\":3840,\"height\":2160,\"frames\":1,\"period_us\":0,\"mean_us\":2859.771,\"p95_us\":2859.771,\"p99_us\":2859.771,\"process_cpu_us\":919.138,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1",
+      "1",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":1,\"height\":1,\"frames\":1,\"period_us\":0,\"mean_us\":74.545,\"p95_us\":74.545,\"p99_us\":74.545,\"process_cpu_us\":42.110,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1",
+      "9",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":1,\"height\":9,\"frames\":1,\"period_us\":0,\"mean_us\":65.587,\"p95_us\":65.587,\"p99_us\":65.587,\"process_cpu_us\":39.414,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "17",
+      "1",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":17,\"height\":1,\"frames\":1,\"period_us\":0,\"mean_us\":68.974,\"p95_us\":68.974,\"p99_us\":68.974,\"process_cpu_us\":39.876,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "17",
+      "9",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":17,\"height\":9,\"frames\":1,\"period_us\":0,\"mean_us\":68.623,\"p95_us\":68.623,\"p99_us\":68.623,\"process_cpu_us\":41.448,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "1920",
+      "1080",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":1920,\"height\":1080,\"frames\":1,\"period_us\":0,\"mean_us\":1644.983,\"p95_us\":1644.983,\"p99_us\":1644.983,\"process_cpu_us\":133.180,\"byte_exact\":true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "3840",
+      "2160",
+      "12",
+      "1",
+      "0",
+      "gpu"
+    ],
+    "returncode": 0,
+    "stdout": "{\"device\":\"AMD Radeon 610M (RADV RAPHAEL_MENDOCINO)\",\"backend\":\"vulkan-usm\",\"width\":3840,\"height\":2160,\"frames\":1,\"period_us\":0,\"mean_us\":6804.659,\"p95_us\":6804.659,\"p99_us\":6804.659,\"process_cpu_us\":703.647,\"byte_exact\":true}\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,786 @@
+[
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "lookup-direct",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "0",
+      "12",
+      "1"
+    ],
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844712}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446125}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458546}\n{\"stage\":\"host_upload\",\"mean_us\":16.171,\"p95_us\":24.468,\"p99_us\":46.291}\n{\"stage\":\"submit_wait\",\"mean_us\":530.640,\"p95_us\":720.524,\"p99_us\":1106.652}\n{\"stage\":\"host_download\",\"mean_us\":127.918,\"p95_us\":234.480,\"p99_us\":377.220}\n{\"stage\":\"gpu_upload\",\"mean_us\":0.353,\"p95_us\":0.360,\"p99_us\":1.240}\n{\"stage\":\"gpu_pass_0\",\"mean_us\":89.457,\"p95_us\":98.440,\"p99_us\":184.240}\n{\"stage\":\"gpu_pass_1\",\"mean_us\":111.438,\"p95_us\":113.000,\"p99_us\":339.160}\n{\"stage\":\"gpu_pass_2\",\"mean_us\":246.753,\"p95_us\":250.200,\"p99_us\":341.360}\n{\"stage\":\"gpu_download\",\"mean_us\":0.226,\"p95_us\":0.240,\"p99_us\":0.800}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":675.169,\"p95_us\":1064.770,\"p99_us\":1232.279,\"process_cpu_us\":161.645,\"variant\":\"lookup-direct\",\"combined\":true,\"timing\":true,\"period_us\":0,\"cpu_workers\":12,\"sequence_frames\":1}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.844712
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446125
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458546
+      },
+      {
+        "stage": "host_upload",
+        "mean_us": 16.171,
+        "p95_us": 24.468,
+        "p99_us": 46.291
+      },
+      {
+        "stage": "submit_wait",
+        "mean_us": 530.64,
+        "p95_us": 720.524,
+        "p99_us": 1106.652
+      },
+      {
+        "stage": "host_download",
+        "mean_us": 127.918,
+        "p95_us": 234.48,
+        "p99_us": 377.22
+      },
+      {
+        "stage": "gpu_upload",
+        "mean_us": 0.353,
+        "p95_us": 0.36,
+        "p99_us": 1.24
+      },
+      {
+        "stage": "gpu_pass_0",
+        "mean_us": 89.457,
+        "p95_us": 98.44,
+        "p99_us": 184.24
+      },
+      {
+        "stage": "gpu_pass_1",
+        "mean_us": 111.438,
+        "p95_us": 113.0,
+        "p99_us": 339.16
+      },
+      {
+        "stage": "gpu_pass_2",
+        "mean_us": 246.753,
+        "p95_us": 250.2,
+        "p99_us": 341.36
+      },
+      {
+        "stage": "gpu_download",
+        "mean_us": 0.226,
+        "p95_us": 0.24,
+        "p99_us": 0.8
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 675.169,
+        "p95_us": 1064.77,
+        "p99_us": 1232.279,
+        "process_cpu_us": 161.645,
+        "variant": "lookup-direct",
+        "combined": true,
+        "timing": true,
+        "period_us": 0,
+        "cpu_workers": 12,
+        "sequence_frames": 1
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "lookup-fused-direct",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "0",
+      "12",
+      "1"
+    ],
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844712}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446125}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458546}\n{\"stage\":\"host_upload\",\"mean_us\":15.263,\"p95_us\":29.769,\"p99_us\":36.962}\n{\"stage\":\"submit_wait\",\"mean_us\":494.759,\"p95_us\":866.962,\"p99_us\":1127.102}\n{\"stage\":\"host_download\",\"mean_us\":133.236,\"p95_us\":263.698,\"p99_us\":344.086}\n{\"stage\":\"gpu_upload\",\"mean_us\":0.357,\"p95_us\":0.520,\"p99_us\":0.760}\n{\"stage\":\"gpu_pass_0\",\"mean_us\":89.283,\"p95_us\":100.960,\"p99_us\":131.480}\n{\"stage\":\"gpu_pass_1\",\"mean_us\":304.929,\"p95_us\":398.880,\"p99_us\":595.480}\n{\"stage\":\"gpu_download\",\"mean_us\":0.229,\"p95_us\":0.320,\"p99_us\":0.520}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":643.609,\"p95_us\":1043.137,\"p99_us\":1244.843,\"process_cpu_us\":165.560,\"variant\":\"lookup-fused-direct\",\"combined\":true,\"timing\":true,\"period_us\":0,\"cpu_workers\":12,\"sequence_frames\":1}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.844712
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446125
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458546
+      },
+      {
+        "stage": "host_upload",
+        "mean_us": 15.263,
+        "p95_us": 29.769,
+        "p99_us": 36.962
+      },
+      {
+        "stage": "submit_wait",
+        "mean_us": 494.759,
+        "p95_us": 866.962,
+        "p99_us": 1127.102
+      },
+      {
+        "stage": "host_download",
+        "mean_us": 133.236,
+        "p95_us": 263.698,
+        "p99_us": 344.086
+      },
+      {
+        "stage": "gpu_upload",
+        "mean_us": 0.357,
+        "p95_us": 0.52,
+        "p99_us": 0.76
+      },
+      {
+        "stage": "gpu_pass_0",
+        "mean_us": 89.283,
+        "p95_us": 100.96,
+        "p99_us": 131.48
+      },
+      {
+        "stage": "gpu_pass_1",
+        "mean_us": 304.929,
+        "p95_us": 398.88,
+        "p99_us": 595.48
+      },
+      {
+        "stage": "gpu_download",
+        "mean_us": 0.229,
+        "p95_us": 0.32,
+        "p99_us": 0.52
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 643.609,
+        "p95_us": 1043.137,
+        "p99_us": 1244.843,
+        "process_cpu_us": 165.56,
+        "variant": "lookup-fused-direct",
+        "combined": true,
+        "timing": true,
+        "period_us": 0,
+        "cpu_workers": 12,
+        "sequence_frames": 1
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "lookup-direct",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "33333",
+      "12",
+      "1"
+    ],
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844712}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446125}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458546}\n{\"stage\":\"host_upload\",\"mean_us\":33.214,\"p95_us\":53.755,\"p99_us\":105.097}\n{\"stage\":\"submit_wait\",\"mean_us\":1069.252,\"p95_us\":1157.592,\"p99_us\":1455.066}\n{\"stage\":\"host_download\",\"mean_us\":127.966,\"p95_us\":223.308,\"p99_us\":282.745}\n{\"stage\":\"gpu_upload\",\"mean_us\":1.238,\"p95_us\":1.280,\"p99_us\":1.280}\n{\"stage\":\"gpu_pass_0\",\"mean_us\":184.355,\"p95_us\":189.240,\"p99_us\":211.880}\n{\"stage\":\"gpu_pass_1\",\"mean_us\":339.875,\"p95_us\":352.200,\"p99_us\":402.160}\n{\"stage\":\"gpu_pass_2\",\"mean_us\":342.462,\"p95_us\":342.720,\"p99_us\":342.840}\n{\"stage\":\"gpu_download\",\"mean_us\":0.815,\"p95_us\":0.840,\"p99_us\":0.840}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":1231.246,\"p95_us\":1360.460,\"p99_us\":1588.357,\"process_cpu_us\":196.626,\"variant\":\"lookup-direct\",\"combined\":true,\"timing\":true,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":1}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.844712
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446125
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458546
+      },
+      {
+        "stage": "host_upload",
+        "mean_us": 33.214,
+        "p95_us": 53.755,
+        "p99_us": 105.097
+      },
+      {
+        "stage": "submit_wait",
+        "mean_us": 1069.252,
+        "p95_us": 1157.592,
+        "p99_us": 1455.066
+      },
+      {
+        "stage": "host_download",
+        "mean_us": 127.966,
+        "p95_us": 223.308,
+        "p99_us": 282.745
+      },
+      {
+        "stage": "gpu_upload",
+        "mean_us": 1.238,
+        "p95_us": 1.28,
+        "p99_us": 1.28
+      },
+      {
+        "stage": "gpu_pass_0",
+        "mean_us": 184.355,
+        "p95_us": 189.24,
+        "p99_us": 211.88
+      },
+      {
+        "stage": "gpu_pass_1",
+        "mean_us": 339.875,
+        "p95_us": 352.2,
+        "p99_us": 402.16
+      },
+      {
+        "stage": "gpu_pass_2",
+        "mean_us": 342.462,
+        "p95_us": 342.72,
+        "p99_us": 342.84
+      },
+      {
+        "stage": "gpu_download",
+        "mean_us": 0.815,
+        "p95_us": 0.84,
+        "p99_us": 0.84
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 1231.246,
+        "p95_us": 1360.46,
+        "p99_us": 1588.357,
+        "process_cpu_us": 196.626,
+        "variant": "lookup-direct",
+        "combined": true,
+        "timing": true,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 1
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "lookup-fused-direct",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "33333",
+      "12",
+      "1"
+    ],
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844712}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446125}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458546}\n{\"stage\":\"host_upload\",\"mean_us\":39.054,\"p95_us\":70.368,\"p99_us\":137.370}\n{\"stage\":\"submit_wait\",\"mean_us\":1299.608,\"p95_us\":1346.943,\"p99_us\":1731.198}\n{\"stage\":\"host_download\",\"mean_us\":118.873,\"p95_us\":194.281,\"p99_us\":338.695}\n{\"stage\":\"gpu_upload\",\"mean_us\":1.241,\"p95_us\":1.280,\"p99_us\":1.280}\n{\"stage\":\"gpu_pass_0\",\"mean_us\":184.043,\"p95_us\":188.720,\"p99_us\":194.080}\n{\"stage\":\"gpu_pass_1\",\"mean_us\":908.346,\"p95_us\":912.120,\"p99_us\":913.120}\n{\"stage\":\"gpu_download\",\"mean_us\":0.814,\"p95_us\":0.840,\"p99_us\":0.840}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":1458.341,\"p95_us\":1663.415,\"p99_us\":1886.642,\"process_cpu_us\":195.006,\"variant\":\"lookup-fused-direct\",\"combined\":true,\"timing\":true,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":1}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.844712
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446125
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458546
+      },
+      {
+        "stage": "host_upload",
+        "mean_us": 39.054,
+        "p95_us": 70.368,
+        "p99_us": 137.37
+      },
+      {
+        "stage": "submit_wait",
+        "mean_us": 1299.608,
+        "p95_us": 1346.943,
+        "p99_us": 1731.198
+      },
+      {
+        "stage": "host_download",
+        "mean_us": 118.873,
+        "p95_us": 194.281,
+        "p99_us": 338.695
+      },
+      {
+        "stage": "gpu_upload",
+        "mean_us": 1.241,
+        "p95_us": 1.28,
+        "p99_us": 1.28
+      },
+      {
+        "stage": "gpu_pass_0",
+        "mean_us": 184.043,
+        "p95_us": 188.72,
+        "p99_us": 194.08
+      },
+      {
+        "stage": "gpu_pass_1",
+        "mean_us": 908.346,
+        "p95_us": 912.12,
+        "p99_us": 913.12
+      },
+      {
+        "stage": "gpu_download",
+        "mean_us": 0.814,
+        "p95_us": 0.84,
+        "p99_us": 0.84
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 1458.341,
+        "p95_us": 1663.415,
+        "p99_us": 1886.642,
+        "process_cpu_us": 195.006,
+        "variant": "lookup-fused-direct",
+        "combined": true,
+        "timing": true,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 1
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "lookup-direct",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "0",
+      "12",
+      "32"
+    ],
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844712}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446125}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458546}\n{\"stage\":\"host_upload\",\"mean_us\":12.224,\"p95_us\":13.567,\"p99_us\":15.921}\n{\"stage\":\"submit_wait\",\"mean_us\":556.994,\"p95_us\":914.425,\"p99_us\":1052.416}\n{\"stage\":\"host_download\",\"mean_us\":122.299,\"p95_us\":234.129,\"p99_us\":386.379}\n{\"stage\":\"gpu_upload\",\"mean_us\":0.367,\"p95_us\":0.360,\"p99_us\":1.240}\n{\"stage\":\"gpu_pass_0\",\"mean_us\":90.347,\"p95_us\":98.280,\"p99_us\":184.600}\n{\"stage\":\"gpu_pass_1\",\"mean_us\":115.026,\"p95_us\":115.000,\"p99_us\":335.120}\n{\"stage\":\"gpu_pass_2\",\"mean_us\":247.405,\"p95_us\":246.680,\"p99_us\":341.520}\n{\"stage\":\"gpu_download\",\"mean_us\":0.242,\"p95_us\":0.240,\"p99_us\":0.840}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":706.331,\"p95_us\":1037.015,\"p99_us\":1162.922,\"process_cpu_us\":168.272,\"variant\":\"lookup-direct\",\"combined\":true,\"timing\":true,\"period_us\":0,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.844712
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446125
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458546
+      },
+      {
+        "stage": "host_upload",
+        "mean_us": 12.224,
+        "p95_us": 13.567,
+        "p99_us": 15.921
+      },
+      {
+        "stage": "submit_wait",
+        "mean_us": 556.994,
+        "p95_us": 914.425,
+        "p99_us": 1052.416
+      },
+      {
+        "stage": "host_download",
+        "mean_us": 122.299,
+        "p95_us": 234.129,
+        "p99_us": 386.379
+      },
+      {
+        "stage": "gpu_upload",
+        "mean_us": 0.367,
+        "p95_us": 0.36,
+        "p99_us": 1.24
+      },
+      {
+        "stage": "gpu_pass_0",
+        "mean_us": 90.347,
+        "p95_us": 98.28,
+        "p99_us": 184.6
+      },
+      {
+        "stage": "gpu_pass_1",
+        "mean_us": 115.026,
+        "p95_us": 115.0,
+        "p99_us": 335.12
+      },
+      {
+        "stage": "gpu_pass_2",
+        "mean_us": 247.405,
+        "p95_us": 246.68,
+        "p99_us": 341.52
+      },
+      {
+        "stage": "gpu_download",
+        "mean_us": 0.242,
+        "p95_us": 0.24,
+        "p99_us": 0.84
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 706.331,
+        "p95_us": 1037.015,
+        "p99_us": 1162.922,
+        "process_cpu_us": 168.272,
+        "variant": "lookup-direct",
+        "combined": true,
+        "timing": true,
+        "period_us": 0,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "lookup-fused-direct",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "0",
+      "12",
+      "32"
+    ],
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844712}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446125}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458546}\n{\"stage\":\"host_upload\",\"mean_us\":13.775,\"p95_us\":17.534,\"p99_us\":26.783}\n{\"stage\":\"submit_wait\",\"mean_us\":504.015,\"p95_us\":848.556,\"p99_us\":942.530}\n{\"stage\":\"host_download\",\"mean_us\":103.753,\"p95_us\":179.412,\"p99_us\":319.096}\n{\"stage\":\"gpu_upload\",\"mean_us\":0.400,\"p95_us\":0.600,\"p99_us\":1.040}\n{\"stage\":\"gpu_pass_0\",\"mean_us\":92.096,\"p95_us\":107.160,\"p99_us\":163.240}\n{\"stage\":\"gpu_pass_1\",\"mean_us\":329.055,\"p95_us\":452.760,\"p99_us\":718.680}\n{\"stage\":\"gpu_download\",\"mean_us\":0.255,\"p95_us\":0.360,\"p99_us\":0.600}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":638.148,\"p95_us\":971.607,\"p99_us\":1057.115,\"process_cpu_us\":152.565,\"variant\":\"lookup-fused-direct\",\"combined\":true,\"timing\":true,\"period_us\":0,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.844712
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446125
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458546
+      },
+      {
+        "stage": "host_upload",
+        "mean_us": 13.775,
+        "p95_us": 17.534,
+        "p99_us": 26.783
+      },
+      {
+        "stage": "submit_wait",
+        "mean_us": 504.015,
+        "p95_us": 848.556,
+        "p99_us": 942.53
+      },
+      {
+        "stage": "host_download",
+        "mean_us": 103.753,
+        "p95_us": 179.412,
+        "p99_us": 319.096
+      },
+      {
+        "stage": "gpu_upload",
+        "mean_us": 0.4,
+        "p95_us": 0.6,
+        "p99_us": 1.04
+      },
+      {
+        "stage": "gpu_pass_0",
+        "mean_us": 92.096,
+        "p95_us": 107.16,
+        "p99_us": 163.24
+      },
+      {
+        "stage": "gpu_pass_1",
+        "mean_us": 329.055,
+        "p95_us": 452.76,
+        "p99_us": 718.68
+      },
+      {
+        "stage": "gpu_download",
+        "mean_us": 0.255,
+        "p95_us": 0.36,
+        "p99_us": 0.6
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 638.148,
+        "p95_us": 971.607,
+        "p99_us": 1057.115,
+        "process_cpu_us": 152.565,
+        "variant": "lookup-fused-direct",
+        "combined": true,
+        "timing": true,
+        "period_us": 0,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "lookup-direct",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "33333",
+      "12",
+      "32"
+    ],
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844712}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446125}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458546}\n{\"stage\":\"host_upload\",\"mean_us\":47.964,\"p95_us\":93.814,\"p99_us\":105.076}\n{\"stage\":\"submit_wait\",\"mean_us\":1115.913,\"p95_us\":1534.391,\"p99_us\":1623.967}\n{\"stage\":\"host_download\",\"mean_us\":201.130,\"p95_us\":342.923,\"p99_us\":403.101}\n{\"stage\":\"gpu_upload\",\"mean_us\":1.243,\"p95_us\":1.280,\"p99_us\":1.280}\n{\"stage\":\"gpu_pass_0\",\"mean_us\":184.535,\"p95_us\":189.040,\"p99_us\":189.920}\n{\"stage\":\"gpu_pass_1\",\"mean_us\":339.090,\"p95_us\":348.320,\"p99_us\":351.560}\n{\"stage\":\"gpu_pass_2\",\"mean_us\":342.376,\"p95_us\":342.640,\"p99_us\":342.720}\n{\"stage\":\"gpu_download\",\"mean_us\":0.814,\"p95_us\":0.840,\"p99_us\":0.840}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":1423.214,\"p95_us\":1758.541,\"p99_us\":1859.469,\"process_cpu_us\":359.594,\"variant\":\"lookup-direct\",\"combined\":true,\"timing\":true,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.844712
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446125
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458546
+      },
+      {
+        "stage": "host_upload",
+        "mean_us": 47.964,
+        "p95_us": 93.814,
+        "p99_us": 105.076
+      },
+      {
+        "stage": "submit_wait",
+        "mean_us": 1115.913,
+        "p95_us": 1534.391,
+        "p99_us": 1623.967
+      },
+      {
+        "stage": "host_download",
+        "mean_us": 201.13,
+        "p95_us": 342.923,
+        "p99_us": 403.101
+      },
+      {
+        "stage": "gpu_upload",
+        "mean_us": 1.243,
+        "p95_us": 1.28,
+        "p99_us": 1.28
+      },
+      {
+        "stage": "gpu_pass_0",
+        "mean_us": 184.535,
+        "p95_us": 189.04,
+        "p99_us": 189.92
+      },
+      {
+        "stage": "gpu_pass_1",
+        "mean_us": 339.09,
+        "p95_us": 348.32,
+        "p99_us": 351.56
+      },
+      {
+        "stage": "gpu_pass_2",
+        "mean_us": 342.376,
+        "p95_us": 342.64,
+        "p99_us": 342.72
+      },
+      {
+        "stage": "gpu_download",
+        "mean_us": 0.814,
+        "p95_us": 0.84,
+        "p99_us": 0.84
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 1423.214,
+        "p95_us": 1758.541,
+        "p99_us": 1859.469,
+        "process_cpu_us": 359.594,
+        "variant": "lookup-direct",
+        "combined": true,
+        "timing": true,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  },
+  {
+    "command": [
+      "build-perf10/bench_vulkan_scale",
+      "build-perf10/vulkan_separable.spv",
+      "0",
+      "2",
+      "gpu",
+      "build/decision-review/clips/live-action-540.yuv",
+      "lookup-fused-direct",
+      "build-perf10/vulkan_usm.spv",
+      "1",
+      "33333",
+      "12",
+      "32"
+    ],
+    "returncode": 0,
+    "stdout": "{\"quality_plane\":0,\"max_error\":65,\"rmse\":2.844712}\n{\"quality_plane\":1,\"max_error\":8,\"rmse\":0.446125}\n{\"quality_plane\":2,\"max_error\":14,\"rmse\":0.458546}\n{\"stage\":\"host_upload\",\"mean_us\":29.310,\"p95_us\":51.952,\"p99_us\":63.755}\n{\"stage\":\"submit_wait\",\"mean_us\":1298.224,\"p95_us\":1357.814,\"p99_us\":1387.031}\n{\"stage\":\"host_download\",\"mean_us\":149.712,\"p95_us\":293.085,\"p99_us\":370.087}\n{\"stage\":\"gpu_upload\",\"mean_us\":1.240,\"p95_us\":1.280,\"p99_us\":1.280}\n{\"stage\":\"gpu_pass_0\",\"mean_us\":183.163,\"p95_us\":185.160,\"p99_us\":186.680}\n{\"stage\":\"gpu_pass_1\",\"mean_us\":909.186,\"p95_us\":910.160,\"p99_us\":1003.600}\n{\"stage\":\"gpu_download\",\"mean_us\":0.815,\"p95_us\":0.840,\"p99_us\":0.840}\n{\"device\":\"AMD Radeon RX 6600 XT (RADV NAVI23)\",\"backend\":\"vulkan-spline36\",\"width\":1920,\"height\":1080,\"frames\":120,\"mean_us\":1525.619,\"p95_us\":1705.256,\"p99_us\":1836.173,\"process_cpu_us\":262.037,\"variant\":\"lookup-fused-direct\",\"combined\":true,\"timing\":true,\"period_us\":33333,\"cpu_workers\":12,\"sequence_frames\":32}\n",
+    "stderr": "",
+    "measurements": [
+      {
+        "quality_plane": 0,
+        "max_error": 65,
+        "rmse": 2.844712
+      },
+      {
+        "quality_plane": 1,
+        "max_error": 8,
+        "rmse": 0.446125
+      },
+      {
+        "quality_plane": 2,
+        "max_error": 14,
+        "rmse": 0.458546
+      },
+      {
+        "stage": "host_upload",
+        "mean_us": 29.31,
+        "p95_us": 51.952,
+        "p99_us": 63.755
+      },
+      {
+        "stage": "submit_wait",
+        "mean_us": 1298.224,
+        "p95_us": 1357.814,
+        "p99_us": 1387.031
+      },
+      {
+        "stage": "host_download",
+        "mean_us": 149.712,
+        "p95_us": 293.085,
+        "p99_us": 370.087
+      },
+      {
+        "stage": "gpu_upload",
+        "mean_us": 1.24,
+        "p95_us": 1.28,
+        "p99_us": 1.28
+      },
+      {
+        "stage": "gpu_pass_0",
+        "mean_us": 183.163,
+        "p95_us": 185.16,
+        "p99_us": 186.68
+      },
+      {
+        "stage": "gpu_pass_1",
+        "mean_us": 909.186,
+        "p95_us": 910.16,
+        "p99_us": 1003.6
+      },
+      {
+        "stage": "gpu_download",
+        "mean_us": 0.815,
+        "p95_us": 0.84,
+        "p99_us": 0.84
+      },
+      {
+        "device": "AMD Radeon RX 6600 XT (RADV NAVI23)",
+        "backend": "vulkan-spline36",
+        "width": 1920,
+        "height": 1080,
+        "frames": 120,
+        "mean_us": 1525.619,
+        "p95_us": 1705.256,
+        "p99_us": 1836.173,
+        "process_cpu_us": 262.037,
+        "variant": "lookup-fused-direct",
+        "combined": true,
+        "timing": true,
+        "period_us": 33333,
+        "cpu_workers": 12,
+        "sequence_frames": 32
+      }
+    ]
+  }
+]

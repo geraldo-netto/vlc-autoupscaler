@@ -1033,14 +1033,13 @@ static int run_zimg_threads_in(const struct zcfg *c, int threads, int smooth,
  * SCAL-3 SEAM ORACLE. A tiled resample (N stripes) is NOT byte-identical to
  * the single-graph (threads=1) resample: each tile restarts zimg's resize
  * coordinate origin, so tile output carries a sub-pixel PHASE rounding at the
- * boundary. On real (low-frequency) content that rounding is bounded to a few
- * code values out of 255 — imperceptible; only on uncorrelated NOISE does a
- * sub-pixel shift blow up to large per-pixel deltas.
+ * boundary. The smooth fixture below bounds this difference; decoded content
+ * with edges can have much larger deltas (REL-22, PLAYBACK_VULKAN_EVALUATION.md).
  *
  * So the seam criterion is NOT byte-identity but a bounded delta on SMOOTH
  * content: maxdelta <= SEAM_MAX_DELTA. This is the gate that must pass before
- * (and after) column tiling is added — column tiles add the same bounded
- * horizontal phase rounding and must stay under the same ceiling.
+ * (and after) column tiling is added. This fixture does not establish visual
+ * equivalence or a maximum difference for arbitrary video.
  */
 #define SEAM_MAX_DELTA 6
 static void test_tiling_matches_untiled(void)

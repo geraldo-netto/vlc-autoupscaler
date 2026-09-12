@@ -1,0 +1,1738 @@
+lizard -C 10 src/ tests/
+shellcheck scripts/*.sh tests/*.sh
+cc -O3 -march=native -std=c11 -D_GNU_SOURCE -Wall -Wextra -Wshadow -Wpointer-arith -Wstrict-prototypes -MMD -MP -Werror -Ibuild/decision-review/direct-vulkan/Vulkan-Headers-1.3.275/include -c -o build-perf10/experiment_vulkan.o tests/experiment_vulkan.c
+cc -O3 -march=native -std=c11 -D_GNU_SOURCE -Wall -Wextra -Wshadow -Wpointer-arith -Wstrict-prototypes -MMD -MP -Werror -c -o build-perf10/usm_pool_bench.o src/usm_pool.c
+================================================
+  NLOC    CCN   token  PARAM  length  location  
+------------------------------------------------
+      15      8     84      5      15 up_scaler_open_with_fallback@49-63@src/scaler_pick_logic.h
+       8      4     37      4       8 up_pick_zimg_if_ok@65-72@src/scaler_pick_logic.h
+       8      2     33      4       8 up_pick_swscale_if_ok@74-81@src/scaler_pick_logic.h
+      12      2     61      6      14 up_pick_auto@83-96@src/scaler_pick_logic.h
+      21      6     99      7      22 up_scaler_pick_with@105-126@src/scaler_pick_logic.h
+      17      5     54      1      20 CheckCpuLevel@174-193@src/autoupscale_module.c
+       6      2     25      1       6 up_autoupscale_open_checked@196-201@src/autoupscale_module.c
+       4      1     13      1       4 Close@203-206@src/autoupscale_module.c
+      14      6     87      4      14 up_chroma_to_zimg@36-49@src/scaler_zimg_chroma.h
+      12      6    107      2      12 up_metrics_clock@26-37@src/pipeline_metrics.h
+       6      3     35      1       6 up_metrics_mark@39-44@src/pipeline_metrics.h
+       8      3     64      1       8 up_metrics_begin@46-53@src/pipeline_metrics.h
+       8      4     65      3       8 up_metrics_stage@55-62@src/pipeline_metrics.h
+      10      3    122      3      10 up_metrics_store@64-73@src/pipeline_metrics.h
+      13      9    129      2      13 up_metrics_end@75-87@src/pipeline_metrics.h
+       6      3     48      2       6 up_metrics_score@89-94@src/pipeline_metrics.h
+       4      1     26      1       4 up_metrics_reset@96-99@src/pipeline_metrics.h
+      15      4    147      6      15 up_probe__lap_row@64-78@src/content_probe.h
+      21      9    197      6      21 up_probe__edge_rows@80-100@src/content_probe.h
+      11      5    101      5      11 up_probe_metrics@102-112@src/content_probe.h
+      11      2     57      5      11 up_probe_observe@132-142@src/content_probe.h
+       9      5     66      2       9 up_should_skip_usm_for_sharpness@202-210@src/content_probe.h
+      12      7    108      1      15 up_should_bypass_for_content@212-226@src/content_probe.h
+       6      3     35      1       7 up_usm_amount_pct_to_q8@50-56@src/usm.h
+      16      4    187      3      18 up_usm__hblur_row@66-83@src/usm.h
+       8      3     52      6      12 up_usm__apply_identity@90-101@src/usm.h
+       6      3     28      1       6 up_usm__clamp_amount_q8@105-110@src/usm.h
+       6      3     32      1       6 up_usm__floor_div_q8@112-117@src/usm.h
+      20      4    153      7      20 up_usm__combine_row@135-154@src/usm.h
+       9      5     52      5       9 up_usm__plane_args_ok@158-166@src/usm.h
+       4      2     16      1       4 up_zimg_stripe_min_lines@46-49@src/zimg_helpers.h
+       6      3     48      1       9 up_round_up_pitch@57-65@src/zimg_helpers.h
+       6      3     32      1       6 up_round_up_lines@71-76@src/zimg_helpers.h
+       7      4     57      2       7 up_chroma_dim@85-91@src/zimg_helpers.h
+       5      3     34      2       5 up_plane_pitch@98-102@src/zimg_helpers.h
+       5      3     34      2       5 up_plane_lines@108-112@src/zimg_helpers.h
+      21      3    132      2      21 up_zimg_resolve_io_plan@151-171@src/zimg_helpers.h
+       4      1     12      1       4 scaler_process_needs_fallback@12-15@src/scaler_status.h
+       6      2     19      2       6 scaler_process_lines_status@17-22@src/scaler_status.h
+       4      1     16      1       4 up_picture_format_layout@53-56@src/picture_view.h
+      21      6    210      1      21 up_picture_plane_extent@71-91@src/picture_view.h
+       7      4     41      2       7 up_picture_plane_storage_ok@93-99@src/picture_view.h
+      14      7    105      2      14 up_picture_plane_extent_ok@101-114@src/picture_view.h
+      16      4    109      3      18 up_picture_plane_view_init@116-133@src/picture_view.h
+      16      8    140      2      16 up_picture_declared_crop_ok@135-150@src/picture_view.h
+      12      8     78      3      12 up_picture_view_args_ok@152-163@src/picture_view.h
+       8      3     41      2       8 up_picture_view_layout@165-172@src/picture_view.h
+      34      6    238      4      36 up_picture_view_init@174-209@src/picture_view.h
+       4      1     16      1       4 ChromaIsOpaque@60-63@src/autoupscale.c
+       4      1     16      1       4 ChromaHasYPlane@65-68@src/autoupscale.c
+      21      5    161      1      21 ResolveSourceCrop@175-195@src/autoupscale.c
+      21      3     83      4      28 PickBackendOrReject@200-227@src/autoupscale.c
+       7      1     40      2       7 OpenBackendAttempt@229-235@src/autoupscale.c
+      29      8    160      2      32 OpenScalerOrFallback@239-270@src/autoupscale.c
+       7      3     47      2       7 InheritIntSat@275-281@src/autoupscale.c
+      41      6    269      7      43 ConfigureScaler@284-326@src/autoupscale.c
+      16      3    100      6      16 InitAdaptiveUsm@328-343@src/autoupscale.c
+      24      4    141      6      25 InitUsmPool@348-372@src/autoupscale.c
+      12      4     85      4      20 InitProbe@375-394@src/autoupscale.c
+      12      8     96      3      12 OutputFormatAllowed@396-407@src/autoupscale.c
+      11      1     92      3      11 SetOutputFormat@410-420@src/autoupscale.c
+       8      6    108      5       9 ClampConfig@422-430@src/autoupscale.c
+      14      1     84      4      15 LogEngaged@435-449@src/autoupscale.c
+      56      8    417      1      69 up_autoupscale_open@451-519@src/autoupscale.c
+       7      1     35      1       7 DisableUsm@537-543@src/autoupscale.c
+      35      5    237      3      38 RunProbe@545-582@src/autoupscale.c
+      32      5    163      2      33 LogProbeVerdict@587-619@src/autoupscale.c
+      18      6    154      4      18 RunUsm@621-638@src/autoupscale.c
+      34     10    208      3      36 ApplyUsmIfEnabled@640-675@src/autoupscale.c
+      16      2     91      4      17 FinishScaledFrame@677-693@src/autoupscale.c
+       6      1     29      1       6 RetireBackend@708-713@src/autoupscale.c
+      36      6    145      2      41 TryBackendFallback@715-755@src/autoupscale.c
+      47     10    246      2      57 FilterFrame@757-813@src/autoupscale.c
+      21      5    144      1      21 ReportMetrics@815-835@src/autoupscale.c
+       9      3     65      2       9 Filter@837-845@src/autoupscale.c
+      14      3     76      1      15 up_autoupscale_close@850-864@src/autoupscale.c
+      11      1     58      1      11 up_scaler_src_region@71-81@src/scaler.h
+       9      1     44      1       9 up_scaler_dst_region@84-92@src/scaler.h
+      12      3     67      3      21 scaler_pick@25-45@src/scaler.c
+      15      8    126      6      15 up_copy_plane@30-44@src/plane_utils.h
+       6      6     49      4       6 up__stripe_args_valid@66-71@src/plane_utils.h
+      14      7    186      5      16 up_compute_stripe_bounds@83-98@src/plane_utils.h
+       8      4     52      4       8 up__tile_axis_limit@124-131@src/plane_utils.h
+      10      5     66      3      10 up__axis_partition_ok@149-158@src/plane_utils.h
+       7      3     44      3       7 up__largest_valid_split@162-168@src/plane_utils.h
+      33      7    225      6      36 up_decide_tile_grid@170-205@src/plane_utils.h
+      25      3     98      4      25 usm_pool_select_ops@99-123@src/usm_pool_dispatch.c
+       9      2     44      0      11 up_usm_pool_dispatch_init@128-138@src/usm_pool_dispatch.c
+       5      1     30      4       5 up_usm_pool_create@141-145@src/usm_pool_dispatch.c
+       4      1     15      1       4 up_usm_pool_destroy@147-150@src/usm_pool_dispatch.c
+       7      1     44      6       7 up_usm_pool_apply@152-158@src/usm_pool_dispatch.c
+       4      1     17      1       4 up_usm_pool_effective_threads@160-163@src/usm_pool_dispatch.c
+       4      1     19      2       4 up_cpu_has_all@75-78@src/cpu_level.h
+       4      1     22      1       4 up_cpu_xcr0_has_avx@80-83@src/cpu_level.h
+       4      1     22      1       4 up_cpu_xcr0_has_avx512@85-88@src/cpu_level.h
+      10      6     69      1      10 up_cpu_features_support_v2@90-99@src/cpu_level.h
+      12      6     79      1      12 up_cpu_features_support_v3@101-112@src/cpu_level.h
+       9      3     45      1       9 up_cpu_features_support_v4@114-122@src/cpu_level.h
+       7      1     46      0       7 up_cpu_xgetbv0@124-130@src/cpu_level.h
+      26      5    163      0      27 up_cpu_collect_x86_features@132-158@src/cpu_level.h
+       6      2     27      0       9 up_cpu_supports_v3@160-168@src/cpu_level.h
+       6      2     27      0       9 up_cpu_supports_v4@170-178@src/cpu_level.h
+      26      8    158      2      28 up__deadline_after_ms@48-75@src/pool_gate.h
+      16      6    123      1      17 up__pool_gate_init_done@114-130@src/pool_gate.h
+      22      4    144      1      22 up_pool_gate_init@132-153@src/pool_gate.h
+      13      3     68      1      13 up_pool_gate_destroy@156-168@src/pool_gate.h
+       4      2     18      1       4 up_pool_gate_ready@172-175@src/pool_gate.h
+       4      1     17      1       4 up_pool_gate_lock@177-180@src/pool_gate.h
+       5      1     28      2       5 up_pool_gate_arm_locked@184-188@src/pool_gate.h
+       8      3     61      1       8 up_pool_gate_unlock_broadcast@190-197@src/pool_gate.h
+       4      1     20      1       4 up__pool_gate_cancel_unlock@202-205@src/pool_gate.h
+       9      5     80      1       9 up__pool_gate_notify_done@207-215@src/pool_gate.h
+       5      1     28      1       5 up__pool_gate_report_worker_failure@217-221@src/pool_gate.h
+       9      4     58      2       9 up__pool_gate_wait_locked@223-231@src/pool_gate.h
+      28      8    179      2      29 up_pool_gate_wait_for_go@244-272@src/pool_gate.h
+      10      3     61      1      10 up_pool_gate_request_exit@284-293@src/pool_gate.h
+       7      3     47      1       7 up_pool_gate_worker_done@296-302@src/pool_gate.h
+      17      8    108      2      20 up__pool_gate_wait_done_locked@304-323@src/pool_gate.h
+      20      9    165      1      21 up_pool_gate_wait_all@327-347@src/pool_gate.h
+       6      3     31      1       6 up__clamp_core_count@74-79@src/thread_policy.h
+       7      2     40      2       7 up__topology_from_sysconf@84-90@src/thread_policy.h
+      18      8    130      3      19 up_cpu_topology_from_set@94-112@src/thread_policy.h
+      20      6    113      3      22 up_detect_cpu_topology_with@125-146@src/thread_policy.h
+       4      1     17      1       4 up_detect_cpu_topology@148-151@src/thread_policy.h
+       6      2     33      1       6 up_detect_cpu_topology@155-160@src/thread_policy.h
+       6      1     20      0       6 up_detect_cores@164-169@src/thread_policy.h
+      16      8     99      2      25 up_threads_decide@195-219@src/thread_policy.h
+      12      6    101      4      13 up_usm_threads_decide@221-233@src/thread_policy.h
+      11      1     53      5      11 up_worker_pool_config@130-140@src/worker_pool.h
+       4      1     30      2       4 up_worker_pool_slot@144-147@src/worker_pool.h
+       4      1     14      1       4 up_worker_pool_count@149-152@src/worker_pool.h
+       4      1     14      1       4 up_worker_pool_broken@154-157@src/worker_pool.h
+       4      1     14      1       4 up_worker_pool_inline@159-162@src/worker_pool.h
+      17      6    131      1      19 up__pool_worker_main@166-184@src/worker_pool.h
+      13      4    125      1      15 up__pool_alloc@191-205@src/worker_pool.h
+      12      3    101      2      13 up__pool_spawn@207-219@src/worker_pool.h
+       7      5     75      2       7 up__pool_construct_one@225-231@src/worker_pool.h
+      10      4     62      1      10 up__pool_construct_all@233-242@src/worker_pool.h
+       7      4     62      1       7 up__pool_cancel_started@244-250@src/worker_pool.h
+      19      6    128      1      19 up_worker_pool_stop@259-277@src/worker_pool.h
+       5      4     56      2       5 up__pool_release_slots@279-283@src/worker_pool.h
+       9      8    100      1      13 up__pool_setup@286-298@src/worker_pool.h
+       6      4     47      2       6 up__pool_build_ok@302-307@src/worker_pool.h
+       7      2     41      2       7 up__pool_retire_failed_start@309-315@src/worker_pool.h
+      12      4     83      1      14 up_worker_pool_start@323-336@src/worker_pool.h
+      11      4     57      1      11 up_worker_pool_ensure_started@345-355@src/worker_pool.h
+       4      1     14      1       4 up_worker_pool_started@357-360@src/worker_pool.h
+       4      1     14      1       4 up_worker_pool_failed@362-365@src/worker_pool.h
+       5      1     22      1       5 up_worker_pool_poison@376-380@src/worker_pool.h
+      20      7    135      1      25 up_worker_pool_dispatch@393-417@src/worker_pool.h
+      12      2     73      1      13 up_worker_pool_destroy@427-439@src/worker_pool.h
+       8      4     55      2       8 plane_alloc_bytes@49-56@src/plane_buffer.h
+       9      2     65      1       9 plane_buffer_view@58-66@src/plane_buffer.h
+       7      2     43      1       7 free_plane_buffer@68-74@src/plane_buffer.h
+      11      2     92      5      11 init_plane_layout@76-86@src/plane_buffer.h
+      11      3     73      1      11 plane_buffer_bytes@90-100@src/plane_buffer.h
+      12      5    102      1      12 alloc_plane_buffer@104-115@src/plane_buffer.h
+       9      3     73      2       9 up_usm__row_h_activity@181-189@src/usm_pool.c
+       8      3     89      1       8 usm_worker_copy_stripe@192-199@src/usm_pool.c
+       7      1     69      1       7 usm_worker_stripe_is_flat@202-208@src/usm_pool.c
+       4      1     24      1       4 usm_workers@228-231@src/usm_pool.c
+       6      5     65      2       6 usm_worker_src_row@249-254@src/usm_pool.c
+      21      4    231      1      23 usm_worker_sweep@256-278@src/usm_pool.c
+       8      3     29      1      10 usm_worker_run@280-289@src/usm_pool.c
+       8      5     75      2       8 usm_pool_scratch_bytes@303-310@src/usm_pool.c
+      10      4     85      1      10 usm_pool_alloc_scratch@314-323@src/usm_pool.c
+      10      1     78      2      10 usm_pool_construct_worker@329-338@src/usm_pool.c
+       4      1     27      2       4 usm_pool_run_worker@341-344@src/usm_pool.c
+      10      3     86      3      10 usm_pool_repartition_stripes@351-360@src/usm_pool.c
+       4      1     18      1       4 usm_pool_prepare@363-366@src/usm_pool.c
+       6      1     41      2       6 usm_pool_finalize@371-376@src/usm_pool.c
+      10      5     59      3      16 usm_pool_resolve_threads@390-405@src/usm_pool.c
+      15      5    114      4      17 up_usm_pool_create@407-423@src/usm_pool.c
+      16      3    147      4      16 usm_worker_snapshot_halo@429-444@src/usm_pool.c
+      18      3    119      6      18 usm_pool_set_per_frame@452-469@src/usm_pool.c
+      10      5     73      5      13 usm_pool_validate_args@471-483@src/usm_pool.c
+      21      6    141      6      26 up_usm_pool_apply@485-510@src/usm_pool.c
+       4      2     18      1       4 up_usm_pool_effective_threads@512-515@src/usm_pool.c
+       7      3     41      1       8 up_usm_pool_destroy@517-524@src/usm_pool.c
+      13      3    100      2      16 pin_worker_to_cpu@118-133@src/scaler_zimg.c
+       4      1     24      1       4 zimg_workers@281-284@src/scaler_zimg.c
+       5      1     34      4       5 ChromaToZimg@293-297@src/scaler_zimg.c
+      11      5     39      1      11 AlgoToZimg@299-309@src/scaler_zimg.c
+       9      1     68      5       9 set_buf_plane@314-322@src/scaler_zimg.c
+       9      1     70      5       9 set_const_buf_plane@325-333@src/scaler_zimg.c
+      22      2    267      1      23 worker_copy_in_stripe@342-364@src/scaler_zimg.c
+      22      2    267      1      23 worker_copy_out_stripe@373-395@src/scaler_zimg.c
+      22      2    260      1      23 worker_copy_out_tile@402-424@src/scaler_zimg.c
+       6      4     42      1       6 worker_emit_output@435-440@src/scaler_zimg.c
+      25      6    265      1      46 zimg_worker_run@444-489@src/scaler_zimg.c
+       4      1     27      2       4 zimg_pool_run@492-495@src/scaler_zimg.c
+      37      3    265      5      48 build_stripe_graph@513-560@src/scaler_zimg.c
+       8      1     39      2       8 zimg_supports@564-571@src/scaler_zimg.c
+       7      6     64      1      12 alloc_scratch_buffers@585-596@src/scaler_zimg.c
+      11      1    116      5      12 init_priv_geometry@602-613@src/scaler_zimg.c
+       9      2     73      3       9 alloc_tile_dst@624-632@src/scaler_zimg.c
+      15      5    129      6      15 build_worker_graph_and_tmp@637-651@src/scaler_zimg.c
+      26      5    265      6      36 init_stripe_worker@653-688@src/scaler_zimg.c
+       9      4     73      3       9 zimg_pool_on_spawn@694-702@src/scaler_zimg.c
+       7      3     76      2       9 zimg_pool_release@710-718@src/scaler_zimg.c
+      20      4    170      2      22 zimg_pool_construct@736-757@src/scaler_zimg.c
+       4      1     18      1       4 zimg_pool_prepare@760-763@src/scaler_zimg.c
+      24      5    114      2      24 log_zimg_pinning@774-797@src/scaler_zimg.c
+      27     10    247      2      27 log_zimg_open@800-826@src/scaler_zimg.c
+      16      2    105      4      16 zimg_build_io_req@836-851@src/scaler_zimg.c
+      51      8    325      1      68 zimg_open@860-927@src/scaler_zimg.c
+       7      4     46      3       7 worker_view_for@938-944@src/scaler_zimg.c
+      19      2    204      4      19 point_workers_planes@953-971@src/scaler_zimg.c
+      16      4    103      1      16 zimg_check_worker_results@977-992@src/scaler_zimg.c
+      11      3     55      1      17 zimg_dispatch_and_wait@994-1010@src/scaler_zimg.c
+      17      5    135      1      20 zimg_ensure_lazy_init@1022-1041@src/scaler_zimg.c
+       8      4     62      1       8 zimg_view_aligned@1045-1052@src/scaler_zimg.c
+      14      3     84      4      17 zimg_prepare_first_frame_io@1058-1074@src/scaler_zimg.c
+       7      4     48      3       7 zimg_frame_io_safe@1078-1084@src/scaler_zimg.c
+      10      2     74      5      10 zimg_frame_views_init@1086-1095@src/scaler_zimg.c
+       9      3     46      1      11 zimg_warn_bad_geometry@1097-1107@src/scaler_zimg.c
+      17      4     82      1      20 zimg_note_alignment_drift@1115-1134@src/scaler_zimg.c
+      21      6    164      3      26 zimg_process@1136-1161@src/scaler_zimg.c
+      15      4     85      1      17 zimg_close@1163-1179@src/scaler_zimg.c
+      12      5     87      3      12 up_worker_tuner_init@35-46@src/worker_tuner.h
+       9      5     96      2       9 up_tuner_next_count@48-56@src/worker_tuner.h
+      16      4    132      2      16 up_tuner_score@58-73@src/worker_tuner.h
+       6      2     31      2       6 up_tuner_tail_regressed@75-80@src/worker_tuner.h
+       6      2     29      2       6 up_tuner_improves@82-87@src/worker_tuner.h
+       8      1     43      2       8 up_tuner_settle@89-96@src/worker_tuner.h
+      14      3     94      2      14 up_tuner_begin_trial@98-111@src/worker_tuner.h
+      10      3     62      2      10 up_tuner_confirm@113-122@src/worker_tuner.h
+      13      7    108      2      13 up_tuner_monitor@124-136@src/worker_tuner.h
+      19      5     80      2      19 up_tuner_window@138-156@src/worker_tuner.h
+       5      3     40      1       5 up_tuner_trial_too_slow@158-162@src/worker_tuner.h
+      12      8    127      2      12 up_worker_tuner_observe@164-175@src/worker_tuner.h
+      14      3    106      6      14 up_usm_adaptive_init@18-31@src/usm_adaptive.h
+       6      2     35      1       6 up_usm_adaptive_clear_trial@33-38@src/usm_adaptive.h
+       7      1     31      1       7 up_usm_adaptive_stop@40-46@src/usm_adaptive.h
+       6      2     39      1       6 up_usm_adaptive_begin@48-53@src/usm_adaptive.h
+       8      2     48      2       8 up_usm_adaptive_take_start@55-62@src/usm_adaptive.h
+      15      4    109      2      15 up_usm_adaptive_select@64-78@src/usm_adaptive.h
+       9      3     84      2       9 up_usm_adaptive_elapsed@80-88@src/usm_adaptive.h
+      16      4    103      3      16 up_usm_adaptive_accept@90-105@src/usm_adaptive.h
+      11      2     63      6      11 up_usm_adaptive_recover@107-117@src/usm_adaptive.h
+      25     10    195      5      25 up_usm_adaptive_apply@119-143@src/usm_adaptive.h
+       7      3     42      1       7 up_chroma_descriptor@140-146@src/chroma_classify.h
+       8      4     39      2       8 up_chroma_physical_plane_index@148-155@src/chroma_classify.h
+      13      6     36      1      13 up_chroma_layout_has_y@157-169@src/chroma_classify.h
+      11      4     30      1      11 up_chroma_layout_is_planar@171-181@src/chroma_classify.h
+       7      3     36      1       7 up_chroma_is_opaque@208-214@src/chroma_classify.h
+       5      2     29      1       5 up_chroma_has_y_plane@221-225@src/chroma_classify.h
+      12      5     72      3      12 up_chroma_subsample@232-243@src/chroma_classify.h
+      25      8    153      2      25 up_chroma_align_axis_even@262-286@src/chroma_classify.h
+      12      4     67      5      12 up_chroma_align_crop_even@288-299@src/chroma_classify.h
+       7      3     46      3       7 sws_log_once@35-41@src/scaler_swscale.c
+      18     10     89      1      18 ChromaToAVFmt@43-60@src/scaler_swscale.c
+      12      5     56      1      14 AlgoToSwsFlags@62-75@src/scaler_swscale.c
+       5      1     23      2       5 sws_supports@79-83@src/scaler_swscale.c
+      18      6    141      1      22 sws_open@85-106@src/scaler_swscale.c
+      47     10    357      3      55 sws_process@110-164@src/scaler_swscale.c
+      10      3     46      1      10 sws_close@166-175@src/scaler_swscale.c
+       5      2     21      1       5 up__clamp_even@55-59@src/upscale_logic.h
+       7      4     45      2      11 up__auto_target_height@69-79@src/upscale_logic.h
+       6      3     26      2       6 up_normalize_auto_enum@85-90@src/upscale_logic.h
+      20      8    106      4      26 up_decide_target_height@120-145@src/upscale_logic.h
+       8      7     50      3       8 up__dims_inputs_valid@153-160@src/upscale_logic.h
+      20      7    133      4      27 up_compute_target_dims@171-197@src/upscale_logic.h
+      11      8     62      4      14 up__plan_inputs_ok@206-219@src/upscale_logic.h
+       9      5     52      3       9 up__plan_result_ok@230-238@src/upscale_logic.h
+      22      6    137      7      26 up_plan_upscale@252-277@src/upscale_logic.h
+       1      1     15      1       1 vlc_stub_msg_sink@28-28@tests/stubs/vlc_common.h
+       4      1     20      1       4 filter_NewPicture@35-38@tests/lifecycle_stubs/vlc_filter.h
+       4      1     15      1       4 lifecycle_var_inherit_integer@14-17@tests/lifecycle_stubs/vlc_common.h
+       5      1     23      2       5 lifecycle_var_create_integer@19-23@tests/lifecycle_stubs/vlc_common.h
+       4      1     14      1       4 lifecycle_var_destroy_integer@25-28@tests/lifecycle_stubs/vlc_common.h
+       4      1     19      2       4 lifecycle_var_set_call@30-33@tests/lifecycle_stubs/vlc_common.h
+       5      1     25      2       5 lifecycle_msg_sink@70-74@tests/lifecycle_stubs/vlc_common.h
+       9      1     53      2       9 capture_log@12-20@tests/test_scaler_swscale.c
+       5      1     17      0       5 reset_logs@22-26@tests/test_scaler_swscale.c
+      12      2     95     10      12 sws_getContext@48-59@tests/test_scaler_swscale.c
+      12      2    114      3      12 sws_scale@61-72@tests/test_scaler_swscale.c
+       4      2     16      1       4 sws_freeContext@75-78@tests/test_scaler_swscale.c
+       9      1     68      2       9 make_ctx@82-90@tests/test_scaler_swscale.c
+      19      6    180      0      21 test_picture_regions@92-112@tests/test_scaler_swscale.c
+      27      3    198      0      27 test_supports@114-140@tests/test_scaler_swscale.c
+      23      6    201      0      23 test_open_close_algorithms@142-164@tests/test_scaler_swscale.c
+      19      2    185      5      19 init_picture@166-184@tests/test_scaler_swscale.c
+      33      6    335      0      34 test_process_status_and_forwarding@186-219@tests/test_scaler_swscale.c
+      33      1    334      0      38 test_geometry_rejection_recovers@221-258@tests/test_scaler_swscale.c
+      21      2    229      6      22 init_crop_picture@274-295@tests/test_scaler_swscale.c
+      11      1    103      5      11 crop_expected_pointer@297-307@tests/test_scaler_swscale.c
+      46      3    544      0      46 test_cropped_plane_forwarding@309-354@tests/test_scaler_swscale.c
+      14      1     82      0      14 test_close_without_context@356-369@tests/test_scaler_swscale.c
+      12      1     44      0      12 main@371-382@tests/test_scaler_swscale.c
+      14      4    166      0      24 test_edge_dimensions@16-39@tests/test_geometry_edge_cases.c
+       8      2     79      0      13 test_zero_hardware@41-53@tests/test_geometry_edge_cases.c
+       8      2     31      0       8 main@55-62@tests/test_geometry_edge_cases.c
+      12      1     46      0      12 test_region@28-39@tests/test_picture_view.c
+      18      4    178      2      18 init_picture@41-58@tests/test_picture_view.c
+       4      1     23      2       4 ceil_div@60-63@tests/test_picture_view.c
+      24      1    248      5      25 check_plane@65-89@tests/test_picture_view.c
+      16      4    138      1      16 check_format@91-106@tests/test_picture_view.c
+       5      2     33      0       5 test_every_supported_format@108-112@tests/test_picture_view.c
+      23      1    281      0      27 test_odd_crop_and_physical_order@114-140@tests/test_picture_view.c
+       9      1     70      3       9 expect_invalid@142-150@tests/test_picture_view.c
+      54      2    519      0      58 test_invalid_format_contract@152-209@tests/test_picture_view.c
+      20      1    187      0      21 test_invalid_plane_storage@211-231@tests/test_picture_view.c
+      42      1    345      0      46 test_invalid_physical_bounds@233-278@tests/test_picture_view.c
+      11      1     94      0      12 test_unknown_chroma_layout@285-296@tests/test_picture_view.c
+      25      5    165      0      27 test_layout_matches_subsample_table@301-327@tests/test_picture_view.c
+      13      3     58      0      13 main@329-341@tests/test_picture_view.c
+       1      1     24      2       1 construct@15-15@tests/profile_worker_pool.c
+       6      1     36      2       6 empty_run@17-22@tests/profile_worker_pool.c
+      12      6    123      3      12 pin_worker@24-35@tests/profile_worker_pool.c
+      10      4     82      3      10 dispatch_many@42-51@tests/profile_worker_pool.c
+       8      3     71      2       8 check_slots@53-60@tests/profile_worker_pool.c
+      12      3    101      2      12 print_samples@62-73@tests/profile_worker_pool.c
+      24      9    268      3      24 measure@75-98@tests/profile_worker_pool.c
+       8      4    105      3       8 parse@100-107@tests/profile_worker_pool.c
+      18      8    201      2      18 main@109-126@tests/profile_worker_pool.c
+       8      3     60      3       8 __wrap_sched_getaffinity@8-15@tests/test_experiment_zimg.c
+      11      4    128      2      11 pictures_equal@17-27@tests/test_experiment_zimg.c
+       9      2     86      4       9 process@29-37@tests/test_experiment_zimg.c
+       8      2     66      2       8 check_grid@39-46@tests/test_experiment_zimg.c
+      38      8    348      4      38 compare_grid@48-85@tests/test_experiment_zimg.c
+       9      2     60      0       9 main@87-95@tests/test_experiment_zimg.c
+       9      2     75      6       9 run_sse2@50-58@tests/test_usm_pool_variants.c
+       9      2     75      6       9 run_avx2@60-68@tests/test_usm_pool_variants.c
+       9      2     75      6       9 run_avx512@70-78@tests/test_usm_pool_variants.c
+      12      3     73      4      12 report_first_diff@82-93@tests/test_usm_pool_variants.c
+      13      2    101     10      14 compare_variant@100-113@tests/test_usm_pool_variants.c
+      22      6    194      5      27 check_pattern@118-144@tests/test_usm_pool_variants.c
+      12      2     82      5      12 check_one@147-158@tests/test_usm_pool_variants.c
+       7      1     41      0       8 test_amount_zero@164-171@tests/test_usm_pool_variants.c
+      18      1    116      0      23 test_typical_resolutions@173-195@tests/test_usm_pool_variants.c
+      14      2     91      0      15 test_amount_sweep@197-211@tests/test_usm_pool_variants.c
+       9      2     82      0      12 test_worker_counts@213-224@tests/test_usm_pool_variants.c
+      19      2    180      0      25 test_unusual_dimensions@226-250@tests/test_usm_pool_variants.c
+      35      7    277      0      40 test_content_patterns@252-291@tests/test_usm_pool_variants.c
+      22      7    165      0      26 test_effective_threads_variants@295-320@tests/test_usm_pool_variants.c
+      14      5     87      0      16 test_dispatcher_init@322-337@tests/test_usm_pool_variants.c
+      19      3     91      0      24 main@339-362@tests/test_usm_pool_variants.c
+       4      2     27      1       4 up_experiment_gate@24-27@tests/experiment_executor.h
+      18      5    127      1      18 up_experiment_worker@29-46@tests/experiment_executor.h
+      18      8    154      1      18 up_experiment_stop@48-65@tests/experiment_executor.h
+      12      5    113      2      12 up_experiment_spawn@67-78@tests/experiment_executor.h
+      16      9    167      4      16 up_experiment_start@80-95@tests/experiment_executor.h
+       6      2     35      2       6 up_experiment_wake@97-102@tests/experiment_executor.h
+       9      5     86      1       9 up_experiment_isolated_dispatch@104-112@tests/experiment_executor.h
+      16      7    107      2      16 up_experiment_dispatch@114-129@tests/experiment_executor.h
+      26      4    215      6      29 parse_shape@69-97@tests/fuzz_content_probe.c
+      14      8    153      5      14 alloc_and_fill_plane@102-115@tests/fuzz_content_probe.c
+      20      5    161      7      20 check_metric@121-140@tests/fuzz_content_probe.c
+      17      5    151      8      17 check_fused_matches@145-161@tests/fuzz_content_probe.c
+      15      3    111      4      15 check_observe_monotonic@164-178@tests/fuzz_content_probe.c
+      11      1    107      4      11 pull_accum@181-191@tests/fuzz_content_probe.c
+      23      9    165      1      23 check_bypass@194-216@tests/fuzz_content_probe.c
+      19      2    171      2      24 run_one@218-241@tests/fuzz_content_probe.c
+       5      1     22      2       5 LLVMFuzzerTestOneInput@243-247@tests/fuzz_content_probe.c
+      11      2     68      1      11 smoke_iter@252-262@tests/fuzz_content_probe.c
+       4      1     25      2       4 main@264-267@tests/fuzz_content_probe.c
+       6      2     50      3       6 __wrap_pthread_create@9-14@tests/test_experiment_executor.c
+       6      2     36      2       6 cell_run@17-22@tests/test_experiment_executor.c
+      17      3    183      1      17 test_partition@25-41@tests/test_experiment_executor.c
+      15      2    130      1      15 test_partial_spawn@43-57@tests/test_experiment_executor.c
+      16      1    145      1      16 test_failed_barrier@59-74@tests/test_experiment_executor.c
+       9      2     48      0       9 main@76-84@tests/test_experiment_executor.c
+       9      1     45      1       9 capture_printf@20-28@tests/test_bench_adaptive.c
+       6      2     40      4       6 __wrap_up_usm_pool_create@31-36@tests/test_bench_adaptive.c
+      13      1    102      0      13 test_default_profile@38-50@tests/test_bench_adaptive.c
+       9      1     66      0       9 test_profile_csv@52-60@tests/test_bench_adaptive.c
+      13      1     85      0      13 test_fallback_csv@62-74@tests/test_bench_adaptive.c
+      18      5    148      0      18 test_profile_options@76-93@tests/test_bench_adaptive.c
+      20      2    177      0      20 test_late_fallback_csv@95-114@tests/test_bench_adaptive.c
+       9      1     31      0       9 main@116-124@tests/test_bench_adaptive.c
+       5      3     43      1       5 zt_align_up@42-46@tests/zimg_test_util.h
+       4      2     43      1       4 zt_pic_free@48-51@tests/zimg_test_util.h
+      37      9    373      4      40 zt_pic_alloc@58-97@tests/zimg_test_util.h
+      12      5    122      2      12 zt_pic_fill@100-111@tests/zimg_test_util.h
+       7      2     68      2       7 zt_pic_memset@113-119@tests/zimg_test_util.h
+      20      1    137      8      23 zt_ctx_init@122-144@tests/zimg_test_util.h
+      15      6     85      2      15 __wrap_pthread_cond_init@29-43@tests/test_threading.c
+      16      5     72      2      16 __wrap_clock_gettime@46-61@tests/test_threading.c
+      11      3     73      3      11 __wrap_pthread_create@65-75@tests/test_threading.c
+      11      1     87      0      11 test_auto_typical@81-91@tests/test_threading.c
+      11      1     87      0      12 test_auto_low_core_count@93-104@tests/test_threading.c
+       8      1     53      0       8 test_auto_unknown_cores@106-113@tests/test_threading.c
+       8      1     51      0       8 test_explicit_below_cores@115-122@tests/test_threading.c
+       7      1     39      0       7 test_explicit_clamped_to_cores@124-130@tests/test_threading.c
+       8      1     51      0       9 test_explicit_clamped_to_max@132-140@tests/test_threading.c
+       7      1     41      0       7 test_negative_user_pref_means_auto@142-148@tests/test_threading.c
+      10      1     75      0      10 test_32_core_target_machine@152-161@tests/test_threading.c
+      15      2    193      0      15 test_usm_auto_resolution@163-177@tests/test_threading.c
+      18      2    256      0      18 test_usm_cpu_limits_and_overrides@179-196@tests/test_threading.c
+      12      1     76      0      12 test_core_count_clamp@198-209@tests/test_threading.c
+       5      1     15      1       5 fb_sysconf@214-218@tests/test_threading.c
+      24      2    156      0      33 test_topology_sysconf_fallback@220-252@tests/test_threading.c
+      20      1    163      0      21 test_topology_from_sparse_set@256-276@tests/test_threading.c
+      15      2    109      0      16 test_topology_caps_counts@278-293@tests/test_threading.c
+      17      4     82      3      17 mock_getaffinity@305-321@tests/test_threading.c
+       6      1     18      1       6 mock_sysconf@323-328@tests/test_threading.c
+      32      1    224      0      36 test_detect_topology_synthetic@330-365@tests/test_threading.c
+      40      7    241      0      41 test_detect_cores_invariants@367-407@tests/test_threading.c
+       9      2     58      1       9 gate_worker_main@421-429@tests/test_threading.c
+       6      1     27      1       6 gate_init_required@431-436@tests/test_threading.c
+      10      2     63      2      11 gate_arm_required@438-448@tests/test_threading.c
+       7      2     45      2       7 gate_dispatch_required@450-456@tests/test_threading.c
+       7      1     42      2       7 gate_worker_prepare@458-464@tests/test_threading.c
+       6      2     41      1       6 gate_worker_launch@466-471@tests/test_threading.c
+       5      1     25      2       5 gate_worker_start@473-477@tests/test_threading.c
+      12      3     66      4      12 gate_workers_start@479-490@tests/test_threading.c
+       8      3     52      2       8 join_started_thread@492-499@tests/test_threading.c
+       7      2     37      2       7 cancel_started_thread@501-507@tests/test_threading.c
+       8      3     59      2       8 gate_workers_cancel@509-516@tests/test_threading.c
+       8      3     60      2       8 gate_workers_join@518-525@tests/test_threading.c
+       8      3     58      3       8 gate_workers_stop@527-534@tests/test_threading.c
+       9      2     53      1       9 mutex_roundtrip@536-544@tests/test_threading.c
+      40      9    273      0      44 test_pool_gate_dispatch_cycles@546-589@tests/test_threading.c
+      23      4    174      0      25 test_pool_gate_partial_start_cleanup@591-615@tests/test_threading.c
+      31      7    177      0      33 test_pool_gate_cancel_releases_wait_lock@617-649@tests/test_threading.c
+       5      1     31      1       5 gate_completion_wait_main@651-655@tests/test_threading.c
+      37      8    227      0      39 test_pool_gate_cancel_releases_done_lock@657-695@tests/test_threading.c
+      37      6    204      0      43 test_pool_gate_exit_completes_unseen@699-741@tests/test_threading.c
+      33      6    195      0      35 test_pool_gate_signal_failure_reported@743-777@tests/test_threading.c
+      11      3     52      0      11 test_detect_then_decide@784-794@tests/test_threading.c
+       8      1     51      0       9 test_explicit_at_max_boundary@800-808@tests/test_threading.c
+      21      4    145      0      22 test_pool_gate_init_cond_failure@813-834@tests/test_threading.c
+       8      2     43      0       8 test_time_t_max@836-843@tests/test_threading.c
+       7      1     32      2       7 fake_monotonic_time@845-851@tests/test_threading.c
+      28      1    197      0      32 test_deadline_input_and_overflow_checks@853-884@tests/test_threading.c
+       6      1     30      1       6 monotonic_now_required@886-891@tests/test_threading.c
+       6      1     41      2       6 elapsed_ms@893-898@tests/test_threading.c
+      33      5    182      0      37 test_pool_gate_wait_times_out@911-947@tests/test_threading.c
+      20      3    109      0      22 test_pool_gate_timeout_race_completes@956-977@tests/test_threading.c
+      20      3    108      0      22 test_pool_gate_wait_error_is_reported@979-1000@tests/test_threading.c
+      27      4    146      0      28 test_pool_gate_request_exit_guards@1006-1033@tests/test_threading.c
+      16      2     93      0      16 test_pool_gate_request_exit_broadcast_failure@1037-1052@tests/test_threading.c
+      36      2    140      0      41 main@1054-1094@tests/test_threading.c
+      11      2     62      2      11 record_open@30-40@tests/fuzz_scaler_open.c
+      23      8    130      4      25 model_open@42-66@tests/fuzz_scaler_open.c
+       6      1     27      2       6 fail_case@68-73@tests/fuzz_scaler_open.c
+      15      6    108      4      15 check_result@75-89@tests/fuzz_scaler_open.c
+      22      7    161      1      25 run_case@91-115@tests/fuzz_scaler_open.c
+      11      4     64      2      12 LLVMFuzzerTestOneInput@117-128@tests/fuzz_scaler_open.c
+       5      1     18      1       5 smoke_iter@133-137@tests/fuzz_scaler_open.c
+       4      1     25      2       4 main@139-142@tests/fuzz_scaler_open.c
+      13      1    108      1      13 test_maps_reject_duplicates_and_deleted_binary@15-27@tests/test_playback_runtime.py
+      19      3    186      1      19 test_runtime_excludes_old_and_nested_plugins@29-47@tests/test_playback_runtime.py
+       7      2     28      0      11 init_features@42-52@tests/fuzz_usm_variants.c
+      17      4    123      8      17 check_equal_or_abort@57-73@tests/fuzz_usm_variants.c
+      13      1    114      2      17 decode_params@84-100@tests/fuzz_usm_variants.c
+       9      4     83      5       9 fill_source@102-110@tests/fuzz_usm_variants.c
+      12      3    106      4      12 run_sse2_reference@117-128@tests/fuzz_usm_variants.c
+      16      3    136      5      16 run_avx2_and_check@130-145@tests/fuzz_usm_variants.c
+      16      3    136      5      16 run_avx512_and_check@147-162@tests/fuzz_usm_variants.c
+      19      9    196      2      24 run_one@164-187@tests/fuzz_usm_variants.c
+       5      1     22      2       5 LLVMFuzzerTestOneInput@190-194@tests/fuzz_usm_variants.c
+       8      1     37      1       8 smoke_iter@200-207@tests/fuzz_usm_variants.c
+       9      3     51      2      11 main@209-219@tests/fuzz_usm_variants.c
+       5      3     32      2       5 cost@5-9@tests/test_worker_tuner.c
+      11      6    105      3      11 converge@11-21@tests/test_worker_tuner.c
+      14      2    118      0      14 test_search@23-36@tests/test_worker_tuner.c
+       5      2     46      2       5 window@38-42@tests/test_worker_tuner.c
+      18      1    121      0      18 test_confirmation@44-61@tests/test_worker_tuner.c
+      21      5    181      0      21 test_recheck@63-83@tests/test_worker_tuner.c
+      19      6    179      0      19 test_bounded_probes@85-103@tests/test_worker_tuner.c
+      15      5    149      0      15 test_invalid@105-119@tests/test_worker_tuner.c
+       5      2     31      2       5 patterned_cost@126-130@tests/test_worker_tuner.c
+       7      2     55      2       7 patterned_window@132-138@tests/test_worker_tuner.c
+      15      5    116      3      15 check_pattern_search@140-154@tests/test_worker_tuner.c
+      30      2    278      0      30 test_mean_and_tail_selection@156-185@tests/test_worker_tuner.c
+      16      4    136      0      16 test_tail_monitor@187-202@tests/test_worker_tuner.c
+      14      3    122      0      14 test_mean_monitor@204-217@tests/test_worker_tuner.c
+      14      3    100      0      14 test_mean_early_abort@219-232@tests/test_worker_tuner.c
+      17      2    158      0      17 test_tail_confirmation@234-250@tests/test_worker_tuner.c
+      14      1     51      0      14 main@252-265@tests/test_worker_tuner.c
+      24      4    263      3      28 parse_params@39-66@tests/fuzz_usm.c
+      12      3     81      4      12 seed_src@69-80@tests/fuzz_usm.c
+       9      5     73      7       9 check_sentinels@83-91@tests/fuzz_usm.c
+      10      5     91      3      10 check_identity@94-103@tests/fuzz_usm.c
+      10      4     77      3      10 src_is_constant@106-115@tests/fuzz_usm.c
+      11      5     99      3      11 check_constant_input@118-128@tests/fuzz_usm.c
+      12      2    112      5      13 run_kernel_and_check@131-143@tests/fuzz_usm.c
+      21      6    147      4      24 setup_dst_and_copy@147-170@tests/fuzz_usm.c
+      20      6    181      2      27 run_one@176-202@tests/fuzz_usm.c
+       5      1     22      2       5 LLVMFuzzerTestOneInput@205-209@tests/fuzz_usm.c
+       8      1     37      1       8 smoke_iter@215-222@tests/fuzz_usm.c
+       5      1     30      2       5 main@224-228@tests/fuzz_usm.c
+      16      3     82      3      16 __wrap_pthread_cond_timedwait@25-40@tests/barrier_fault_inject.h
+       6      2     32      1       6 __wrap_pthread_cond_signal@43-48@tests/barrier_fault_inject.h
+       7      2     29      1       7 __wrap_pthread_cond_broadcast@51-57@tests/barrier_fault_inject.h
+      15      7     79      1      15 __wrap_pthread_mutex_lock@60-74@tests/barrier_fault_inject.h
+       4      1     16      0       4 barrier_fault_inject_next_dispatch@76-79@tests/barrier_fault_inject.h
+       5      1     22      0       5 barrier_fault_inject_next_mutex_lock@81-85@tests/barrier_fault_inject.h
+       6      1     22      0       6 barrier_fault_inject_next_worker_mutex_lock@87-92@tests/barrier_fault_inject.h
+       4      1     16      0       4 barrier_fault_inject_next_done_wait@94-97@tests/barrier_fault_inject.h
+       5      1     22      1       5 barrier_fault_inject_timeout_race@101-105@tests/barrier_fault_inject.h
+       4      1     16      0       4 barrier_fault_inject_next_done_signal@107-110@tests/barrier_fault_inject.h
+       4      1     15      0       4 barrier_fault_used_timed_completion_wait@112-115@tests/barrier_fault_inject.h
+      15      6     67      0      15 barrier_fault_injection_consumed@117-131@tests/barrier_fault_inject.h
+      10      1     92      0      10 test_alloc_bytes_guards@15-24@tests/test_plane_buffer.c
+      10      1     82      0      10 test_alloc_bytes_products@26-35@tests/test_plane_buffer.c
+      16      2    164      0      16 test_layout_matches_helpers@39-54@tests/test_plane_buffer.c
+      14      2    112      0      15 test_buffer_bytes_sums_planes@56-70@tests/test_plane_buffer.c
+      19      3    180      0      20 test_alloc_roundtrip_aligned@72-91@tests/test_plane_buffer.c
+      13      1     98      0      14 test_alloc_rejects_degenerate_layout@96-109@tests/test_plane_buffer.c
+      14      2    117      0      14 test_view_mirrors_buffer@111-124@tests/test_plane_buffer.c
+      12      1     44      0      14 main@126-139@tests/test_plane_buffer.c
+       6      1     24      2       6 construct_slot@21-26@tests/bench_worker_pool.c
+       6      1     40      2       6 run_slot@28-33@tests/bench_worker_pool.c
+       6      1     48      2       6 record_finish@35-40@tests/bench_worker_pool.c
+       9      2     73      4       9 elapsed_us@49-57@tests/bench_worker_pool.c
+      11      5     86      4      11 parse_args@59-69@tests/bench_worker_pool.c
+       6      3     40      2       6 dispatch_many@71-76@tests/bench_worker_pool.c
+      17      8    168      2      17 completion_skew_us@78-94@tests/bench_worker_pool.c
+      21      9    228      2      24 main@96-119@tests/bench_worker_pool.c
+       4      1      9      0       4 lifecycle_cpu_supports_v3@15-18@tests/test_autoupscale_lifecycle.c
+       7      3     57      1       7 lifecycle_var_inherit@75-81@tests/test_autoupscale_lifecycle.c
+       4      1     13      1       4 picture_Release@83-86@tests/test_autoupscale_lifecycle.c
+       4      1     21      2       4 picture_CopyProperties@88-91@tests/test_autoupscale_lifecycle.c
+       5      1     16      1       5 lifecycle_buffer_new@93-97@tests/test_autoupscale_lifecycle.c
+       6      1     23      2       6 fake_supports@99-104@tests/test_autoupscale_lifecycle.c
+      12      4     58      1      12 fake_open@106-117@tests/test_autoupscale_lifecycle.c
+      13      2     52      3      13 fake_process@119-131@tests/test_autoupscale_lifecycle.c
+       8      2     31      1       8 fake_close@133-140@tests/test_autoupscale_lifecycle.c
+      10      5     57      3      10 scaler_pick@160-169@tests/test_autoupscale_lifecycle.c
+       9      1     36      4       9 up_usm_pool_create@171-179@tests/test_autoupscale_lifecycle.c
+      12      1     62      6      12 up_usm_pool_apply@181-192@tests/test_autoupscale_lifecycle.c
+       5      1     16      1       5 up_usm_pool_destroy@194-198@tests/test_autoupscale_lifecycle.c
+       5      1     17      1       5 up_usm_pool_effective_threads@200-204@tests/test_autoupscale_lifecycle.c
+      25      2    121      0      25 reset_state@208-232@tests/test_autoupscale_lifecycle.c
+       9      3     64      2       9 set_config@234-242@tests/test_autoupscale_lifecycle.c
+       6      1     36      2       6 init_picture@244-249@tests/test_autoupscale_lifecycle.c
+      19      1    210      5      19 init_i420_picture@251-269@tests/test_autoupscale_lifecycle.c
+       7      4     74      3       7 fill_checkerboard@271-277@tests/test_autoupscale_lifecycle.c
+      11      1     87      1      11 init_filter@279-289@tests/test_autoupscale_lifecycle.c
+      28      6    249      3      28 check_output_permission@291-318@tests/test_autoupscale_lifecycle.c
+      20      2    219      0      20 test_output_permission@320-339@tests/test_autoupscale_lifecycle.c
+      23      2    160      0      24 test_success_copies_properties_and_tears_down@341-364@tests/test_autoupscale_lifecycle.c
+      12      2     58      0      13 test_cpu_gate_rejects_before_open@366-378@tests/test_autoupscale_lifecycle.c
+      15      1     94      0      16 test_output_allocation_failure_releases_input@380-395@tests/test_autoupscale_lifecycle.c
+      27      3    184      0      28 test_transient_failure_keeps_backend@397-424@tests/test_autoupscale_lifecycle.c
+      28      3    194      0      29 test_fatal_failure_falls_back_once@426-454@tests/test_autoupscale_lifecycle.c
+      39      2    256      0      45 test_open_rejections_and_open_fallback@456-500@tests/test_autoupscale_lifecycle.c
+      15      1    103      0      16 test_open_usm_contract@502-517@tests/test_autoupscale_lifecycle.c
+      24      2    224      3      24 check_open_usm_workers@519-542@tests/test_autoupscale_lifecycle.c
+       9      1     51      0       9 test_open_usm_worker_policy@544-552@tests/test_autoupscale_lifecycle.c
+      13      1     70      3      13 init_scaler@554-566@tests/test_autoupscale_lifecycle.c
+      31      4    248      0      33 test_usm_success_failure_and_uncertain_output@568-600@tests/test_autoupscale_lifecycle.c
+      21      1    175      0      21 test_adaptive_configuration@602-622@tests/test_autoupscale_lifecycle.c
+      28      3    244      0      28 test_adaptive_trial_drop@624-651@tests/test_autoupscale_lifecycle.c
+      40      3    315      0      42 test_probe_lifecycle@653-694@tests/test_autoupscale_lifecycle.c
+      29      4    220      0      32 test_runtime_fallback@696-727@tests/test_autoupscale_lifecycle.c
+      26      3    218      0      26 test_processing_metrics@729-754@tests/test_autoupscale_lifecycle.c
+      19      1     71      0      19 main@756-774@tests/test_autoupscale_lifecycle.c
+       6      1     40      2       6 up_hardening_fortify_probe@13-18@tests/hardening_fortify_probe.c
+       5      5     49      2       5 up_vulkan_shape_supported@7-11@tests/vulkan_limits.h
+      14      7    207      3      14 parse@20-33@tests/bench_adaptive.c
+       8      2     63      1       8 destroy@35-42@tests/bench_adaptive.c
+      19      6    247      2      19 initialize@44-62@tests/bench_adaptive.c
+       5      1     53      2       5 difference@64-68@tests/bench_adaptive.ccc -O2 -g -march=native -std=c11 -D_GNU_SOURCE -Wall -Wextra -Wshadow -Wpointer-arith -Wstrict-prototypes -I/usr/include/vlc/plugins -D__PLUGIN__ -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_THREAD_SAFE   -Werror -MMD -MP -c -o build-perf10/scaler_zimg_bench.o src/scaler_zimg.c
+cc -O2 -g -march=native -std=c11 -D_GNU_SOURCE -Wall -Wextra -Wshadow -Wpointer-arith -Wstrict-prototypes -MMD -MP -fsanitize=address,undefined -Werror -Ibuild/decision-review/direct-vulkan/Vulkan-Headers-1.3.275/include -c -o build-perf10/experiment_vulkan_test.o tests/experiment_vulkan.c
+
+      21      9    237      3      21 frame@70-90@tests/bench_adaptive.c
+       7      5     63      2       7 outcome@92-98@tests/bench_adaptive.c
+      10      1    116      2      10 report@100-109@tests/bench_adaptive.c
+      17      7    136      2      17 main@111-127@tests/bench_adaptive.c
+      23      4    281      0      23 test_frames@6-28@tests/test_profile_input.c
+      18      4    152      0      18 test_incomplete_file@30-47@tests/test_profile_input.c
+       6      1     19      0       6 main@49-54@tests/test_profile_input.c
+       5      2     24      0       5 test_harness_report@38-42@tests/test_harness.h
+      13      3     76      7      13 chk_bypass@29-41@tests/fuzz_upscale_logic.c
+       8      7     75      1       8 chk_dim_bounds@43-50@tests/fuzz_upscale_logic.c
+       5      3     39      3       5 chk_not_downscale@52-56@tests/fuzz_upscale_logic.c
+       9      3     85      3      10 chk_aspect@58-67@tests/fuzz_upscale_logic.c
+       6      4     40      2       6 chk_ratio_cap@69-74@tests/fuzz_upscale_logic.c
+      12      3     63      6      12 chk_auto_ceiling@76-87@tests/fuzz_upscale_logic.c
+      12      7     54      1      12 preset_nominal@89-100@tests/fuzz_upscale_logic.c
+      16      7    107      3      16 chk_preset_reaches_nominal@102-117@tests/fuzz_upscale_logic.c
+      15      2    112      8      15 check_invariants@123-137@tests/fuzz_upscale_logic.c
+       6      3     31      1       6 clamp_cores@145-150@tests/fuzz_upscale_logic.c
+      16      3    159      3      18 parse_inputs@152-169@tests/fuzz_upscale_logic.c
+      12      2     72      2      12 chk_dh_oor_matches_auto@171-182@tests/fuzz_upscale_logic.c
+      16     10    136      1      18 check_decide_target_height@184-201@tests/fuzz_upscale_logic.c
+       6      7     67      1       6 chk_ctd_nonzero@203-208@tests/fuzz_upscale_logic.c
+      10      4     76      1      10 check_compute_target_dims@210-219@tests/fuzz_upscale_logic.c
+      10      7     99      1      11 check_auto_enum_normalization@221-231@tests/fuzz_upscale_logic.c
+      13      1    119      2      16 run_one@237-252@tests/fuzz_upscale_logic.c
+       5      1     22      2       5 LLVMFuzzerTestOneInput@256-260@tests/fuzz_upscale_logic.c
+      21      3    179      1      28 smoke_iter@267-294@tests/fuzz_upscale_logic.c
+       5      1     30      2       5 main@296-300@tests/fuzz_upscale_logic.c
+      12      1     78      0      12 test_laplacian_flat_plane_zero@24-35@tests/test_content_probe.c
+      19      5    140      0      23 test_laplacian_checkerboard_high@37-59@tests/test_content_probe.c
+      15      1    147      0      18 test_laplacian_invalid_input@61-78@tests/test_content_probe.c
+      19      4    139      0      22 test_block_edge_smooth_low@82-103@tests/test_content_probe.c
+      23      4    161      0      27 test_block_edge_blocky_high@105-131@tests/test_content_probe.c
+      13      1    132      0      17 test_block_edge_invalid_input@133-149@tests/test_content_probe.c
+      12      1     73      0      13 test_bypass_too_few_frames@153-165@tests/test_content_probe.c
+      12      1     75      0      14 test_bypass_clean_source_no_bypass@167-180@tests/test_content_probe.c
+      12      1     75      0      14 test_bypass_soft_only_no_bypass@182-195@tests/test_content_probe.c
+      12      1     75      0      15 test_bypass_blocky_only_no_bypass@197-211@tests/test_content_probe.c
+      12      1     75      0      14 test_bypass_soft_and_blocky_yes_bypass@213-226@tests/test_content_probe.c
+      14      1    100      0      16 test_bypass_soft_threshold_boundary@228-243@tests/test_content_probe.c
+      14      1    100      0      16 test_bypass_confidence_and_blocky_boundaries@245-260@tests/test_content_probe.c
+       6      1     25      0       6 test_bypass_null_input@262-267@tests/test_content_probe.c
+       9      1     40      2       9 make_accum_with_lap_mean@271-279@tests/test_content_probe.c
+      11      1     68      0      13 test_skip_usm_threshold_disabled_sentinel@281-293@tests/test_content_probe.c
+      11      1     67      0      12 test_skip_usm_threshold_strict_greater@295-306@tests/test_content_probe.c
+      22      1    170      0      28 test_skip_usm_threshold_vlc_range_edges@308-335@tests/test_content_probe.c
+      11      1     73      0      11 test_skip_usm_safe_defaults@337-347@tests/test_content_probe.c
+      15      1    122      0      16 test_observe_accumulates@349-364@tests/test_content_probe.c
+      11      1     81      0      11 test_probe_stride_less_than_width@369-379@tests/test_content_probe.c
+      32      5    374      0      32 test_fused_metrics_match_references@384-415@tests/test_content_probe.c
+      26      1    100      0      32 main@417-448@tests/test_content_probe.c
+       4      1     23      2       4 mock_zimg_supports_all@24-27@tests/test_scaler_pick.c
+       4      1     23      2       4 mock_zimg_supports_none@28-31@tests/test_scaler_pick.c
+       4      1     20      2       5 mock_zimg_supports_planar_only@32-36@tests/test_scaler_pick.c
+       4      1     23      2       4 mock_sws_supports_all@37-40@tests/test_scaler_pick.c
+       4      1     23      2       4 mock_sws_supports_none@41-44@tests/test_scaler_pick.c
+       9      2     54      2       9 mock_open_backend@58-66@tests/test_scaler_pick.c
+      11      1     75      0      11 test_open_preferred_success_stops@100-110@tests/test_scaler_pick.c
+      11      1     75      0      11 test_open_failure_without_fallback_stops@112-122@tests/test_scaler_pick.c
+      12      1     87      0      12 test_open_fallback_success_preserves_order@124-135@tests/test_scaler_pick.c
+      12      1     87      0      12 test_open_both_fail_returns_null@137-148@tests/test_scaler_pick.c
+      10      1     81      0      10 test_open_null_inputs_make_no_calls@150-159@tests/test_scaler_pick.c
+      10      1     75      0      10 test_open_null_fallback_is_not_called@161-170@tests/test_scaler_pick.c
+      11      1     75      0      11 test_open_same_handle_is_not_retried@172-182@tests/test_scaler_pick.c
+       9      1     42      0       9 test_auto_zimg_supports_returns_zimg@186-194@tests/test_scaler_pick.c
+       9      1     42      0       9 test_auto_zimg_unsupported_falls_back_to_swscale@196-204@tests/test_scaler_pick.c
+       9      1     42      0       9 test_auto_zimg_null_falls_back_to_swscale@206-214@tests/test_scaler_pick.c
+       9      1     42      0       9 test_auto_neither_supports_returns_null@216-224@tests/test_scaler_pick.c
+       9      1     42      0       9 test_zimg_pref_supports_returns_zimg@228-236@tests/test_scaler_pick.c
+       9      1     42      0       9 test_zimg_pref_declines_returns_null_not_swscale@238-246@tests/test_scaler_pick.c
+       9      1     42      0       9 test_zimg_pref_zimg_null_returns_null@248-256@tests/test_scaler_pick.c
+       9      1     42      0       9 test_swscale_pref_supports_returns_swscale@260-268@tests/test_scaler_pick.c
+       9      1     42      0       9 test_swscale_pref_declines_returns_null@270-278@tests/test_scaler_pick.c
+       9      1     42      0       9 test_swscale_pref_ignores_zimg@280-288@tests/test_scaler_pick.c
+      13      1     69      0      13 test_chroma_passed_to_supports@292-304@tests/test_scaler_pick.c
+       9      1     42      0       9 test_unknown_pref_falls_through_to_auto@308-316@tests/test_scaler_pick.c
+      16      3    113      0      19 test_backend_pref_oob_boundaries@324-342@tests/test_scaler_pick.c
+       9      1     42      0       9 test_null_swscale_returns_null@346-354@tests/test_scaler_pick.c
+       9      1     42      0       9 test_null_swscale_supports_returns_null@356-364@tests/test_scaler_pick.c
+       9      1     42      0       9 test_null_zimg_supports_in_auto_falls_back@366-374@tests/test_scaler_pick.c
+      15      1    115      0      15 test_process_status_contract@376-390@tests/test_scaler_pick.c
+      29      1    112      0      36 main@392-427@tests/test_scaler_pick.c
+      15      3     71      2      17 __wrap_aligned_alloc@38-54@tests/test_usm_pool.c
+       7      1     50      3       7 __wrap_pthread_create@58-64@tests/test_usm_pool.c
+       4      1     16      0       4 reset_pthread_create_calls@66-69@tests/test_usm_pool.c
+       5      1     15      0       5 pthread_create_call_count@71-75@tests/test_usm_pool.c
+       5      1     16      0       5 fail_next_aligned_alloc@77-81@tests/test_usm_pool.c
+       5      1     15      0       5 aligned_alloc_call_count@83-87@tests/test_usm_pool.c
+       5      1     17      0       5 aligned_alloc_failure_consumed@89-93@tests/test_usm_pool.c
+       5      1     15      0       5 max_aligned_alloc_size@95-99@tests/test_usm_pool.c
+       4      1     36      3       4 fill_pseudorandom@107-110@tests/test_usm_pool.c
+      33      8    271      5      45 run_compare@117-161@tests/test_usm_pool.c
+      27      9    223      5      30 run_compare_inplace@169-198@tests/test_usm_pool.c
+       7      1     51      0       7 test_identity_amount_zero@202-208@tests/test_usm_pool.c
+      30      9    296      0      39 test_identity_pool_strided_slow_path@218-256@tests/test_usm_pool.c
+      11      1    113      0      11 test_typical_30pct@258-268@tests/test_usm_pool.c
+      14      1    152      0      16 test_inplace_matches_oracle@270-285@tests/test_usm_pool.c
+      14      2    136      0      14 test_auto_resolution_preserves_pixels@287-300@tests/test_usm_pool.c
+      20      2    150      0      21 test_completion_signal_failure_poisons_pool@304-324@tests/test_usm_pool.c
+      11      1     71      0      11 test_create_clamps_huge_thread_count@332-342@tests/test_usm_pool.c
+      26      3    226      0      26 test_worker_preferences_respect_geometry@344-369@tests/test_usm_pool.c
+      24      2    232      0      24 test_64_workers_preserve_output_and_reuse_threads@371-394@tests/test_usm_pool.c
+      23      3    222      0      32 test_single_thread_runs_inline@402-433@tests/test_usm_pool.c
+      14      2     96      0      14 test_inplace_stride_mismatch_rejected@435-448@tests/test_usm_pool.c
+       9      1     77      0       9 test_aggressive_100pct@450-458@tests/test_usm_pool.c
+       7      1     41      0       9 test_odd_dimensions@462-470@tests/test_usm_pool.c
+       7      1     41      0       7 test_tall_narrow@472-478@tests/test_usm_pool.c
+       7      1     41      0       7 test_short_wide@480-486@tests/test_usm_pool.c
+       8      1     42      0      10 test_height_clamps_thread_count@488-497@tests/test_usm_pool.c
+       7      1     41      0       8 test_n_threads_equal_height@499-506@tests/test_usm_pool.c
+      34      9    296      0      44 test_repeat_same_pool@508-551@tests/test_usm_pool.c
+      11      1    114      0      11 test_create_invalid_args@555-565@tests/test_usm_pool.c
+       6      1     20      0       6 test_destroy_null_safe@567-572@tests/test_usm_pool.c
+       8      1     42      0      12 test_destroy_unused_pool@574-585@tests/test_usm_pool.c
+      23      3    164      0      26 test_effective_threads_query@590-615@tests/test_usm_pool.c
+       7      1     46      0       8 test_apply_null_pool@617-624@tests/test_usm_pool.c
+      12      1    105      0      14 test_apply_invalid_strides@626-639@tests/test_usm_pool.c
+      42      9    389      0      49 test_create_stripe_min_rows_boundaries@655-703@tests/test_usm_pool.c
+      28      2    248      0      32 test_apply_lazy_init_alloc_failure_sticky@705-736@tests/test_usm_pool.c
+      37      7    343      0      41 test_barrier_failure_drains_and_sticks@738-778@tests/test_usm_pool.c
+      36      5    279      0      41 test_worker_gate_failure_marks_output_uncertain@780-820@tests/test_usm_pool.c
+      25      9    223      0      32 test_spawn_pthread_create_fail_clean@832-863@tests/test_usm_pool.c
+      34      1    132      0      41 main@865-905@tests/test_usm_pool.c
+      28      5    276      0      28 test_software_descriptor_table@62-89@tests/test_chroma_classify.c
+       9      1     63      0       9 test_physical_plane_index_identity@91-99@tests/test_chroma_classify.c
+       9      1     63      0       9 test_physical_plane_index_yv12@101-109@tests/test_chroma_classify.c
+       7      1     49      0       7 test_opaque_vaapi@113-119@tests/test_chroma_classify.c
+       9      1     83      0       9 test_opaque_vdpau@121-129@tests/test_chroma_classify.c
+       9      1     83      0       9 test_opaque_direct3d@131-139@tests/test_chroma_classify.c
+       6      1     32      0       6 test_opaque_mmal@141-146@tests/test_chroma_classify.c
+      10      1    100      0      10 test_opaque_corevideo@148-157@tests/test_chroma_classify.c
+      19      1    232      0      21 test_software_chromas_not_opaque@161-181@tests/test_chroma_classify.c
+       6      1     22      0       7 test_opaque_count_matches_expected@183-189@tests/test_chroma_classify.c
+       9      1     83      0       9 test_y_plane_planar_yuv@193-201@tests/test_chroma_classify.c
+       7      1     49      0       7 test_y_plane_semi_planar@203-209@tests/test_chroma_classify.c
+       8      1     52      0       8 test_y_plane_packed_yuv@213-220@tests/test_chroma_classify.c
+       9      1     87      0       9 test_y_plane_rgb@222-230@tests/test_chroma_classify.c
+       9      1     87      0      12 test_y_plane_opaque@232-243@tests/test_chroma_classify.c
+       8      1     51      0       8 test_y_plane_garbage@245-252@tests/test_chroma_classify.c
+      13      3     60      0      14 test_opaque_implies_no_y_plane@256-269@tests/test_chroma_classify.c
+      15      5    106      0      15 test_subsample_table@290-304@tests/test_chroma_classify.c
+      11      2    122      0      12 test_subsample_rejects_non_planar@306-317@tests/test_chroma_classify.c
+       9      1     88      0       9 test_subsample_null_outputs@319-327@tests/test_chroma_classify.c
+      10      3     86      0      11 test_subsample_covers_every_y_plane_chroma@329-339@tests/test_chroma_classify.c
+      13      6    113      0      13 test_align_semi_planar_420@348-360@tests/test_chroma_classify.c
+       9      4     78      0       9 test_align_interval_inward_regression@362-370@tests/test_chroma_classify.c
+      12      7    139      0      12 test_align_planar_420@372-383@tests/test_chroma_classify.c
+       9      4     78      0       9 test_align_422_horizontal_only@385-393@tests/test_chroma_classify.c
+      13     10    159      0      13 test_align_444_and_unsupported_untouched@395-407@tests/test_chroma_classify.c
+      15      1    107      0      16 test_align_null_arguments@409-424@tests/test_chroma_classify.c
+      18      7    188      0      18 test_align_is_idempotent_and_shrinking@426-443@tests/test_chroma_classify.c
+      13      5    129      0      13 test_align_maximum_offsets_become_empty@445-457@tests/test_chroma_classify.c
+      34      1    132      0      50 main@459-508@tests/test_chroma_classify.c
+       6      2     32      1       6 fuzz_take@25-30@tests/fuzz_picture_view.c
+       4      2     16      1       4 fuzz_require@32-35@tests/fuzz_picture_view.c
+       8      2     43      1       8 fuzz_picture_free@37-44@tests/fuzz_picture_view.c
+      31      2    254      6      31 fuzz_plane_alloc@46-76@tests/fuzz_picture_view.c
+      16      4    143      5      16 fuzz_picture_init@78-93@tests/fuzz_picture_view.c
+      15      7    116      2      15 fuzz_mutate_picture@95-109@tests/fuzz_picture_view.c
+      30      3    269      5      30 fuzz_touch_plane@111-140@tests/fuzz_picture_view.c
+       9      2     72      4       9 fuzz_touch_view@142-150@tests/fuzz_picture_view.c
+      38      4    350      2      41 fuzz_run_one@152-192@tests/fuzz_picture_view.c
+       5      1     22      2       5 LLVMFuzzerTestOneInput@194-198@tests/fuzz_picture_view.c
+       9      2     49      1       9 smoke_iter@203-211@tests/fuzz_picture_view.c
+       4      1     25      2       4 main@213-216@tests/fuzz_picture_view.c
+       9      2     50      2       9 fake_clock@19-27@tests/test_usm_adaptive.c
+      11      4     83      4      11 up_usm_pool_create@29-39@tests/test_usm_adaptive.c
+       6      2     24      1       6 up_usm_pool_destroy@41-46@tests/test_usm_adaptive.c
+       4      2     18      1       4 up_usm_pool_effective_threads@48-51@tests/test_usm_adaptive.c
+      11      3     90      6      11 up_usm_pool_apply@53-63@tests/test_usm_adaptive.c
+       7      1     57      1       7 setup@65-71@tests/test_usm_adaptive.c
+       6      1     29      2       6 cleanup@73-78@tests/test_usm_adaptive.c
+      14      6    132      0      14 test_accept_reject@80-93@tests/test_usm_adaptive.c
+      18      6    163      1      18 test_trial_failure@95-112@tests/test_usm_adaptive.c
+      18      5    152      0      18 test_resource_failures@114-131@tests/test_usm_adaptive.c
+      15      2    104      0      15 test_clock_and_baseline_failure@133-147@tests/test_usm_adaptive.c
+      21      3    157      0      21 test_pipeline_timing@149-169@tests/test_usm_adaptive.c
+      10      4     89      0      10 test_geometry@171-180@tests/test_usm_adaptive.c
+      11      1     41      0      11 main@182-192@tests/test_usm_adaptive.c
+       9      3     69      2       9 fake_metrics_clock@10-18@tests/test_pipeline_metrics.c
+      11      1     61      0      11 test_disabled@23-33@tests/test_pipeline_metrics.c
+      27      7    241      0      27 test_distribution@35-61@tests/test_pipeline_metrics.c
+      20      4    153      0      20 test_failed_frames_and_clocks@63-82@tests/test_pipeline_metrics.c
+       7      1     23      0       7 main@84-90@tests/test_pipeline_metrics.c
+       7      6     77      4       7 up_vulkan_elapsed_us@7-13@tests/vulkan_timing.h
+      12      3     80      5      12 up_profile_env@14-25@tests/profile_input.h
+      13      6    130      4      13 up_profile_input_open@27-39@tests/profile_input.h
+      15      6    154      3      15 up_profile_input_read@41-55@tests/profile_input.h
+       5      2     34      0       5 environment@11-15@tests/test_fuzz_runner.py
+       6      1     47      0       6 canonical_targets@18-23@tests/test_fuzz_runner.py
+       9      3     84      1       9 check_workflow@26-34@tests/test_fuzz_runner.py
+      12      5    134      2      12 check_invocations@37-48@tests/test_fuzz_runner.py
+      16      2    118      1      16 check_runner@51-66@tests/test_fuzz_runner.py
+       5      1     21      0       5 main@69-73@tests/test_fuzz_runner.py
+       5      3     28      1       5 clamped_budget@41-45@tests/fuzz_decide_tile_grid.c
+       4      3     33      3       5 grid_shape_ok@47-51@tests/fuzz_decide_tile_grid.c
+       9      6     71      6       9 grid_floors_ok@56-64@tests/fuzz_decide_tile_grid.c
+       7      1     49      4       7 grid_cells@66-72@tests/fuzz_decide_tile_grid.c
+      14      9    126      3      14 cells_nondegenerate@81-94@tests/fuzz_decide_tile_grid.c
+      21      6    171      4      23 check_grid@96-118@tests/fuzz_decide_tile_grid.c
+       7      6     63      2       7 plans_equal@122-128@tests/fuzz_decide_tile_grid.c
+      37      9    298      4      40 check_plan@133-172@tests/fuzz_decide_tile_grid.c
+      12      2    154      2      12 run_one@174-185@tests/fuzz_decide_tile_grid.c
+       5      2     28      2       5 LLVMFuzzerTestOneInput@187-191@tests/fuzz_decide_tile_grid.c
+      16      6    152      0      16 sweep_boundaries@207-222@tests/fuzz_decide_tile_grid.c
+      22      7    260      0      22 sweep_source_dims@227-248@tests/fuzz_decide_tile_grid.c
+       7      1     35      1       7 smoke_iter@251-257@tests/fuzz_decide_tile_grid.c
+      10      2     59      2      10 main@259-268@tests/fuzz_decide_tile_grid.c
+       6      2     53      1       6 clock_us@38-43@tests/profile_pipeline.c
+      16      7    224      1      16 parse_environment@45-60@tests/profile_pipeline.c
+      11      7    201      3      11 parse@62-72@tests/profile_pipeline.c
+       9      3    111      2       9 fill_smooth@74-82@tests/profile_pipeline.c
+      26      9    320      2      26 initialize@84-109@tests/profile_pipeline.c
+      11      4    102      1      11 destroy@111-121@tests/profile_pipeline.c
+      11      4    124      2      11 probe_source@123-133@tests/profile_pipeline.c
+      19      7    222      3      19 frame@135-153@tests/profile_pipeline.c
+       6      3     48      3       6 sched_snapshot@155-160@tests/profile_pipeline.c
+       9      2     79      1       9 wait_period@162-170@tests/profile_pipeline.c
+      18     10    221      2      18 run@172-189@tests/profile_pipeline.c
+       5      1     49      2       5 cmp_double@191-195@tests/profile_pipeline.c
+      15      2    167      5      15 report_times@197-211@tests/profile_pipeline.c
+      13      4    121      1      13 picture_hash@213-225@tests/profile_pipeline.c
+      19      4    181      3      19 report_trace@227-245@tests/profile_pipeline.c
+       8      1     75      3       8 report_sched@247-254@tests/profile_pipeline.c
+      25      6    323      2      25 report@256-280@tests/profile_pipeline.c
+       7      1     52      2       7 trace_row@282-288@tests/profile_pipeline.c
+      16      5    144      3      16 write_samples@290-305@tests/profile_pipeline.c
+      19      7    174      2      19 main@307-325@tests/profile_pipeline.c
+      10      1     81      0      10 test_valid_values@16-25@tests/test_cli_parse.c
+      15      1    145      0      15 test_invalid_text@27-41@tests/test_cli_parse.c
+       7      1     50      0       7 test_range_rejection@43-49@tests/test_cli_parse.c
+       9      2     35      0       9 main@51-59@tests/test_cli_parse.c
+      24     10    201      5      24 up_laplacian_variance@7-30@tests/content_probe_reference.h
+      15      4    125      7      15 up_block_edge_vertical@37-51@tests/content_probe_reference.h
+      16      4    132      7      16 up_block_edge_horizontal@53-68@tests/content_probe_reference.h
+      16      8    117      5      16 up_block_edge_strength@70-85@tests/content_probe_reference.h
+       9      2     48      1       9 up_xs32@17-25@tests/prng.h
+       6      3     51      3       6 up_fill_random@28-33@tests/prng.h
+      13      2    135      5      15 parse_input@34-48@tests/fuzz_stripe_bounds.c
+      12      2     68      3      12 check_invalid_input@50-61@tests/fuzz_stripe_bounds.c
+      12      8    107      8      13 check_alignment@63-75@tests/fuzz_stripe_bounds.c
+      21      6    130     10      24 check_stripe@77-100@tests/fuzz_stripe_bounds.c
+      28      7    169      3      31 validate_partition@102-132@tests/fuzz_stripe_bounds.c
+       9      5     75      2      14 run_one@134-147@tests/fuzz_stripe_bounds.c
+       5      2     28      2       5 LLVMFuzzerTestOneInput@149-153@tests/fuzz_stripe_bounds.c
+       7      1     35      1       7 smoke_iter@158-164@tests/fuzz_stripe_bounds.c
+       5      1     30      2       5 main@166-170@tests/fuzz_stripe_bounds.c
+       8      2     52      2       8 adapter_clock@18-25@tests/stress_usm_adaptive.c
+      10      2    110      3      10 one_frame@31-40@tests/stress_usm_adaptive.c
+      19      9    172      0      19 main@42-60@tests/stress_usm_adaptive.c
+       1      1     13      1       1 up_profile_usm_mode@7-7@tests/profile_usm.c
+       4      1     11      1       4 up_profile_usm_experiment@8-11@tests/profile_usm.c
+       1      1     10      0       1 up_profile_usm_finish@12-12@tests/profile_usm.c
+       1      1     11      0       1 up_profile_usm_frame@13-13@tests/profile_usm.c
+       5      1     34      2       5 up_profile_usm_sched@15-19@tests/profile_usm.c
+      13      5    109      3      13 topology_mask_from_bytes@29-41@tests/fuzz_threading.c
+      11      5     81      3      11 topology_expected_counts@43-53@tests/fuzz_threading.c
+      11      4     72      2      11 topology_ids_valid@55-65@tests/fuzz_threading.c
+      21      4    122      2      22 check_topology_mask@67-88@tests/fuzz_threading.c
+      11      2     91      4      11 parse_trial@92-102@tests/fuzz_threading.c
+       6      3     31      1       6 saturate_cores@106-111@tests/fuzz_threading.c
+      19      4     93      4      19 check_bounds@114-132@tests/fuzz_threading.c
+      14      5     85      3      14 check_auto@136-149@tests/fuzz_threading.c
+      14      5     83      4      14 check_explicit@152-165@tests/fuzz_threading.c
+      12      7     98      2      13 run_trial@168-180@tests/fuzz_threading.c
+      10      4     64      2      15 run_one@182-196@tests/fuzz_threading.c
+       5      2     28      2       5 LLVMFuzzerTestOneInput@198-202@tests/fuzz_threading.c
+       8      1     48      1       8 smoke_iter@207-214@tests/fuzz_threading.c
+       5      1     30      2       5 main@216-220@tests/fuzz_threading.c
+       8      4    120      1       8 kernel@17-24@tests/test_vulkan_pipeline.c
+       7      5     59      2       7 mirror@26-32@tests/test_vulkan_pipeline.c
+      10      2     95      3      10 horizontal@34-43@tests/test_vulkan_pipeline.c
+      14      4    154      5      14 reference_pixel@45-58@tests/test_vulkan_pipeline.c
+      10      3    124      6      10 reference_plane@60-69@tests/test_vulkan_pipeline.c
+      17      5    160      1      17 reference@71-87@tests/test_vulkan_pipeline.c
+       5      1     57      1       5 cleanup@89-93@tests/test_vulkan_pipeline.c
+      13      8    267      6      13 setup@95-107@tests/test_vulkan_pipeline.c
+       9      5     88      2       9 fill@109-117@tests/test_vulkan_pipeline.c
+      11      3     87      1      11 within_one@119-129@tests/test_vulkan_pipeline.c
+       8      3    113      2       8 check_amount@131-138@tests/test_vulkan_pipeline.c
+      11      5    126      2      11 check_pattern@140-150@tests/test_vulkan_pipeline.c
+       9      4    109      1       9 check_readback_contract@152-160@tests/test_vulkan_pipeline.c
+      12      6    179      4      12 check_shape@162-173@tests/test_vulkan_pipeline.c
+      16      7    210      2      16 main@175-190@tests/test_vulkan_pipeline.c
+       9      3     76      3       9 __wrap_pthread_create@44-52@tests/fuzz_worker_pool.c
+       4      1     23      1       4 fz_slots@68-71@tests/fuzz_worker_pool.c
+       8      2     53      2       8 fz_construct@73-80@tests/fuzz_worker_pool.c
+       8      2     57      2       8 fz_release@82-89@tests/fuzz_worker_pool.c
+       5      1     33      2       5 fz_run@91-95@tests/fuzz_worker_pool.c
+       4      1     23      2       4 fz_finalize@97-100@tests/fuzz_worker_pool.c
+      13      7    106      3      13 check_started@114-126@tests/fuzz_worker_pool.c
+      16      6    104      1      16 check_failed@129-144@tests/fuzz_worker_pool.c
+      10      3     77      2      10 check_dispatch_counts@146-155@tests/fuzz_worker_pool.c
+       9      4     61      2       9 run_dispatches@157-165@tests/fuzz_worker_pool.c
+       8      4     53      1       8 destroy_and_check@168-175@tests/fuzz_worker_pool.c
+       7      2     43      1       7 poison_pool@179-185@tests/fuzz_worker_pool.c
+      12      7     94      5      12 run_lifecycle@187-198@tests/fuzz_worker_pool.c
+      21      6    227      2      25 run_one@200-224@tests/fuzz_worker_pool.c
+       5      2     28      2       5 LLVMFuzzerTestOneInput@226-230@tests/fuzz_worker_pool.c
+       8      1     55      1       9 smoke_iter@235-243@tests/fuzz_worker_pool.c
+       5      1     30      2       5 main@245-249@tests/fuzz_worker_pool.c
+      16      1    125      0      16 test_round_up_pitch_basic@20-35@tests/test_zimg_helpers.c
+       7      1     37      0       7 test_round_up_pitch_negative@37-43@tests/test_zimg_helpers.c
+       9      1     55      0       9 test_round_up_lines_basic@47-55@tests/test_zimg_helpers.c
+       6      1     26      0       6 test_round_up_lines_negative@57-62@tests/test_zimg_helpers.c
+       9      1     54      0       9 test_round_up_lines_overflow@64-72@tests/test_zimg_helpers.c
+      13      1    112      0      13 test_chroma_dim_boundaries@76-88@tests/test_zimg_helpers.c
+       8      1     51      0       8 test_plane_pitch_no_subsample@92-99@tests/test_zimg_helpers.c
+       8      1     51      0       9 test_plane_pitch_h_subsample@101-109@tests/test_zimg_helpers.c
+       6      1     27      0       6 test_plane_pitch_quarter_subsample@111-116@tests/test_zimg_helpers.c
+       8      1     53      0       8 test_plane_pitch_zero_neg@118-125@tests/test_zimg_helpers.c
+       9      1     63      0       9 test_plane_lines_basic@129-137@tests/test_zimg_helpers.c
+       6      1     27      0       7 test_plane_lines_odd_height@139-145@tests/test_zimg_helpers.c
+       9      1     63      0       9 test_plane_geometry_extreme_height@147-155@tests/test_zimg_helpers.c
+      10      3    105      0      10 test_copy_plane_same_stride@159-168@tests/test_zimg_helpers.c
+      18      6    193      0      25 test_copy_plane_different_strides@170-194@tests/test_zimg_helpers.c
+      11      2     84      0      12 test_copy_plane_zero_rows@196-207@tests/test_zimg_helpers.c
+      11      2     84      0      11 test_copy_plane_zero_row_bytes@209-219@tests/test_zimg_helpers.c
+      21      5    258      0      22 test_copy_plane_negative_inputs@221-242@tests/test_zimg_helpers.c
+      28      8    230      0      31 test_copy_plane_realistic_480p_luma@244-274@tests/test_zimg_helpers.c
+      10      1     83      0      10 test_stripe_bounds_n1_full_coverage@278-287@tests/test_zimg_helpers.c
+      16      1    142      0      16 test_stripe_bounds_n2_clean_split@289-304@tests/test_zimg_helpers.c
+      27      4    172      0      27 test_stripe_bounds_full_coverage_n_arbitrary@306-332@tests/test_zimg_helpers.c
+      12      1    188      0      12 test_stripe_bounds_invalid_inputs@334-345@tests/test_zimg_helpers.c
+      15      1    107      0      19 test_zimg_stripe_min_lines_boundaries@349-367@tests/test_zimg_helpers.c
+      18      3    125      0      22 test_stripe_bounds_ratio_preservation@369-390@tests/test_zimg_helpers.c
+       9      1     74      7       9 grid_2x@395-403@tests/test_zimg_helpers.c
+      35      8    480      0      51 test_decide_tile_grid@406-456@tests/test_zimg_helpers.c
+      11      5     97      3      11 grid_cells_all_valid@460-470@tests/test_zimg_helpers.c
+      30      6    302      0      40 test_decide_tile_grid_src_bound@478-517@tests/test_zimg_helpers.c
+      44      2    489      0      57 test_resolve_io_plan@520-576@tests/test_zimg_helpers.c
+      33      1    128      0      40 main@578-617@tests/test_zimg_helpers.c
+       6      2     36      2       6 checked@57-62@tests/experiment_vulkan.c
+      17      5    170      2      17 select_device@64-80@tests/experiment_vulkan.c
+      20      5    202      1      20 create_device@82-101@tests/experiment_vulkan.c
+      10      4     79      3      10 memory_type@103-112@tests/experiment_vulkan.c
+      22      9    263      3      22 create_buffer_storage@114-135@tests/experiment_vulkan.c
+       5      4     48      2       5 create_buffer@137-141@tests/experiment_vulkan.c
+      21      3    268      1      21 create_descriptors@143-163@tests/experiment_vulkan.c
+      14      2    161      2      14 bind_buffers@165-178@tests/experiment_vulkan.c
+       4      2     18      1       4 shader_size_valid@180-183@tests/experiment_vulkan.c
+      15      8    175      3      15 load_shader@185-199@tests/experiment_vulkan.c
+       8      1     81      1       8 create_layout@201-208@tests/experiment_vulkan.c
+      16      3    204      2      16 create_pipeline@210-225@tests/experiment_vulkan.c
+      11      3    144      1      11 create_commands@227-237@tests/experiment_vulkan.c
+       9      7     89      2       9 initialize_pipelines@239-247@tests/experiment_vulkan.c
+       8      6     82      3       8 initialize@249-256@tests/experiment_vulkan.c
+       8      2     83      1       8 single_pass@258-265@tests/experiment_vulkan.c
+      16      5    150      4      16 up_vulkan_create@267-282@tests/experiment_vulkan.c
+       5      6     59      4       5 scale_dimensions@284-288@tests/experiment_vulkan.c
+      19      5    181      6      19 up_vulkan_create_scale@290-308@tests/experiment_vulkan.c
+       7      1     66      5       7 barrier@310-316@tests/experiment_vulkan.c
+      13      4    191      2      13 separable_passes@318-330@tests/experiment_vulkan.c
+      10      2    117      1      10 fill_coefficients@332-341@tests/experiment_vulkan.c
+       4      3     27      2       4 fused_supported@343-346@tests/experiment_vulkan.c
+      24      9    272      6      24 up_vulkan_create_separable@348-371@tests/experiment_vulkan.c
+       4      2     35      3       4 stamp@373-376@tests/experiment_vulkan.c
+      11      4    138      2      11 dispatch_groups@378-388@tests/experiment_vulkan.c
+      14      2    156      3      14 dispatch@390-403@tests/experiment_vulkan.c
+      10      2     90      1      10 record_upload@405-414@tests/experiment_vulkan.c
+      17      3    124      1      17 record_download@416-432@tests/experiment_vulkan.c
+      16      7    176      2      16 record@434-449@tests/experiment_vulkan.c
+       8      3    107      1       8 submit@451-458@tests/experiment_vulkan.c
+      12      3    127      1      12 profile_queries@460-471@tests/experiment_vulkan.c
+       4      2     20      1       4 clock_us@473-476@tests/experiment_vulkan.c
+       5      4     47      2       5 download@478-482@tests/experiment_vulkan.c
+      18      9    209      4      18 up_vulkan_apply@484-501@tests/experiment_vulkan.c
+      13      7    108      2      13 up_vulkan_enable_timing@503-515@tests/experiment_vulkan.c
+       1      1     14      1       1 up_vulkan_profile@517-517@tests/experiment_vulkan.c
+       5      1     25      2       5 up_vulkan_readback@519-523@tests/experiment_vulkan.c
+       9      3     79      1       9 destroy_buffers@525-533@tests/experiment_vulkan.c
+      21      4    194      1      21 up_vulkan_destroy@535-555@tests/experiment_vulkan.c
+       1      1     14      1       1 up_vulkan_device@557-557@tests/experiment_vulkan.c
+       8      1     65      0       8 test_wrap@5-12@tests/test_vulkan_timing.c
+       9      1     83      0       9 test_invalid@14-22@tests/test_vulkan_timing.c
+       5      1     19      0       5 main@24-28@tests/test_vulkan_timing.c
+      11      6    122      5      11 layout_matches_helpers@34-44@tests/fuzz_plane_buffer.c
+       9      4     72      2       9 alloc_bytes_contract_ok@46-54@tests/fuzz_plane_buffer.c
+       9      3     75      1       9 buffer_bytes_contract_ok@56-64@tests/fuzz_plane_buffer.c
+      11      3     85      1      11 planes_aligned_and_writable@66-76@tests/fuzz_plane_buffer.c
+      16      9    145      1      17 alloc_roundtrip_ok@78-94@tests/fuzz_plane_buffer.c
+      33      7    249      2      35 run_one@96-130@tests/fuzz_plane_buffer.c
+       5      2     28      2       5 LLVMFuzzerTestOneInput@132-136@tests/fuzz_plane_buffer.c
+      15      4    126      0      15 sweep_boundaries@147-161@tests/fuzz_plane_buffer.c
+      13      2     96      1      15 smoke_iter@163-177@tests/fuzz_plane_buffer.c
+       9      2     48      2       9 main@179-187@tests/fuzz_plane_buffer.c
+       4      2     28      1       4 up_vulkan_bench_mode_valid@10-13@tests/vulkan_bench_util.h
+       6      2     52      1       6 up_vulkan_bench_now_us@15-20@tests/vulkan_bench_util.h
+       6      1     50      1       6 cleanup@22-27@tests/bench_vulkan.c
+       9      6    144      4       9 allocate@29-37@tests/bench_vulkan.c
+       9      5     92      2       9 fill@39-47@tests/bench_vulkan.c
+      11      5    163      2      11 validate_amount@49-59@tests/bench_vulkan.c
+      10      4    101      1      10 validate@61-70@tests/bench_vulkan.c
+       5      2     59      2       5 process@72-76@tests/bench_vulkan.c
+       8      2     81      1       8 pace@78-85@tests/bench_vulkan.c
+      24      6    229      4      24 measure@87-110@tests/bench_vulkan.c
+       6      2     43      3       6 number@112-117@tests/bench_vulkan.c
+       6      2     57      2       6 dimensions@119-124@tests/bench_vulkan.c
+       4      4     33      4       4 options_valid@126-129@tests/bench_vulkan.c
+      17      8    213      2      17 main@131-147@tests/bench_vulkan.c
+       4      2     15      1       4 fuzz_smoke_seed@31-34@tests/fuzz_smoke.h
+       6      1     37      0       6 fuzz_smoke_next@36-41@tests/fuzz_smoke.h
+       4      2     37      2       4 fuzz_smoke_fill@43-46@tests/fuzz_smoke.h
+      20      7    144      5      20 fuzz_smoke_main@51-70@tests/fuzz_smoke.h
+      13      4     71      2      14 pick_chroma@100-113@tests/fuzz_frame_shape.c
+      25      9     97      4      28 check_known_class@124-151@tests/fuzz_frame_shape.c
+       9      3     52      2      14 check_chroma_class@153-166@tests/fuzz_frame_shape.c
+      16      5     91      4      16 check_pitch_result@168-183@tests/fuzz_frame_shape.c
+      13      4     66      4      13 check_lines_result@185-197@tests/fuzz_frame_shape.c
+      15      1    134      2      16 check_plane_pitch_lines@199-214@tests/fuzz_frame_shape.c
+       7      1     48      2       7 check_round_up@216-222@tests/fuzz_frame_shape.c
+      12      5     73      0      13 check_physical_plane_index_range@224-236@tests/fuzz_frame_shape.c
+       7      3     40      2      15 check_plane_geometry@238-252@tests/fuzz_frame_shape.c
+       6      7     50      3       6 stripe_inputs_out_of_range@254-259@tests/fuzz_frame_shape.c
+      10      5     76      4      17 stripe_partition_skip@261-277@tests/fuzz_frame_shape.c
+      12      7     96      8      12 check_stripe_bounds_range@279-290@tests/fuzz_frame_shape.c
+      24      4    182      9      25 check_stripe_step@292-316@tests/fuzz_frame_shape.c
+      20      5    121      3      21 check_stripe_partition@318-338@tests/fuzz_frame_shape.c
+       5      5     47      4       6 stripe_invalid_input@340-345@tests/fuzz_frame_shape.c
+       5      4     33      4       5 stripe_canary_unchanged@347-351@tests/fuzz_frame_shape.c
+      15      6    130      4      31 check_stripe_invalid@353-383@tests/fuzz_frame_shape.c
+      35      6    276      2      49 run_one@387-435@tests/fuzz_frame_shape.c
+       5      1     22      2       5 LLVMFuzzerTestOneInput@439-443@tests/fuzz_frame_shape.c
+      35      4    317      1      40 smoke_iter@448-487@tests/fuzz_frame_shape.c
+       5      1     30      2       5 main@489-493@tests/fuzz_frame_shape.c
+       1      1     13      1       1 up_profile_zimg_mode@7-7@tests/profile_zimg.c
+       5      1     18      2       5 up_profile_zimg_experiment@8-12@tests/profile_zimg.c
+       1      1     10      0       1 up_profile_zimg_finish@13-13@tests/profile_zimg.c
+       1      1     11      0       1 up_profile_zimg_frame@14-14@tests/profile_zimg.c
+       6      1     59      2       6 up_profile_zimg_sched@16-21@tests/profile_zimg.c
+      16      1    127      0      19 test_select_ops_prefers_highest_isa@50-68@tests/test_usm_pool_dispatch.c
+      13      2    111      0      16 test_public_api_forwards@70-85@tests/test_usm_pool_dispatch.c
+      20      1     87      0      20 full_v4_features@87-106@tests/test_usm_pool_dispatch.c
+      19      1    119      0      23 test_cpu_level_fallback_requires_complete_v3@108-130@tests/test_usm_pool_dispatch.c
+      14      1     90      0      16 test_cpu_level_fallback_requires_os_state@132-147@tests/test_usm_pool_dispatch.c
+       8      3     27      2       8 variant_for_levels@149-156@tests/test_usm_pool_dispatch.c
+      17      3    129      0      20 test_host_probe_matches_dispatch@158-177@tests/test_usm_pool_dispatch.c
+       9      1     31      0       9 main@179-187@tests/test_usm_pool_dispatch.c
+       8      4    120      1       8 up_vulkan_spline@12-19@tests/vulkan_coefficients.h
+       7      5     59      2       7 up_vulkan_mirror@21-27@tests/vulkan_coefficients.h
+      16      4    172      3      16 up_vulkan_coefficients@29-44@tests/vulkan_coefficients.h
+      10      2     58      0      12 test_create_then_destroy_no_apply@52-63@tests/test_lifetime.c
+      27      5    194      0      28 test_create_apply_destroy@72-99@tests/test_lifetime.c
+      13      2     95      0      13 test_many_cycles@111-123@tests/test_lifetime.c
+      27      6    180      0      30 test_alternating_cold_warm@132-161@tests/test_lifetime.c
+       8      2     36      0       8 test_destroy_null_repeatedly@169-176@tests/test_lifetime.c
+      13      1    108      0      14 test_create_invalid_no_leak@184-197@tests/test_lifetime.c
+      28      4    191      0      34 test_input_buffer_can_be_freed@213-246@tests/test_lifetime.c
+      28      4    186      0      34 test_dst_buffer_swappable@255-288@tests/test_lifetime.c
+      25      5    257      0      26 test_variable_sizes_in_succession@295-320@tests/test_lifetime.c
+      34      7    255      0      38 test_many_pools_alive_simultaneously@328-365@tests/test_lifetime.c
+      15      1     56      0      19 main@367-385@tests/test_lifetime.c
+       9      2     89      5       9 run_frame@13-21@tests/bench_pipeline.c
+       7      1     54      3       7 elapsed_us@23-29@tests/bench_pipeline.c
+      17      4    179      5      17 pipeline_init@39-55@tests/bench_pipeline.c
+       7      3     63      1       7 pipeline_destroy@57-63@tests/bench_pipeline.c
+       6      3     59      2       6 pipeline_run_many@65-70@tests/bench_pipeline.c
+       9      4     82      3       9 pipeline_time_many@72-80@tests/bench_pipeline.c
+      16      6    140      8      16 time_pipeline@82-97@tests/bench_pipeline.c
+      14      6    152      3      14 parse_args@107-120@tests/bench_pipeline.c
+      18      3    149      2      18 main@122-139@tests/bench_pipeline.c
+      12      9     98      4      12 up_cli_parse_long@9-20@tests/cli_parse.h
+       8      5     64      1       8 chroma_of@25-32@tests/bench_scaler_zimg.c
+      44      6    334      3      45 parse@40-84@tests/bench_scaler_zimg.c
+      18      6    167      5      18 time_frames@86-103@tests/bench_scaler_zimg.c
+      12      4    117      4      12 time_first_frame@105-116@tests/bench_scaler_zimg.c
+      33     10    304      4      35 run_timed@118-152@tests/bench_scaler_zimg.c
+      17      3    131      2      18 main@154-171@tests/bench_scaler_zimg.c
+       8      1     63      0       8 test_decide_forced_720p@24-31@tests/test_upscale_logic.c
+       8      1     63      0       9 test_decide_forced_1080p@33-41@tests/test_upscale_logic.c
+       8      1     63      0      11 test_decide_auto_strong_hw@43-53@tests/test_upscale_logic.c
+      10      1     79      0      13 test_decide_auto_weak_hw@55-67@tests/test_upscale_logic.c
+      10      1     95      0      16 test_decide_auto_tiny_source@69-84@tests/test_upscale_logic.c
+       8      1     65      0       8 test_decide_invalid_input@86-93@tests/test_upscale_logic.c
+       9      1     81      0      12 test_decide_zero_cores@99-110@tests/test_upscale_logic.c
+       9      1     82      0      13 test_decide_invalid_preset_falls_through@116-128@tests/test_upscale_logic.c
+      19      1    186      0      20 test_decide_table_exact_values@133-152@tests/test_upscale_logic.c
+       9      1     56      0      11 test_decide_no_downscale@154-164@tests/test_upscale_logic.c
+       9      1     79      0      13 test_decide_1440p@168-180@tests/test_upscale_logic.c
+       9      1     79      0      13 test_decide_4k@182-194@tests/test_upscale_logic.c
+       8      1     63      0      11 test_decide_5k@196-206@tests/test_upscale_logic.c
+       8      1     63      0      11 test_decide_8k@208-218@tests/test_upscale_logic.c
+       8      1     63      0      11 test_decide_high_res_ignores_hw@220-230@tests/test_upscale_logic.c
+      18      1    160      0      24 test_plan_skip_above_only_for_auto@232-255@tests/test_upscale_logic.c
+      12      1     96      0      15 test_plan_skip_above_zero_disables_gate@257-271@tests/test_upscale_logic.c
+      17      3    109      0      22 test_auto_never_above_1080p@275-296@tests/test_upscale_logic.c
+      11      1    110      0      15 test_unknown_preset_treated_as_auto@298-312@tests/test_upscale_logic.c
+      13      1    143      0      28 test_high_res_ratio_cap_boundary@314-341@tests/test_upscale_logic.c
+      11      1     73      0      14 test_compute_8k_aspect_preserved@343-356@tests/test_upscale_logic.c
+       9      1     55      0       9 test_compute_4k_aspect_preserved@358-366@tests/test_upscale_logic.c
+      17      1    147      0      24 test_compute_target_dims_at_max_dim@368-391@tests/test_upscale_logic.c
+      18      3    136      0      23 test_plan_full_ladder_spot_check@393-415@tests/test_upscale_logic.c
+      12      1     88      0      15 test_compute_basic_aspect@419-433@tests/test_upscale_logic.c
+       9      1     55      0      10 test_compute_4_3_aspect@435-444@tests/test_upscale_logic.c
+      12      1     96      0      15 test_compute_even_rounding@446-460@tests/test_upscale_logic.c
+      17      1    155      0      25 test_compute_invalid_input@462-486@tests/test_upscale_logic.c
+      14      2     82      0      16 test_compute_overflow_safe@488-503@tests/test_upscale_logic.c
+      10      1     68      0      10 test_plan_typical_sd_to_hd@507-516@tests/test_upscale_logic.c
+      10      1     68      0      10 test_plan_already_hd@518-527@tests/test_upscale_logic.c
+      10      1     68      0      10 test_plan_skip_above_lowered@529-538@tests/test_upscale_logic.c
+      37      7    397      0      52 test_plan_skip_above_boundaries@549-600@tests/test_upscale_logic.c
+      16      1    198      0      20 test_plan_invalid@602-621@tests/test_upscale_logic.c
+      10      1     68      0      11 test_plan_anamorphic@623-633@tests/test_upscale_logic.c
+      17      2    130      0      25 test_plan_pathological_aspect_regression@635-659@tests/test_upscale_logic.c
+      18      4    116      5      18 aspect_within_slack@667-684@tests/test_upscale_logic.c
+      18      4    148      0      20 test_aspect_invariant_smoke@686-705@tests/test_upscale_logic.c
+      13      1    130      0      27 test_plan_defensive_branches@712-738@tests/test_upscale_logic.c
+      12      2     92      0      12 test_auto_enum_normalization@740-751@tests/test_upscale_logic.c
+      44      1    172      0      50 main@753-802@tests/test_upscale_logic.c
+       6      3     54      3       6 byte_diff@43-48@tests/stress_usm_pool.c
+       9      5     76      2       9 alloc_bufs@70-78@tests/stress_usm_pool.c
+       4      1     36      1       4 free_bufs@80-83@tests/stress_usm_pool.c
+      22      4    216      6      31 run_one_frame@87-117@tests/stress_usm_pool.c
+      20      5    138      7      20 drive_frames@121-140@tests/stress_usm_pool.c
+      16      4     87      5      16 report_result@142-157@tests/stress_usm_pool.c
+      49      7    317      1      57 run_config@161-217@tests/stress_usm_pool.c
+      53      9    646      2      78 main@219-296@tests/stress_usm_pool.c
+       9      4     80      5       9 min_plane_dims@49-57@tests/fuzz_scaler_seam.c
+       9      4     92      3       9 seam_bound@59-67@tests/fuzz_scaler_seam.c
+       5      1     60      3       5 pick@77-81@tests/fuzz_scaler_seam.c
+      16      6    158      1      16 fill_smooth@84-99@tests/fuzz_scaler_seam.c
+      19      5    186      7      20 resample@104-123@tests/fuzz_scaler_seam.c
+      18      6    190      2      18 max_delta@126-143@tests/fuzz_scaler_seam.c
+      27      9    264      2      31 run_one@145-175@tests/fuzz_scaler_seam.c
+       5      1     22      2       5 LLVMFuzzerTestOneInput@177-181@tests/fuzz_scaler_seam.c
+       8      1     37      1       8 smoke_iter@186-193@tests/fuzz_scaler_seam.c
+       5      1     30      2       6 main@195-200@tests/fuzz_scaler_seam.c
+       7      4     52      1       7 parse_fill_mode@35-41@tests/bench_usm_pool.c
+      48     10    371      3      49 parse_args@43-91@tests/bench_usm_pool.c
+      15      3    136      5      15 fill_frame@93-107@tests/bench_usm_pool.c
+      12      4    102      7      12 run_warmup@109-120@tests/bench_usm_pool.c
+       5      2     35      1       5 alloc64@123-127@tests/bench_usm_pool.c
+       8      2     35      1       8 checked_now@129-136@tests/bench_usm_pool.c
+      18      6    187      6      25 run_timed@138-162@tests/bench_usm_pool.c
+      44      8    315      2      51 main@164-214@tests/bench_usm_pool.c
+       8      2     81      1       8 cleanup@28-35@tests/bench_vulkan_scale.c
+      16      9    239      2      16 setup_cpu@37-52@tests/bench_vulkan_scale.c
+      20      8    275      4      20 setup_gpu@54-73@tests/bench_vulkan_scale.c
+      12      3    101      1      12 pack@75-86@tests/bench_vulkan_scale.c
+      11      6    145      2      11 process@88-98@tests/bench_vulkan_scale.c
+       9      4     69      1       9 flat_test@100-108@tests/bench_vulkan_scale.c
+      11      4    135      4      11 quality_plane@110-120@tests/bench_vulkan_scale.c
+      16      4    137      1      16 quality@122-137@tests/bench_vulkan_scale.c
+       8      2     96      2       8 collect_stages@139-146@tests/bench_vulkan_scale.c
+      12      3    115      1      12 report_stages@148-159@tests/bench_vulkan_scale.c
+       8      2     72      1       8 pace@161-168@tests/bench_vulkan_scale.c
+       6      2     48      2       6 prepare_frame@172-177@tests/bench_vulkan_scale.c
+       4      3     33      2       4 prepare_measure@179-182@tests/bench_vulkan_scale.c
+      27     10    279      2      27 measure@184-210@tests/bench_vulkan_scale.c
+      11      3     97      2      11 unpack@212-222@tests/bench_vulkan_scale.c
+      14      5    129      2      14 load_input@224-237@tests/bench_vulkan_scale.c
+       9      3     90      1       9 variant_valid@239-247@tests/bench_vulkan_scale.c
+      23     10    224      3      23 options@249-271@tests/bench_vulkan_scale.c
+       7      4     68      2       7 run@273-279@tests/bench_vulkan_scale.c
+       7      6     81      4       7 arguments@281-287@tests/bench_vulkan_scale.c
+      15      7    146      2      15 main@289-303@tests/bench_vulkan_scale.c
+      11      2     55      2      11 __wrap_aligned_alloc@40-50@tests/test_worker_pool.c
+      13      4     98      3      13 __wrap_pthread_create@54-66@tests/test_worker_pool.c
+      13      3     72      2      14 __wrap_pthread_join@69-82@tests/test_worker_pool.c
+       9      2     45      2       9 __wrap_pthread_setcancelstate@85-93@tests/test_worker_pool.c
+      11      1     72      0      11 fault_reset@95-105@tests/test_worker_pool.c
+       4      1     23      1       4 fake_slots@127-130@tests/test_worker_pool.c
+       6      1     28      1       6 fake_prepare@132-137@tests/test_worker_pool.c
+       8      2     53      2       8 fake_construct@139-146@tests/test_worker_pool.c
+       6      1     38      2       6 fake_release@148-153@tests/test_worker_pool.c
+      14      4     95      2      14 fake_run@155-168@tests/test_worker_pool.c
+       5      1     35      3       5 fake_on_spawn@170-174@tests/test_worker_pool.c
+       4      1     23      2       4 fake_finalize@176-179@tests/test_worker_pool.c
+      11      1     84      3      11 fake_init@208-218@tests/test_worker_pool.c
+       9      3     69      2      10 fake_start_required@220-229@tests/test_worker_pool.c
+       6      1     30      1       6 fake_dispatch_required@231-236@tests/test_worker_pool.c
+       9      2     53      1       9 mutex_roundtrip@238-246@tests/test_worker_pool.c
+       8      2     84      2       8 check_run_counts@249-256@tests/test_worker_pool.c
+      30      4    210      0      35 test_threaded_dispatch_cycles@260-294@tests/test_worker_pool.c
+      25      3    169      0      28 test_single_worker_runs_inline@298-325@tests/test_worker_pool.c
+      24      3    143      0      28 test_partial_spawn_is_usable@329-356@tests/test_worker_pool.c
+      18      1    149      0      23 test_all_or_nothing_rejects_partial_spawn@361-383@tests/test_worker_pool.c
+      30      3    257      0      33 test_destroy_quarantines_unreaped_worker@385-417@tests/test_worker_pool.c
+      24      2    212      0      26 test_failed_start_quarantines_unreaped_worker@419-444@tests/test_worker_pool.c
+      12      1     75      0      15 test_construct_failure@446-460@tests/test_worker_pool.c
+      12      1     79      0      13 test_no_worker_at_all@463-475@tests/test_worker_pool.c
+      12      1     78      0      13 test_prepare_failure@477-489@tests/test_worker_pool.c
+      14      2     97      0      15 test_alloc_failure@493-507@tests/test_worker_pool.c
+      14      1    104      0      16 test_worker_count_bounds@509-524@tests/test_worker_pool.c
+      21      3    117      0      22 test_bare_ops@528-549@tests/test_worker_pool.c
+      22      2    176      0      25 check_gate_failure_poisons_and_stops@559-583@tests/test_worker_pool.c
+      12      2     40      0      12 test_gate_failures_poison_and_stop@585-596@tests/test_worker_pool.c
+      21      3    169      0      22 check_exit_failure_cancels_and_stops@600-621@tests/test_worker_pool.c
+      12      2     40      0      12 test_exit_failures_cancel_and_stop@623-634@tests/test_worker_pool.c
+      15      4    102      2      16 stop_direct_worker@636-651@tests/test_worker_pool.c
+      23      4    178      1      26 check_worker_cancel_state_failure@653-678@tests/test_worker_pool.c
+      16      3     75      0      16 test_worker_cancel_state_failures@680-695@tests/test_worker_pool.c
+      11      1     66      0      11 test_destroy_without_start@699-709@tests/test_worker_pool.c
+       7      1     33      0       7 test_destroy_without_config@711-717@tests/test_worker_pool.c
+      22      1     84      0      24 main@719-742@tests/test_worker_pool.c
+       9      6     68      2       9 up_usm_workspace_size@16-24@tests/usm_reference.h
+       9      2     67      5       9 up_usm__pass1_hblur@26-34@tests/usm_reference.h
+      17      4    154      3      17 up_usm__pass2_combine@36-52@tests/usm_reference.h
+       7      3     53      6       7 up_usm__args_valid@54-60@tests/usm_reference.h
+      19      5    145      3      19 up_usm_apply_plane@62-80@tests/usm_reference.h
+       4      3     26      3       4 outputs_untouched@104-107@tests/fuzz_scaler_chroma.c
+      22      6    160      0      22 check_known_supported@109-130@tests/fuzz_scaler_chroma.c
+      16      4    102      0      16 check_known_unsupported@132-147@tests/fuzz_scaler_chroma.c
+      15      8    114      2      24 check_null_outputs@149-172@tests/fuzz_scaler_chroma.c
+      20      8    124      1      25 check_cross_properties@174-198@tests/fuzz_scaler_chroma.c
+      18      9    134      1      22 check_random_fourcc@200-221@tests/fuzz_scaler_chroma.c
+      12      5     89      1      12 check_zimg_agrees_with_subsample@226-237@tests/fuzz_scaler_chroma.c
+      13      7     96      1      15 check_subsample_contract@239-253@tests/fuzz_scaler_chroma.c
+       4      1     31      1       4 load_le16@264-267@tests/fuzz_scaler_chroma.c
+       5      1     57      1       5 load_le32@269-273@tests/fuzz_scaler_chroma.c
+      11      2    114      2      11 crop_window_from@276-286@tests/fuzz_scaler_chroma.c
+       6      1     50      2       6 crop_align@288-293@tests/fuzz_scaler_chroma.c
+       5      4     67      2       5 crop_equal@295-299@tests/fuzz_scaler_chroma.c
+       4      1     31      2       4 crop_axis_end@301-304@tests/fuzz_scaler_chroma.c
+      20      7    212      4      20 check_axis_stays_inside@308-327@tests/fuzz_scaler_chroma.c
+       9      5     79      4       9 check_axis_parity@329-337@tests/fuzz_scaler_chroma.c
+      10      3     57      3      10 check_align_noop_when_unsupported@339-348@tests/fuzz_scaler_chroma.c
+      17      6    153      3      17 check_align_partial_pointers@352-368@tests/fuzz_scaler_chroma.c
+      17      4    155      3      19 check_crop_align@370-388@tests/fuzz_scaler_chroma.c
+      22      5    140      2      33 run_one@392-424@tests/fuzz_scaler_chroma.c
+       5      1     22      2       5 LLVMFuzzerTestOneInput@428-432@tests/fuzz_scaler_chroma.c
+      21      2    160      1      24 smoke_iter@437-460@tests/fuzz_scaler_chroma.c
+       5      1     30      2       5 main@462-466@tests/fuzz_scaler_chroma.c
+       8      1     45      0       8 test_valid@6-13@tests/test_vulkan_limits.c
+      11      1     93      0      11 test_limits@15-25@tests/test_vulkan_limits.c
+       6      1     19      0       6 main@27-32@tests/test_vulkan_limits.c
+      13      1     86      0      15 test_amount_conversion@17-31@tests/test_usm.c
+      10      1     81      0      10 test_workspace_size@35-44@tests/test_usm.c
+      16      1    130      0      25 test_hblur_row@48-72@tests/test_usm.c
+      13      3     98      0      13 test_hblur_constant_invariant@74-86@tests/test_usm.c
+       9      1     61      0       9 test_q8_floor_division@88-96@tests/test_usm.c
+      10      1     61      0      11 test_combine_negative_fraction@98-108@tests/test_usm.c
+      11      2    120      0      12 test_apply_amount_zero_is_identity@112-123@tests/test_usm.c
+      15      3    154      0      16 test_apply_constant_input@125-140@tests/test_usm.c
+      18      1    142      0      36 test_apply_impulse_amount_one@142-177@tests/test_usm.c
+      20      2    150      0      25 test_apply_saturation@179-203@tests/test_usm.c
+      23      3    246      0      26 test_apply_in_place_equals_out_of_place@205-230@tests/test_usm.c
+      24      8    260      0      30 test_apply_stride_greater_than_width@232-261@tests/test_usm.c
+      12      2    133      0      13 test_apply_amount_zero_unified_stride_fast_path@276-288@tests/test_usm.c
+       9      3     67      5       9 check_strided_padding_byte@290-298@tests/test_usm.c
+      11      3    102      5      14 check_strided_slow_path_result@300-313@tests/test_usm.c
+      17      4    181      0      20 test_apply_amount_zero_strided_slow_path@315-334@tests/test_usm.c
+      27      7    307      0      39 test_apply_amount_zero_fast_and_slow_agree@336-374@tests/test_usm.c
+      13      2    131      0      17 test_apply_amount_zero_in_place_alias_no_copy@376-392@tests/test_usm.c
+      15      1    251      0      26 test_apply_invalid_inputs@394-419@tests/test_usm.c
+       9      1     67      0      11 test_apply_1x1_plane@421-431@tests/test_usm.c
+      13      1    148      0      18 test_apply_amount_clamping@433-450@tests/test_usm.c
+      24      1     92      0      26 main@454-479@tests/test_usm.c
+       7      2     43      1       7 NewPicture@15-21@tests/experiment_display.c
+       5      2     44      2       5 Split@23-27@tests/experiment_display.c
+      10      4     76      1      10 CloseDisplay@29-38@tests/experiment_display.c
+      30      5    295      1      30 OpenDisplay@40-69@tests/experiment_display.c
+      16      2    161      3      18 parse_params@46-63@tests/fuzz_copy_plane.c
+       6      4     39      1       6 geometry_valid@65-70@tests/fuzz_copy_plane.c
+       8      1     51      1       8 check_invalid_geometry_noop@72-79@tests/fuzz_copy_plane.c
+      18      8    204      5      21 setup_planes@85-105@tests/fuzz_copy_plane.c
+      25      5    167      4      25 check_row@110-134@tests/fuzz_copy_plane.c
+      10      3     89      3      10 check_invariants@137-146@tests/fuzz_copy_plane.c
+      13      4    143      2      16 run_one@148-163@tests/fuzz_copy_plane.c
+       5      2     28      2       5 LLVMFuzzerTestOneInput@165-169@tests/fuzz_copy_plane.c
+       7      1     35      1       7 smoke_iter@174-180@tests/fuzz_copy_plane.c
+       5      1     30      2       5 main@182-186@tests/fuzz_copy_plane.c
+      10      3     56      2      10 __wrap_aligned_alloc@49-58@tests/test_scaler_zimg.c
+       4      1     17      1       4 zt_alloc_fail_at@60-63@tests/test_scaler_zimg.c
+      13      2     70      8      13 __wrap_zimg_filter_graph_process@77-89@tests/test_scaler_zimg.c
+       4      1     17      1       4 zt_process_fail@91-94@tests/test_scaler_zimg.c
+       9      3     50      1       9 __wrap___sched_cpualloc@115-123@tests/test_scaler_zimg.c
+      14      5    105      3      14 __wrap_sched_getaffinity@126-139@tests/test_scaler_zimg.c
+       9      4     44      1       9 __wrap_sysconf@143-151@tests/test_scaler_zimg.c
+      10      3     64      3      10 __wrap_pthread_setaffinity_np@156-165@tests/test_scaler_zimg.c
+      16      3    167      7      16 __wrap_vlc_Log@168-183@tests/test_scaler_zimg.c
+      14      2     86      3      17 zt_pin_scenario@185-201@tests/test_scaler_zimg.c
+       8      2     38      0      10 zt_pin_scenario_reset@203-212@tests/test_scaler_zimg.c
+      23      4    220      6      24 run_zimg@260-283@tests/test_scaler_zimg.c
+      14      5    133      3      14 restride_plane@285-298@tests/test_scaler_zimg.c
+      26      6    244      5      27 run_zimg_asymmetric_pitch@302-328@tests/test_scaler_zimg.c
+      12      1    105      6      12 set_normalized_crop_format@330-341@tests/test_scaler_zimg.c
+      17      4    166      6      17 copy_into_crop@343-359@tests/test_scaler_zimg.c
+      44      6    413      6      46 run_zimg_cropped@362-407@tests/test_scaler_zimg.c
+      15      5    163      2      15 cmp_visible@410-424@tests/test_scaler_zimg.c
+      20      8    236      4      20 cmp_visible_mag@429-448@tests/test_scaler_zimg.c
+       7      2     50      3       7 same_cfg@452-458@tests/test_scaler_zimg.c
+      20      6    168      0      20 test_full_write@462-481@tests/test_scaler_zimg.c
+      17      6    149      0      17 test_determinism@483-499@tests/test_scaler_zimg.c
+      15      5    133      0      15 test_zerocopy_matches_copyout@501-515@tests/test_scaler_zimg.c
+      25      8    224      0      31 test_src_zerocopy_matches_copy@519-549@tests/test_scaler_zimg.c
+      23      6    235      0      23 test_asymmetric_chroma_pitches@551-573@tests/test_scaler_zimg.c
+      24      6    234      0      24 test_cropped_origin_and_poison_margins@575-598@tests/test_scaler_zimg.c
+      14      4    125      0      14 test_cropped_tiled_alignment_fallback@600-613@tests/test_scaler_zimg.c
+      50      6    438      0      53 test_rows_only_transition_preserves_dst_mode@615-667@tests/test_scaler_zimg.c
+      12      1     97      0      12 test_supports@671-682@tests/test_scaler_zimg.c
+      25      4    215      0      25 test_all_algos@686-710@tests/test_scaler_zimg.c
+      10      1     72      0      10 test_open_close_without_process@712-721@tests/test_scaler_zimg.c
+       4      2     38      2       4 offset_picture_storage@723-726@tests/test_scaler_zimg.c
+      33      7    301      0      35 test_alignment_drift_escalates_to_fatal@733-767@tests/test_scaler_zimg.c
+      34      7    303      0      35 test_alternating_alignment_drift_escalates@769-803@tests/test_scaler_zimg.c
+      47      4    489      0      50 test_transient_preflight_recovers@805-854@tests/test_scaler_zimg.c
+      28      7    270      0      35 test_construction_pthread_fail@860-894@tests/test_scaler_zimg.c
+       1      1      6      0       1 run_barrier_failure_case@897-897@tests/test_scaler_zimg.c
+      37     10    405      0      40 run_barrier_failure_case@899-938@tests/test_scaler_zimg.c
+       6      1     19      0       6 test_barrier_failure_drains_and_sticks@941-946@tests/test_scaler_zimg.c
+       8      1     53      0       8 test_open_rejects_unsupported@949-956@tests/test_scaler_zimg.c
+      20      5    173      0      20 test_extreme_ratio_no_crash@961-980@tests/test_scaler_zimg.c
+      16      6    158      1      16 zt_pic_fill_smooth@985-1000@tests/test_scaler_zimg.c
+      23      5    218      5      24 run_zimg_threads_in@1007-1030@tests/test_scaler_zimg.c
+      30      6    224      0      30 test_tiling_matches_untiled@1045-1074@tests/test_scaler_zimg.c
+      22      4    209      3      23 run_zimg_pinned@1078-1100@tests/test_scaler_zimg.c
+      23      4    224      1      24 run_zimg_pin_diagnostic@1103-1126@tests/test_scaler_zimg.c
+      41      4    268      0      44 test_pin_diagnostics@1128-1171@tests/test_scaler_zimg.c
+      35      8    312      0      35 test_tile_scratch_diagnostic@1173-1207@tests/test_scaler_zimg.c
+       5      1     15      0       5 test_pin_diagnostics@1209-1213@tests/test_scaler_zimg.c
+       1      1      6      0       1 test_tile_scratch_diagnostic@1214-1214@tests/test_scaler_zimg.c
+      15      5    127      0      17 test_pin_cpus_matches@1220-1236@tests/test_scaler_zimg.c
+      18      4    143      0      21 test_run_zimg_failure_leaves_out_free_safe@1243-1263@tests/test_scaler_zimg.c
+      17      4    114      0      20 test_pic_alloc_partial_failure@1267-1286@tests/test_scaler_zimg.c
+      13      5    117      2      13 dst_is_all@1289-1301@tests/test_scaler_zimg.c
+      29      4    209      0      34 test_process_failure_emits_nothing@1311-1344@tests/test_scaler_zimg.c
+      13      1    135      0      13 test_picture_alloc_bounds@1346-1358@tests/test_scaler_zimg.c
+      31      1    122      0      31 main@1360-1390@tests/test_scaler_zimg.c
+       6      1     27      0       6 up_profile_experiment_finish@30-35@tests/profile_internal.h
+      10      5     64      1      10 up_profile_experiment_dispatch@37-46@tests/profile_internal.h
+       9      2     53      1       9 up_profile_clock@48-56@tests/profile_internal.h
+      11      4    110      2      11 up_profile_run@58-68@tests/profile_internal.h
+      21      7    221      2      21 up_profile_reduce@70-90@tests/profile_internal.h
+      17      5    130      1      17 up_profile_dispatch@92-108@tests/profile_internal.h
+      16      5    139      2      16 up_profile_read_sched@110-125@tests/profile_internal.h
+      13      5     88      2      13 up_profile_pool_sched@127-139@tests/profile_internal.h
+       9      3     62      3       9 chain_new@19-27@tests/test_display_adapter.c
+       6      1     24      1       6 chain_delete@29-34@tests/test_display_adapter.c
+       5      1     35      3       5 chain_reset@36-40@tests/test_display_adapter.c
+      11      4    111      5      11 chain_append@42-52@tests/test_display_adapter.c
+       4      1     15      1       4 chain_output@54-57@tests/test_display_adapter.c
+       7      2     49      2       7 chain_filter@59-65@tests/test_display_adapter.c
+       6      3     49      1       6 picture_new@81-86@tests/test_display_adapter.c
+       7      1     59      1       7 init@88-94@tests/test_display_adapter.c
+      27      5    229      0      27 test_geometry_and_lifetime@96-122@tests/test_display_adapter.c
+      14      5    108      0      14 test_open_failure@124-137@tests/test_display_adapter.c
+      22      3    162      0      22 test_picture_failure@139-160@tests/test_display_adapter.c
+       7      1     23      0       7 main@162-168@tests/test_display_adapter.c
+      10      1     93      8      10 stripe_bounds4@16-25@tests/stripe_bounds_compat.h
+120 file analyzed.
+==============================================================
+NLOC    Avg.NLOC  AvgCCN  Avg.token  function_cnt    file
+--------------------------------------------------------------
+     69      12.8     4.4       62.8         5     src/scaler_pick_logic.h
+     89       9.0     2.7       30.7         3     src/autoupscale_module.c
+     16      14.0     6.0       87.0         1     src/scaler_zimg_chroma.h
+     79       8.4     4.0       74.5         8     src/pipeline_metrics.h
+     96      13.2     5.3      112.7         6     src/content_probe.h
+     75      10.1     3.6       77.0         7     src/usm.h
+     79       7.7     3.0       50.4         7     src/zimg_helpers.h
+     16       5.0     1.5       15.5         2     src/scaler_status.h
+    180      14.7     5.2      108.7         9     src/picture_view.h
+    621      20.1     4.3      125.3        28     src/autoupscale.c
+      3       0.0     0.0        0.0         0     src/usm_pool_variants.h
+     63      10.0     1.0       51.0         2     src/scaler.h
+     20      12.0     3.0       67.0         1     src/scaler.c
+    107      13.3     5.7      106.9         7     src/plane_utils.h
+     67       9.0     1.5       41.3         6     src/usm_pool_dispatch.c
+    123       8.8     2.8       51.9        10     src/cpu_level.h
+    225      12.2     4.1       80.2        17     src/pool_gate.h
+    109      10.6     4.1       64.9         9     src/thread_policy.h
+    248       9.0     3.3       63.1        23     src/worker_pool.h
+     78       9.7     3.0       71.7         6     src/plane_buffer.h
+    258       9.8     3.1       77.4        22     src/usm_pool.c
+    695      14.8     3.4      118.2        40     src/scaler_zimg.c
+      3       0.0     0.0        0.0         0     src/autoupscale_module.h
+    151      10.8     4.0       77.4        12     src/worker_tuner.h
+    128      11.7     3.3       81.3        10     src/usm_adaptive.h
+     12       0.0     0.0        0.0         0     src/usm_pool.h
+    184      11.1     4.3       56.0         9     src/chroma_classify.h
+    140      16.7     5.4      108.3         7     src/scaler_swscale.c
+    124      12.0     5.6       70.2         9     src/upscale_logic.h
+     13       0.0     0.0        0.0         0     tests/stubs/libswscale/swscale.h
+     12       0.0     0.0        0.0         0     tests/stubs/libavutil/pixfmt.h
+     27       0.0     0.0        0.0         0     tests/stubs/vlc_picture.h
+      4       1.0     1.0       15.0         1     tests/stubs/vlc_common.h
+      0       0.0     0.0        0.0         0     tests/lifecycle_stubs/vlc_plugin.h
+     31       0.0     0.0        0.0         0     tests/lifecycle_stubs/vlc_picture.h
+     29       4.0     1.0       20.0         1     tests/lifecycle_stubs/vlc_filter.h
+     33       4.4     1.0       19.2         5     tests/lifecycle_stubs/vlc_common.h
+    337      18.2     2.4      164.6        17     tests/test_scaler_swscale.c
+     33      10.0     2.7       92.0         3     tests/test_geometry_edge_cases.c
+    288      19.7     2.0      170.4        14     tests/test_picture_view.c
+    113      11.0     4.3      112.3         9     tests/profile_worker_pool.c
+     87      13.8     3.5      124.7         6     tests/test_experiment_zimg.c
+    257      15.2     3.1      112.8        16     tests/test_usm_pool_variants.c
+    115      12.4     5.4      102.0         8     tests/experiment_executor.h
+    180      15.0     3.7      122.6        11     tests/fuzz_content_probe.c
+     76      11.5     2.0       98.7         6     tests/test_experiment_executor.c
+    108      12.1     1.8       86.8         8     tests/test_bench_adaptive.c
+    100      14.2     3.7      131.0         6     tests/zimg_test_util.h
+    916      15.4     2.6       97.9        57     tests/test_threading.c
+    117      12.1     3.8       74.4         8     tests/fuzz_scaler_open.c
+     43      16.0     2.0      147.0         2     tests/test_playback_runtime.py
+    151      11.9     3.1       93.8        11     tests/fuzz_usm_variants.c
+    246      14.1     3.2      116.4        17     tests/test_worker_tuner.c
+    165      12.2     3.6      101.1        12     tests/fuzz_usm.c
+    111       7.6     2.2       34.8        12     tests/barrier_fault_inject.h
+    114      13.5     1.6      111.1         8     tests/test_plane_buffer.c
+    101      10.2     3.8       88.4         8     tests/bench_worker_pool.c
+    695      16.1     2.1      113.2        39     tests/test_autoupscale_lifecycle.c
+      9       6.0     1.0       40.0         1     tests/hardening_fortify_probe.c
+      7       5.0     5.0       49.0         1     tests/vulkan_limits.h
+    115      12.6     4.8      140.2         8     tests/bench_adaptive.c
+     50      15.7     3.0      150.7         3     tests/test_profile_input.c
+      8       5.0     2.0       24.0         1     tests/test_harness.h
+    230      10.8     4.0       82.0        20     tests/fuzz_upscale_logic.c
+    351      14.9     1.6      108.3        23     tests/test_content_probe.c
+    319       9.8     1.1       55.4        31     tests/test_scaler_pick.c
+    679      16.0     2.7      126.2        41     tests/test_usm_pool.c
+    406      11.9     2.6       99.9        30     tests/test_chroma_classify.c
+    195      14.6     2.7      115.9        12     tests/fuzz_picture_view.c
+    169      11.5     3.0       84.9        14     tests/test_usm_adaptive.c
+     81      14.8     3.2      109.4         5     tests/test_pipeline_metrics.c
+     25       0.0     0.0        0.0         0     tests/abi_assert.c
+      9       7.0     6.0       77.0         1     tests/vulkan_timing.h
+     47      13.3     5.0      121.3         3     tests/profile_input.h
+     61       8.8     2.3       73.0         6     tests/test_fuzz_runner.py
+    187      12.6     4.5      109.1        14     tests/fuzz_decide_tile_grid.c
+    297      13.4     4.5      149.6        20     tests/profile_pipeline.c
+     45      10.2     1.2       77.8         4     tests/test_cli_parse.c
+     76      17.8     6.5      143.8         4     tests/content_probe_reference.h
+     17       7.5     2.5       49.5         2     tests/prng.h
+    120      12.4     3.8       86.3         9     tests/fuzz_stripe_bounds.c
+     51      12.3     4.3      111.3         3     tests/stress_usm_adaptive.c
+     14       2.4     1.0       15.8         5     tests/profile_usm.c
+    168      11.4     3.7       73.9        14     tests/fuzz_threading.c
+    173      10.7     4.3      129.9        15     tests/test_vulkan_pipeline.c
+     22       0.0     0.0        0.0         0     tests/profile_stage.h
+    185       8.9     3.1       67.2        17     tests/fuzz_worker_pool.c
+    480      15.3     2.4      131.8        31     tests/test_zimg_helpers.c
+    513      11.2     3.9      117.8        41     tests/experiment_vulkan.c
+     24       7.3     1.0       55.7         3     tests/test_vulkan_timing.c
+    142      13.1     4.2      104.6        10     tests/fuzz_plane_buffer.c
+     15       5.0     2.0       40.0         2     tests/vulkan_bench_util.h
+    133       9.6     3.9      105.4        12     tests/bench_vulkan.c
+     39       8.5     3.0       58.2         4     tests/fuzz_smoke.h
+    334      14.0     4.3       97.7        21     tests/fuzz_frame_shape.c
+     16       2.8     1.0       22.2         5     tests/profile_zimg.c
+    129      14.5     1.6       90.1         8     tests/test_usm_pool_dispatch.c
+     37      10.3     4.3      117.0         3     tests/vulkan_coefficients.h
+    236      20.7     3.5      146.9        11     tests/test_lifetime.c
+    125      11.4     3.6      107.4         9     tests/bench_pipeline.c
+     27       0.0     0.0        0.0         0     tests/experiment_vulkan.h
+     15      12.0     9.0       98.0         1     tests/cli_parse.h
+    143      22.0     5.7      186.2         6     tests/bench_scaler_zimg.c
+    551      13.3     1.5      105.9        41     tests/test_upscale_logic.c
+    202      22.4     4.8      196.2         8     tests/stress_usm_pool.c
+    130      12.1     3.8      111.9        10     tests/fuzz_scaler_seam.c
+    176      19.6     4.9      154.1         8     tests/bench_usm_pool.c
+    278      12.1     4.8      126.7        21     tests/bench_vulkan_scale.c
+    603      13.9     2.1       92.6        39     tests/test_worker_pool.c
+     70      12.2     4.0       97.4         5     tests/usm_reference.h
+    319      12.2     4.1       95.8        23     tests/fuzz_scaler_chroma.c
+     28       8.3     1.0       52.3         3     tests/test_vulkan_limits.c
+    338      15.1     2.4      139.5        22     tests/test_usm.c
+      1       0.0     0.0        0.0         0     tests/usm_test_util.h
+     68      13.0     3.2      114.5         4     tests/experiment_display.c
+    126      11.3     3.1       94.7        10     tests/fuzz_copy_plane.c
+   1138      18.8     4.1      161.3        57     tests/test_scaler_zimg.c
+    124      12.9     4.2      104.0         8     tests/profile_internal.h
+    139      10.4     2.5       77.2        12     tests/test_display_adapter.c
+     11      10.0     1.0       93.0         1     tests/stripe_bounds_compat.h
+
+===============================================================================================================
+No thresholds exceeded (cyclomatic_complexity > 10 or length > 1000 or nloc > 1000000 or parameter_count > 100)
+==========================================================================================
+Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt
+------------------------------------------------------------------------------------------
+     19386      13.3     3.2      104.4     1297            0      0.00    0.00
+lizard -l cpp -C 10 tests/vulkan_*.comp
+================================================
+  NLOC    CCN   token  PARAM  length  location  
+------------------------------------------------
+       8      4    120      1       8 spline@19-26@tests/vulkan_separable.comp
+       6      3     51      2       6 mirror@28-33@tests/vulkan_separable.comp
+      10      2     89      3      10 plane@35-44@tests/vulkan_separable.comp
+      26      7    347      1      26 horizontal@46-71@tests/vulkan_separable.comp
+      24      7    328      1      24 vertical@73-96@tests/vulkan_separable.comp
+      17      6    153      0      17 main@99-115@tests/vulkan_separable.comp
+      12      2    104      0      12 tile_plane@119-130@tests/vulkan_separable.comp
+       4      1     48      2       4 blurred@132-135@tests/vulkan_separable.comp
+       9      3    110      2       9 fused_pixel@137-145@tests/vulkan_separable.comp
+      22      6    278      0      22 main@147-168@tests/vulkan_separable.comp
+       8      4    121      1       8 spline@8-15@tests/vulkan_spline36.comp
+       6      3     51      2       6 mirror@17-22@tests/vulkan_spline36.comp
+       5      1     74      4       5 sample_pixel@24-28@tests/vulkan_spline36.comp
+      25      4    320      1      25 resample@30-54@tests/vulkan_spline36.comp
+      12      4    103      0      12 main@56-67@tests/vulkan_spline36.comp
+       6      1     67      2       6 sample_pixel@12-17@tests/vulkan_usm.comp
+       5      1     44      2       5 horizontal@19-23@tests/vulkan_usm.comp
+      14      4    159      1      14 sharpen@25-38@tests/vulkan_usm.comp
+      13      5    109      0      13 main@40-52@tests/vulkan_usm.comp
+3 file analyzed.
+==============================================================
+NLOC    Avg.NLOC  AvgCCN  Avg.token  function_cnt    file
+--------------------------------------------------------------
+    151      13.8     4.1      162.8        10     tests/vulkan_separable.comp
+     60      11.2     3.2      133.8         5     tests/vulkan_spline36.comp
+     46       9.5     2.8       94.8         4     tests/vulkan_usm.comp
+
+===============================================================================================================
+No thresholds exceeded (cyclomatic_complexity > 10 or length > 1000 or nloc > 1000000 or parameter_count > 100)
+==========================================================================================
+Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt
+------------------------------------------------------------------------------------------
+       257      12.2     3.6      140.8       19            0      0.00    0.00
+cc -O3 -march=native -std=c11 -D_GNU_SOURCE -Wall -Wextra -Wshadow -Wpointer-arith -Wstrict-prototypes -MMD -MP -Werror -o build-perf10/bench_vulkan tests/bench_vulkan.c build-perf10/experiment_vulkan.o build-perf10/usm_pool_bench.o -l:libvulkan.so.1 -lpthread -lm
+actionlint .github/workflows/*.yml
+rumdl check README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md docs/VULKAN_LATENCY_EXPERIMENTS.md
+
+Success: No issues found in 9 files (56ms)
+lychee --offline --include-fragments README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md docs/VULKAN_LATENCY_EXPERIMENTS.md
+🔍 81 Total (in 2ms) 🔗 68 Unique ✅ 60 OK 🚫 0 Errors 👻 21 Excluded
+
+# autoupscale.c is excluded — it depends on VLC's macro-heavy headers
+# that cppcheck cannot reasonably parse without a full include path.
+# The interesting logic is all in *_logic.h / usm.h, exercised via tests.
+# scaler_zimg.c IS analyzed, against the test VLC stubs (cppcheck chokes
+# on the real vlc_variables.h); needs libzimg headers, skipped otherwise.
+cc -O3 -march=native -std=c11 -D_GNU_SOURCE -Wall -Wextra -Wshadow -Wpointer-arith -Wstrict-prototypes -MMD -MP -Werror -I/usr/include/vlc/plugins -D__PLUGIN__ -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D_THREAD_SAFE  -o build-perf10/bench_vulkan_scale tests/bench_vulkan_scale.c build-perf10/experiment_vulkan.o build-perf10/scaler_zimg_bench.o build-perf10/usm_pool_bench.o -l:libvulkan.so.1 -lvlccore  -lzimg  -lpthread -lm
+# hardening_fortify_probe.c is compiler-only: it requires the production
+# FORTIFY flags and forces a checked memcpy symbol for binary inspection.
+cppcheck --enable=warning,style,performance,portability \
+	--inline-suppr --std=c11 --error-exitcode=2 \
+	--include=tests/lifecycle_stubs/vlc_plugin.h \
+	--suppress=missingIncludeSystem \
+	-i tests/test_autoupscale_lifecycle.c \
+	-i tests/hardening_fortify_probe.c \
+	-I src -I tests/stubs  \
+	src/upscale_logic.h src/usm.h src/thread_policy.h src/pool_gate.h src/zimg_helpers.h src/chroma_classify.h src/scaler_zimg_chroma.h src/content_probe.h src/scaler_pick_logic.h src/usm_pool.h src/usm_pool.c src/scaler_zimg.c tests/
+Checking src/upscale_logic.h ...
+1/72 files checked 1% done
+Checking src/usm.h ...
+2/72 files checked 2% done
+Checking src/thread_policy.h ...
+Checking src/thread_policy.h: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+3/72 files checked 3% done
+Checking src/pool_gate.h ...
+4/72 files checked 4% done
+Checking src/zimg_helpers.h ...
+5/72 files checked 5% done
+Checking src/chroma_classify.h ...
+Checking src/chroma_classify.h: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+6/72 files checked 7% done
+Checking src/scaler_zimg_chroma.h ...
+Checking src/scaler_zimg_chroma.h: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+7/72 files checked 7% done
+Checking src/content_probe.h ...
+8/72 files checked 8% done
+Checking src/scaler_pick_logic.h ...
+9/72 files checked 9% done
+Checking src/usm_pool.h ...
+10/72 files checked 10% done
+Checking src/usm_pool.c ...
+Checking src/usm_pool.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking src/usm_pool.c: UP_WORKER_POOL_TIMING...
+Checking src/usm_pool.c: USM_VARIANT...
+cc -O2 -g -march=native -std=c11 -D_GNU_SOURCE -Wall -Wextra -Wshadow -Wpointer-arith -Wstrict-prototypes -MMD -MP -fsanitize=address,undefined -Werror -o build-perf10/test_vulkan_pipeline tests/test_vulkan_pipeline.c build-perf10/experiment_vulkan_test.o -fsanitize=address,undefined -l:libvulkan.so.1 -lm
+Checking src/usm_pool.c: USM_VARIANT;__has_attribute...
+11/72 files checked 13% done
+Checking src/scaler_zimg.c ...
+Checking src/scaler_zimg.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking src/scaler_zimg.c: HAVE_CONFIG_H...
+Checking src/scaler_zimg.c: UP_HAVE_CPU_AFFINITY...
+Checking src/scaler_zimg.c: UP_WORKER_POOL_TIMING...
+Checking src/scaler_zimg.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+Checking src/scaler_zimg.c: __linux__...
+12/72 files checked 19% done
+Checking tests/abi_assert.c ...
+13/72 files checked 20% done
+Checking tests/bench_adaptive.c ...
+Checking tests/bench_adaptive.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/bench_adaptive.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+14/72 files checked 20% done
+Checking tests/bench_pipeline.c ...
+Checking tests/bench_pipeline.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/bench_pipeline.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+15/72 files checked 21% done
+Checking tests/bench_scaler_zimg.c ...
+Checking tests/bench_scaler_zimg.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+16/72 files checked 21% done
+Checking tests/bench_usm_pool.c ...
+17/72 files checked 22% done
+Checking tests/bench_vulkan.c ...
+Checking tests/bench_vulkan.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+18/72 files checked 23% done
+Checking tests/bench_vulkan_scale.c ...
+Checking tests/bench_vulkan_scale.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/bench_vulkan_scale.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+19/72 files checked 25% done
+Checking tests/bench_worker_pool.c ...
+Checking tests/bench_worker_pool.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+20/72 files checked 25% done
+Checking tests/experiment_display.c ...
+21/72 files checked 25% done
+Checking tests/experiment_vulkan.c ...
+22/72 files checked 28% done
+Checking tests/fuzz_content_probe.c ...
+Checking tests/fuzz_content_probe.c: FUZZ_MAIN...
+23/72 files checked 30% done
+Checking tests/fuzz_copy_plane.c ...
+Checking tests/fuzz_copy_plane.c: FUZZ_MAIN...
+24/72 files checked 31% done
+Checking tests/fuzz_decide_tile_grid.c ...
+Checking tests/fuzz_decide_tile_grid.c: FUZZ_MAIN...
+25/72 files checked 32% done
+Checking tests/fuzz_frame_shape.c ...
+Checking tests/fuzz_frame_shape.c: FUZZ_MAIN...
+Checking tests/fuzz_frame_shape.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+26/72 files checked 34% done
+Checking tests/fuzz_picture_view.c ...
+Checking tests/fuzz_picture_view.c: FUZZ_MAIN...
+Checking tests/fuzz_picture_view.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+27/72 files checked 35% done
+Checking tests/fuzz_plane_buffer.c ...
+Checking tests/fuzz_plane_buffer.c: FUZZ_MAIN...
+28/72 files checked 36% done
+Checking tests/fuzz_scaler_chroma.c ...
+Checking tests/fuzz_scaler_chroma.c: FUZZ_MAIN...
+Checking tests/fuzz_scaler_chroma.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+29/72 files checked 38% done
+Checking tests/fuzz_scaler_open.c ...
+Checking tests/fuzz_scaler_open.c: FUZZ_MAIN...
+30/72 files checked 39% done
+Checking tests/fuzz_scaler_seam.c ...
+Checking tests/fuzz_scaler_seam.c: FUZZ_MAIN...
+Checking tests/fuzz_scaler_seam.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+31/72 files checked 40% done
+Checking tests/fuzz_stripe_bounds.c ...
+Checking tests/fuzz_stripe_bounds.c: FUZZ_MAIN...
+32/72 files checked 41% done
+Checking tests/fuzz_threading.c ...
+Checking tests/fuzz_threading.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/fuzz_threading.c: FUZZ_MAIN...
+33/72 files checked 42% done
+Checking tests/fuzz_upscale_logic.c ...
+Checking tests/fuzz_upscale_logic.c: FUZZ_MAIN...
+34/72 files checked 43% done
+Checking tests/fuzz_usm.c ...
+Checking tests/fuzz_usm.c: FUZZ_MAIN...
+35/72 files checked 44% done
+Checking tests/fuzz_usm_variants.c ...
+Checking tests/fuzz_usm_variants.c: FUZZ_MAIN...
+Checking tests/fuzz_usm_variants.c: UP_CPU_LEVEL_FORCE_FALLBACK=0;__GNUC__;__clang__;__x86_64__...
+Checking tests/fuzz_usm_variants.c: __GNUC__;__clang__;__GNUC__;__clang__;__x86_64__...
+Checking tests/fuzz_usm_variants.c: __GNUC__;__clang__;__x86_64__...
+36/72 files checked 45% done
+Checking tests/fuzz_worker_pool.c ...
+Checking tests/fuzz_worker_pool.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/fuzz_worker_pool.c: FUZZ_MAIN...
+Checking tests/fuzz_worker_pool.c: UP_WORKER_POOL_TIMING...
+37/72 files checked 46% done
+Checking tests/profile_pipeline.c ...
+Checking tests/profile_pipeline.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+38/72 files checked 48% done
+Checking tests/profile_usm.c ...
+Checking tests/profile_usm.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/profile_usm.c: UP_WORKER_POOL_TIMING...
+Checking tests/profile_usm.c: USM_VARIANT...
+Checking tests/profile_usm.c: USM_VARIANT;__has_attribute...
+Checking tests/profile_usm.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+39/72 files checked 48% done
+Checking tests/profile_worker_pool.c ...
+Checking tests/profile_worker_pool.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/profile_worker_pool.c: UP_WORKER_POOL_TIMING...
+Checking tests/profile_worker_pool.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+40/72 files checked 48% done
+Checking tests/profile_zimg.c ...
+Checking tests/profile_zimg.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/profile_zimg.c: HAVE_CONFIG_H...
+Checking tests/profile_zimg.c: UP_HAVE_CPU_AFFINITY...
+Checking tests/profile_zimg.c: UP_WORKER_POOL_TIMING...
+Checking tests/profile_zimg.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+Checking tests/profile_zimg.c: __linux__...
+41/72 files checked 48% done
+Checking tests/stress_usm_adaptive.c ...
+Checking tests/stress_usm_adaptive.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+42/72 files checked 49% done
+Checking tests/stress_usm_pool.c ...
+43/72 files checked 50% done
+Checking tests/test_bench_adaptive.c ...
+Checking tests/test_bench_adaptive.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/test_bench_adaptive.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+44/72 files checked 51% done
+Checking tests/test_chroma_classify.c ...
+Checking tests/test_chroma_classify.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+45/72 files checked 53% done
+Checking tests/test_cli_parse.c ...
+46/72 files checked 53% done
+Checking tests/test_content_probe.c ...
+47/72 files checked 56% done
+Checking tests/test_display_adapter.c ...
+48/72 files checked 56% done
+Checking tests/test_experiment_executor.c ...
+Checking tests/test_experiment_executor.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/test_experiment_executor.c: UP_WORKER_POOL_TIMING...
+49/72 files checked 57% done
+Checking tests/test_experiment_zimg.c ...
+Checking tests/test_experiment_zimg.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+50/72 files checked 57% done
+Checking tests/test_geometry_edge_cases.c ...
+51/72 files checked 57% done
+Checking tests/test_lifetime.c ...
+52/72 files checked 59% done
+Checking tests/test_picture_view.c ...
+Checking tests/test_picture_view.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+53/72 files checked 61% done
+Checking tests/test_pipeline_metrics.c ...
+Checking tests/test_pipeline_metrics.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+54/72 files checked 61% done
+Checking tests/test_plane_buffer.c ...
+55/72 files checked 62% done
+Checking tests/test_profile_input.c ...
+Checking tests/test_profile_input.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+Checking tests/test_profile_input.c: ZIMG_TEST_DEFINE_MODULE_NAME...
+56/72 files checked 62% done
+Checking tests/test_scaler_pick.c ...
+57/72 files checked 64% done
+Checking tests/test_scaler_swscale.c ...
+Checking tests/test_scaler_swscale.c: HAVE_CONFIG_H...
+Checking tests/test_scaler_swscale.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+58/72 files checked 66% done
+Checking tests/test_scaler_zimg.c ...
+Checking tests/test_scaler_zimg.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/test_scaler_zimg.c: UP_HAVE_CPU_AFFINITY...
+Checking tests/test_scaler_zimg.c: WORDS_BIGENDIAN;__BYTE_ORDER__;__ORDER_BIG_ENDIAN__...
+Checking tests/test_scaler_zimg.c: ZIMG_TEST_NO_WRAP_FAULTS...
+Checking tests/test_scaler_zimg.c: ZIMG_TEST_NO_WRAP_FAULTS;ZIMG_TEST_SKIP_BARRIER_FAULTS...
+59/72 files checked 73% done
+Checking tests/test_threading.c ...
+Checking tests/test_threading.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/test_threading.c: UP_HAVE_CPU_AFFINITY...
+Checking tests/test_threading.c: UP_HAVE_CPU_AFFINITY=0...
+60/72 files checked 77% done
+Checking tests/test_upscale_logic.c ...
+61/72 files checked 81% done
+Checking tests/test_usm.c ...
+62/72 files checked 84% done
+Checking tests/test_usm_adaptive.c ...
+Checking tests/test_usm_adaptive.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+63/72 files checked 84% done
+Checking tests/test_usm_pool.c ...
+Checking tests/test_usm_pool.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+64/72 files checked 89% done
+Checking tests/test_usm_pool_dispatch.c ...
+Checking tests/test_usm_pool_dispatch.c: UP_CPU_LEVEL_FORCE_FALLBACK=0;__GNUC__;__clang__;__x86_64__...
+Checking tests/test_usm_pool_dispatch.c: __GNUC__;__clang__;__GNUC__;__clang__;__x86_64__...
+Checking tests/test_usm_pool_dispatch.c: __GNUC__;__clang__;__x86_64__...
+Checking tests/test_usm_pool_dispatch.c: __x86_64__...
+65/72 files checked 90% done
+Checking tests/test_usm_pool_variants.c ...
+Checking tests/test_usm_pool_variants.c: UP_CPU_LEVEL_FORCE_FALLBACK=0;__GNUC__;__clang__;__x86_64__...
+Checking tests/test_usm_pool_variants.c: __GNUC__;__clang__;__GNUC__;__clang__;__x86_64__...
+Checking tests/test_usm_pool_variants.c: __GNUC__;__clang__;__x86_64__...
+66/72 files checked 91% done
+Checking tests/test_vulkan_limits.c ...
+67/72 files checked 91% done
+Checking tests/test_vulkan_pipeline.c ...
+68/72 files checked 92% done
+Checking tests/test_vulkan_timing.c ...
+69/72 files checked 92% done
+Checking tests/test_worker_pool.c ...
+Checking tests/test_worker_pool.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+Checking tests/test_worker_pool.c: UP_WORKER_POOL_TIMING...
+70/72 files checked 95% done
+Checking tests/test_worker_tuner.c ...
+Checking tests/test_worker_tuner.c: CPU_ALLOC;CPU_ALLOC_SIZE;UP_NO_CPU_AFFINITY...
+71/72 files checked 97% done
+Checking tests/test_zimg_helpers.c ...
+72/72 files checked 100% done

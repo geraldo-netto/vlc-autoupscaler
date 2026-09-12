@@ -1,0 +1,37 @@
+
+=================================================================
+==1084399==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 256 byte(s) in 1 object(s) allocated from:
+    #0 0x727bfecfc778 in realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:85
+    #1 0x727bf755ffa3  (<unknown module>)
+    #2 0x727bf7560476  (<unknown module>)
+    #3 0x727bfe0a1fb2 in __pthread_once_slow nptl/pthread_once.c:116
+    #4 0x727bf755e37f  (<unknown module>)
+    #5 0x727bf7588c9b  (<unknown module>)
+    #6 0x727bfec5ea41 in asan_thread_start ../../../../src/libsanitizer/asan/asan_interceptors.cpp:234
+    #7 0x727bfe09cb83 in start_thread nptl/pthread_create.c:447
+
+Direct leak of 256 byte(s) in 1 object(s) allocated from:
+    #0 0x727bfecfc778 in realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:85
+    #1 0x727beab79533  (<unknown module>)
+    #2 0x727beab79a06  (<unknown module>)
+    #3 0x727bfe0a1fb2 in __pthread_once_slow nptl/pthread_once.c:116
+    #4 0x727beadeec2a  (<unknown module>)
+    #5 0x727beaa65ccf  (<unknown module>)
+    #6 0x727beab355ec  (<unknown module>)
+    #7 0x727beab3554f  (<unknown module>)
+    #8 0x727beab0b141  (<unknown module>)
+    #9 0x727beab0c913  (<unknown module>)
+    #10 0x727beaaf2008  (<unknown module>)
+    #11 0x727beaaf2ae1  (<unknown module>)
+    #12 0x727bff468196  (/lib/x86_64-linux-gnu/libvulkan.so.1+0x29196) (BuildId: 32e77fd13d177aaa6ceeba4862c3407d9246e422)
+    #13 0x727bff46892c  (/lib/x86_64-linux-gnu/libvulkan.so.1+0x2992c) (BuildId: 32e77fd13d177aaa6ceeba4862c3407d9246e422)
+    #14 0x727bfd82a949  (<unknown module>)
+    #15 0x727bff473bdc in vkEnumeratePhysicalDevices (/lib/x86_64-linux-gnu/libvulkan.so.1+0x34bdc) (BuildId: 32e77fd13d177aaa6ceeba4862c3407d9246e422)
+    #16 0x59fd8585d4a2 in main build/decision-review/direct-vulkan/loader_leak.c:7
+    #17 0x727bfe02a1c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #18 0x727bfe02a28a in __libc_start_main_impl ../csu/libc-start.c:360
+    #19 0x59fd8585d1e4 in _start (/backups/disk2/projects/vlc-autoupscaler/build/decision-review/direct-vulkan/loader_leak+0x91e4) (BuildId: 2340e96756d497795b036a4d199c71511e824906)
+
+SUMMARY: AddressSanitizer: 512 byte(s) leaked in 2 allocation(s).

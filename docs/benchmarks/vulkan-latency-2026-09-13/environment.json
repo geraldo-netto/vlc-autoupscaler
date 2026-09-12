@@ -1,0 +1,29 @@
+{
+  "base_commit": "613572809e9062804c4324fa7436bf151d023031",
+  "dirty": true,
+  "report_date": "2026-09-13 Europe/Rome",
+  "normal_suite": "ASan/UBSan and Lizard pass",
+  "gpu_cases": 98,
+  "test_environment": {
+    "VK_ICD_FILENAMES": "/usr/share/vulkan/icd.d/radeon_icd.json",
+    "LD_PRELOAD": "/usr/lib/x86_64-linux-gnu/libasan.so.8:/usr/lib/x86_64-linux-gnu/libvulkan_radeon.so",
+    "VK_INSTANCE_LAYERS": "VK_LAYER_KHRONOS_validation",
+    "VK_LAYER_ENABLES": "VK_VALIDATION_FEATURE_ENABLE_SYNCHRONIZATION_VALIDATION_EXT"
+  },
+  "performance_environment": "No validation layer or sanitizer preload; no system power-policy changes",
+  "observations": "192 final/control runs; exploratory sweeps excluded from claims",
+  "all_manifest_files_unchanged_after_followups": true,
+  "final_source_guard": "BUILD-45: local copy null check after main matrix; 12 alternating old/current paced comparisons and full GPU sanitizer checks pass",
+  "final_guard_runs": 12,
+  "final_current_hashes": {
+    "build/decision-review/direct-vulkan/optimized-final/bench_vulkan_scale": "149076b2387bf9d99008879f4708c30b1a5e80324a5171a35d4ae8e3e5600e7e",
+    "build-perf10/bench_vulkan_scale": "43857043ffd9e901fb7d52226442933453600bd96bfd33143a9d51bad1b9cb55",
+    "tests/experiment_vulkan.c": "40f18884a26869800d6cac7e1dd697f1807b05e14ddef685dba47244bd211b63",
+    "tests/test_vulkan_pipeline.c": "7fc6bd847e7933b925320b46f2050565e304379a71ddaf36a1ad068867ef7bcf",
+    "build-perf10/vulkan_separable.spv": "a8a9c160fa3f3a08a7c56e4affe252c9192e6d7f3043d349ef3e580ed60a96aa",
+    "build-perf10/vulkan_fused.spv": "80519bd7b6c0adaf7f45a3b194f4036b7f7191632725a36c87a7273d548735a4",
+    "build-perf10/vulkan_spline36.spv": "5f7dd24dae3573a5b86535c071924ae593193c99219f51ac44e530bd29b68b5b",
+    "build-perf10/vulkan_usm.spv": "8ca5dee593b43a821d4091fef40201ba7e7da1efc2f5370ffe35564b3e268e82"
+  },
+  "final_analyzer": "Clang 18: zero diagnostics after local copy-contract clarification"
+}

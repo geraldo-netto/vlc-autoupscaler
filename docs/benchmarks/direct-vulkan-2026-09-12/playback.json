@@ -1,0 +1,1274 @@
+[
+  {
+    "clip": "animation",
+    "pair": 0,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "host_load_start": [
+      0.97265625,
+      1.08154296875,
+      1.18798828125
+    ],
+    "samples": [
+      {
+        "wall": 3.006815654996899,
+        "cpu": 1.43
+      },
+      {
+        "wall": 4.00008278000314,
+        "cpu": 1.77
+      },
+      {
+        "wall": 5.000080079997133,
+        "cpu": 2.11
+      },
+      {
+        "wall": 6.000068572997407,
+        "cpu": 2.49
+      },
+      {
+        "wall": 7.000078637000115,
+        "cpu": 2.87
+      },
+      {
+        "wall": 8.000071417998697,
+        "cpu": 3.28
+      },
+      {
+        "wall": 9.000069499001256,
+        "cpu": 3.62
+      },
+      {
+        "wall": 10.000065947999246,
+        "cpu": 3.88
+      },
+      {
+        "wall": 11.000075490999734,
+        "cpu": 4.16
+      },
+      {
+        "wall": 12.000074604002293,
+        "cpu": 4.41
+      },
+      {
+        "wall": 13.000066041997343,
+        "cpu": 4.7
+      },
+      {
+        "wall": 14.000067599998147,
+        "cpu": 5.07
+      },
+      {
+        "wall": 15.000066863998654,
+        "cpu": 5.43
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "71193df7a000-71193df7c000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "71193df7c000-71193df89000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "71193df89000-71193df8e000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "71193df8e000-71193df8f000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "71193df8f000-71193df90000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 33.3520905240251,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1280x720",
+      "USM pool running 8 workers"
+    ]
+  },
+  {
+    "clip": "animation",
+    "pair": 0,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "host_load_start": [
+      1.16357421875,
+      1.125,
+      1.2001953125
+    ],
+    "samples": [
+      {
+        "wall": 3.0059915849997196,
+        "cpu": 1.35
+      },
+      {
+        "wall": 4.000080354999227,
+        "cpu": 1.62
+      },
+      {
+        "wall": 5.000081021004007,
+        "cpu": 1.92
+      },
+      {
+        "wall": 6.000054886004364,
+        "cpu": 2.27
+      },
+      {
+        "wall": 7.000062525003159,
+        "cpu": 2.64
+      },
+      {
+        "wall": 8.000069374000304,
+        "cpu": 3.02
+      },
+      {
+        "wall": 9.00005712499842,
+        "cpu": 3.36
+      },
+      {
+        "wall": 10.000051718998293,
+        "cpu": 3.64
+      },
+      {
+        "wall": 11.000059229001636,
+        "cpu": 3.91
+      },
+      {
+        "wall": 12.000052310999308,
+        "cpu": 4.2
+      },
+      {
+        "wall": 13.000081913000031,
+        "cpu": 4.54
+      },
+      {
+        "wall": 14.000081728001533,
+        "cpu": 4.92
+      },
+      {
+        "wall": 15.000080390003859,
+        "cpu": 5.29
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "707ab09f2000-707ab09f4000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "707ab09f4000-707ab0a01000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "707ab0a01000-707ab0a06000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "707ab0a06000-707ab0a07000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "707ab0a07000-707ab0a08000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 32.84951499071913,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1280x720",
+      "USM pool running 8 workers"
+    ]
+  },
+  {
+    "clip": "animation",
+    "pair": 1,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "host_load_start": [
+      1.13330078125,
+      1.11865234375,
+      1.1962890625
+    ],
+    "samples": [
+      {
+        "wall": 3.006729827997333,
+        "cpu": 1.36
+      },
+      {
+        "wall": 4.0000610379938735,
+        "cpu": 1.65
+      },
+      {
+        "wall": 5.000080680998508,
+        "cpu": 1.95
+      },
+      {
+        "wall": 6.0000697239956935,
+        "cpu": 2.32
+      },
+      {
+        "wall": 7.000046533998102,
+        "cpu": 2.68
+      },
+      {
+        "wall": 8.000079041994468,
+        "cpu": 3.04
+      },
+      {
+        "wall": 9.000057664998167,
+        "cpu": 3.36
+      },
+      {
+        "wall": 10.000065434993303,
+        "cpu": 3.61
+      },
+      {
+        "wall": 11.000088274995505,
+        "cpu": 3.87
+      },
+      {
+        "wall": 12.000082637998275,
+        "cpu": 4.14
+      },
+      {
+        "wall": 13.000049769994803,
+        "cpu": 4.52
+      },
+      {
+        "wall": 14.000076726995758,
+        "cpu": 4.97
+      },
+      {
+        "wall": 15.000082703998487,
+        "cpu": 5.38
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "7840b7c10000-7840b7c12000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7840b7c12000-7840b7c1f000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7840b7c1f000-7840b7c24000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7840b7c24000-7840b7c25000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7840b7c25000-7840b7c26000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 33.51856683917029,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1280x720",
+      "USM pool running 8 workers"
+    ]
+  },
+  {
+    "clip": "animation",
+    "pair": 1,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "host_load_start": [
+      1.10302734375,
+      1.1123046875,
+      1.19189453125
+    ],
+    "samples": [
+      {
+        "wall": 3.0063407120032934,
+        "cpu": 1.36
+      },
+      {
+        "wall": 4.00011375000031,
+        "cpu": 1.64
+      },
+      {
+        "wall": 5.000111661000119,
+        "cpu": 1.93
+      },
+      {
+        "wall": 6.000103159996797,
+        "cpu": 2.26
+      },
+      {
+        "wall": 7.000092233000032,
+        "cpu": 2.61
+      },
+      {
+        "wall": 8.00011009300215,
+        "cpu": 2.98
+      },
+      {
+        "wall": 9.000094968003395,
+        "cpu": 3.31
+      },
+      {
+        "wall": 10.000084913001047,
+        "cpu": 3.59
+      },
+      {
+        "wall": 11.000075960997492,
+        "cpu": 3.87
+      },
+      {
+        "wall": 12.000082778999058,
+        "cpu": 4.16
+      },
+      {
+        "wall": 13.000077213000623,
+        "cpu": 4.48
+      },
+      {
+        "wall": 14.000111704001029,
+        "cpu": 4.88
+      },
+      {
+        "wall": 15.000096039002528,
+        "cpu": 5.26
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "7cfbc2d3e000-7cfbc2d40000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7cfbc2d40000-7cfbc2d4d000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7cfbc2d4d000-7cfbc2d52000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7cfbc2d52000-7cfbc2d53000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7cfbc2d53000-7cfbc2d54000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 32.516921461793366,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1280x720",
+      "USM pool running 8 workers"
+    ]
+  },
+  {
+    "clip": "animation",
+    "pair": 2,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "host_load_start": [
+      0.92578125,
+      1.0732421875,
+      1.1767578125
+    ],
+    "samples": [
+      {
+        "wall": 3.0052359480032464,
+        "cpu": 1.32
+      },
+      {
+        "wall": 4.000045338005293,
+        "cpu": 1.59
+      },
+      {
+        "wall": 5.000076372998592,
+        "cpu": 1.87
+      },
+      {
+        "wall": 6.0000854460013215,
+        "cpu": 2.18
+      },
+      {
+        "wall": 7.0000734080022085,
+        "cpu": 2.53
+      },
+      {
+        "wall": 8.000072861999797,
+        "cpu": 2.87
+      },
+      {
+        "wall": 9.00003923100303,
+        "cpu": 3.17
+      },
+      {
+        "wall": 10.000075727002695,
+        "cpu": 3.42
+      },
+      {
+        "wall": 11.000030504001188,
+        "cpu": 3.68
+      },
+      {
+        "wall": 12.000028245005524,
+        "cpu": 3.95
+      },
+      {
+        "wall": 13.000082274003944,
+        "cpu": 4.24
+      },
+      {
+        "wall": 14.000081397003669,
+        "cpu": 4.6
+      },
+      {
+        "wall": 15.000080851001258,
+        "cpu": 4.97
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "7ad5720d4000-7ad5720d6000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ad5720d6000-7ad5720e3000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ad5720e3000-7ad5720e8000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ad5720e8000-7ad5720e9000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ad5720e9000-7ad5720ea000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 30.429739021366693,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1280x720",
+      "USM pool running 8 workers"
+    ]
+  },
+  {
+    "clip": "animation",
+    "pair": 2,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/animation.mkv"
+    ],
+    "host_load_start": [
+      1.0166015625,
+      1.0859375,
+      1.1796875
+    ],
+    "samples": [
+      {
+        "wall": 3.007026475002931,
+        "cpu": 1.26
+      },
+      {
+        "wall": 4.000080767000327,
+        "cpu": 1.54
+      },
+      {
+        "wall": 5.000076903997979,
+        "cpu": 1.83
+      },
+      {
+        "wall": 6.000088451997726,
+        "cpu": 2.16
+      },
+      {
+        "wall": 7.000088175998826,
+        "cpu": 2.5
+      },
+      {
+        "wall": 8.000078582997958,
+        "cpu": 2.84
+      },
+      {
+        "wall": 9.000083667000581,
+        "cpu": 3.15
+      },
+      {
+        "wall": 10.000076809003076,
+        "cpu": 3.41
+      },
+      {
+        "wall": 11.000097484000435,
+        "cpu": 3.69
+      },
+      {
+        "wall": 12.000098880998848,
+        "cpu": 3.98
+      },
+      {
+        "wall": 13.00008172300295,
+        "cpu": 4.31
+      },
+      {
+        "wall": 14.000069284003985,
+        "cpu": 4.72
+      },
+      {
+        "wall": 15.000081924001279,
+        "cpu": 5.14
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "7c9ea0d3e000-7c9ea0d40000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7c9ea0d40000-7c9ea0d4d000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7c9ea0d4d000-7c9ea0d52000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7c9ea0d52000-7c9ea0d53000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7c9ea0d53000-7c9ea0d54000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 32.35205587516945,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "c05f3202032c0993afc56960dc874e72b9168fcdedd45f22673ae475ff5dc6a6",
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1280x720",
+      "USM pool running 8 workers"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 0,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "host_load_start": [
+      0.87109375,
+      1.048828125,
+      1.166015625
+    ],
+    "samples": [
+      {
+        "wall": 3.0065972709999187,
+        "cpu": 2.84
+      },
+      {
+        "wall": 4.000077379998402,
+        "cpu": 3.61
+      },
+      {
+        "wall": 5.000082264996308,
+        "cpu": 4.4
+      },
+      {
+        "wall": 6.0000876400008565,
+        "cpu": 5.17
+      },
+      {
+        "wall": 7.000072916998761,
+        "cpu": 5.92
+      },
+      {
+        "wall": 8.000075556999946,
+        "cpu": 6.63
+      },
+      {
+        "wall": 9.000074299001426,
+        "cpu": 7.32
+      },
+      {
+        "wall": 10.000074584997492,
+        "cpu": 7.98
+      },
+      {
+        "wall": 11.00007669399929,
+        "cpu": 8.67
+      },
+      {
+        "wall": 12.000073893002991,
+        "cpu": 9.34
+      },
+      {
+        "wall": 13.000075741998444,
+        "cpu": 9.99
+      },
+      {
+        "wall": 14.00007683900185,
+        "cpu": 10.65
+      },
+      {
+        "wall": 15.000068977999035,
+        "cpu": 11.28
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "7846b2092000-7846b2094000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7846b2094000-7846b20a1000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7846b20a1000-7846b20a6000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7846b20a6000-7846b20a7000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7846b20a7000-7846b20a8000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 70.3716172113418,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1920x1080",
+      "USM pool running 12 workers"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 0,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "host_load_start": [
+      0.677734375,
+      0.99658203125,
+      1.14697265625
+    ],
+    "samples": [
+      {
+        "wall": 3.00721418899775,
+        "cpu": 2.85
+      },
+      {
+        "wall": 4.0000691339955665,
+        "cpu": 3.54
+      },
+      {
+        "wall": 5.0000261749955826,
+        "cpu": 4.24
+      },
+      {
+        "wall": 6.00008191899542,
+        "cpu": 4.92
+      },
+      {
+        "wall": 7.00006750600005,
+        "cpu": 5.65
+      },
+      {
+        "wall": 8.000072449998697,
+        "cpu": 6.34
+      },
+      {
+        "wall": 9.00004220700066,
+        "cpu": 7.02
+      },
+      {
+        "wall": 10.000032341995393,
+        "cpu": 7.68
+      },
+      {
+        "wall": 11.000092112997663,
+        "cpu": 8.37
+      },
+      {
+        "wall": 12.00008152800001,
+        "cpu": 9.05
+      },
+      {
+        "wall": 13.000074880998,
+        "cpu": 9.69
+      },
+      {
+        "wall": 14.00003866499901,
+        "cpu": 10.33
+      },
+      {
+        "wall": 15.000030714996683,
+        "cpu": 10.94
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "73bac92b0000-73bac92b2000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "73bac92b2000-73bac92bf000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "73bac92bf000-73bac92c4000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "73bac92c4000-73bac92c5000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "73bac92c5000-73bac92c6000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 67.45704799587226,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1920x1080",
+      "USM pool running 12 workers"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 1,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "host_load_start": [
+      0.5947265625,
+      0.9638671875,
+      1.13330078125
+    ],
+    "samples": [
+      {
+        "wall": 3.006708796994644,
+        "cpu": 2.78
+      },
+      {
+        "wall": 4.000071688999014,
+        "cpu": 3.44
+      },
+      {
+        "wall": 5.000070811998739,
+        "cpu": 4.13
+      },
+      {
+        "wall": 6.000073652998253,
+        "cpu": 4.79
+      },
+      {
+        "wall": 7.000069469999289,
+        "cpu": 5.48
+      },
+      {
+        "wall": 8.000072880997322,
+        "cpu": 6.16
+      },
+      {
+        "wall": 9.000083857994468,
+        "cpu": 6.84
+      },
+      {
+        "wall": 10.000075255993579,
+        "cpu": 7.47
+      },
+      {
+        "wall": 11.000088777997007,
+        "cpu": 8.16
+      },
+      {
+        "wall": 12.000090326997451,
+        "cpu": 8.8
+      },
+      {
+        "wall": 13.000074911993579,
+        "cpu": 9.46
+      },
+      {
+        "wall": 14.000085656996816,
+        "cpu": 10.09
+      },
+      {
+        "wall": 15.00007253599324,
+        "cpu": 10.74
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "7ce0d677a000-7ce0d677c000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ce0d677c000-7ce0d6789000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ce0d6789000-7ce0d678e000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ce0d678e000-7ce0d678f000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ce0d678f000-7ce0d6790000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 66.37003740757581,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1920x1080",
+      "USM pool running 12 workers"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 1,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "host_load_start": [
+      0.53662109375,
+      0.9326171875,
+      1.11962890625
+    ],
+    "samples": [
+      {
+        "wall": 3.0063970219998737,
+        "cpu": 2.84
+      },
+      {
+        "wall": 4.000098491000244,
+        "cpu": 3.57
+      },
+      {
+        "wall": 5.000105440005427,
+        "cpu": 4.41
+      },
+      {
+        "wall": 6.000085295003373,
+        "cpu": 5.17
+      },
+      {
+        "wall": 7.000097093005024,
+        "cpu": 5.95
+      },
+      {
+        "wall": 8.000087339001766,
+        "cpu": 6.69
+      },
+      {
+        "wall": 9.000081101999967,
+        "cpu": 7.41
+      },
+      {
+        "wall": 10.000075506002759,
+        "cpu": 8.13
+      },
+      {
+        "wall": 11.000084147999587,
+        "cpu": 8.92
+      },
+      {
+        "wall": 12.000079755001934,
+        "cpu": 9.68
+      },
+      {
+        "wall": 13.000093817005109,
+        "cpu": 10.36
+      },
+      {
+        "wall": 14.000081960002717,
+        "cpu": 11.0
+      },
+      {
+        "wall": 15.000079338999058,
+        "cpu": 11.69
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "71d276e1a000-71d276e1c000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "71d276e1c000-71d276e29000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "71d276e29000-71d276e2e000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "71d276e2e000-71d276e2f000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "71d276e2f000-71d276e30000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 73.788847879158,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1920x1080",
+      "USM pool running 12 workers"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 2,
+    "pin": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=1",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "host_load_start": [
+      0.775390625,
+      0.96923828125,
+      1.1279296875
+    ],
+    "samples": [
+      {
+        "wall": 3.006998149998253,
+        "cpu": 3.02
+      },
+      {
+        "wall": 4.000099965000118,
+        "cpu": 3.86
+      },
+      {
+        "wall": 5.000100801000372,
+        "cpu": 4.71
+      },
+      {
+        "wall": 6.000079634999565,
+        "cpu": 5.47
+      },
+      {
+        "wall": 7.000109196997073,
+        "cpu": 6.2
+      },
+      {
+        "wall": 8.00009131799743,
+        "cpu": 6.97
+      },
+      {
+        "wall": 9.000077174998296,
+        "cpu": 7.74
+      },
+      {
+        "wall": 10.000082831000327,
+        "cpu": 8.52
+      },
+      {
+        "wall": 11.000083125996753,
+        "cpu": 9.37
+      },
+      {
+        "wall": 12.000071297996328,
+        "cpu": 10.08
+      },
+      {
+        "wall": 13.000084047998826,
+        "cpu": 10.7
+      },
+      {
+        "wall": 14.000077340002463,
+        "cpu": 11.33
+      },
+      {
+        "wall": 15.000081933998445,
+        "cpu": 11.96
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "7ddf3a410000-7ddf3a412000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ddf3a412000-7ddf3a41f000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ddf3a41f000-7ddf3a424000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ddf3a424000-7ddf3a425000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7ddf3a425000-7ddf3a426000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 74.54296293607764,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1920x1080",
+      "USM pool running 12 workers"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "pair": 2,
+    "pin": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--stats",
+      "--no-video-title-show",
+      "--avcodec-hw=none",
+      "--vout=xcb_x11",
+      "--audio-filter=",
+      "--no-audio-time-stretch",
+      "--autoupscale-target=2",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-content-probe=0",
+      "--autoupscale-metrics=0",
+      "-vv",
+      "--autoupscale-pin-threads=0",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "/backups/disk2/projects/vlc-autoupscaler/build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "host_load_start": [
+      1.12646484375,
+      1.03759765625,
+      1.1474609375
+    ],
+    "samples": [
+      {
+        "wall": 3.0060032680048607,
+        "cpu": 2.76
+      },
+      {
+        "wall": 4.000070717003837,
+        "cpu": 3.44
+      },
+      {
+        "wall": 5.000072214999818,
+        "cpu": 4.16
+      },
+      {
+        "wall": 6.000086087005911,
+        "cpu": 4.85
+      },
+      {
+        "wall": 7.0000722850018064,
+        "cpu": 5.56
+      },
+      {
+        "wall": 8.000088341002993,
+        "cpu": 6.26
+      },
+      {
+        "wall": 9.0000815530002,
+        "cpu": 6.96
+      },
+      {
+        "wall": 10.000093972004834,
+        "cpu": 7.62
+      },
+      {
+        "wall": 11.00008983900625,
+        "cpu": 8.34
+      },
+      {
+        "wall": 12.000080636003986,
+        "cpu": 9.04
+      },
+      {
+        "wall": 13.000082525002654,
+        "cpu": 9.75
+      },
+      {
+        "wall": 14.000076779004303,
+        "cpu": 10.41
+      },
+      {
+        "wall": 15.000073126000643,
+        "cpu": 11.09
+      }
+    ],
+    "verified_plugin": "/backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+    "plugin_mappings": [
+      "7adf99a0e000-7adf99a10000 r--p 00000000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7adf99a10000-7adf99a1d000 r-xp 00002000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7adf99a1d000-7adf99a22000 r--p 0000f000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7adf99a22000-7adf99a23000 r--p 00013000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so",
+      "7adf99a23000-7adf99a24000 rw-p 00014000 08:01 53543868                   /backups/disk2/projects/vlc-autoupscaler/build-perf10/libautoupscale_plugin.so"
+    ],
+    "returncode": 0,
+    "cpu_percent": 69.45098785169114,
+    "plugin_sha256": "0ee8f9dd2572cd93897e140118e61ab15e4566e43ad1ada6a9c772bfeedd3d0c",
+    "input_sha256": "f139f19966333b5fc6e9f1e15b2084feff81e7febad05874d8cf614fd68dfba0",
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 1920x1080 (backend=zimg preset=2 algo=3 threads_budget=12 cores=32 simd=default)",
+      "destination (after video filters) 1920x1080",
+      "USM pool running 12 workers"
+    ]
+  }
+]

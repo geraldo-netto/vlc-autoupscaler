@@ -116,9 +116,43 @@ to the current build, or accepting current pinning from these runs.
 VLC's RC counters remain zero for this private transcode-display resource,
 despite active display and output-format diagnostics. Zero counters are not
 zero dropped frames. Reliable presentation tails still require instrumentation
-that observes the actual private vout. PERF-15 remains blocked for an optimal
-policy claim; these runs do not change defaults or establish multiple-host
-behavior.
+that observes the actual private vout. Baseline acceptance is limited to the
+evidence below. PERF-15 retains the unresolved measurement requirements;
+these runs do not establish multiple-host behavior.
+
+### Evidence required for baseline acceptance
+
+The user accepts the baseline only where evidence supports it. Acceptance
+does not make every current setting a validated performance winner. Keep
+existing runtime defaults while separating supported retention decisions
+from unproven policy choices:
+
+| Decision | Recorded evidence | Scope of acceptance |
+|---|---|---|
+| Retain pinning provisionally | Standalone backend measurements remain available; historical VLC playback attribution is withdrawn under BUILD-42. | Repeated playback with one verified plugin is required before extending the evidence to current VLC behavior. |
+| Retain zero-copy | The earlier native-cadence, matching-grid comparison gives 277.01 versus 357.27 us/frame with direct versus copied access. Compared final-frame hashes match; permanent pixel regressions cover the tested executor paths. | Supports direct access in the measured configurations; does not prove equivalence after changing graph grids or a GPU path. |
+| Treat 8/12/16-worker presets as the reference configuration | The earlier 8/12-worker means nearly tie, with a CPU/tail tradeoff; short and longer motion runs favor different counts. | Preset optimality is not accepted. Defaults remain unchanged while alternatives are investigated. |
+| Keep adaptive and GPU replacements experimental | The default-profile adaptive comparison differs by only 0.3%; the tested GPU roundtrip reduces CPU but increases wall time and omits USM/equivalence validation. | Neither experiment establishes a replacement for the current pipeline. |
+
+The [earlier per-frame evidence](DECISION_EXPERIMENTS.md#presets-pinning-and-zero-copy)
+also retains the 227.12 versus 368.79 us/frame repeated-control discrepancy.
+That discrepancy is not resolved by accepting the baseline. The current
+sharpness cutoff is likewise not validated for grainy or heavily compressed
+material by these clips; no threshold tuning follows from their results.
+
+Future performance claims must identify the tested input, host, output
+geometry, algorithm, worker configuration and measurement boundary. Compare
+matched workloads in repeated alternating order; retain raw samples and
+report CPU, processing mean and tails separately. Require pixel-equivalence
+checks for changes intended to preserve output, investigate control drift
+and tail regressions, and validate the measurement itself before claiming
+presentation improvements. Broader claims require broader evidence.
+
+The user selected optional plugin processing metrics (2A), direct libvulkan
+experiments (3), and a single-output video-splitter prototype (4A). These
+choices are settled. Defaults remain fixed; measurements determine adoption.
+Private sout presentation counters remain unavailable; plugin processing
+metrics do not claim to measure display drops or presentation latency.
 
 ## Vulkan feasibility
 
@@ -180,7 +214,148 @@ investigating despite current latency results. Require equivalent scaling/USM
 output, bounded lifetime/failure tests, and paired end-to-end CPU and tail
 measurements before enabling it by default. No GPU backend is shipped here.
 
-## Reproducible evidence
+## Direct libvulkan experiments and current playback evidence
+
+User choices 2A, 3 and 4A are implemented as optional processing metrics,
+direct-library GPU experiments, and a video-only display prototype. Production
+quality, worker counts, zero-copy settings and launcher defaults are unchanged.
+
+### Corrected playback attribution
+
+`scripts/playback_runtime.py` copies the unmodified installed `libvlccore`
+into a private test runtime, links stock plugins individually, and includes
+exactly one requested AutoUpscale binary. It excludes installed and nested
+AutoUpscale copies. Each measured process verifies its runtime mappings;
+the permanent `test_playback_runtime.py` rejects duplicate, missing and deleted
+plugin mappings. System files and installed plugins are unchanged.
+
+Twelve replacement VLC runs repeat the same clips, settings, alternating
+pinning order and seconds 3–15 sampling interval as the historical experiment.
+All runs exit successfully and identify the requested binary. Median process
+CPU, with one core equal to 100%, is:
+
+| Clip | Pinning on | Pinning off |
+|---|---:|---:|
+| Animation, 1280x720 output | 32.52% | 32.85% |
+| Live action, 1920x1080 output | 73.79% | 67.46% |
+
+Pinning lowers CPU in two animation pairs and increases it in every live-action
+pair. These results replace the unsupported blanket playback benefit. They
+do not prove a universal replacement policy; defaults remain reference settings
+while PERF-15 retains the mixed evidence and worker-preset questions. Standalone
+matching-grid zero-copy equivalence and timing evidence remains valid.
+
+### Direct GPU measurements
+
+`tests/experiment_vulkan.c` calls libvulkan directly. Its persistent buffers,
+descriptor sets, pipelines, command buffers and fences perform host upload,
+GPU compute, readback and a CPU-visible output copy. Host allocations prefer
+cached coherent memory. The scaler benchmark links the project's zimg backend
+for comparison; the sharpening benchmark links its actual CPU worker pool.
+Neither Vulkan benchmark links FFmpeg or libplacebo.
+
+The experiment is bounded to 4K pixels, software I420 for scaling, and packed
+8-bit luma for sharpening. It does not change the production geometry policy.
+`test_vulkan_limits` permanently covers the guard that prevents oversized
+single-dispatch requests; its excessive-size tests failed before the guard.
+
+The matrix runs three alternating CPU/GPU pairs per stage, resolution and GPU.
+Scaling uses one decoded 960x540 live-action frame, 20 warmup iterations and
+120 unpaced measured iterations, comparing 12 pinned zimg workers with a direct
+Spline36 compute shader. Sharpening uses deterministic luma, the same warmup
+and sample counts, 30-fps pacing, and 12/16 CPU workers for 1080p/4K. These are
+stage microbenchmarks. Startup and shader compilation are excluded; Vulkan
+measurements include upload, dispatch, completion wait, readback and output
+copy. Scaling starts with contiguous I420, so packing VLC's strided input is
+not timed. This original matrix measures separate stages. The later latency report adds
+combined microbenchmarks; neither matrix measures GPU-backed VLC playback.
+
+| Stage/output | GPU | CPU path wall ms | Vulkan wall ms | Process CPU ms (CPU / Vulkan) |
+|---|---|---:|---:|---:|
+| scale / 1080p | RX 6600 XT | 0.131 | 1.039 | 1.374 / 0.140 |
+| scale / 1080p | 610M | 0.133 | 11.517 | 1.345 / 0.286 |
+| scale / 2160p | RX 6600 XT | 0.349 | 3.742 | 3.881 / 0.539 |
+| scale / 2160p | 610M | 0.350 | 44.972 | 3.897 / 1.585 |
+| usm / 1080p | RX 6600 XT | 0.247 | 0.933 | 2.111 / 0.165 |
+| usm / 1080p | 610M | 0.144 | 2.903 | 1.001 / 0.191 |
+| usm / 2160p | RX 6600 XT | 0.406 | 3.367 | 4.487 / 0.888 |
+| usm / 2160p | 610M | 0.537 | 8.455 | 5.581 / 1.231 |
+
+The direct path succeeds on both GPUs, bypassing the external FFmpeg
+hardware-frame failures. Lower process CPU comes with higher per-frame latency
+in these implementations. This measures these kernels and transfer strategy;
+it does not establish a hardware limit or the performance of a future GPU
+resident pipeline.
+
+Sharpening is byte-identical to the CPU reference across random, flat and
+high-contrast inputs, eight sharpening amounts including clamp boundaries,
+and tiny/odd through 4K geometry. Twelve further runs on both GPUs pass with
+the Khronos validation layer and synchronization validation enabled. Those
+instrumented timings are not used for performance claims.
+
+The Spline36 prototype is not byte-equivalent to zimg. The recorded per-plane
+maximum error and RMSE must be reviewed before any quality-equivalence claim;
+the later latency report directly measures tiled/untiled zimg differences and
+compares the GPU kernels with an independent global reference. The constant-image property passes. Neither
+speed nor equivalent quality currently justifies replacing the CPU scaler.
+
+Build the optional tools with Vulkan headers/loader and the shaderc runtime
+available, in addition to the VLC/zimg SDKs already used by the CPU benchmark:
+
+```sh
+make BUILD=build-gpu build-vulkan-bench
+build-gpu/bench_vulkan build-gpu/vulkan_usm.spv 0 1920 1080 12 120 33333 gpu
+build-gpu/bench_vulkan_scale build-gpu/vulkan_spline36.spv 0 2 gpu live-action-540.yuv
+```
+
+Device indices are enumerated per process; results identify the actual GPU
+name and reject CPU Vulkan devices. `VULKAN_CFLAGS` and `VULKAN_LIBS` can point
+to an isolated SDK/runtime. Timings, commands and file hashes are retained in
+the direct experiment evidence below.
+
+### Display prototype
+
+`make display-prototype` builds the optional `autoupscale-display` video splitter.
+It reuses the existing upscaler through VLC's filter chain and declares one
+enlarged output. It adds no audio DSP or player controller. Normal-suite
+ASan/UBSan tests cover output format, timestamps, input ownership, allocation
+failure and cleanup.
+
+Isolated playback confirms 320x180 to 1280x720 output, native volume commands
+changing the stream to 100/25/50%, seeking to 10 and 1 seconds, visible subtitles,
+nonzero frame counters, and removal of its window at exit. The sout control
+comparison remains at 50% stream volume for all three commands. Subtitle
+screenshots were inspected; OCR alone was unreliable on the colored fixture.
+
+Live fullscreen is not validated: bounded adapter probes leave the child window
+unchanged or temporarily unobservable, while normal playback enters fullscreen
+and restores its original window. VLC's splitter wrapper rejects display control
+requests and owns separate child displays. REL-16 retains this integration
+requirement. The prototype is not the launcher default and requires an input
+eligible for upscaling; no bypass or general GUI support is claimed.
+
+### Implemented latency experiments
+
+The subsequent [latency experiments](VULKAN_LATENCY_EXPERIMENTS.md) implement
+GPU timestamps, separable scaling, precomputed coefficients, specialized
+pipelines, shared GPU scaling/sharpening, mapped buffers and a no-readback
+measurement mode. They retain both winners and losing candidates, compare
+paced sequences with unpaced controls, and keep defaults unchanged. The
+no-readback experiment does not present a frame through VLC.
+
+### Direct experiment evidence
+
+The original direct-library measurements and corrected playback controls are
+retained as [the 48-run matrix](benchmarks/direct-vulkan-2026-09-12/matrix.json),
+[the 12 verified playback runs](benchmarks/direct-vulkan-2026-09-12/playback.json),
+[display/audio controls](benchmarks/direct-vulkan-2026-09-12/controls.json),
+[standalone GPU validation](benchmarks/direct-vulkan-2026-09-12/validation.json),
+and [baseline provenance](benchmarks/direct-vulkan-2026-09-12/environment.json).
+The environment file labels the earlier FFmpeg snapshot separately; its
+historical hashes do not identify the direct-library binaries. Optimized
+measurements have their own manifest in the latency report.
+
+## Historical reproducible evidence
 
 The recorded commands and observations are retained as
 [VLC playback samples](benchmarks/playback-vulkan-2026-09-12/playback.json),
