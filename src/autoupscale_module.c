@@ -207,9 +207,10 @@ static void Close( vlc_object_t *p_this )
 
 vlc_module_begin()
     set_shortname( N_("AutoUpscale") )
-    set_description( N_("Automatic sub-720p -> 720p/1080p video upscaler") )
-    set_help( N_("Detects sub-720p video and upscales it to 720p or 1080p "
-                 "in real time. Backends: zimg (preferred) and swscale.") )
+    set_description( N_("Automatic video upscaler with presets through 8K") )
+    set_help( N_("AUTO upscales eligible low-resolution video to 720p or 1080p. "
+                 "Explicit presets extend through 8K, subject to the scaling-ratio cap. "
+                 "Backends: zimg (preferred) and swscale.") )
     set_capability( "video filter", 0 )
     set_category( CAT_VIDEO )
     set_subcategory( SUBCAT_VIDEO_VFILTER )

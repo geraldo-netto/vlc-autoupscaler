@@ -189,9 +189,12 @@ report `Too high level of recursion (3)`. This is a VLC host limitation; the
 installed plugin cannot raise the host's chain limit.
 
 Try `--avcodec-hw=none` first. If direct playback still fails, use the transcode
-display path described above. Users who build VLC themselves can instead apply
-`patches/vlc-3.0-raise-chain-level.patch`; it raises the VLC 3.0 chain limit but
-does not prevent the direct display chain from resizing output again.
+display path described above. The supported workflow uses unmodified VLC.
+The [native output experiment](PLAYBACK_POLICY_EXPERIMENTS.md) is another opt-in
+path with narrower format support; it preserves native volume without the bridge's
+extra encode/decode work. See the [experiment support boundary](EXPERIMENTS.md)
+before using it. The retained file `patches/vlc-3.0-raise-chain-level.patch`
+is unsupported historical evidence, not a recommended installation step.
 
 ### Output-format permission
 

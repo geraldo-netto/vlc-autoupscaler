@@ -13,8 +13,8 @@
  * upscale_logic.h. Apply only to the Y plane of YUV pictures; sharpening
  * RGB or chroma planes causes visible colour fringing on edges.
  *
- * Performance: two memory-bound passes over the luma plane. Throughput
- * depends on frame geometry, compiler, and CPU.
+ * The production pool fuses these row operations into one rolling-buffer
+ * sweep. Throughput depends on frame geometry, compiler, and CPU.
  *****************************************************************************/
 
 #ifndef AUTOUPSCALE_USM_H
@@ -96,7 +96,7 @@ static inline void up_usm__apply_identity(
     if (dst == src && dst_stride == src_stride) return;
     /* Otherwise reuse the shared stride-aware plane copy (one memcpy when
      * both buffers are contiguous, else row-by-row). See up_copy_plane in
-     * zimg_helpers.h. */
+     * plane_utils.h. */
     up_copy_plane(dst, dst_stride, src, src_stride, width, height);
 }
 

@@ -244,8 +244,12 @@ not establish a benefit for this current default profile or for paced video.
 The [playback/Vulkan follow-up](PLAYBACK_VULKAN_EVALUATION.md) implements the
 new output permission decision, rejects the ML accuracy claim as a design
 dependency, and tests stock VLC commands without optional audio effects.
-Performance defaults remain unchanged. Stable policy evidence (PERF-15) and
-the native-volume/enlarged-display conflict (REL-16) remain unresolved.
+At that stage, PERF-15 and REL-16 were unresolved. The subsequent
+[completed ten-pair study](PERF15_TEN_PAIRS.md) retained performance defaults
+under its latency guard. The [native output follow-up](PLAYBACK_POLICY_EXPERIMENTS.md)
+validated native volume and enlarged-display/fullscreen behavior for its bounded
+I420 prototype; broader format support and presentation latency remain outside
+that evidence. Superseded drivers are now [frozen references](EXPERIMENTS.md).
 
 ## Validation
 

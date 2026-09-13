@@ -242,6 +242,20 @@ baseline for distribution.
 The environment-preparation section above maps every target to its required
 software. Missing optional tools do not affect a normal plugin build.
 
+If a TSan binary aborts before tests with `unexpected memory mapping`, validate
+the unchanged suites with a compatible compiler/runtime in a fresh build root.
+On the reviewed host, an empty GCC TSan program reproduced that startup failure;
+Clang 18 passed all USM/adaptive and zimg stress tests:
+
+```sh
+make CC=clang-18 BUILD=build-tsan-clang18 \
+  EXTRA_CFLAGS="-Werror -Wno-unreachable-code-generic-assoc" stress stress-zimg
+```
+
+This uses Clang's sanitizer runtime without suppressing reports, skipping tests
+or changing the production compiler. Optional and frozen tooling is described
+in the [experiment support boundary](docs/EXPERIMENTS.md).
+
 `make mutation-test` changes isolated temporary copies only. Its curated
 mutants cover target selection and safety caps, AUTO skip policy, backend
 priority/fallback, content-probe confidence and advisory boundaries, and the

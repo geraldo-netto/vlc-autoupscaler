@@ -108,6 +108,7 @@
   meets the retained 5% regression guard. Keep defaults; the CPU saving is
   reviewable only with its latency cost. The [completed analysis](docs/PERF15_TEN_PAIRS.md)
   preserves uncertainty, raw evidence and the limits of this machine's results.
+
 - **BUILD-44, driver-unload allocations as project leaks:** a loader-only
   `vkCreateInstance`/`vkEnumeratePhysicalDevices`/`vkDestroyInstance` program
   reproduces 512 bytes in two external allocations. The full GPU suite passes
@@ -115,7 +116,6 @@
   Radeon ICD selected and its library retained by `LD_PRELOAD`. This test-only
   setup avoids unloading the driver's allocation roots; no project leak
   suppression or disabled sanitizer is used. See the direct Vulkan report.
-
 
 - **OBS-19, private sout presentation counters as a prerequisite for processing metrics:**
   user choice 2A accepts plugin processing metrics. Optional bounded stage/total

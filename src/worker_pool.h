@@ -22,8 +22,8 @@
  *
  * PERF-1 (inline_run): a one-worker pool has no parallelism to buy, so no gate
  * is initialized and no thread is spawned — up_worker_pool_dispatch runs the
- * single slot on the calling thread. The auto thread policy resolves to 1 on
- * every machine with <= 7 cores, so this is the common desktop path.
+ * single slot on the calling thread. Zimg AUTO uses this path with <= 7
+ * allowed CPUs; USM AUTO separately considers output area and allowed CPUs.
  *
  * Threading contract (inherited from the gate, see pool_gate.h): the owner
  * writes per-dispatch worker state before up_worker_pool_dispatch; workers
