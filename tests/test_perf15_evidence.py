@@ -134,5 +134,74 @@ class TimeoutTests(unittest.TestCase):
                 stats.analyze(args.output, samples=10)
 
 
+class CaptureFailureTests(unittest.TestCase):
+    def check_incomplete(self, args, job):
+        self.assertFalse((args.output / 'pair-0000' / 'pair.json').exists())
+        with self.assertRaisesRegex(RuntimeError, 'incomplete pair'):
+            confirm.collect_pair(args, job, 0)
+        bench.save(args.output / 'plan.json', [job])
+        bench.save(args.output / 'pairs.json', [])
+        bench.save(args.output / 'verified.json', dict(hashes_unchanged=True))
+        with self.assertRaises((ValueError, RuntimeError)):
+            stats.analyze(args.output, samples=10)
+
+    def failed_capture(self, root, kind):
+        args = SimpleNamespace(output=Path(root), build=Path('unused'), clips=Path('unused'))
+        job = dict(clip='animation', treatment='local', repeat=0, order=['baseline', 'local'])
+        stdout = 'invalid JSON' if kind == 'json' else json.dumps(
+            dict.fromkeys(bench.METRICS, 1.0) | {'adaptive_outcome': 'fixed'})
+
+        def execute(*_args, **_kwargs):
+            if kind == 'launch':
+                raise FileNotFoundError(2, 'missing profiler', 'unused/profile_pipeline')
+            if kind == 'trace':
+                (args.output / 'pair-0000' / '0.csv').write_text('selected_workers\ninvalid\n')
+            return subprocess.CompletedProcess([], 0, stdout, 'capture diagnostic')
+
+        with patch.object(bench.subprocess, 'run', side_effect=execute), redirect_stdout(StringIO()):
+            with self.assertRaises(RuntimeError):
+                confirm.collect_pair(args, job, 0)
+        rows = json.loads((args.output / 'pair-0000' / 'results.json').read_text())
+        self.assertEqual(len(rows), 1)
+        self.assertTrue(rows[0]['command'])
+        self.assertEqual(rows[0]['environment']['UP_PROFILE_ADAPTIVE'], '0')
+        self.assertTrue(rows[0]['error'])
+        self.check_incomplete(args, job)
+        return rows[0], stdout
+
+    def test_err4_launch_failure_retains_attempt(self):
+        with tempfile.TemporaryDirectory() as root:
+            row, _ = self.failed_capture(root, 'launch')
+            self.assertEqual(row['failure'], 'launch')
+            self.assertNotEqual(row['returncode'], 0)
+            self.assertIn('missing profiler', row['error'])
+
+    def test_err4_output_failures_retain_process_diagnostics(self):
+        for kind in ('json', 'missing-trace', 'trace'):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as root:
+                row, stdout = self.failed_capture(root, kind)
+                self.assertEqual(row['failure'], 'output-parse')
+                self.assertEqual(row['returncode'], 0)
+                self.assertEqual(row['stdout'], stdout)
+                self.assertEqual(row['stderr'], 'capture diagnostic')
+
+    def test_err4_raw_output_is_saved_before_parsing(self):
+        with tempfile.TemporaryDirectory() as root:
+            args = SimpleNamespace(output=Path(root), build=Path('unused'), clips=Path('unused'))
+            result = dict.fromkeys(bench.METRICS, 1.0) | {'adaptive_outcome': 'fixed'}
+            process = subprocess.CompletedProcess([], 0, json.dumps(result), 'diagnostic')
+
+            def summary(*_args):
+                raw = json.loads((args.output / 'results.json').read_text())[0]
+                self.assertEqual(raw['stdout'], process.stdout)
+                self.assertEqual(raw['stderr'], process.stderr)
+                return {}
+
+            with patch.object(bench.subprocess, 'run', return_value=process), \
+                    patch.object(bench, 'trace_summary', side_effect=summary), redirect_stdout(StringIO()):
+                row = bench.checked_capture(args, bench.settings('animation', 'baseline'), [])
+            self.assertEqual(row['result'], result)
+
+
 if __name__ == '__main__':
     unittest.main()

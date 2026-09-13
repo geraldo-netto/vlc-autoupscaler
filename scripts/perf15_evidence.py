@@ -51,7 +51,7 @@ def verify_hashes(directory, row):
 
 
 def verify_record(directory, record, clip, treatment, trace):
-    if record['returncode'] != 0 or record['job'] != bench.settings(clip, treatment):
+    if record['returncode'] != 0 or record.get('failure') or record['job'] != bench.settings(clip, treatment):
         raise ValueError('failed capture or mismatched capture identity')
     if record['trace'] != trace:
         raise ValueError('capture trace differs from pair')

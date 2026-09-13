@@ -49,11 +49,14 @@ def output_text(value):
 
 def execute_capture(command, environment):
     try:
-        result = subprocess.run(command, env=environment, capture_output=True, text=True, timeout=150)
+        result = subprocess.run(command, env=environment, capture_output=True, text=True,
+                                errors='replace', timeout=150)
         return dict(returncode=result.returncode, stdout=result.stdout, stderr=result.stderr)
     except subprocess.TimeoutExpired as error:
         return dict(returncode=-1, failure='timeout', timeout_seconds=error.timeout,
                     stdout=output_text(error.stdout), stderr=output_text(error.stderr))
+    except OSError as error:
+        return dict(returncode=-1, failure='launch', error=str(error), stdout='', stderr='')
 
 
 def capture(args, job, index, pixels=False):
@@ -72,17 +75,30 @@ def capture(args, job, index, pixels=False):
     row = dict(job=job, command=cmd, environment=controls, trace=trace.name,
                **result,
                load_before=before, load_after=os.getloadavg())
-    if not row['returncode']:
-        row.update(result=json.loads(row['stdout']), summary=trace_summary(trace, job["adaptive"]))
     return row
+
+
+def parse_capture(row, directory):
+    if row['returncode']:
+        return
+    try:
+        result = json.loads(row['stdout'])
+        if not isinstance(result, dict):
+            raise ValueError('capture output must be a JSON object')
+        summary = trace_summary(directory / row['trace'], row['job']['adaptive'])
+        row.update(result=result, summary=summary)
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        row.update(failure='output-parse', error=str(error))
 
 
 def checked_capture(args, job, rows, pixels=False):
     row = capture(args, job, len(rows), pixels)
     rows.append(row)
     save(args.output/"results.json", rows)
+    parse_capture(row, args.output)
+    save(args.output/"results.json", rows)
     print(len(rows), job["clip"], job["treatment"], row.get("result", {}).get("frame_p99"), flush=True)
-    if row["returncode"]:
+    if row["returncode"] or row.get('failure'):
         raise RuntimeError("capture failed; partial evidence retained")
     return row
 
