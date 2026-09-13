@@ -5,6 +5,7 @@
 #include "cli_parse.h"
 #include "profile_input.h"
 #include "../src/content_probe.h"
+#include "../src/usm_adaptive.h"
 #include <stdio.h>
 #include <sys/resource.h>
 #include <time.h>
@@ -15,11 +16,14 @@
 typedef struct {
     long zimg, usm, width, height, frames, pin, detail, content, period;
     int source_width, source_height, executor, active, zerocopy, sharp_threshold;
+    int adaptive, warmup, usm_cpu_first, usm_cpu_count;
 } args_t;
 
 typedef struct {
     double total, zimg, usm;
     up_profile_frame_t ztrace, utrace;
+    double cpu;
+    int phase, workers, changed, skipped;
 } sample_t;
 
 typedef struct {
@@ -33,6 +37,8 @@ typedef struct {
     up_profile_input_t raw;
     up_probe_accum_t probe;
     int sharp_threshold, skip_usm;
+    up_usm_adaptive_t adaptive;
+    int adaptive_requested, settled_frame;
 } pipeline_t;
 
 static double clock_us(clockid_t id)
@@ -40,6 +46,14 @@ static double clock_us(clockid_t id)
     struct timespec ts;
     if (clock_gettime(id, &ts) != 0) { perror("clock_gettime"); abort(); }
     return (double)ts.tv_sec * 1e6 + (double)ts.tv_nsec / 1e3;
+}
+
+static int validate_modes(const args_t *a)
+{
+    if ((a->source_width | a->source_height) & 1) return -1;
+    if (a->executor && a->detail) return -1;
+    if (a->adaptive && (a->detail || a->executor || !a->usm)) return -1;
+    return a->usm_cpu_count && a->executor ? -1 : 0;
 }
 
 static int parse_environment(args_t *a)
@@ -51,12 +65,15 @@ static int parse_environment(args_t *a)
         { "UP_PROFILE_ACTIVE", 0, 64, 0, &a->active },
         { "UP_PROFILE_ZEROCOPY", 0, 1, 1, &a->zerocopy },
         { "UP_PROFILE_SHARP_THRESHOLD", 0, 20000, 0, &a->sharp_threshold },
+        { "UP_PROFILE_ADAPTIVE", 0, 1, 0, &a->adaptive },
+        { "UP_PROFILE_WARMUP", 0, 128, PROFILE_WARMUP, &a->warmup },
+        { "UP_PROFILE_USM_CPU_FIRST", 0, 1023, 0, &a->usm_cpu_first },
+        { "UP_PROFILE_USM_CPU_COUNT", 0, 64, 0, &a->usm_cpu_count },
     };
     for (size_t i = 0; i < sizeof options / sizeof *options; i++)
         if (up_profile_env(options[i].name, options[i].low, options[i].high,
                              options[i].fallback, options[i].value)) return -1;
-    return a->source_width % 2 || a->source_height % 2 || (a->executor && a->detail)
-             ? -1 : 0;
+    return validate_modes(a);
 }
 
 static int parse(int argc, char **argv, args_t *a)
@@ -81,6 +98,19 @@ static void fill_smooth(zt_pic_t *pic, int frame)
                 (uint8_t)(32 + ((x / 8 + y / 8 + frame * 3) % 192));
 }
 
+static int initialize_usm(pipeline_t *p, const args_t *a)
+{
+    if (up_profile_usm_affinity(a->usm_cpu_first, a->usm_cpu_count)) return -1;
+    if (!a->usm) return 0;
+    p->usm = up_usm_pool_create((int)a->usm, (int)a->width, (int)a->height, 0);
+    if (!p->usm) return -1;
+    p->adaptive_requested = a->adaptive;
+    if (a->adaptive)
+        up_usm_adaptive_init(&p->adaptive, (int)a->usm,
+            up_threads_decide(64, up_detect_cores()), (int)a->width, (int)a->height, 0);
+    return 0;
+}
+
 static int initialize(pipeline_t *p, const args_t *a)
 {
     const int w = (int)a->width, h = (int)a->height;
@@ -97,10 +127,7 @@ static int initialize(pipeline_t *p, const args_t *a)
     p->ctx.algo = UP_ALGO_SPLINE36;
     p->ctx.pin_cpus = (int)a->pin;
     if (p->ctx.backend->open(&p->ctx)) return -1;
-    if (a->usm) {
-        p->usm = up_usm_pool_create((int)a->usm, w, h, 0);
-        if (!p->usm) return -1;
-    }
+    if (initialize_usm(p, a)) return -1;
     p->samples = calloc((size_t)a->frames, sizeof *p->samples);
     p->sharp_threshold = a->sharp_threshold;
     if (!p->samples) return -1;
@@ -112,6 +139,7 @@ static void destroy(pipeline_t *p)
 {
     up_profile_zimg_finish();
     up_profile_usm_finish();
+    up_usm_adaptive_stop(&p->adaptive);
     up_usm_pool_destroy(p->usm);
     if (p->ctx.priv) p->ctx.backend->close(&p->ctx);
     for (int i = 0; i < PROFILE_INPUTS; i++) zt_pic_free(&p->input[i]);
@@ -128,28 +156,41 @@ static void probe_source(pipeline_t *p, const zt_pic_t *source)
     up_probe_metrics(luma->p_pixels, luma->i_pitch, p->ctx.src_w, p->ctx.src_h, &metrics);
     up_probe_observe(&p->probe, metrics.lap_sum, metrics.lap_n,
                      metrics.edge_sum, metrics.edge_n);
-    if (p->probe.frames == UP_PROBE_WINDOW_FRAMES)
+    if (p->probe.frames == UP_PROBE_WINDOW_FRAMES) {
         p->skip_usm = up_should_skip_usm_for_sharpness(&p->probe, p->sharp_threshold);
+        if (p->skip_usm) {
+            up_usm_adaptive_stop(&p->adaptive);
+            up_usm_pool_destroy(p->usm);
+            p->usm = NULL;
+        }
+    }
 }
 
 static int frame(pipeline_t *p, int index, sample_t *sample)
 {
     zt_pic_t *source = &p->input[index % PROFILE_INPUTS];
     if (up_profile_input_read(&p->raw, index, source)) return -1;
+    const double cpu = clock_us(CLOCK_PROCESS_CPUTIME_ID);
     const double start = clock_us(CLOCK_MONOTONIC);
+    const int phase = p->adaptive.tuner.phase;
+    const unsigned changes = p->adaptive.tuner.changes;
     probe_source(p, source);
+    up_usm_adaptive_begin(&p->adaptive);
     if (p->ctx.backend->process(&p->ctx, &source->pic,
                                 &p->output.pic) != SCALER_PROCESS_OK) return -1;
     const double scaled = clock_us(CLOCK_MONOTONIC);
     plane_t *luma = &p->output.pic.p[0];
-    if (p->usm && !p->skip_usm && up_usm_pool_apply(p->usm, luma->p_pixels, luma->i_pitch,
-                                   luma->p_pixels, luma->i_pitch, 51)) return -1;
+    if (p->usm && up_usm_adaptive_apply(&p->adaptive, &p->usm,
+                       luma->p_pixels, luma->i_pitch, 51)) return -1;
     const double end = clock_us(CLOCK_MONOTONIC);
     up_profile_frame_t usm_trace = up_profile_usm_frame();
     if (p->skip_usm) usm_trace = (up_profile_frame_t){0};
     *sample = (sample_t){ end - start, scaled - start, end - scaled,
-                          up_profile_zimg_frame(), usm_trace };
-    return 0;
+                          up_profile_zimg_frame(), usm_trace,
+                          clock_us(CLOCK_PROCESS_CPUTIME_ID) - cpu,
+                          phase, up_usm_pool_effective_threads(p->usm),
+                          changes != p->adaptive.tuner.changes, p->skip_usm };
+    return up_profile_usm_affinity_status();
 }
 
 static int sched_snapshot(pipeline_t *p, up_profile_sched_t *z,
@@ -169,19 +210,27 @@ static int wait_period(double deadline)
     return rc;
 }
 
+static int measured_frames(pipeline_t *p, const args_t *a, double start)
+{
+    for (int i = 0; i < a->frames; i++) {
+        if (a->period && wait_period(start + (double)i * (double)a->period)) return -1;
+        if (frame(p, i, &p->samples[i])) return -1;
+        if (!p->settled_frame && p->adaptive.tuner.phase == UP_TUNER_SETTLED)
+            p->settled_frame = i + 1;
+    }
+    return 0;
+}
+
 static int run(pipeline_t *p, const args_t *a)
 {
     sample_t warmup;
-    for (int i = 0; i < PROFILE_WARMUP; i++)
+    for (int i = 0; i < a->warmup; i++)
         if (frame(p, i, &warmup)) return -1;
     if (sched_snapshot(p, &p->zbefore, &p->ubefore)) return -1;
     if (getrusage(RUSAGE_SELF, &p->before)) return -1;
     const double cpu = clock_us(CLOCK_PROCESS_CPUTIME_ID);
     const double start = clock_us(CLOCK_MONOTONIC);
-    for (int i = 0; i < a->frames; i++) {
-        if (a->period && wait_period(start + (double)i * (double)a->period)) return -1;
-        if (frame(p, i, &p->samples[i])) return -1;
-    }
+    if (measured_frames(p, a, start)) return -1;
     p->elapsed_us = clock_us(CLOCK_MONOTONIC) - start;
     p->cpu_us = clock_us(CLOCK_PROCESS_CPUTIME_ID) - cpu;
     if (getrusage(RUSAGE_SELF, &p->after)) return -1;
@@ -199,7 +248,8 @@ static void report_times(const sample_t *samples, int n, int field,
 {
     double total = 0.0;
     for (int i = 0; i < n; i++) {
-        const double values[] = { samples[i].total, samples[i].zimg, samples[i].usm };
+        const double values[] = { samples[i].total, samples[i].zimg,
+                                  samples[i].usm, samples[i].cpu };
         sorted[i] = values[field];
         total += sorted[i];
     }
@@ -253,6 +303,15 @@ static void report_sched(const up_profile_sched_t *before,
            name, (unsigned long long)(after->slices - before->slices));
 }
 
+static const char *adaptive_outcome(const pipeline_t *p)
+{
+    if (p->skip_usm) return "sharpness-bypass";
+    if (!p->adaptive_requested) return "fixed";
+    if (p->adaptive.stopped) return "fallback";
+    if (!p->adaptive.enabled) return "disabled";
+    return p->adaptive.tuner.phase == UP_TUNER_SETTLED ? "settled" : "searching";
+}
+
 static int report(const pipeline_t *p, const args_t *a)
 {
     double *sorted = malloc((size_t)a->frames * sizeof *sorted);
@@ -263,13 +322,16 @@ static int report(const pipeline_t *p, const args_t *a)
                              ? p->probe.lap_sum / p->probe.lap_samples : 0));
     printf("\"zimg_effective\":%d,\"usm_effective\":%d,\"rows\":%d,\"cols\":%d,",
            p->zafter.workers, p->uafter.workers, p->zafter.rows, p->zafter.cols);
-    const char *names[] = { "frame", "zimg", "usm" };
-    for (int i = 0; i < 3; i++) report_times(p->samples, (int)a->frames, i, names[i], sorted);
+    const char *names[] = { "frame", "zimg", "usm", "processing_cpu" };
+    for (int i = 0; i < 4; i++) report_times(p->samples, (int)a->frames, i, names[i], sorted);
     free(sorted);
     report_trace(p->samples, (int)a->frames, 1);
     report_trace(p->samples, (int)a->frames, 0);
     report_sched(&p->zbefore, &p->zafter, "z");
     report_sched(&p->ubefore, &p->uafter, "u");
+    printf("\"adaptive_outcome\":\"%s\",\"adaptive_changes\":%u,"
+           "\"first_settled_frame\":%d,\"warmup\":%d,",
+           adaptive_outcome(p), p->adaptive.tuner.changes, p->settled_frame, a->warmup);
     printf("\"cpu_us\":%.6f,\"elapsed_us\":%.6f,\"nvcsw\":%ld,\"nivcsw\":%ld,"
            "\"minflt\":%ld,\"maxrss_kb\":%ld,\"hash\":\"%016llx\"}\n",
            p->cpu_us, p->elapsed_us, p->after.ru_nvcsw - p->before.ru_nvcsw,
@@ -292,13 +354,15 @@ static int write_samples(const pipeline_t *p, int n, const char *path)
     FILE *f = fopen(path, "w");
     if (!f) return -1;
     fprintf(f, "frame,total,zimg,usm,zdispatch,zfirst,zlast,zmin,zmax,zmean,zhandoff,zcpu,"
-               "udispatch,ufirst,ulast,umin,umax,umean,uhandoff,ucpu\n");
+               "udispatch,ufirst,ulast,umin,umax,umean,uhandoff,ucpu,"
+               "processing_cpu,phase,workers,changed,skipped\n");
     for (int i = 0; i < n; i++) {
         const sample_t *s = &p->samples[i];
         fprintf(f, "%d,%.3f,%.3f,%.3f", i, s->total, s->zimg, s->usm);
         trace_row(f, &s->ztrace);
         trace_row(f, &s->utrace);
-        fputc('\n', f);
+        fprintf(f, ",%.3f,%d,%d,%d,%d\n", s->cpu, s->phase,
+                s->workers, s->changed, s->skipped);
     }
     const int failed = ferror(f);
     return fclose(f) || failed ? -1 : 0;

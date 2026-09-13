@@ -556,8 +556,12 @@ $(BUILD)/test_vulkan_limits: tests/test_vulkan_limits.c tests/vulkan_limits.h $(
 
 ifneq ($(strip $(VLC_LIBS)),)
 test: $(BUILD)/test_display_adapter
+test: $(BUILD)/test_native_vout
 
-$(BUILD)/test_display_adapter: tests/test_display_adapter.c tests/experiment_display.c $(BUILD_CONFIG) | $(BUILD)
+$(BUILD)/test_display_adapter: tests/test_display_adapter.c tests/experiment_display.c tests/display_test_util.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(TEST_LDFLAGS) $(VLC_LIBS)
+
+$(BUILD)/test_native_vout: tests/test_native_vout.c tests/experiment_vout.c tests/display_test_util.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(TEST_LDFLAGS) $(VLC_LIBS)
 endif
 
@@ -623,7 +627,11 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@$(BUILD)/test_vulkan_limits
 	@$(BUILD)/test_vulkan_timing
 	@$(if $(strip $(VLC_LIBS)),$(BUILD)/test_display_adapter,echo "display adapter: VLC SDK unavailable")
+	@$(if $(strip $(VLC_LIBS)),$(BUILD)/test_native_vout,echo "native vout: VLC SDK unavailable")
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_playback_runtime.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_make_jobserver.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_policy_summary.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_gpu_pacing.py
 	@echo
 	@echo "=== picture_view ==="
 	@$(BUILD)/test_picture_view
@@ -642,34 +650,34 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	 else echo "=== usm_pool variants/dispatch (skipped: non-x86 host) ==="; fi
 	@echo
 	@echo "=== install action ==="
-	@sh tests/test_install_action.sh
+	+@sh tests/test_install_action.sh
 	@echo
 	@echo "=== plugin install paths ==="
-	@sh tests/test_plugin_install.sh
+	+@sh tests/test_plugin_install.sh
 	@echo
 	@echo "=== safe cleanup roots ==="
-	@sh tests/test_safe_rm_tree.sh
+	+@sh tests/test_safe_rm_tree.sh
 	@echo
 	@echo "=== build configuration info ==="
-	@sh tests/test_info.sh
+	+@sh tests/test_info.sh
 	@echo
 	@echo "=== benchmark matrix parser ==="
-	@sh tests/test_bench_matrix.sh
+	+@sh tests/test_bench_matrix.sh
 	@echo
 	@echo "=== USM benchmark scripts ==="
-	@sh tests/test_bench_usm_scripts.sh
+	+@sh tests/test_bench_usm_scripts.sh
 	@echo
 	@echo "=== benchmark recipe failures ==="
-	@sh tests/test_bench_recipes.sh
+	+@sh tests/test_bench_recipes.sh
 	@echo
 	@echo "=== coverage parsers ==="
-	@sh tests/test_coverage_parsers.sh
+	+@sh tests/test_coverage_parsers.sh
 	@echo
 	@echo "=== Makefile phony coverage ==="
-	@sh tests/test_makefile_phony.sh
+	+@sh tests/test_makefile_phony.sh
 	@echo
 	@echo "=== perf capture contract ==="
-	@bash tests/test_profile_perf.sh
+	+@bash tests/test_profile_perf.sh
 	@echo
 	@echo "=== canonical fuzzer execution ==="
 	@python3 tests/test_fuzz_runner.py
@@ -677,6 +685,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@$(BUILD)/test_experiment_executor
 	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_experiment_zimg; fi
 	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_profile_input; fi
+	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_profile_pipeline; fi
 	@if [ -n "$(HAVE_ZIMG)" ]; then bash tests/test_benchmark_output.sh "$(BUILD)"; fi
 
 $(BUILD)/test_usm_pool_dispatch: tests/test_usm_pool_dispatch.c src/usm_pool_dispatch.c src/usm_pool_variants.h src/usm_pool.h src/cpu_level.h tests/test_harness.h $(BUILD_CONFIG) | $(BUILD)
@@ -701,11 +710,15 @@ $(BUILD)/test_experiment_executor: tests/test_experiment_executor.c tests/experi
 
 ifdef HAVE_ZIMG
 test: $(BUILD)/test_bench_adaptive $(BUILD)/test_experiment_zimg $(BUILD)/test_profile_input
+test: $(BUILD)/test_profile_pipeline
 test: $(BUILD)/bench_adaptive $(BUILD)/profile_pipeline
 endif
 
 $(BUILD)/test_profile_input: tests/test_profile_input.c tests/profile_input.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(TEST_LDFLAGS) $(VLC_LIBS)
+
+$(BUILD)/test_profile_pipeline: tests/test_profile_pipeline.c tests/profile_pipeline.c $(BUILD)/experiment_zimg_asan.o $(BUILD)/experiment_usm_asan.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(BUILD)/experiment_zimg_asan.o $(BUILD)/experiment_usm_asan.o $(TEST_LDFLAGS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -Wl,--wrap=up_usm_pool_create
 
 $(BUILD)/experiment_zimg_asan.o: tests/profile_zimg.c tests/profile_internal.h tests/experiment_executor.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -c -o $@ $<
@@ -1188,7 +1201,7 @@ build-bench: $(BUILD)/bench_usm_pool $(BUILD)/bench_usm_pool_flatskip $(BUILD)/b
 VULKAN_CFLAGS ?= $(shell pkg-config --cflags vulkan 2>/dev/null)
 VULKAN_LIBS ?= -lvulkan
 
-.PHONY: build-vulkan-bench display-prototype
+.PHONY: build-vulkan-bench display-prototype native-vout-prototype test-native-vout-runtime
 build-vulkan-bench: $(BUILD)/bench_vulkan $(BUILD)/bench_vulkan_scale $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_spline36.spv $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_fused.spv
 
 .PHONY: test-vulkan
@@ -1217,6 +1230,16 @@ $(BUILD)/bench_vulkan_scale: tests/bench_vulkan_scale.c $(BUILD)/experiment_vulk
 	$(CC) $(BENCH_CFLAGS) $(VLC_CFLAGS) -o $@ $< $(BUILD)/experiment_vulkan.o $(BUILD)/scaler_zimg_bench.o $(BUILD)/usm_pool_bench.o $(VULKAN_LIBS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -lm
 
 display-prototype: plugin $(BUILD)/libautoupscale_display_plugin.so
+
+native-vout-prototype: plugin $(BUILD)/libautoupscale_vout_plugin.so
+
+NATIVE_TEST_OUTPUT ?= $(BUILD)/native-vout-runtime
+test-native-vout-runtime: native-vout-prototype
+	@test -n "$(NATIVE_TEST_CLIP)" || { echo "NATIVE_TEST_CLIP must name an audio/video test clip"; exit 1; }
+	PYTHONDONTWRITEBYTECODE=1 python3 tests/test_native_vout_runtime.py "$(BUILD)" "$(NATIVE_TEST_CLIP)" "$(NATIVE_TEST_OUTPUT)"
+
+$(BUILD)/libautoupscale_vout_plugin.so: tests/experiment_vout.c $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(LOAD_SAFE_CFLAGS) -shared -Wl,-z,defs,-z,relro,-z,now -o $@ $< $(VLC_LIBS)
 
 $(BUILD)/libautoupscale_display_plugin.so: tests/experiment_display.c $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(LOAD_SAFE_CFLAGS) -shared -Wl,-z,defs,-z,relro,-z,now -o $@ $< $(VLC_LIBS)
@@ -1468,13 +1491,13 @@ coverage-summary: coverage
 complexity:
 	@command -v lizard >/dev/null 2>&1 || { \
 		echo "lizard not installed. pip: lizard"; exit 1; }
-	lizard -C 10 src/ tests/
+	lizard -C 10 src/ tests/ scripts/
 	lizard -l cpp -C 10 tests/vulkan_*.comp
 
 MARKDOWN_FILES := README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md \
                   docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md \
                   docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md \
-                  docs/VULKAN_LATENCY_EXPERIMENTS.md
+                  docs/VULKAN_LATENCY_EXPERIMENTS.md docs/PLAYBACK_POLICY_EXPERIMENTS.md
 
 semantic-analysis:
 	@command -v shellcheck >/dev/null 2>&1 || { \

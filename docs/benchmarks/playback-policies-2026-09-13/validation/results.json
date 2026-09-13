@@ -1,0 +1,47 @@
+{
+  "final-checks": {
+    "exit_code": 0,
+    "command": "PATH=\"$PWD/build/decision-review/tools:$PATH\" make -j4 BUILD=build-next EXTRA_CFLAGS=-Werror VULKAN_CFLAGS=-Ibuild/decision-review/direct-vulkan/Vulkan-Headers-1.3.275/include VULKAN_LIBS=-l:libvulkan.so.1 check analyze check-hardening check-visibility"
+  },
+  "tsan": {
+    "exit_code": 0,
+    "tests_passed": 4,
+    "command": "TSAN_OPTIONS=halt_on_error=1 build/next-tsan/test_profile_pipeline",
+    "compiler": "clang-18",
+    "compile_flags": "-O1 -g -std=c11 -D_GNU_SOURCE -Wall -Wextra -Wshadow -fsanitize=thread -Werror -Wno-unreachable-code-generic-assoc"
+  },
+  "clang": {
+    "exit_code": 0,
+    "command": "clang-18 --analyze -std=c11 -D_GNU_SOURCE -D__PLUGIN__ -DMODULE_STRING='\"autoupscale\"' -I/usr/include/vlc/plugins -Xanalyzer -analyzer-output=text tests/experiment_vout.c"
+  },
+  "complexity-red": {
+    "exit_code": 2,
+    "expected_failure": "GPU telemetry_summary CCN 11 after extending normal gate to scripts/"
+  },
+  "complexity-green": {
+    "exit_code": 0,
+    "command": "make complexity",
+    "after_change": "GPU summary-only helper split; all 72 archived summaries exactly equivalent"
+  },
+  "native-runtime": {
+    "exit_code": 0,
+    "result": "REL-16 native playback controls PASS"
+  },
+  "final-targeted-checks": {
+    "exit_code": 0,
+    "gpu_summary_unit_tests": 3,
+    "policy_summary_unit_tests": 2,
+    "markdown_files": 2,
+    "offline_link_errors": 0
+  },
+  "archive_checks": {
+    "timed_runs": 174,
+    "all_returncodes_zero": true,
+    "original_manifest_verifications_true": true,
+    "fixed_pools_have_zero_exploration": true,
+    "usm_and_affinity_hashes_match_within_scaler_geometry": true,
+    "native_bridge_geometry_matches": true,
+    "native_display_counters_positive_and_zero_lost": true,
+    "final_gui_assertions_pass": true
+  }
+}

@@ -5,6 +5,9 @@ can reduce processing cost on this host. They do not change the production
 backend, worker policy, quality defaults, zero-copy settings or VLC launcher.
 No audio processing or VLC patch is introduced.
 
+The subsequent [playback policy experiments](PLAYBACK_POLICY_EXPERIMENTS.md)
+extend CPU placement, adaptive playback and native window integration coverage.
+
 The experiment compares several implementations, rather than treating a single
 GPU timing as a hardware limit. It retains the original direct-library baseline
 in [the playback report](PLAYBACK_VULKAN_EVALUATION.md#direct-gpu-measurements).

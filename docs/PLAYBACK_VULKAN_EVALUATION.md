@@ -65,7 +65,9 @@ allocates a private input resource, whereas
 uses the playlist resource.
 [`es_out.c`](https://github.com/videolan/vlc/blob/3.0.20/src/input/es_out.c#L1751)
 deselects audio when sout audio is disabled. Removing audio effects cannot
-change resource ownership. REL-16 remains blocked under the current scope.
+change resource ownership. This was the original REL-16 obstacle; the later
+[native video-output prototype](PLAYBACK_POLICY_EXPERIMENTS.md#native-video-output)
+resolves native ownership and fullscreen through VLC's video-output API.
 
 A command to try without optional audio effects, retaining the enlarged sout
 video, is:
@@ -330,9 +332,11 @@ screenshots were inspected; OCR alone was unreliable on the colored fixture.
 Live fullscreen is not validated: bounded adapter probes leave the child window
 unchanged or temporarily unobservable, while normal playback enters fullscreen
 and restores its original window. VLC's splitter wrapper rejects display control
-requests and owns separate child displays. REL-16 retains this integration
-requirement. The prototype is not the launcher default and requires an input
-eligible for upscaling; no bypass or general GUI support is claimed.
+requests and owns separate child displays. The subsequent
+[native video-output prototype](PLAYBACK_POLICY_EXPERIMENTS.md#native-video-output)
+passes fullscreen controls through a different VLC API. This older splitter
+prototype is not the launcher default and requires an input eligible for
+upscaling; no bypass or general GUI support is claimed.
 
 ### Implemented latency experiments
 

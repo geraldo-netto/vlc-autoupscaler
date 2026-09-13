@@ -1,0 +1,140 @@
+[
+  {
+    "run": 0,
+    "job": {
+      "clip": "animation",
+      "size": 720,
+      "zimg": 12,
+      "usm": 8,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 0,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        8
+      ],
+      "maximum_us": 7131.269
+    }
+  },
+  {
+    "run": 1,
+    "job": {
+      "clip": "animation",
+      "size": 720,
+      "zimg": 12,
+      "usm": 8,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 0,
+    "summary": {
+      "exploration_frames": 1472,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        8
+      ],
+      "maximum_us": 6216.733
+    }
+  },
+  {
+    "run": 2,
+    "job": {
+      "clip": "animation",
+      "size": 720,
+      "zimg": 12,
+      "usm": 8,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 1,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        8
+      ],
+      "maximum_us": 6246.604
+    }
+  },
+  {
+    "run": 3,
+    "job": {
+      "clip": "animation",
+      "size": 720,
+      "zimg": 12,
+      "usm": 8,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 1,
+    "summary": {
+      "exploration_frames": 1664,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        8
+      ],
+      "maximum_us": 6293.729
+    }
+  },
+  {
+    "run": 4,
+    "job": {
+      "clip": "animation",
+      "size": 720,
+      "zimg": 12,
+      "usm": 8,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 2,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        8
+      ],
+      "maximum_us": 6349.351
+    }
+  },
+  {
+    "run": 5,
+    "job": {
+      "clip": "animation",
+      "size": 720,
+      "zimg": 12,
+      "usm": 8,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 2,
+    "summary": {
+      "exploration_frames": 1664,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        8
+      ],
+      "maximum_us": 6318.817
+    }
+  }
+]

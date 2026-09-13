@@ -1,0 +1,287 @@
+[
+  {
+    "run": 0,
+    "job": {
+      "clip": "animation",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 0,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 9823.782
+    }
+  },
+  {
+    "run": 1,
+    "job": {
+      "clip": "animation",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 0,
+    "summary": {
+      "exploration_frames": 1664,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 9747.572
+    }
+  },
+  {
+    "run": 2,
+    "job": {
+      "clip": "live-action-540",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 0,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 9484.477
+    }
+  },
+  {
+    "run": 3,
+    "job": {
+      "clip": "live-action-540",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 0,
+    "summary": {
+      "exploration_frames": 1600,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 11194.445
+    }
+  },
+  {
+    "run": 4,
+    "job": {
+      "clip": "animation",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 1,
+    "summary": {
+      "exploration_frames": 1408,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 10004.243
+    }
+  },
+  {
+    "run": 5,
+    "job": {
+      "clip": "animation",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 1,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 9741.889
+    }
+  },
+  {
+    "run": 6,
+    "job": {
+      "clip": "live-action-540",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 1,
+    "summary": {
+      "exploration_frames": 1536,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 9850.904
+    }
+  },
+  {
+    "run": 7,
+    "job": {
+      "clip": "live-action-540",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 1,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 9857.299
+    }
+  },
+  {
+    "run": 8,
+    "job": {
+      "clip": "animation",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 2,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 10592.417
+    }
+  },
+  {
+    "run": 9,
+    "job": {
+      "clip": "animation",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 2,
+    "summary": {
+      "exploration_frames": 1536,
+      "changed_frames": [
+        921
+      ],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12,
+        16
+      ],
+      "maximum_us": 9805.554
+    }
+  },
+  {
+    "run": 10,
+    "job": {
+      "clip": "live-action-540",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 1,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 2,
+    "summary": {
+      "exploration_frames": 1664,
+      "changed_frames": [
+        725,
+        923,
+        1121
+      ],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        8,
+        12,
+        16
+      ],
+      "maximum_us": 9425.699
+    }
+  },
+  {
+    "run": 11,
+    "job": {
+      "clip": "live-action-540",
+      "size": 1080,
+      "zimg": 12,
+      "usm": 12,
+      "adaptive": 0,
+      "frames": 2048,
+      "first": 0,
+      "count": 0
+    },
+    "repeat": 2,
+    "summary": {
+      "exploration_frames": 0,
+      "changed_frames": [],
+      "bypass_frames": 0,
+      "incumbent_worker_counts": [
+        12
+      ],
+      "maximum_us": 9530.143
+    }
+  }
+]

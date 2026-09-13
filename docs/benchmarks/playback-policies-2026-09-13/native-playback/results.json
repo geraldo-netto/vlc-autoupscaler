@@ -1,0 +1,1724 @@
+[
+  {
+    "samples": [
+      {
+        "time": 59536.532858106,
+        "cpu": 1.28
+      },
+      {
+        "time": 59537.532857262,
+        "cpu": 1.53
+      },
+      {
+        "time": 59538.532857295,
+        "cpu": 1.81
+      },
+      {
+        "time": 59539.532855839,
+        "cpu": 2.12
+      },
+      {
+        "time": 59540.532856011,
+        "cpu": 2.43
+      },
+      {
+        "time": 59541.532855216,
+        "cpu": 2.76
+      },
+      {
+        "time": 59542.532854616,
+        "cpu": 3.04
+      },
+      {
+        "time": 59543.532855002,
+        "cpu": 3.26
+      },
+      {
+        "time": 59544.532855945,
+        "cpu": 3.5
+      },
+      {
+        "time": 59545.532856081,
+        "cpu": 3.74
+      },
+      {
+        "time": 59546.532857234,
+        "cpu": 4.02
+      },
+      {
+        "time": 59547.532855777,
+        "cpu": 4.37
+      },
+      {
+        "time": 59548.532855477,
+        "cpu": 4.72
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 28.666672947056774,
+    "clip": "animation",
+    "mode": "sout",
+    "repeat": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=gl",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      0.734375,
+      0.8232421875,
+      1.1376953125
+    ],
+    "load_after": [
+      1.1015625,
+      0.8984375,
+      1.1572265625
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [],
+    "metrics": [
+      "> [00007920a40093b0] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: scale mean_us=260.697 p95_us=1048.948 p99_us=3237.210",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: usm mean_us=95.623 p95_us=124.253 p99_us=140.526",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: total mean_us=365.095 p95_us=1631.390 p99_us=3345.934",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1456.194 p95_us=1732.361 p99_us=3174.838",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: attempts=225 samples=225 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: scale mean_us=162.995 p95_us=168.901 p99_us=1171.278",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: usm mean_us=82.670 p95_us=113.703 p99_us=121.037",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: total mean_us=253.509 p95_us=272.705 p99_us=1246.405",
+      "[00007920a40093b0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1396.774 p95_us=1562.821 p99_us=1637.836"
+    ],
+    "displayed": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59551.597662906,
+        "cpu": 0.38
+      },
+      {
+        "time": 59552.597646103,
+        "cpu": 0.44
+      },
+      {
+        "time": 59553.597654075,
+        "cpu": 0.5
+      },
+      {
+        "time": 59554.59764596,
+        "cpu": 0.57
+      },
+      {
+        "time": 59555.59766252,
+        "cpu": 0.63
+      },
+      {
+        "time": 59556.597649437,
+        "cpu": 0.69
+      },
+      {
+        "time": 59557.59766208,
+        "cpu": 0.75
+      },
+      {
+        "time": 59558.597662565,
+        "cpu": 0.8
+      },
+      {
+        "time": 59559.597664259,
+        "cpu": 0.86
+      },
+      {
+        "time": 59560.597655267,
+        "cpu": 0.91
+      },
+      {
+        "time": 59561.597656312,
+        "cpu": 0.98
+      },
+      {
+        "time": 59562.597655639,
+        "cpu": 1.03
+      },
+      {
+        "time": 59563.597649231,
+        "cpu": 1.1
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 6.000006837508925,
+    "clip": "animation",
+    "mode": "native",
+    "repeat": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=autoupscale-vout",
+      "build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      1.1015625,
+      0.8984375,
+      1.1572265625
+    ],
+    "load_after": [
+      0.998046875,
+      0.88720703125,
+      1.14892578125
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [
+      "AutoUpscale native vout: 320x180 -> 1280x720; stock OpenGL presentation"
+    ],
+    "metrics": [
+      "> [000074e1a80019d0] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=202.381 p95_us=306.471 p99_us=2086.332",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=125.778 p95_us=157.959 p99_us=162.929",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: total mean_us=336.884 p95_us=457.577 p99_us=2243.180",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1825.140 p95_us=2065.215 p99_us=2191.671",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: attempts=188 samples=188 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=180.097 p95_us=326.631 p99_us=1526.594",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=113.336 p95_us=144.193 p99_us=158.591",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: total mean_us=298.129 p95_us=426.426 p99_us=1626.039",
+      "[000074e1a80019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1688.361 p95_us=1934.046 p99_us=2041.402"
+    ],
+    "displayed": [
+      "77",
+      "109",
+      "141",
+      "173",
+      "197",
+      "229",
+      "261",
+      "293",
+      "317",
+      "349",
+      "381",
+      "413"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59566.630372625,
+        "cpu": 4.13
+      },
+      {
+        "time": 59567.630371141,
+        "cpu": 5.1
+      },
+      {
+        "time": 59568.630374643,
+        "cpu": 6.1
+      },
+      {
+        "time": 59569.630371028,
+        "cpu": 7.05
+      },
+      {
+        "time": 59570.630372118,
+        "cpu": 8.01
+      },
+      {
+        "time": 59571.630373357,
+        "cpu": 8.97
+      },
+      {
+        "time": 59572.630374251,
+        "cpu": 9.97
+      },
+      {
+        "time": 59573.630378438,
+        "cpu": 10.92
+      },
+      {
+        "time": 59574.630374887,
+        "cpu": 11.9
+      },
+      {
+        "time": 59575.630372725,
+        "cpu": 12.78
+      },
+      {
+        "time": 59576.630374008,
+        "cpu": 13.62
+      },
+      {
+        "time": 59577.630372732,
+        "cpu": 14.47
+      },
+      {
+        "time": 59578.630383407,
+        "cpu": 15.33
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 93.33324947339716,
+    "clip": "live-action-540",
+    "mode": "sout",
+    "repeat": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=gl",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      0.998046875,
+      0.88720703125,
+      1.14892578125
+    ],
+    "load_after": [
+      0.93701171875,
+      0.87646484375,
+      1.14111328125
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 2560x1440 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [],
+    "metrics": [
+      "> [00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: scale mean_us=427.351 p95_us=815.809 p99_us=2415.546",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: usm mean_us=184.223 p95_us=230.302 p99_us=260.231",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: total mean_us=683.370 p95_us=1082.392 p99_us=2667.109",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=4941.679 p95_us=5713.311 p99_us=9296.984",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: attempts=225 samples=225 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: scale mean_us=401.611 p95_us=717.747 p99_us=1641.027",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: usm mean_us=218.215 p95_us=305.739 p99_us=350.798",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: total mean_us=679.424 p95_us=941.656 p99_us=1955.143",
+      "[00007b6f081ffd00] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=5199.303 p95_us=6773.551 p99_us=7268.672"
+    ],
+    "displayed": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59581.69543973,
+        "cpu": 0.77
+      },
+      {
+        "time": 59582.695438729,
+        "cpu": 0.98
+      },
+      {
+        "time": 59583.695433758,
+        "cpu": 1.17
+      },
+      {
+        "time": 59584.695438865,
+        "cpu": 1.36
+      },
+      {
+        "time": 59585.695441744,
+        "cpu": 1.54
+      },
+      {
+        "time": 59586.695428961,
+        "cpu": 1.73
+      },
+      {
+        "time": 59587.695425674,
+        "cpu": 1.93
+      },
+      {
+        "time": 59588.695427775,
+        "cpu": 2.1
+      },
+      {
+        "time": 59589.695428031,
+        "cpu": 2.29
+      },
+      {
+        "time": 59590.695434276,
+        "cpu": 2.5
+      },
+      {
+        "time": 59591.695427203,
+        "cpu": 2.73
+      },
+      {
+        "time": 59592.695445227,
+        "cpu": 2.96
+      },
+      {
+        "time": 59593.695431097,
+        "cpu": 3.2
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 20.250014568192025,
+    "clip": "live-action-540",
+    "mode": "native",
+    "repeat": 0,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=autoupscale-vout",
+      "build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      0.93701171875,
+      0.87646484375,
+      1.14111328125
+    ],
+    "load_after": [
+      0.95166015625,
+      0.8837890625,
+      1.13818359375
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 2560x1440 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [
+      "AutoUpscale native vout: 960x540 -> 2560x1440; stock OpenGL presentation"
+    ],
+    "metrics": [
+      "> [000075e8980019d0] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=557.478 p95_us=1060.298 p99_us=3779.279",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=233.069 p95_us=339.586 p99_us=372.941",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: total mean_us=823.047 p95_us=1295.660 p99_us=4089.216",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=6014.473 p95_us=7693.558 p99_us=9245.188",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: attempts=188 samples=188 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=526.577 p95_us=804.908 p99_us=1468.097",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=276.992 p95_us=388.431 p99_us=403.951",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: total mean_us=808.463 p95_us=1052.222 p99_us=1658.040",
+      "[000075e8980019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=6624.814 p95_us=8538.217 p99_us=9240.553"
+    ],
+    "displayed": [
+      "77",
+      "109",
+      "141",
+      "173",
+      "197",
+      "229",
+      "261",
+      "293",
+      "317",
+      "349",
+      "381",
+      "413"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59596.760703165,
+        "cpu": 0.36
+      },
+      {
+        "time": 59597.760697682,
+        "cpu": 0.42
+      },
+      {
+        "time": 59598.760698881,
+        "cpu": 0.48
+      },
+      {
+        "time": 59599.760697553,
+        "cpu": 0.53
+      },
+      {
+        "time": 59600.760696906,
+        "cpu": 0.59
+      },
+      {
+        "time": 59601.76068789,
+        "cpu": 0.64
+      },
+      {
+        "time": 59602.760704654,
+        "cpu": 0.7
+      },
+      {
+        "time": 59603.760704323,
+        "cpu": 0.76
+      },
+      {
+        "time": 59604.760697739,
+        "cpu": 0.82
+      },
+      {
+        "time": 59605.760699159,
+        "cpu": 0.88
+      },
+      {
+        "time": 59606.760697692,
+        "cpu": 0.93
+      },
+      {
+        "time": 59607.760702447,
+        "cpu": 0.99
+      },
+      {
+        "time": 59608.76070193,
+        "cpu": 1.06
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 5.833333933680237,
+    "clip": "animation",
+    "mode": "native",
+    "repeat": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=autoupscale-vout",
+      "build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      0.95166015625,
+      0.8837890625,
+      1.13818359375
+    ],
+    "load_after": [
+      0.962890625,
+      0.8896484375,
+      1.13525390625
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [
+      "AutoUpscale native vout: 320x180 -> 1280x720; stock OpenGL presentation"
+    ],
+    "metrics": [
+      "> [00007cabb40019d0] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=235.290 p95_us=623.432 p99_us=2443.218",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=107.429 p95_us=138.211 p99_us=160.114",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: total mean_us=350.990 p95_us=718.398 p99_us=2551.399",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1689.777 p95_us=1929.380 p99_us=2068.297",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: attempts=188 samples=188 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=206.695 p95_us=812.602 p99_us=1835.877",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=112.820 p95_us=141.387 p99_us=155.595",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: total mean_us=323.580 p95_us=998.637 p99_us=1962.646",
+      "[00007cabb40019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1763.096 p95_us=2120.336 p99_us=2270.258"
+    ],
+    "displayed": [
+      "77",
+      "109",
+      "141",
+      "173",
+      "197",
+      "229",
+      "261",
+      "293",
+      "317",
+      "349",
+      "381",
+      "413"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59611.793422246,
+        "cpu": 1.27
+      },
+      {
+        "time": 59612.79341943,
+        "cpu": 1.52
+      },
+      {
+        "time": 59613.793421053,
+        "cpu": 1.79
+      },
+      {
+        "time": 59614.793422284,
+        "cpu": 2.09
+      },
+      {
+        "time": 59615.793422593,
+        "cpu": 2.41
+      },
+      {
+        "time": 59616.793419514,
+        "cpu": 2.73
+      },
+      {
+        "time": 59617.793420223,
+        "cpu": 3.02
+      },
+      {
+        "time": 59618.793416493,
+        "cpu": 3.24
+      },
+      {
+        "time": 59619.793420056,
+        "cpu": 3.47
+      },
+      {
+        "time": 59620.793419332,
+        "cpu": 3.71
+      },
+      {
+        "time": 59621.793423857,
+        "cpu": 3.99
+      },
+      {
+        "time": 59622.793419675,
+        "cpu": 4.36
+      },
+      {
+        "time": 59623.793416946,
+        "cpu": 4.7
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 28.583345957653936,
+    "clip": "animation",
+    "mode": "sout",
+    "repeat": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=gl",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      0.962890625,
+      0.8896484375,
+      1.13525390625
+    ],
+    "load_after": [
+      1.044921875,
+      0.912109375,
+      1.13818359375
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [],
+    "metrics": [
+      "> [00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: scale mean_us=207.778 p95_us=687.227 p99_us=1758.065",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: usm mean_us=83.139 p95_us=114.344 p99_us=124.734",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: total mean_us=298.838 p95_us=765.880 p99_us=1845.256",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1407.772 p95_us=1758.220 p99_us=2836.144",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: attempts=225 samples=225 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: scale mean_us=193.591 p95_us=212.236 p99_us=2644.481",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: usm mean_us=75.812 p95_us=101.779 p99_us=117.329",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: total mean_us=276.534 p95_us=318.684 p99_us=2727.593",
+      "[00007fe3ac008dd0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1365.002 p95_us=1560.888 p99_us=1614.842"
+    ],
+    "displayed": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59626.858691133,
+        "cpu": 0.88
+      },
+      {
+        "time": 59627.858691229,
+        "cpu": 1.12
+      },
+      {
+        "time": 59628.858693568,
+        "cpu": 1.36
+      },
+      {
+        "time": 59629.858691058,
+        "cpu": 1.57
+      },
+      {
+        "time": 59630.858697857,
+        "cpu": 1.78
+      },
+      {
+        "time": 59631.858689476,
+        "cpu": 2.0
+      },
+      {
+        "time": 59632.858689001,
+        "cpu": 2.21
+      },
+      {
+        "time": 59633.858689629,
+        "cpu": 2.41
+      },
+      {
+        "time": 59634.858698283,
+        "cpu": 2.63
+      },
+      {
+        "time": 59635.858696248,
+        "cpu": 2.86
+      },
+      {
+        "time": 59636.858687359,
+        "cpu": 3.05
+      },
+      {
+        "time": 59637.858691707,
+        "cpu": 3.24
+      },
+      {
+        "time": 59638.858696126,
+        "cpu": 3.41
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 21.08332456090947,
+    "clip": "live-action-540",
+    "mode": "native",
+    "repeat": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=autoupscale-vout",
+      "build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      1.044921875,
+      0.912109375,
+      1.13818359375
+    ],
+    "load_after": [
+      1.1025390625,
+      0.93310546875,
+      1.14111328125
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 2560x1440 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [
+      "AutoUpscale native vout: 960x540 -> 2560x1440; stock OpenGL presentation"
+    ],
+    "metrics": [
+      "> [0000757c800019d0] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=558.119 p95_us=878.100 p99_us=3168.587",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=310.982 p95_us=377.649 p99_us=412.909",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: total mean_us=900.125 p95_us=1100.846 p99_us=3519.915",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=7084.601 p95_us=8483.711 p99_us=8881.823",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: attempts=188 samples=188 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=548.501 p95_us=1169.220 p99_us=2607.757",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=265.973 p95_us=368.051 p99_us=399.973",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: total mean_us=819.736 p95_us=1410.593 p99_us=2920.079",
+      "[0000757c800019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=6412.646 p95_us=8359.679 p99_us=8952.683"
+    ],
+    "displayed": [
+      "76",
+      "108",
+      "140",
+      "172",
+      "196",
+      "228",
+      "260",
+      "292",
+      "316",
+      "348",
+      "380",
+      "412"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59641.923801662,
+        "cpu": 4.22
+      },
+      {
+        "time": 59642.923802586,
+        "cpu": 5.19
+      },
+      {
+        "time": 59643.923805355,
+        "cpu": 6.21
+      },
+      {
+        "time": 59644.923807964,
+        "cpu": 7.19
+      },
+      {
+        "time": 59645.923808561,
+        "cpu": 8.23
+      },
+      {
+        "time": 59646.923800132,
+        "cpu": 9.21
+      },
+      {
+        "time": 59647.92380032,
+        "cpu": 10.22
+      },
+      {
+        "time": 59648.923807444,
+        "cpu": 11.18
+      },
+      {
+        "time": 59649.923814789,
+        "cpu": 12.18
+      },
+      {
+        "time": 59650.923799792,
+        "cpu": 12.98
+      },
+      {
+        "time": 59651.923808834,
+        "cpu": 13.75
+      },
+      {
+        "time": 59652.923806816,
+        "cpu": 14.53
+      },
+      {
+        "time": 59653.923801944,
+        "cpu": 15.31
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 92.416664494863,
+    "clip": "live-action-540",
+    "mode": "sout",
+    "repeat": 1,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=gl",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      1.1025390625,
+      0.93310546875,
+      1.14111328125
+    ],
+    "load_after": [
+      1.30224609375,
+      0.986328125,
+      1.15576171875
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 2560x1440 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [],
+    "metrics": [
+      "> [000073a488eaf540] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: scale mean_us=554.554 p95_us=1137.017 p99_us=3199.766",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: usm mean_us=185.266 p95_us=259.078 p99_us=272.554",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: total mean_us=817.650 p95_us=1437.305 p99_us=3495.836",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=5208.768 p95_us=5684.468 p99_us=8984.237",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: attempts=224 samples=224 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: scale mean_us=508.624 p95_us=1119.703 p99_us=2529.704",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: usm mean_us=191.819 p95_us=229.579 p99_us=273.055",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: total mean_us=767.617 p95_us=1346.026 p99_us=2780.685",
+      "[000073a488eaf540] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=5429.736 p95_us=5831.611 p99_us=6272.466"
+    ],
+    "displayed": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59656.98903603,
+        "cpu": 1.5
+      },
+      {
+        "time": 59657.989028308,
+        "cpu": 1.82
+      },
+      {
+        "time": 59658.989028964,
+        "cpu": 2.13
+      },
+      {
+        "time": 59659.989017398,
+        "cpu": 2.47
+      },
+      {
+        "time": 59660.989027025,
+        "cpu": 2.8
+      },
+      {
+        "time": 59661.989034681,
+        "cpu": 3.14
+      },
+      {
+        "time": 59662.989015757,
+        "cpu": 3.43
+      },
+      {
+        "time": 59663.989026934,
+        "cpu": 3.66
+      },
+      {
+        "time": 59664.989026811,
+        "cpu": 3.89
+      },
+      {
+        "time": 59665.989016871,
+        "cpu": 4.13
+      },
+      {
+        "time": 59666.989022475,
+        "cpu": 4.41
+      },
+      {
+        "time": 59667.989035745,
+        "cpu": 4.76
+      },
+      {
+        "time": 59668.989016044,
+        "cpu": 5.1
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 30.000049965084592,
+    "clip": "animation",
+    "mode": "sout",
+    "repeat": 2,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=gl",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      1.30224609375,
+      0.986328125,
+      1.15576171875
+    ],
+    "load_after": [
+      1.6103515625,
+      1.06982421875,
+      1.1806640625
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [],
+    "metrics": [
+      "> [00007e592400ca70] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: scale mean_us=229.402 p95_us=727.895 p99_us=2017.199",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: usm mean_us=123.721 p95_us=163.901 p99_us=174.672",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: total mean_us=361.446 p95_us=840.306 p99_us=2148.677",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1711.763 p95_us=2130.197 p99_us=3343.767",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: attempts=224 samples=224 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: scale mean_us=174.464 p95_us=184.482 p99_us=1115.554",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: usm mean_us=106.073 p95_us=138.401 p99_us=145.845",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: total mean_us=288.012 p95_us=328.884 p99_us=1204.287",
+      "[00007e592400ca70] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1590.009 p95_us=1797.785 p99_us=1857.806"
+    ],
+    "displayed": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59672.054304524,
+        "cpu": 0.34
+      },
+      {
+        "time": 59673.054315541,
+        "cpu": 0.39
+      },
+      {
+        "time": 59674.054303827,
+        "cpu": 0.44
+      },
+      {
+        "time": 59675.054318346,
+        "cpu": 0.5
+      },
+      {
+        "time": 59676.054311928,
+        "cpu": 0.56
+      },
+      {
+        "time": 59677.054317446,
+        "cpu": 0.61
+      },
+      {
+        "time": 59678.054310622,
+        "cpu": 0.66
+      },
+      {
+        "time": 59679.054307168,
+        "cpu": 0.71
+      },
+      {
+        "time": 59680.054315982,
+        "cpu": 0.77
+      },
+      {
+        "time": 59681.05431551,
+        "cpu": 0.82
+      },
+      {
+        "time": 59682.054302537,
+        "cpu": 0.87
+      },
+      {
+        "time": 59683.054315257,
+        "cpu": 0.92
+      },
+      {
+        "time": 59684.054319254,
+        "cpu": 0.98
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 5.3333267866740055,
+    "clip": "animation",
+    "mode": "native",
+    "repeat": 2,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=autoupscale-vout",
+      "build/decision-review/followup/playback/animation.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      1.6103515625,
+      1.06982421875,
+      1.1806640625
+    ],
+    "load_after": [
+      1.3203125,
+      1.03271484375,
+      1.1669921875
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 320x180 -> 1280x720 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [
+      "AutoUpscale native vout: 320x180 -> 1280x720; stock OpenGL presentation"
+    ],
+    "metrics": [
+      "> [000075bc380019d0] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=232.427 p95_us=492.183 p99_us=2728.751",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=86.599 p95_us=113.141 p99_us=122.590",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: total mean_us=327.830 p95_us=566.939 p99_us=2802.906",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1531.337 p95_us=1735.459 p99_us=1967.661",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: attempts=188 samples=188 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=241.783 p95_us=1100.915 p99_us=2469.544",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=87.601 p95_us=114.494 p99_us=120.916",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: total mean_us=334.023 p95_us=1173.006 p99_us=2548.108",
+      "[000075bc380019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=1534.373 p95_us=1798.036 p99_us=1965.640"
+    ],
+    "displayed": [
+      "77",
+      "109",
+      "141",
+      "173",
+      "197",
+      "229",
+      "261",
+      "293",
+      "317",
+      "349",
+      "381",
+      "413"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59687.087519719,
+        "cpu": 0.74
+      },
+      {
+        "time": 59688.087524139,
+        "cpu": 0.92
+      },
+      {
+        "time": 59689.087544454,
+        "cpu": 1.11
+      },
+      {
+        "time": 59690.087540695,
+        "cpu": 1.29
+      },
+      {
+        "time": 59691.087543603,
+        "cpu": 1.48
+      },
+      {
+        "time": 59692.087531345,
+        "cpu": 1.66
+      },
+      {
+        "time": 59693.087545874,
+        "cpu": 1.84
+      },
+      {
+        "time": 59694.087542841,
+        "cpu": 2.01
+      },
+      {
+        "time": 59695.087537708,
+        "cpu": 2.2
+      },
+      {
+        "time": 59696.087542499,
+        "cpu": 2.39
+      },
+      {
+        "time": 59697.087546042,
+        "cpu": 2.57
+      },
+      {
+        "time": 59698.08752976,
+        "cpu": 2.75
+      },
+      {
+        "time": 59699.087530304,
+        "cpu": 2.94
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 18.33331716182341,
+    "clip": "live-action-540",
+    "mode": "native",
+    "repeat": 2,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=autoupscale-vout",
+      "build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      1.3203125,
+      1.03271484375,
+      1.1669921875
+    ],
+    "load_after": [
+      1.24267578125,
+      1.0302734375,
+      1.16455078125
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 2560x1440 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [
+      "AutoUpscale native vout: 960x540 -> 2560x1440; stock OpenGL presentation"
+    ],
+    "metrics": [
+      "> [000075155c0019d0] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=562.367 p95_us=986.040 p99_us=2716.035",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=204.556 p95_us=280.449 p99_us=314.987",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: total mean_us=797.869 p95_us=1180.680 p99_us=2924.013",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=5668.762 p95_us=6480.256 p99_us=7496.249",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: attempts=188 samples=188 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: scale mean_us=488.481 p95_us=798.112 p99_us=1824.129",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: usm mean_us=207.446 p95_us=288.344 p99_us=314.987",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: total mean_us=701.132 p95_us=1049.935 p99_us=2043.519",
+      "[000075155c0019d0] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=5638.321 p95_us=6594.072 p99_us=7101.601"
+    ],
+    "displayed": [
+      "77",
+      "109",
+      "141",
+      "173",
+      "197",
+      "229",
+      "261",
+      "293",
+      "317",
+      "349",
+      "381",
+      "413"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  {
+    "samples": [
+      {
+        "time": 59702.152715759,
+        "cpu": 4.0
+      },
+      {
+        "time": 59703.152709896,
+        "cpu": 4.96
+      },
+      {
+        "time": 59704.152711913,
+        "cpu": 5.95
+      },
+      {
+        "time": 59705.152713533,
+        "cpu": 6.89
+      },
+      {
+        "time": 59706.152714747,
+        "cpu": 7.83
+      },
+      {
+        "time": 59707.1527233,
+        "cpu": 8.76
+      },
+      {
+        "time": 59708.152719102,
+        "cpu": 9.77
+      },
+      {
+        "time": 59709.152716442,
+        "cpu": 10.69
+      },
+      {
+        "time": 59710.152714157,
+        "cpu": 11.63
+      },
+      {
+        "time": 59711.152715544,
+        "cpu": 12.48
+      },
+      {
+        "time": 59712.152710844,
+        "cpu": 13.34
+      },
+      {
+        "time": 59713.152715005,
+        "cpu": 14.21
+      },
+      {
+        "time": 59714.152715746,
+        "cpu": 15.1
+      }
+    ],
+    "window": "0x05600000",
+    "cpu_percent": 92.5000001002248,
+    "clip": "live-action-540",
+    "mode": "sout",
+    "repeat": 2,
+    "command": [
+      "vlc",
+      "--ignore-config",
+      "--no-one-instance",
+      "--no-media-library",
+      "--no-dbus",
+      "-I",
+      "rc",
+      "--rc-fake-tty",
+      "--no-video-title-show",
+      "--stats",
+      "--avcodec-hw=none",
+      "--audio-filter=",
+      "--audio-visual=none",
+      "--no-audio-time-stretch",
+      "--audio-replay-gain-mode=none",
+      "--autoupscale-target=3",
+      "--autoupscale-algo=3",
+      "--autoupscale-usm=20",
+      "--autoupscale-metrics=1",
+      "--autoupscale-pin-threads=1",
+      "--video-title=AutoUpscalePlayback1156577",
+      "-vv",
+      "--vout=gl",
+      "--sout=#transcode{vcodec=h264,vb=10000,venc=x264{preset=ultrafast,tune=zerolatency},vfilter=autoupscale}:display",
+      "build/decision-review/followup/playback/live-action-540.mkv"
+    ],
+    "returncode": 0,
+    "load_before": [
+      1.24267578125,
+      1.0302734375,
+      1.16455078125
+    ],
+    "load_after": [
+      1.12744140625,
+      1.0126953125,
+      1.15673828125
+    ],
+    "engaged": [
+      "AutoUpscale engaged: 960x540 -> 2560x1440 (backend=zimg preset=3 algo=3 threads_budget=12 cores=32 simd=default)"
+    ],
+    "native_geometry": [],
+    "metrics": [
+      "> [0000725104eaf540] autoupscale filter: AutoUpscale metrics: attempts=256 samples=256 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: scale mean_us=426.850 p95_us=577.871 p99_us=1992.298",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: usm mean_us=176.954 p95_us=208.878 p99_us=267.554",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: total mean_us=672.447 p95_us=902.887 p99_us=2228.140",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=4963.543 p95_us=5585.804 p99_us=7404.719",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: attempts=225 samples=225 failed=0 invalid=0; processing only, process CPU includes other VLC threads",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: scale mean_us=400.177 p95_us=454.599 p99_us=1781.706",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: usm mean_us=203.039 p95_us=257.384 p99_us=278.345",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: total mean_us=666.759 p95_us=781.048 p99_us=1999.152",
+      "[0000725104eaf540] autoupscale filter: AutoUpscale metrics: process_cpu mean_us=5096.792 p95_us=5789.777 p99_us=6008.194"
+    ],
+    "displayed": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "lost": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  }
+]

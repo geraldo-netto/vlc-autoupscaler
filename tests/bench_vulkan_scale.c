@@ -181,9 +181,25 @@ static void prepare_measure(scale_fixture_t *f, bool gpu)
     if (gpu && strstr(f->variant, "resident")) up_vulkan_readback(f->gpu, false);
 }
 
+static void report_measure(scale_fixture_t *f, bool gpu, double *wall, double *cpu,
+                           double first, double last)
+{
+    up_tuner_score_t w = up_tuner_score(wall, 120), c = up_tuner_score(cpu, 120);
+    printf("{\"measurement_start_us\":%.3f,\"measurement_end_us\":%.3f}\n", first, last);
+    if (gpu && f->timing) report_stages(f);
+    printf("{\"device\":\"%s\",\"backend\":\"%s\",\"width\":%d,\"height\":%d,"
+           "\"frames\":120,\"mean_us\":%.3f,\"p95_us\":%.3f,\"p99_us\":%.3f,"
+           "\"process_cpu_us\":%.3f,\"variant\":\"%s\",\"combined\":%s,"
+           "\"timing\":%s,\"period_us\":%d,\"cpu_workers\":%d,\"sequence_frames\":%d}\n", up_vulkan_device(f->gpu),
+           gpu ? "vulkan-spline36" : "zimg-spline36", f->cpu.dst_w,
+           f->cpu.dst_h, w.mean_us, w.p95_us, w.p99_us, c.mean_us, f->variant,
+           f->combined ? "true" : "false", f->timing ? "true" : "false", f->period, f->workers, f->sequence_count);
+}
+
 static bool measure(scale_fixture_t *f, bool gpu)
 {
     double wall[120], cpu[120];
+    double first = 0, last = 0;
     prepare_measure(f, gpu);
     double deadline = up_vulkan_bench_now_us(CLOCK_MONOTONIC);
     for (int i = -20; i < 120; i++) {
@@ -193,19 +209,15 @@ static bool measure(scale_fixture_t *f, bool gpu)
         if (!process(f, gpu)) return false;
         double elapsed = up_vulkan_bench_now_us(CLOCK_MONOTONIC) - start;
         double used = up_vulkan_bench_now_us(CLOCK_PROCESS_CPUTIME_ID) - start_cpu;
-        if (i >= 0) { wall[i] = elapsed; cpu[i] = used; collect_stages(f, i); }
+        if (i >= 0) {
+            if (i == 0) first = start;
+            last = start + elapsed;
+            wall[i] = elapsed; cpu[i] = used; collect_stages(f, i);
+        }
         deadline += f->period;
         if (!pace(deadline)) return false;
     }
-    up_tuner_score_t w = up_tuner_score(wall, 120), c = up_tuner_score(cpu, 120);
-    if (gpu && f->timing) report_stages(f);
-    printf("{\"device\":\"%s\",\"backend\":\"%s\",\"width\":%d,\"height\":%d,"
-           "\"frames\":120,\"mean_us\":%.3f,\"p95_us\":%.3f,\"p99_us\":%.3f,"
-           "\"process_cpu_us\":%.3f,\"variant\":\"%s\",\"combined\":%s,"
-           "\"timing\":%s,\"period_us\":%d,\"cpu_workers\":%d,\"sequence_frames\":%d}\n", up_vulkan_device(f->gpu),
-           gpu ? "vulkan-spline36" : "zimg-spline36", f->cpu.dst_w,
-           f->cpu.dst_h, w.mean_us, w.p95_us, w.p99_us, c.mean_us, f->variant,
-           f->combined ? "true" : "false", f->timing ? "true" : "false", f->period, f->workers, f->sequence_count);
+    report_measure(f, gpu, wall, cpu, first, last);
     return true;
 }
 

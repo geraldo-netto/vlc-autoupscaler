@@ -19,9 +19,7 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| PERF-11 | open | M | Measure opt-in adaptive USM on paced decoded video. | `tests/bench_adaptive.c` deliberately keeps USM active on synthetic noise. [BENCHMARKS.md](docs/BENCHMARKS.md#adaptive-usm) now documents the matching `--autoupscale-usm-sharp-threshold=0` override and reports the actual algorithm/pinning/outcome. The [decoded-video matrix](docs/DECISION_EXPERIMENTS.md) exercises the default 3500 cutoff with fixed USM pools. Extend that paced harness to adaptive USM, retaining explicit fallback outcomes, exploration/retirement costs and mean/tail/CPU comparisons; fixed-pool video results do not establish adaptive playback gains. |
-| PERF-13 | open | M | Compare bounded USM affinity and stage-to-stage locality policies on representative paced input. | With the same 8x1 zimg grid and 12 USM workers at 1080p, five-run median means are 278.9 us on eight physical cores sharing one L3 versus 404.3 us across four physical cores in each of two L3 domains; the local placement also wins at USM counts 4/8/16/32. [Raw results and limits](docs/PROFILING.md) retain the identical-grid hashes and actual CPU masks. This changes whole-process placement and does not isolate cache effects from scheduler/coordinator/frequency effects. Compare a benchmark-only USM placement policy with the existing scheduler-managed pool before introducing production topology discovery, preserving pixels and measuring mean/tails/CPU on multiple hosts; no universal affinity policy is established. |
-| PERF-15 | blocked | M | Resolve mixed pinning, worker-preset and repeated-control evidence before claiming a better policy. | User accepts defaults only within demonstrated evidence; remaining settings are a reference, not proven winners. Standalone matching-grid direct/copy measurements support zero-copy. Corrected playback isolates the exact current plugin: animation median CPU is 32.52% pinned versus 32.85% unpinned, but live action is 73.79% versus 67.46%; the former blanket pinning benefit is withdrawn. The 8/12/16-worker presets remain unproven: short/long motion rankings differ and identical controls yielded 227.12 versus 368.79 us/frame. Optional processing metrics are implemented (choice 2A); private sout presentation remains unobserved. The [paced Vulkan/CPU follow-up](docs/VULKAN_LATENCY_EXPERIMENTS.md#cpu-worker-count-follow-up) finds eight scaler workers improve 1080p CPU/tails at nearly equal mean, while 12 beat 16 at 4K; one input/host and graph-seam differences still prevent a universal preset claim. Unblock stronger policy claims with stable matched repeats, CPU and processing tails, representative inputs and any presentation evidence the claim requires. Defaults remain unchanged during experiments. |
+| PERF-15 | blocked | M | Validate a worker/pinning policy across workloads before replacing reference defaults. | Corrected playback pinning evidence remains mixed (animation CPU 32.52% pinned versus 32.85% unpinned; live action 73.79% versus 67.46%). The [policy follow-up](docs/PLAYBACK_POLICY_EXPERIMENTS.md) measures USM-specific locality with fixed tile geometry: local placement lowers CPU but can worsen tails; worker-count changes also affect zimg seams. Adaptive mean/tail/CPU comparisons do not establish a stable winner. Native presentation controls now work, but end-to-end screen latency is unmeasured. Unblock stronger policy claims with stable matched repeats at production geometries on representative inputs/hosts, pixel controls and presentation evidence wherever the claim requires it. Defaults remain unchanged. |
 
 ## scalability
 
@@ -62,7 +60,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| REL-16 | blocked | M | Validate native fullscreen/window integration before adopting the single-output upscaling adapter. | User choice 4A authorizes the video-only prototype and still excludes VLC patches, audio DSP and extra playback handling. `tests/experiment_display.c` preserves 1280x720 output, native volume 100/25/50 percent, seeking and visible subtitles; isolated tests and normal-suite ownership/failure regressions validate those paths. Live RC fullscreen leaves the child window at 1280x720, conflicting with the adoption requirement. VLC 3.0.20 `src/video_output/display.c:1369-1372` implements `SplitterControl` by rejecting every control request. Normal playback enters fullscreen and restores its window; adapter probes leave the child unchanged or temporarily absent. Resolve through a supported video-only API or explicit acceptance of this limitation before replacing the launcher. Prototype remains opt-in; source must be eligible for an upscale. |
 
 ## portability/standards conformance
 
@@ -88,7 +85,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| BUILD-40 | open | S | Preserve or deliberately clear GNU Make jobserver state in shell regression fixtures. | `make -j4 check` reports jobserver-unavailable warnings from nested Make invocations in the install/benchmark shell tests. Mark recursive recipes appropriately or sanitize inherited jobserver flags for isolated fixtures; verify parallel checks without these warnings. |
 
 ## observability
 
@@ -104,7 +100,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| UNUSED-6 | open | S | Remove obsolete variable-mutation shims from the lifecycle VLC stub. | `tests/lifecycle_stubs/vlc_common.h:10-12,19-43` declares `lifecycle_var_create/destroy/set_integer` and defines forwarding helpers/macros for `var_Create`, `var_Destroy`, and `var_SetInteger`, but repository-wide searches find no consumers or implementations. Only the inheritance shim is used by the current lifecycle code. |
 
 ## Audit picks deliberately rejected
 
@@ -148,10 +143,12 @@ non-findings:
   selects quality, and allocation failures follow the established graceful
   failure path. A memory-derived target would violate that runtime policy; no
   memory-pressure regression was reproduced within the bounded worker setup.
-- **SCAL-3b--SCAL-3d, topology-aware pin ordering:** rejected. Pinning the
-  existing allowed-CPU order is byte-equivalent and improved the measured host;
-  sibling/NUMA discovery would be Linux-specific policy without a demonstrated
-  production contention benefit.
+- **SCAL-3b--SCAL-3d, automatic topology-aware pin ordering:** rejected as a
+  default change. The explicit USM placement experiment reduces CPU in some
+  cases but gives mixed latency tails; corrected playback pinning results also
+  vary by clip. Runtime topology discovery has no demonstrated universal
+  benefit. Keep the experimental controls and require the PERF-15 evidence
+  before adopting a new policy.
 - **SCAL-P1d, dynamic work queues:** rejected. Completion skew occurs even with
   no partitioned work, identifying scheduler wake delay rather than unequal
   tile cost; a queue would add synchronization and failure paths without a

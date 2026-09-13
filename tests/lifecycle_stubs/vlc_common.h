@@ -7,44 +7,17 @@ typedef uint32_t vlc_fourcc_t;
 typedef struct vlc_object_t { int unused; } vlc_object_t;
 
 int64_t lifecycle_var_inherit(const char *name);
-int lifecycle_var_create(const char *name);
-void lifecycle_var_destroy(const char *name);
-void lifecycle_var_set_integer(const char *name, int64_t value);
 
 static inline int64_t lifecycle_var_inherit_integer(const char *name)
 {
     return lifecycle_var_inherit(name);
 }
 
-static inline int lifecycle_var_create_integer(const char *name, int type)
-{
-    (void)type;
-    return lifecycle_var_create(name);
-}
-
-static inline void lifecycle_var_destroy_integer(const char *name)
-{
-    lifecycle_var_destroy(name);
-}
-
-static inline void lifecycle_var_set_call(const char *name, int64_t value)
-{
-    lifecycle_var_set_integer(name, value);
-}
-
 #define var_InheritInteger(obj, name) \
     ((void)(obj), lifecycle_var_inherit_integer((name)))
-#define var_Create(obj, name, type) \
-    ((void)(obj), lifecycle_var_create_integer((name), (type)))
-#define var_Destroy(obj, name) \
-    ((void)(obj), lifecycle_var_destroy_integer((name)))
-#define var_SetInteger(obj, name, value) \
-    ((void)(obj), lifecycle_var_set_call((name), (value)))
-
 #define VLC_SUCCESS  0
 #define VLC_EGENERIC (-1)
 #define VLC_ENOMEM   (-2)
-#define VLC_VAR_INTEGER 1
 
 #define VLC_FOURCC(a, b, c, d) \
     ((vlc_fourcc_t)(a) | ((vlc_fourcc_t)(b) << 8) \
