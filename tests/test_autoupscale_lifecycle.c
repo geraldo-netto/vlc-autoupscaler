@@ -693,6 +693,35 @@ static void test_probe_lifecycle(void)
     END();
 }
 
+static void test_probe_target_advice(void)
+{
+    BEGIN("OBS-26: target advice requires a smaller upscale and promises no fixed saving");
+    const int cases[][3] = {{180, 720, 0}, {120, 480, 0}, {360, 1080, 1},
+                           {360, 1440, 1}, {1080, 2160, 0}};
+    for (size_t i = 0; i < sizeof cases / sizeof *cases; i++) {
+        filter_t filter;
+        filter_sys_t sys = {0};
+        init_filter(&filter);
+        sys.scaler.src_h = cases[i][0];
+        sys.scaler.dst_h = cases[i][1];
+        sys.probe.accum = (up_probe_accum_t){
+            .lap_samples = UP_PROBE_MIN_SAMPLES_PER_KIND,
+            .edge_sum = (uint64_t)(UP_PROBE_THRESH_BLOCKY_EDGE_MEAN + 1)
+                        * UP_PROBE_MIN_SAMPLES_PER_KIND,
+            .edge_samples = UP_PROBE_MIN_SAMPLES_PER_KIND,
+            .frames = UP_PROBE_MIN_FRAMES,
+        };
+        lifecycle_messages[0] = '\0';
+        LogProbeVerdict(&filter, &sys);
+        CHECK((strstr(lifecycle_messages, "--autoupscale-target=1") != NULL) == cases[i][2]);
+        CHECK(strstr(lifecycle_messages, "halve") == NULL);
+        CHECK(strstr(lifecycle_messages, "50%") == NULL);
+        CHECK(strstr(lifecycle_messages, "disabling AutoUpscale") != NULL);
+        CHECK(sys.probe.advice_logged == 1);
+    }
+    END();
+}
+
 static void test_runtime_fallback(void)
 {
     BEGIN("runtime fallback retires failed backends");
@@ -769,6 +798,7 @@ int main(void)
     test_adaptive_configuration();
     test_adaptive_trial_drop();
     test_probe_lifecycle();
+    test_probe_target_advice();
     test_runtime_fallback();
     return test_harness_report();
 }

@@ -603,10 +603,12 @@ static void LogProbeVerdict( filter_t *p_filter, filter_sys_t *p_sys )
                   (unsigned long long)lap_mean,
                   (unsigned long long)edge_mean );
         msg_Info( p_filter,
-                  "  Consider disabling AutoUpscale for this source, "
-                  "or set --autoupscale-target=1 to halve the per-"
-                  "frame cost. Set --autoupscale-content-probe=0 to "
-                  "silence this message." );
+                  "  Consider disabling AutoUpscale for this source. "
+                  "Set --autoupscale-content-probe=0 to silence this message." );
+        if( p_sys->scaler.dst_h > 720 && p_sys->scaler.src_h < 720 )
+            msg_Info( p_filter,
+                      "  To reduce output size, try --autoupscale-target=1 "
+                      "on the next playback and measure processing cost." );
     }
     else
     {

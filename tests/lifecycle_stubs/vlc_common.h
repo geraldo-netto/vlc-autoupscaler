@@ -2,6 +2,9 @@
 #define TEST_LIFECYCLE_VLC_COMMON_H
 
 #include <stdint.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
 
 typedef uint32_t vlc_fourcc_t;
 typedef struct vlc_object_t { int unused; } vlc_object_t;
@@ -39,11 +42,17 @@ static int lifecycle_dbg_count;
 static int lifecycle_warn_count;
 static int lifecycle_err_count;
 static int lifecycle_info_count;
+static char lifecycle_messages[8192];
 
-static inline void lifecycle_msg_sink(int *counter, void *obj, ...)
+static inline void lifecycle_msg_sink(int *counter, void *obj, const char *format, ...)
 {
     (void)obj;
     (*counter)++;
+    const size_t used = strlen(lifecycle_messages);
+    va_list args;
+    va_start(args, format);
+    vsnprintf(lifecycle_messages + used, sizeof lifecycle_messages - used, format, args);
+    va_end(args);
 }
 
 #define msg_Dbg(obj, ...)  lifecycle_msg_sink(&lifecycle_dbg_count, (obj), __VA_ARGS__)
