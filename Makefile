@@ -74,6 +74,7 @@ ZIMG_LIBS   := $(shell pkg-config --libs   zimg 2>/dev/null)
 ifneq ($(strip $(ZIMG_LIBS)),)
   HAVE_ZIMG := 1
 endif
+HAVE_PROFILE_SDKS := $(and $(strip $(HAVE_ZIMG)),$(strip $(VLC_LIBS)))
 
 VLC_PLUGIN_BASE := $(shell pkg-config --variable=pluginsdir vlc-plugin 2>/dev/null)
 ifneq ($(strip $(VLC_PLUGIN_BASE)),)
@@ -625,7 +626,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== autoupscale lifecycle ==="
 	@$(BUILD)/test_autoupscale_lifecycle
 	@$(BUILD)/test_pipeline_metrics
-	@$(if $(HAVE_ZIMG),PYTHONDONTWRITEBYTECODE=1 python3 tests/test_profile_scheduler.py $(BUILD)/profile_pipeline,echo "profile scheduler: zimg unavailable")
+	@$(if $(HAVE_PROFILE_SDKS),PYTHONDONTWRITEBYTECODE=1 python3 tests/test_profile_scheduler.py $(BUILD)/profile_pipeline,echo "profile scheduler: zimg or VLC SDK unavailable")
 	@$(BUILD)/test_vulkan_limits
 	@$(BUILD)/test_vulkan_timing
 	@$(if $(strip $(VLC_LIBS)),$(BUILD)/test_display_adapter,echo "display adapter: VLC SDK unavailable")
@@ -634,6 +635,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_make_jobserver.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_policy_summary.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_gpu_pacing.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_sdk_boundary.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_decisions.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_confirmation.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_evidence.py
@@ -688,13 +690,13 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo
 	@echo "=== canonical fuzzer execution ==="
 	@python3 tests/test_fuzz_runner.py
-	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_bench_adaptive; fi
+	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then $(BUILD)/test_bench_adaptive; fi
 	@$(BUILD)/test_experiment_executor
-	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_experiment_zimg; fi
-	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_profile_input; fi
-	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_profile_pipeline; fi
-	@if [ -n "$(HAVE_ZIMG)" ]; then $(BUILD)/test_profile_pipeline_latency; fi
-	@if [ -n "$(HAVE_ZIMG)" ]; then bash tests/test_benchmark_output.sh "$(BUILD)"; fi
+	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then $(BUILD)/test_experiment_zimg; fi
+	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then $(BUILD)/test_profile_input; fi
+	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then $(BUILD)/test_profile_pipeline; fi
+	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then $(BUILD)/test_profile_pipeline_latency; fi
+	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then bash tests/test_benchmark_output.sh "$(BUILD)"; fi
 
 $(BUILD)/test_usm_pool_dispatch: tests/test_usm_pool_dispatch.c src/usm_pool_dispatch.c src/usm_pool_variants.h src/usm_pool.h src/cpu_level.h tests/test_harness.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
@@ -720,7 +722,7 @@ test: $(BUILD)/test_experiment_executor
 $(BUILD)/test_experiment_executor: tests/test_experiment_executor.c tests/experiment_executor.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS) -lpthread -Wl,--wrap=pthread_create
 
-ifdef HAVE_ZIMG
+ifneq ($(HAVE_PROFILE_SDKS),)
 test: $(BUILD)/test_bench_adaptive $(BUILD)/test_experiment_zimg $(BUILD)/test_profile_input
 test: $(BUILD)/test_profile_pipeline
 test: $(BUILD)/test_profile_pipeline_latency
