@@ -341,6 +341,13 @@ The output directory must not already contain `runs.jsonl` or `runs.csv`.
 `baseline`, `empty`, `detail`, `paced`, and `observer`. The last group shuffles
 matching detail modes within each repetition to assess instrumentation effects.
 
+The general runner clears inherited `UP_PROFILE_*` variables and records the
+effective controls and generated source dimensions/content per case. It does
+not accept raw input through the environment. Use the dedicated video runners
+for recorded file inputs and hashes, or invoke the profiler directly while
+retaining its full command and environment. Frozen alternatives are documented
+in the [experiment support boundary](EXPERIMENTS.md).
+
 Direct interfaces:
 
 ```text

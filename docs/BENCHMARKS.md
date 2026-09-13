@@ -12,21 +12,25 @@ and the host-specific results.
 ## Run
 
 ```sh
-make build-bench                 # compile every available benchmark
+make build-bench                 # compile general CPU benchmarks
 make bench
 make bench-usm-halo
 make bench-worker-pool
 make bench-pipeline
-make bench-flatskip
 make bench-zimg
 scripts/bench_matrix.sh build/bench_usm_pool
 scripts/bench_zimg_pinning.sh build/bench_scaler_zimg
 ```
 
-`bench`, `bench-usm-halo`, `bench-worker-pool`, and `bench-flatskip` need only
+`bench`, `bench-usm-halo`, and `bench-worker-pool` need only
 the normal compiler toolchain. `bench-zimg`, `bench-pipeline`, and the zimg
 pinning script require the zimg and VLC development files. The pinning script
 also requires `taskset`; review its built-in affinity masks before running it.
+
+Superseded splitter, flat-skip and PERF-15 D drivers are
+[frozen experiments](EXPERIMENTS.md). `make build-frozen-experiments` explicitly
+builds those references; `make build-profile-experiments` builds only the D
+profiler. Permanent regression tests still run in the normal suite.
 
 Run a benchmark binary without arguments to print its current interface (and
 exit with status 2). The USM benchmark supports `rand`, `flat`, and `mixed`

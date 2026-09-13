@@ -148,8 +148,8 @@ jobs:
 
       # BUILD-5: the USM_POOL_FLAT_SKIP=1 code path only compiles in the
       # bench binaries; build (not run) them so that opt-in path can't rot.
-      - name: Compile benches incl. flat-skip kernel (build only)
-        run: make build-bench EXTRA_CFLAGS="-Werror -Wno-unreachable-code-generic-assoc"
+      - name: Compile benches and frozen references (build only)
+        run: make build-bench build-frozen-experiments EXTRA_CFLAGS="-Werror -Wno-unreachable-code-generic-assoc"
 
       - name: Per-file and per-function coverage gates
         run: make coverage EXTRA_CFLAGS=-Werror

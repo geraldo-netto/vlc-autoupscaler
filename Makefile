@@ -85,7 +85,7 @@ endif
 # Fail fast, at parse time, when a plugin build is requested without the
 # required SDKs — otherwise the first object compile dies on a cryptic
 # "vlc_common.h: No such file" long before any friendly message.
-PLUGIN_GOALS := all plugin install scan-build abi-layout-check build-profile \
+PLUGIN_GOALS := all plugin install scan-build abi-layout-check build-profile build-profile-experiments build-frozen-experiments \
                 check-visibility check-load-safe-isa check-multiversion-isa \
                 check-hardening \
                 $(BUILD)/$(PLUGIN).so
@@ -1211,7 +1211,11 @@ endif
 # comparison so the skip's payoff is visible.
 BENCH_CFLAGS := -O3 $(MARCH_FLAG) $(WARN) -MMD -MP $(EXTRA_CFLAGS)
 
-build-bench: $(BUILD)/bench_usm_pool $(BUILD)/bench_usm_pool_flatskip $(BUILD)/bench_worker_pool $(if $(HAVE_ZIMG),$(BUILD)/bench_scaler_zimg $(BUILD)/bench_pipeline $(BUILD)/bench_adaptive)
+build-bench: $(BUILD)/bench_usm_pool $(BUILD)/bench_worker_pool $(if $(HAVE_ZIMG),$(BUILD)/bench_scaler_zimg $(BUILD)/bench_pipeline $(BUILD)/bench_adaptive)
+
+.PHONY: build-frozen-experiments build-profile-experiments
+build-frozen-experiments: $(BUILD)/bench_usm_pool_flatskip build-profile-experiments display-prototype
+build-profile-experiments: require-zimg $(BUILD)/profile_pipeline_latency
 
 VULKAN_CFLAGS ?= $(shell pkg-config --cflags vulkan 2>/dev/null)
 VULKAN_LIBS ?= -lvulkan
@@ -1277,7 +1281,6 @@ $(BUILD)/bench_adaptive: tests/bench_adaptive.c tests/zimg_test_util.h src/usm_a
 
 .PHONY: build-profile
 build-profile: require-zimg $(BUILD)/profile_pipeline $(BUILD)/profile_worker_pool
-build-profile: $(BUILD)/profile_pipeline_latency
 
 $(BUILD)/profile_worker_pool: tests/profile_worker_pool.c tests/profile_internal.h tests/profile_stage.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(BENCH_CFLAGS) $(VLC_CFLAGS) -g -o $@ $< -lpthread
@@ -1517,7 +1520,8 @@ MARKDOWN_FILES := README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md \
                   docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md \
                   docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md \
                   docs/VULKAN_LATENCY_EXPERIMENTS.md docs/PLAYBACK_POLICY_EXPERIMENTS.md \
-                  docs/PERF15_LATENCY_TRIAL.md docs/PERF15_CONFIRMATION.md docs/PERF15_TEN_PAIRS.md
+                  docs/PERF15_LATENCY_TRIAL.md docs/PERF15_CONFIRMATION.md docs/PERF15_TEN_PAIRS.md \
+                  docs/EXPERIMENTS.md
 
 semantic-analysis:
 	@command -v shellcheck >/dev/null 2>&1 || { \
