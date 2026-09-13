@@ -85,6 +85,27 @@ def verify_runtime(record, controls):
     expected['tuner_policy'] = 'latency-experiment' if record['job']['treatment'] == 'latency' else 'legacy'
     if any(type(result[key]) is not type(value) or result[key] != value for key, value in expected.items()):
         raise ValueError('runtime controls differ from captured invocation')
+    verify_outcome(result, controls)
+
+
+def verify_sharpness(result):
+    skip, lap = result['skip_usm'], result['lap_mean']
+    if type(skip) is not int or skip not in (0, 1) or type(lap) is not int or lap < 0:
+        raise ValueError('invalid sharpness runtime evidence')
+    if skip != int(0 < result['sharp_threshold'] < lap):
+        raise ValueError('sharpness bypass contradicts runtime evidence')
+    return bool(skip)
+
+
+def verify_outcome(result, controls):
+    if verify_sharpness(result):
+        allowed = ('sharpness-bypass',)
+    elif controls['UP_PROFILE_ADAPTIVE'] == '1':
+        allowed = ('settled', 'searching', 'fallback', 'disabled')
+    else:
+        allowed = ('fixed',)
+    if result['adaptive_outcome'] not in allowed:
+        raise ValueError('adaptive outcome contradicts captured mode')
 
 
 def verify_record(directory, record, clip, treatment, trace):

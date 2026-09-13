@@ -134,6 +134,45 @@ class InvocationTests(unittest.TestCase):
                 args, job, row = study(Path(root))
                 self.check_rejected(args, job, row, lambda record: record[section].__setitem__(key, value))
 
+    def test_obs28_rejects_incompatible_runtime_outcomes(self):
+        cases = [('latency', 'fixed', 0, 1000), ('local', 'settled', 0, 1000),
+                 ('local', 'searching', 0, 1000), ('local', 'fallback', 0, 1000),
+                 ('local', 'disabled', 0, 1000), ('latency', 'unknown', 0, 1000),
+                 ('local', 'sharpness-bypass', 0, 4000),
+                 ('local', 'sharpness-bypass', 1, 1000), ('local', 'fixed', 1, 4000),
+                 ('local', 'fixed', 0, 4000), ('local', 'sharpness-bypass', 1, 3500)]
+        for treatment, outcome, skip, lap in cases:
+            with self.subTest(treatment=treatment, outcome=outcome, skip=skip, lap=lap), \
+                    tempfile.TemporaryDirectory() as root:
+                args, job, row = study(Path(root), treatment=treatment)
+                row['valid_outcomes'] = outcome in ('fixed', 'settled', 'searching')
+
+                def edit(record):
+                    record['result'].update(adaptive_outcome=outcome, skip_usm=skip, lap_mean=lap)
+                    record['stdout'] = json.dumps(record['result'])
+
+                self.check_rejected(args, job, row, edit)
+
+    def test_obs28_keeps_compatible_outcomes_including_failures(self):
+        cases = [('local', 'fixed'), ('local', 'sharpness-bypass'),
+                 ('latency', 'settled'), ('latency', 'searching'),
+                 ('latency', 'fallback'), ('latency', 'disabled'), ('latency', 'sharpness-bypass')]
+        for treatment, outcome in cases:
+            with self.subTest(treatment=treatment, outcome=outcome), tempfile.TemporaryDirectory() as root:
+                args, job, row = study(Path(root), treatment=treatment)
+                path = args.output / row['directory'] / 'results.json'
+                records = json.loads(path.read_text())
+                bypass = outcome == 'sharpness-bypass'
+                records[1]['result'].update(adaptive_outcome=outcome, skip_usm=int(bypass),
+                                             lap_mean=4000 if bypass else 1000)
+                records[1]['stdout'] = json.dumps(records[1]['result'])
+                bench.save(path, records)
+                row['hashes']['results.json'] = bench.digest(path)
+                row['valid_outcomes'] = outcome in ('fixed', 'settled', 'searching')
+                edit_pair(args.output, row)
+                self.assertEqual(confirm.collect_pair(args, job, 0), row)
+                self.assertEqual(stats.checked_pairs(args.output), [row])
+
     def test_obs25_requires_invocation_and_runtime_metadata(self):
         for section in ('command', 'environment', 'stdout'):
             with self.subTest(section=section), tempfile.TemporaryDirectory() as root:
