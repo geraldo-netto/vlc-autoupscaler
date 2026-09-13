@@ -1,0 +1,20 @@
+{
+  "worker-12": {
+    "median_before_us": 15.772,
+    "median_after_us": 17.8465,
+    "median_paired_change_percent": 13.91818950098691,
+    "paired_change_range_percent": [
+      -24.670035058775007,
+      28.01978618158607
+    ]
+  },
+  "pipeline-12": {
+    "median_before_us": 154.685,
+    "median_after_us": 150.7,
+    "median_paired_change_percent": -2.0849677251155274,
+    "paired_change_range_percent": [
+      -30.80695072601761,
+      20.888309297330455
+    ]
+  }
+}

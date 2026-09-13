@@ -1,0 +1,922 @@
+[
+  {
+    "case": "worker-12",
+    "repeat": 0,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330568.5747159,
+        "stdout": "12,20000,15.506,11.442\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 15.506,
+        "load": [
+          3.0263671875,
+          2.51708984375,
+          2.0849609375
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330568.8882096,
+        "stdout": "12,20000,19.899,5.310\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 19.899,
+        "load": [
+          3.0263671875,
+          2.51708984375,
+          2.0849609375
+        ]
+      }
+    },
+    "ratio": 0.7792351374440927
+  },
+  {
+    "case": "worker-12",
+    "repeat": 1,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330569.289766,
+        "stdout": "12,20000,12.919,6.041\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 12.919,
+        "load": [
+          3.0263671875,
+          2.51708984375,
+          2.0849609375
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330569.5506432,
+        "stdout": "12,20000,20.402,8.115\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 20.402,
+        "load": [
+          3.0263671875,
+          2.51708984375,
+          2.0849609375
+        ]
+      }
+    },
+    "ratio": 1.5792243981732332
+  },
+  {
+    "case": "worker-12",
+    "repeat": 2,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330569.9622512,
+        "stdout": "12,20000,14.446,4.359\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 14.446,
+        "load": [
+          3.0263671875,
+          2.51708984375,
+          2.0849609375
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330570.2548704,
+        "stdout": "12,20000,12.795,6.032\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 12.795,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      }
+    },
+    "ratio": 1.1290347792106292
+  },
+  {
+    "case": "worker-12",
+    "repeat": 3,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330570.5157022,
+        "stdout": "12,20000,13.335,7.064\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 13.335,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330570.7860541,
+        "stdout": "12,20000,14.602,3.166\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 14.602,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      }
+    },
+    "ratio": 1.09501312335958
+  },
+  {
+    "case": "worker-12",
+    "repeat": 4,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330571.0815248,
+        "stdout": "12,20000,19.329,10.039\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 19.329,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330571.47125,
+        "stdout": "12,20000,14.040,6.342\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 14.04,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      }
+    },
+    "ratio": 1.376709401709402
+  },
+  {
+    "case": "worker-12",
+    "repeat": 5,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330571.755365,
+        "stdout": "12,20000,19.550,11.853\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 19.55,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330572.1495178,
+        "stdout": "12,20000,12.614,5.630\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 12.614,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      }
+    },
+    "ratio": 0.6452173913043479
+  },
+  {
+    "case": "worker-12",
+    "repeat": 6,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330572.4055986,
+        "stdout": "12,20000,13.027,6.172\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 13.027,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330572.669442,
+        "stdout": "12,20000,13.087,6.263\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 13.087,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      }
+    },
+    "ratio": 1.0046058186842712
+  },
+  {
+    "case": "worker-12",
+    "repeat": 7,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330572.937377,
+        "stdout": "12,20000,19.778,9.398\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 19.778,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330573.3361204,
+        "stdout": "12,20000,12.630,6.081\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 12.63,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      }
+    },
+    "ratio": 0.6385883304681971
+  },
+  {
+    "case": "worker-12",
+    "repeat": 8,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330573.5923283,
+        "stdout": "12,20000,19.139,6.503\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 19.139,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330573.9786277,
+        "stdout": "12,20000,23.074,9.849\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 23.074,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      }
+    },
+    "ratio": 0.8294617318193637
+  },
+  {
+    "case": "worker-12",
+    "repeat": 9,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330574.4442701,
+        "stdout": "12,20000,17.635,10.851\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 17.635,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_worker_pool",
+          "12",
+          "20000"
+        ],
+        "started": 1789330574.7997186,
+        "stdout": "12,20000,14.028,5.811\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 14.028,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      }
+    },
+    "ratio": 1.2571285999429713
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 0,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330575.0834603,
+        "stdout": "12,1500,1,0,0,10404.33,16896,139.26\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 139.26,
+        "load": [
+          3.02392578125,
+          2.525390625,
+          2.09033203125
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330575.3074985,
+        "stdout": "12,1500,1,0,0,10538.19,16896,133.77\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 133.77,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 1.041040592061
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 1,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330575.523693,
+        "stdout": "12,1500,1,0,0,10888.02,16896,127.11\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 127.11,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330575.729769,
+        "stdout": "12,1500,1,0,0,10435.62,16896,127.20\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 127.2,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 1.000708048147274
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 2,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330575.935733,
+        "stdout": "12,1500,1,0,0,10694.32,16896,135.42\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 135.42,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330576.153836,
+        "stdout": "12,1500,1,0,0,10700.16,16896,142.48\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 142.48,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 1.0521341013144292
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 3,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330576.3837473,
+        "stdout": "12,1500,1,0,0,10860.38,16896,137.02\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 137.02,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330576.6057537,
+        "stdout": "12,1500,1,0,0,10768.88,16896,136.81\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 136.81,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 0.9984673770252517
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 4,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330576.8266363,
+        "stdout": "12,1500,1,0,0,10453.22,16896,130.09\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 130.09,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330577.0367398,
+        "stdout": "12,1500,1,0,0,10903.93,16896,149.33\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 149.33,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 0.8711578383446058
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 5,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330577.2766395,
+        "stdout": "12,1500,1,0,0,10567.88,16896,138.88\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 138.88,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330577.5002768,
+        "stdout": "12,1500,1,0,0,11517.37,16896,135.51\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 135.51,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 1.0248690133569478
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 6,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330577.720078,
+        "stdout": "12,1500,1,0,0,10887.30,16896,142.93\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 142.93,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330577.9499369,
+        "stdout": "12,1500,1,0,0,10486.82,16896,149.54\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 149.54,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 1.0462464143286923
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 7,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330578.2203882,
+        "stdout": "12,1500,1,0,0,10694.41,17152,135.99\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 135.99,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330578.439609,
+        "stdout": "12,1500,1,0,0,10558.26,17152,147.55\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 147.55,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 0.921653676719756
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 8,
+    "order": [
+      "before",
+      "after"
+    ],
+    "captures": {
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330578.676663,
+        "stdout": "12,1500,1,0,0,11291.23,17152,161.91\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 161.91,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330578.9355094,
+        "stdout": "12,1500,1,0,0,10889.93,17152,128.15\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 128.15,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 0.7914890988820951
+  },
+  {
+    "case": "pipeline-12",
+    "repeat": 9,
+    "order": [
+      "after",
+      "before"
+    ],
+    "captures": {
+      "after": {
+        "command": [
+          "/tmp/vlc-fix-findings/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330579.1436439,
+        "stdout": "12,1500,1,0,0,11188.75,17152,146.39\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 146.39,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      },
+      "before": {
+        "command": [
+          "/tmp/vlc-perf-before/bench_pipeline",
+          "12",
+          "1500",
+          "1"
+        ],
+        "started": 1789330579.3789372,
+        "stdout": "12,1500,1,0,0,11317.19,17152,145.42\n",
+        "stderr": "",
+        "returncode": 0,
+        "us_per_frame": 145.42,
+        "load": [
+          3.4228515625,
+          2.61669921875,
+          2.12255859375
+        ]
+      }
+    },
+    "ratio": 1.0066703342043735
+  }
+]

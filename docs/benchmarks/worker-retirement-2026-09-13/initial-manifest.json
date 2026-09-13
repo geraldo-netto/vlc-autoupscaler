@@ -1,0 +1,72 @@
+{
+  "baseline": "32d08674c13bfb43647f1c10917711ed273c1118",
+  "host": {
+    "system": "Linux",
+    "node": "morpheus",
+    "release": "7.0.0-31-generic",
+    "version": "#31~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Aug 10 09:38:02 UTC 2",
+    "machine": "x86_64",
+    "processor": "x86_64"
+  },
+  "affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "clock": "CLOCK_MONOTONIC",
+  "pairs_per_case": 10,
+  "seed": 20260913,
+  "build_command": "make -j4 BUILD=... EXTRA_CFLAGS=-Werror build-bench",
+  "cases": {
+    "worker-12": [
+      "bench_worker_pool",
+      "12",
+      "20000"
+    ],
+    "pipeline-12": [
+      "bench_pipeline",
+      "12",
+      "1500",
+      "1"
+    ]
+  },
+  "binaries": {
+    "before": {
+      "worker-12": "7832835791221f8560a831a1385c8f611ec28ca0245d64ef2ea5028e936ecfa8",
+      "pipeline-12": "c293eefcd44183f0baeca830c48a1837f1b2daf1335a219f51e3897e068ff81e"
+    },
+    "after": {
+      "worker-12": "e5ead04fb4a1a82dc42d49f51c5ab7e5e4d0e6541097d4fa49ca0692d8218ac9",
+      "pipeline-12": "b0bcb2eeb5bc4f88f95967ac995a411e8d26c0a2c32c2b7109227c0e05865848"
+    }
+  }
+}

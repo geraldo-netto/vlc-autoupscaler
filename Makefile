@@ -1535,7 +1535,8 @@ MARKDOWN_FILES := README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md \
                   docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md \
                   docs/VULKAN_LATENCY_EXPERIMENTS.md docs/PLAYBACK_POLICY_EXPERIMENTS.md \
                   docs/PERF15_LATENCY_TRIAL.md docs/PERF15_CONFIRMATION.md docs/PERF15_TEN_PAIRS.md \
-                  docs/EXPERIMENTS.md docs/PROJECT_REVIEW_2026-09-13.md
+                  docs/EXPERIMENTS.md docs/PROJECT_REVIEW_2026-09-13.md \
+                  docs/FINDINGS_FIX_VALIDATION.md
 
 semantic-analysis:
 	@command -v shellcheck >/dev/null 2>&1 || { \
