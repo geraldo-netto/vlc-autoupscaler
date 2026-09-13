@@ -1,0 +1,8 @@
+shellcheck scripts/*.sh tests/*.sh
+actionlint .github/workflows/*.yml
+rumdl check README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md docs/VULKAN_LATENCY_EXPERIMENTS.md docs/PLAYBACK_POLICY_EXPERIMENTS.md docs/PERF15_LATENCY_TRIAL.md docs/PERF15_CONFIRMATION.md docs/PERF15_TEN_PAIRS.md
+
+Success: No issues found in 13 files (46ms)
+lychee --offline --include-fragments README.md docs/ARCHITECTURE.md docs/BENCHMARKS.md docs/DESKTOP_INTEGRATION.md docs/USAGE.md docs/PROFILING.md docs/DECISION_EXPERIMENTS.md docs/PLAYBACK_VULKAN_EVALUATION.md docs/VULKAN_LATENCY_EXPERIMENTS.md docs/PLAYBACK_POLICY_EXPERIMENTS.md docs/PERF15_LATENCY_TRIAL.md docs/PERF15_CONFIRMATION.md docs/PERF15_TEN_PAIRS.md
+🔍 116 Total (in 2ms) 🔗 96 Unique ✅ 89 OK 🚫 0 Errors 👻 27 Excluded
+

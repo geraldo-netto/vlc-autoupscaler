@@ -161,7 +161,8 @@ static inline bool up_tuner_trial_too_slow(up_worker_tuner_t *t)
         && up_tuner_score(t->samples, 4).mean_us / 1.5 > t->base.mean_us;
 }
 
-static inline void up_worker_tuner_observe(up_worker_tuner_t *t, double elapsed)
+static inline void up_tuner_observe_with(up_worker_tuner_t *t, double elapsed,
+                       void (*window)(up_worker_tuner_t *, up_tuner_score_t))
 {
     if (!isfinite(elapsed) || elapsed <= 0.0) return;
     if (t->warmup > 0) { t->warmup--; return; }
@@ -169,9 +170,14 @@ static inline void up_worker_tuner_observe(up_worker_tuner_t *t, double elapsed)
     t->samples[t->used++] = elapsed;
     if (t->used < UP_TUNER_SAMPLES && !up_tuner_trial_too_slow(t)) return;
     const int previous = t->current;
-    up_tuner_window(t, up_tuner_score(t->samples, t->used));
+    window(t, up_tuner_score(t->samples, t->used));
     t->used = 0;
     if (previous != t->current) t->warmup = UP_TUNER_WARMUP;
+}
+
+static inline void up_worker_tuner_observe(up_worker_tuner_t *t, double elapsed)
+{
+    up_tuner_observe_with(t, elapsed, up_tuner_window);
 }
 
 #endif

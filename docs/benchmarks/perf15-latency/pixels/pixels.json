@@ -1,0 +1,92 @@
+[
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "animation",
+    "treatment": "fixed4",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "animation",
+    "treatment": "adaptive",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "motion",
+    "treatment": "fixed4",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "motion",
+    "treatment": "adaptive",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "fixed4",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "adaptive",
+    "frames": 600,
+    "hashes_match": true
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "frames": 600,
+    "hashes_match": true
+  }
+]

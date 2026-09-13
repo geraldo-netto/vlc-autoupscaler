@@ -5,7 +5,14 @@
 #include "cli_parse.h"
 #include "profile_input.h"
 #include "../src/content_probe.h"
+#ifdef UP_PROFILE_LATENCY_TUNER
+# include "latency_tuner.h"
+# define up_worker_tuner_observe up_latency_tuner_observe
+#endif
 #include "../src/usm_adaptive.h"
+#ifdef UP_PROFILE_LATENCY_TUNER
+# undef up_worker_tuner_observe
+#endif
 #include <stdio.h>
 #include <sys/resource.h>
 #include <time.h>
@@ -16,14 +23,15 @@
 typedef struct {
     long zimg, usm, width, height, frames, pin, detail, content, period;
     int source_width, source_height, executor, active, zerocopy, sharp_threshold;
-    int adaptive, warmup, usm_cpu_first, usm_cpu_count;
+    int adaptive, warmup, usm_cpu_first, usm_cpu_count, verify_pixels;
 } args_t;
 
 typedef struct {
     double total, zimg, usm;
     up_profile_frame_t ztrace, utrace;
     double cpu;
-    int phase, workers, changed, skipped;
+    int phase, workers, changed, skipped, selected_workers;
+    uint64_t hash;
 } sample_t;
 
 typedef struct {
@@ -38,8 +46,10 @@ typedef struct {
     up_probe_accum_t probe;
     int sharp_threshold, skip_usm;
     up_usm_adaptive_t adaptive;
-    int adaptive_requested, settled_frame;
+    int adaptive_requested, settled_frame, verify_pixels;
 } pipeline_t;
+
+static uint64_t picture_hash(const zt_pic_t *pic);
 
 static double clock_us(clockid_t id)
 {
@@ -69,6 +79,7 @@ static int parse_environment(args_t *a)
         { "UP_PROFILE_WARMUP", 0, 128, PROFILE_WARMUP, &a->warmup },
         { "UP_PROFILE_USM_CPU_FIRST", 0, 1023, 0, &a->usm_cpu_first },
         { "UP_PROFILE_USM_CPU_COUNT", 0, 64, 0, &a->usm_cpu_count },
+        { "UP_PROFILE_VERIFY_PIXELS", 0, 1, 0, &a->verify_pixels },
     };
     for (size_t i = 0; i < sizeof options / sizeof *options; i++)
         if (up_profile_env(options[i].name, options[i].low, options[i].high,
@@ -130,6 +141,7 @@ static int initialize(pipeline_t *p, const args_t *a)
     if (initialize_usm(p, a)) return -1;
     p->samples = calloc((size_t)a->frames, sizeof *p->samples);
     p->sharp_threshold = a->sharp_threshold;
+    p->verify_pixels = a->verify_pixels;
     if (!p->samples) return -1;
     return up_profile_input_open(&p->raw, getenv("UP_PROFILE_INPUT"),
                                    a->source_width, a->source_height);
@@ -189,7 +201,9 @@ static int frame(pipeline_t *p, int index, sample_t *sample)
                           up_profile_zimg_frame(), usm_trace,
                           clock_us(CLOCK_PROCESS_CPUTIME_ID) - cpu,
                           phase, up_usm_pool_effective_threads(p->usm),
-                          changes != p->adaptive.tuner.changes, p->skip_usm };
+                          changes != p->adaptive.tuner.changes, p->skip_usm,
+                          p->usm ? up_profile_usm_selected_workers() : 0, 0 };
+    if (p->verify_pixels) sample->hash = picture_hash(&p->output);
     return up_profile_usm_affinity_status();
 }
 
@@ -332,6 +346,11 @@ static int report(const pipeline_t *p, const args_t *a)
     printf("\"adaptive_outcome\":\"%s\",\"adaptive_changes\":%u,"
            "\"first_settled_frame\":%d,\"warmup\":%d,",
            adaptive_outcome(p), p->adaptive.tuner.changes, p->settled_frame, a->warmup);
+#ifdef UP_PROFILE_LATENCY_TUNER
+    printf("\"tuner_policy\":\"latency-experiment\",");
+#else
+    printf("\"tuner_policy\":\"legacy\",");
+#endif
     printf("\"cpu_us\":%.6f,\"elapsed_us\":%.6f,\"nvcsw\":%ld,\"nivcsw\":%ld,"
            "\"minflt\":%ld,\"maxrss_kb\":%ld,\"hash\":\"%016llx\"}\n",
            p->cpu_us, p->elapsed_us, p->after.ru_nvcsw - p->before.ru_nvcsw,
@@ -355,14 +374,15 @@ static int write_samples(const pipeline_t *p, int n, const char *path)
     if (!f) return -1;
     fprintf(f, "frame,total,zimg,usm,zdispatch,zfirst,zlast,zmin,zmax,zmean,zhandoff,zcpu,"
                "udispatch,ufirst,ulast,umin,umax,umean,uhandoff,ucpu,"
-               "processing_cpu,phase,workers,changed,skipped\n");
+               "processing_cpu,phase,workers,changed,skipped,selected_workers,pixel_hash\n");
     for (int i = 0; i < n; i++) {
         const sample_t *s = &p->samples[i];
         fprintf(f, "%d,%.3f,%.3f,%.3f", i, s->total, s->zimg, s->usm);
         trace_row(f, &s->ztrace);
         trace_row(f, &s->utrace);
-        fprintf(f, ",%.3f,%d,%d,%d,%d\n", s->cpu, s->phase,
-                s->workers, s->changed, s->skipped);
+        fprintf(f, ",%.3f,%d,%d,%d,%d,%d,%016llx\n", s->cpu, s->phase,
+                s->workers, s->changed, s->skipped, s->selected_workers,
+                (unsigned long long)s->hash);
     }
     const int failed = ferror(f);
     return fclose(f) || failed ? -1 : 0;

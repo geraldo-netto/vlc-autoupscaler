@@ -3,6 +3,14 @@
 static cpu_set_t affinity_mask;
 static int affinity_enabled, affinity_error;
 static up_worker_pool_ops_t affinity_ops;
+static int selected_workers;
+
+static int record_dispatch(up_worker_pool_t *pool)
+{
+    const int rc = up_profile_dispatch(pool);
+    selected_workers = up_worker_pool_count(pool);
+    return rc;
+}
 
 static void affinity_spawn(void *owner, int index, pthread_t thread)
 {
@@ -29,7 +37,7 @@ static void affinity_config(up_worker_pool_t *pool, const up_worker_pool_ops_t *
 }
 
 #define up_worker_pool_config affinity_config
-#define up_worker_pool_dispatch up_profile_dispatch
+#define up_worker_pool_dispatch record_dispatch
 #include "../src/usm_pool.c"
 #undef up_worker_pool_dispatch
 #undef up_worker_pool_config
@@ -52,6 +60,7 @@ int up_profile_usm_affinity(int first, int count)
 }
 
 int up_profile_usm_affinity_status(void) { return affinity_error; }
+int up_profile_usm_selected_workers(void) { return selected_workers; }
 
 void up_profile_usm_mode(int mode) { up_profile_trace.mode = mode; }
 void up_profile_usm_experiment(int mode)

@@ -1,0 +1,15 @@
+.usage: bench_perf15_confirm.py [-h]
+                               [--executions EXECUTIONS | --repeats REPEATS]
+                               [--seed SEED]
+                               [--treatments {fixed4,local,adaptive,latency} [{fixed4,local,adaptive,latency} ...]]
+                               build clips output protocol
+bench_perf15_confirm.py: error: execution budget must be positive and even to keep complete pairs
+.......completed 1 / 2
+completed 2 / 2
+completed 1 / 2
+completed 2 / 2
+.............
+----------------------------------------------------------------------
+Ran 21 tests in 0.062s
+
+OK

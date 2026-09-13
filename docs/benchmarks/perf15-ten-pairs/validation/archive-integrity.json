@@ -1,0 +1,12 @@
+{
+  "perf15-reduced": {
+    "measured_files_verified": 132,
+    "pairs_verified": 51,
+    "pair_files_verified": 153
+  },
+  "perf15-ten-pairs": {
+    "measured_files_verified": 137,
+    "pairs_verified": 15,
+    "pair_files_verified": 45
+  }
+}

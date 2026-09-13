@@ -1,0 +1,106 @@
+================================================
+  NLOC    CCN   token  PARAM  length  location  
+------------------------------------------------
+       4      1     33      2       4 save@15-18@scripts/bench_perf15_confirm.py
+      12      6    120      3      12 plan@21-32@scripts/bench_perf15_confirm.py
+       7      2     76      1       7 planned_jobs@35-41@scripts/bench_perf15_confirm.py
+       7      5     70      2       7 pending_jobs@44-50@scripts/bench_perf15_confirm.py
+       6      1     63      2       6 manifest@53-58@scripts/bench_perf15_confirm.py
+      10      3     68      2      10 initialize@61-70@scripts/bench_perf15_confirm.py
+      16      5    171      3      16 collect_pair@73-88@scripts/bench_perf15_confirm.py
+       6      4     53      2       6 verify_evidence@91-96@scripts/bench_perf15_confirm.py
+      12      3    119      1      12 compare@99-110@scripts/bench_perf15_confirm.py
+       8      6     71      2       8 validate_arguments@113-120@scripts/bench_perf15_confirm.py
+      18      2    179      0      18 main@123-140@scripts/bench_perf15_confirm.py
+       5      1     63      2       5 percentile@12-16@scripts/perf15_statistics.py
+       4      6     46      1       4 log_values@19-22@scripts/perf15_statistics.py
+       4      3     45      2       4 block_sums@25-28@scripts/perf15_statistics.py
+      11      3    105      4      11 bootstrap_means@31-41@scripts/perf15_statistics.py
+       3      2     53      5       3 interval@44-46@scripts/perf15_statistics.py
+       8      5     77      2       8 serial_correlation@49-56@scripts/perf15_statistics.py
+       4      2     69      2       4 descriptive_summary@59-62@scripts/perf15_statistics.py
+      18      9    226      4      18 estimate@65-82@scripts/perf15_statistics.py
+      12      6    121      1      12 checked_pairs@85-96@scripts/perf15_statistics.py
+      11      8    150      2      11 group_estimates@99-109@scripts/perf15_statistics.py
+       3      3     45      1       3 control_consistent@112-114@scripts/perf15_statistics.py
+       2      2     24      1       2 gain_supported@117-118@scripts/perf15_statistics.py
+       9      5     88      1       9 stability_flags@121-129@scripts/perf15_statistics.py
+       8      8    105      2       8 guard_summary@132-139@scripts/perf15_statistics.py
+       3      4     43      1       3 supported_gains@142-144@scripts/perf15_statistics.py
+       7      5     81      3       7 candidate_review@147-153@scripts/perf15_statistics.py
+      10      8    124      2      10 analyze@156-165@scripts/perf15_statistics.py
+       6      1     62      0       6 main@168-173@scripts/perf15_statistics.py
+       3      1     31      1       3 fixture_args@19-21@tests/test_perf15_confirmation.py
+       4      1     46      2       4 fake_pair@24-27@tests/test_perf15_confirmation.py
+       2      1     17      1       2 test_perf15_default_caps_total_executions_at_100@31-32@tests/test_perf15_confirmation.py
+       2      1     20      1       2 test_explicit_ten_repeats_is_120_candidate_executions_plus_12_controls@34-35@tests/test_perf15_confirmation.py
+       4      1     36      1       4 test_explicit_budget_includes_controls_and_cannot_split_pairs@37-40@tests/test_perf15_confirmation.py
+       6      2     78      1       6 test_ten_pair_extension_reuses_51_pairs_and_adds_only_15@42-47@tests/test_perf15_confirmation.py
+       6      1     71      1       6 test_extension_rejects_wrong_order_or_excess_evidence@49-54@tests/test_perf15_confirmation.py
+      10      1    127      2      10 simulated_cli@56-65@tests/test_perf15_confirmation.py
+       7      2     91      1       7 test_full_plan_has_100_pairs_per_candidate_and_clip@67-73@tests/test_perf15_confirmation.py
+       8      7    119      3       8 check_plan_clip@75-82@tests/test_perf15_confirmation.py
+      15      2    210      1      15 test_resume_retains_failed_metrics_and_does_not_repeat_completed_pairs@84-98@tests/test_perf15_confirmation.py
+      10      1     76      1      10 test_incomplete_pair_is_not_overwritten@100-109@tests/test_perf15_confirmation.py
+       7      1     73      1       7 test_resume_rejects_changed_manifest@111-117@tests/test_perf15_confirmation.py
+      10      1    119      1      10 test_evidence_tampering_is_detected@119-128@tests/test_perf15_confirmation.py
+       7      2     75      1       7 test_constant_ratios_produce_exact_interval@132-138@tests/test_perf15_confirmation.py
+       7      1    105      1       7 test_multiplicity_widens_interval@140-146@tests/test_perf15_confirmation.py
+       6      1    104      1       6 test_blocks_preserve_clustered_variation@148-153@tests/test_perf15_confirmation.py
+       4      1     48      1       4 test_reciprocal_pairs_use_log_scale@155-158@tests/test_perf15_confirmation.py
+       6      2     91      1       6 test_invalid_and_insufficient_values_do_not_claim_intervals@160-165@tests/test_perf15_confirmation.py
+       9      2    125      1       9 test_obs22_short_study_retains_guard_diagnostics@167-175@tests/test_perf15_confirmation.py
+       7      2     99      1       7 test_obs22_missing_controls_prevent_promotion_without_exception@177-183@tests/test_perf15_confirmation.py
+       4      1     69      1       4 test_review_requires_more_than_five_percent_gain@185-188@tests/test_perf15_confirmation.py
+      12      2    198      1      12 test_average_gain_cannot_hide_failed_guard_or_capture@190-201@tests/test_perf15_confirmation.py
+       5      1     72      1       5 test_duplicate_control_bias_is_not_accepted@203-207@tests/test_perf15_confirmation.py
+       4      1     56      1       4 test_drift_and_persistent_dependence_require_review@209-212@tests/test_perf15_confirmation.py
+       6      2     67      1       6 manifest@13-18@build/perf15/ten_pairs_extension.py
+      10      6    115      2      10 verify_compatible@21-30@build/perf15/ten_pairs_extension.py
+      26      5    305      1      26 run@33-58@build/perf15/ten_pairs_extension.py
+       5      2     47      0       5 main@61-65@build/perf15/ten_pairs_extension.py
+       5      6     77      1       5 verify_counts@17-21@build/perf15/analyze_ten_pairs.py
+      13      7    142      2      13 verified_rows@24-36@build/perf15/analyze_ten_pairs.py
+       6      1     83      2       6 t_interval@39-44@build/perf15/analyze_ten_pairs.py
+      17      7    222      3      17 metric_summary@47-63@build/perf15/analyze_ten_pairs.py
+       4      3     58      3       4 records_for@66-69@build/perf15/analyze_ten_pairs.py
+       8      5     91      3       8 absolute_summary@72-79@build/perf15/analyze_ten_pairs.py
+       6      6    105      3       6 phase_summary@82-87@build/perf15/analyze_ten_pairs.py
+       8      6    137      4       8 group_summary@90-97@build/perf15/analyze_ten_pairs.py
+      11      5    124      3      11 analyze@100-110@build/perf15/analyze_ten_pairs.py
+       2      1     17      1       2 pct@113-114@build/perf15/analyze_ten_pairs.py
+       2      2     23      1       2 interval_text@117-118@build/perf15/analyze_ten_pairs.py
+      22      6    178      1      22 markdown@121-142@build/perf15/analyze_ten_pairs.py
+       9      2     95      0       9 main@145-153@build/perf15/analyze_ten_pairs.py
+       3      2     48      4       3 close@17-19@build/perf15/verify_ten_pairs.py
+       8      6    135      1       8 tail_diagnostics@22-29@build/perf15/verify_ten_pairs.py
+      11      5    150      1      11 trace_statistics@32-42@build/perf15/verify_ten_pairs.py
+       9      4     97      2       9 verify_run@45-53@build/perf15/verify_ten_pairs.py
+      15      8    219      1      15 verify_pair@56-70@build/perf15/verify_ten_pairs.py
+       9      2    118      0       9 main@73-81@build/perf15/verify_ten_pairs.py
+       3      3     71      2       3 limits@16-18@build/perf15/plot_ten_pairs.py
+      13      9    210      3      13 draw_group@21-33@build/perf15/plot_ten_pairs.py
+      10      1    130      3      10 decorate@36-45@build/perf15/plot_ten_pairs.py
+      28      8    395      0      28 main@48-75@build/perf15/plot_ten_pairs.py
+      12      4    134      1      12 sources@13-24@build/perf15/archive_ten_pairs.py
+       7      3     96      0       7 captures@27-33@build/perf15/archive_ten_pairs.py
+      13      4    134      0      13 main@36-48@build/perf15/archive_ten_pairs.py
+8 file analyzed.
+==============================================================
+NLOC    Avg.NLOC  AvgCCN  Avg.token  function_cnt    file
+--------------------------------------------------------------
+    118       9.6     3.5       93.0        11     scripts/bench_perf15_confirm.py
+    137       7.1     4.5       84.8        18     scripts/perf15_statistics.py
+    182       6.6     1.6       86.2        25     tests/test_perf15_confirmation.py
+     57      11.8     3.8      133.5         4     build/perf15/ten_pairs_extension.py
+    127       8.7     4.4      104.0        13     build/perf15/analyze_ten_pairs.py
+     68       9.2     4.5      127.8         6     build/perf15/verify_ten_pairs.py
+     66      13.5     5.2      201.5         4     build/perf15/plot_ten_pairs.py
+     42      10.7     3.7      121.3         3     build/perf15/archive_ten_pairs.py
+
+===============================================================================================================
+No thresholds exceeded (cyclomatic_complexity > 10 or length > 1000 or nloc > 1000000 or parameter_count > 100)
+==========================================================================================
+Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt
+------------------------------------------------------------------------------------------
+       797       8.3     3.4      101.5       84            0      0.00    0.00

@@ -1,0 +1,9 @@
+{
+  "state": "stopped_by_user",
+  "reason": "User clarified 100 executions total, not 100 pairs per candidate/workload",
+  "complete_pairs": 51,
+  "complete_paired_executions": 102,
+  "interrupted_directories": [
+    "pair-0051"
+  ]
+}

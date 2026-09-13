@@ -1,0 +1,137 @@
+[
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 7,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 7,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 7,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 8,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 8,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 8,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 8,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 8,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 8,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 9,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 9,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 9,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 9,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 9,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 9,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  }
+]

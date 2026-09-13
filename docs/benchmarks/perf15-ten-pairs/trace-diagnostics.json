@@ -1,0 +1,2458 @@
+[
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2429.5035185185184,
+          "zimg": 2280.628,
+          "usm": 148.87551851851853,
+          "processing_cpu": 3409.600851851852
+        },
+        "cpu_below_wall": 3,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2374.9404814814816,
+          "zimg": 2213.7814814814815,
+          "usm": 161.159,
+          "processing_cpu": 3156.997
+        },
+        "cpu_below_wall": 3,
+        "phase_counts": {
+          "3": 21,
+          "2": 1,
+          "0": 4,
+          "1": 1
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2945.2576666666664,
+          "zimg": 2827.5743703703706,
+          "usm": 117.6832962962963,
+          "processing_cpu": 1934.6733333333334
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 16,
+          "0": 7,
+          "2": 3,
+          "1": 1
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3043.814592592593,
+          "zimg": 2889.6727037037035,
+          "usm": 154.1418888888889,
+          "processing_cpu": 1728.771037037037
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3038.81,
+          "zimg": 2593.7018518518516,
+          "usm": 445.10814814814813,
+          "processing_cpu": 1573.6709259259258
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2727.850296296296,
+          "zimg": 2625.806037037037,
+          "usm": 102.04425925925926,
+          "processing_cpu": 1739.5831481481482
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "duplicate": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2835.6812962962963,
+          "zimg": 2725.4865555555557,
+          "usm": 110.19474074074073,
+          "processing_cpu": 1763.1834444444446
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3392.2743333333337,
+          "zimg": 3271.9578518518515,
+          "usm": 120.31648148148149,
+          "processing_cpu": 1816.5264814814816
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3092.896888888889,
+          "zimg": 2923.619185185185,
+          "usm": 169.27770370370368,
+          "processing_cpu": 3698.635074074074
+        },
+        "cpu_below_wall": 6,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "duplicate": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3462.5034814814812,
+          "zimg": 3307.3702222222223,
+          "usm": 155.13325925925926,
+          "processing_cpu": 3550.6994444444445
+        },
+        "cpu_below_wall": 16,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2911.2699629629633,
+          "zimg": 2799.343074074074,
+          "usm": 111.92688888888888,
+          "processing_cpu": 1772.8839629629629
+        },
+        "cpu_below_wall": 27,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "duplicate": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2995.9394814814814,
+          "zimg": 2885.953777777778,
+          "usm": 109.9857037037037,
+          "processing_cpu": 1776.5598518518518
+        },
+        "cpu_below_wall": 27,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2929.1255925925925,
+          "zimg": 2812.4675555555555,
+          "usm": 116.65803703703703,
+          "processing_cpu": 1882.4795555555556
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2957.9387037037036,
+          "zimg": 2853.7050740740738,
+          "usm": 104.23362962962963,
+          "processing_cpu": 1757.0849629629631
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 19,
+          "0": 7,
+          "1": 1
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3218.9918518518516,
+          "zimg": 3048.2954444444445,
+          "usm": 170.6964074074074,
+          "processing_cpu": 3607.7837777777777
+        },
+        "cpu_below_wall": 11,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3625.048222222222,
+          "zimg": 2888.7656666666667,
+          "usm": 736.2825555555556,
+          "processing_cpu": 3146.0665185185185
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 0,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2823.1357407407404,
+          "zimg": 2722.7524074074076,
+          "usm": 100.38333333333333,
+          "processing_cpu": 1674.9646296296296
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3146.391259259259,
+          "zimg": 2779.119851851852,
+          "usm": 367.27140740740737,
+          "processing_cpu": 1620.8744814814813
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 1,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3150.2862592592596,
+          "zimg": 2794.5571481481484,
+          "usm": 355.7291111111111,
+          "processing_cpu": 1601.6066296296297
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2627.424074074074,
+          "zimg": 2521.5224444444443,
+          "usm": 105.90162962962962,
+          "processing_cpu": 1772.717074074074
+        },
+        "cpu_below_wall": 25,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 1,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3218.6105555555555,
+          "zimg": 3046.9156666666668,
+          "usm": 171.69488888888887,
+          "processing_cpu": 3473.7004814814813
+        },
+        "cpu_below_wall": 11,
+        "phase_counts": {
+          "3": 19,
+          "2": 3,
+          "1": 1,
+          "0": 4
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3059.073962962963,
+          "zimg": 2900.6214444444445,
+          "usm": 158.4525185185185,
+          "processing_cpu": 3503.594148148148
+        },
+        "cpu_below_wall": 9,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 1,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2972.7225555555556,
+          "zimg": 2860.146851851852,
+          "usm": 112.5757037037037,
+          "processing_cpu": 1817.6165185185184
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3327.0167777777774,
+          "zimg": 2876.4802962962963,
+          "usm": 450.53648148148153,
+          "processing_cpu": 1611.0084074074073
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 1,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3331.002074074074,
+          "zimg": 3208.8642222222225,
+          "usm": 122.13785185185186,
+          "processing_cpu": 1916.515074074074
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3030.9892962962963,
+          "zimg": 2925.1778518518518,
+          "usm": 105.81144444444445,
+          "processing_cpu": 1804.1569629629628
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "1": 5,
+          "3": 14,
+          "2": 4,
+          "0": 4
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 1,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3182.93,
+          "zimg": 3078.0082222222222,
+          "usm": 104.92177777777778,
+          "processing_cpu": 1757.7742592592592
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3485.273740740741,
+          "zimg": 3377.800814814815,
+          "usm": 107.47292592592592,
+          "processing_cpu": 1841.7483333333334
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 22,
+          "1": 2,
+          "0": 2,
+          "2": 1
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 1,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3843.854074074074,
+          "zimg": 2870.453407407407,
+          "usm": 973.4006666666667,
+          "processing_cpu": 3104.3706296296295
+        },
+        "cpu_below_wall": 24,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3277.8910740740744,
+          "zimg": 3118.2553333333335,
+          "usm": 159.63574074074074,
+          "processing_cpu": 3386.8304814814815
+        },
+        "cpu_below_wall": 13,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 2,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3046.218777777778,
+          "zimg": 2937.6641481481483,
+          "usm": 108.55462962962963,
+          "processing_cpu": 1763.3472962962962
+        },
+        "cpu_below_wall": 25,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3372.0555555555557,
+          "zimg": 3174.2554444444445,
+          "usm": 197.8001111111111,
+          "processing_cpu": 1609.5784074074074
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 2,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3298.837851851852,
+          "zimg": 3191.0222222222224,
+          "usm": 107.81562962962963,
+          "processing_cpu": 1823.7679629629629
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3293.6917037037038,
+          "zimg": 3152.8114444444445,
+          "usm": 140.88025925925925,
+          "processing_cpu": 2029.6416296296297
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 19,
+          "2": 2,
+          "1": 3,
+          "0": 3
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 2,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3215.1277407407406,
+          "zimg": 3110.1264444444446,
+          "usm": 105.00129629629629,
+          "processing_cpu": 1740.808
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3025.801925925926,
+          "zimg": 2921.3037037037034,
+          "usm": 104.49822222222222,
+          "processing_cpu": 1712.6176296296296
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 24,
+          "0": 3
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 2,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3329.236814814815,
+          "zimg": 3082.9338888888888,
+          "usm": 246.30292592592593,
+          "processing_cpu": 3518.671481481482
+        },
+        "cpu_below_wall": 16,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3689.2646666666665,
+          "zimg": 2527.873888888889,
+          "usm": 1161.3907777777777,
+          "processing_cpu": 3208.9342592592593
+        },
+        "cpu_below_wall": 24,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 2,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3162.0004814814815,
+          "zimg": 2998.5580370370367,
+          "usm": 163.44244444444445,
+          "processing_cpu": 3569.1655185185186
+        },
+        "cpu_below_wall": 13,
+        "phase_counts": {
+          "3": 19,
+          "2": 3,
+          "0": 4,
+          "1": 1
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3147.0889629629633,
+          "zimg": 2980.9135555555554,
+          "usm": 166.1754074074074,
+          "processing_cpu": 3661.900888888889
+        },
+        "cpu_below_wall": 5,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 2,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2849.0347407407407,
+          "zimg": 2742.5027777777777,
+          "usm": 106.53196296296295,
+          "processing_cpu": 1776.2275555555555
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3842.890518518518,
+          "zimg": 3287.6546666666663,
+          "usm": 555.2358518518519,
+          "processing_cpu": 1643.1076296296296
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 3,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2869.096444444445,
+          "zimg": 2756.545259259259,
+          "usm": 112.55118518518519,
+          "processing_cpu": 1789.0472222222222
+        },
+        "cpu_below_wall": 25,
+        "phase_counts": {
+          "3": 22,
+          "0": 3,
+          "1": 2
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3168.082185185185,
+          "zimg": 3056.9405185185187,
+          "usm": 111.14166666666667,
+          "processing_cpu": 1798.7039629629628
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 3,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3471.2948518518515,
+          "zimg": 2970.6655185185186,
+          "usm": 500.62933333333336,
+          "processing_cpu": 1662.9303703703702
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3154.8388148148147,
+          "zimg": 3035.2853333333333,
+          "usm": 119.55348148148148,
+          "processing_cpu": 1684.377037037037
+        },
+        "cpu_below_wall": 25,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 3,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3197.6173703703703,
+          "zimg": 3064.35662962963,
+          "usm": 133.26074074074074,
+          "processing_cpu": 1697.7174444444445
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 20,
+          "2": 3,
+          "0": 4
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3046.559333333333,
+          "zimg": 2951.740851851852,
+          "usm": 94.81848148148148,
+          "processing_cpu": 1701.7015925925925
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 3,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3261.8918148148146,
+          "zimg": 3148.734888888889,
+          "usm": 113.15692592592593,
+          "processing_cpu": 1784.6456296296296
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3926.1545555555554,
+          "zimg": 2840.107666666667,
+          "usm": 1086.0468888888888,
+          "processing_cpu": 1675.6761851851852
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 3,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3813.012925925926,
+          "zimg": 3271.525703703704,
+          "usm": 541.4872222222223,
+          "processing_cpu": 3758.075814814815
+        },
+        "cpu_below_wall": 16,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3311.344222222222,
+          "zimg": 3138.2730740740744,
+          "usm": 173.07114814814815,
+          "processing_cpu": 3710.3929259259257
+        },
+        "cpu_below_wall": 8,
+        "phase_counts": {
+          "3": 16,
+          "0": 6,
+          "2": 4,
+          "1": 1
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 3,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 4292.32437037037,
+          "zimg": 2551.637518518519,
+          "usm": 1740.6868518518518,
+          "processing_cpu": 3276.0397037037037
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3184.4482222222223,
+          "zimg": 3033.690555555556,
+          "usm": 150.75766666666667,
+          "processing_cpu": 3462.660148148148
+        },
+        "cpu_below_wall": 11,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 4,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3119.696740740741,
+          "zimg": 2699.954740740741,
+          "usm": 419.74199999999996,
+          "processing_cpu": 1622.1490000000001
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3109.1285555555555,
+          "zimg": 3008.3861851851852,
+          "usm": 100.74237037037037,
+          "processing_cpu": 1702.1921481481481
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 4,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3112.287777777778,
+          "zimg": 3003.1701851851853,
+          "usm": 109.1175925925926,
+          "processing_cpu": 1789.1947777777777
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 22,
+          "0": 2,
+          "1": 1,
+          "2": 2
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3069.4920370370373,
+          "zimg": 2970.6868148148146,
+          "usm": 98.80522222222223,
+          "processing_cpu": 1703.731037037037
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 4,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3127.9358888888887,
+          "zimg": 3010.009333333333,
+          "usm": 117.92655555555555,
+          "processing_cpu": 1754.0372222222222
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 5,
+          "3": 19,
+          "2": 1,
+          "1": 2
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3061.8964814814817,
+          "zimg": 2942.8836296296295,
+          "usm": 119.01285185185185,
+          "processing_cpu": 1833.6911481481482
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 4,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3443.5464074074075,
+          "zimg": 3266.6055185185187,
+          "usm": 176.94088888888888,
+          "processing_cpu": 3760.6353703703703
+        },
+        "cpu_below_wall": 11,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3700.0665185185185,
+          "zimg": 3463.4362592592593,
+          "usm": 236.63025925925925,
+          "processing_cpu": 3897.8572222222224
+        },
+        "cpu_below_wall": 15,
+        "phase_counts": {
+          "2": 6,
+          "3": 12,
+          "1": 4,
+          "0": 5
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 4,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3986.4260000000004,
+          "zimg": 2615.4332962962967,
+          "usm": 1370.9927037037037,
+          "processing_cpu": 3125.7593333333334
+        },
+        "cpu_below_wall": 25,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3348.7557407407407,
+          "zimg": 3166.41537037037,
+          "usm": 182.34037037037035,
+          "processing_cpu": 3721.0012592592593
+        },
+        "cpu_below_wall": 13,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 4,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3241.2747777777777,
+          "zimg": 2990.2033333333334,
+          "usm": 251.07144444444444,
+          "processing_cpu": 1644.0458148148148
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3184.4374444444443,
+          "zimg": 3078.1544444444444,
+          "usm": 106.283,
+          "processing_cpu": 1804.9664074074074
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2899.4459259259256,
+          "zimg": 2781.9493333333335,
+          "usm": 117.49659259259259,
+          "processing_cpu": 1769.461111111111
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3308.8254814814813,
+          "zimg": 3115.837074074074,
+          "usm": 192.9884074074074,
+          "processing_cpu": 2414.019851851852
+        },
+        "cpu_below_wall": 25,
+        "phase_counts": {
+          "3": 14,
+          "0": 8,
+          "2": 4,
+          "1": 1
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3135.5052962962964,
+          "zimg": 2955.4332592592596,
+          "usm": 180.07203703703703,
+          "processing_cpu": 3597.566222222222
+        },
+        "cpu_below_wall": 8,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "duplicate": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3021.1570370370373,
+          "zimg": 2851.3266296296297,
+          "usm": 169.83040740740742,
+          "processing_cpu": 3527.240370370371
+        },
+        "cpu_below_wall": 7,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2835.4513333333334,
+          "zimg": 2721.910703703704,
+          "usm": 113.54062962962962,
+          "processing_cpu": 1786.1681851851852
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 8,
+          "3": 13,
+          "2": 3,
+          "1": 3
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3274.9437037037037,
+          "zimg": 3160.7823333333336,
+          "usm": 114.16137037037036,
+          "processing_cpu": 1853.488185185185
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3687.045037037037,
+          "zimg": 3425.3418888888887,
+          "usm": 261.70314814814816,
+          "processing_cpu": 3771.1575925925927
+        },
+        "cpu_below_wall": 14,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3579.9034814814813,
+          "zimg": 3387.3492222222226,
+          "usm": 192.55425925925925,
+          "processing_cpu": 3954.947592592592
+        },
+        "cpu_below_wall": 10,
+        "phase_counts": {
+          "0": 6,
+          "3": 18,
+          "2": 1,
+          "1": 2
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3096.9666296296296,
+          "zimg": 2989.9168518518522,
+          "usm": 107.04977777777778,
+          "processing_cpu": 1762.018074074074
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "duplicate": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2876.155925925926,
+          "zimg": 2763.173851851852,
+          "usm": 112.98207407407408,
+          "processing_cpu": 1814.813925925926
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3035.872185185185,
+          "zimg": 2869.3764074074074,
+          "usm": 166.4957777777778,
+          "processing_cpu": 3596.6982592592594
+        },
+        "cpu_below_wall": 6,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3761.6876666666667,
+          "zimg": 3021.6090740740738,
+          "usm": 740.0785925925926,
+          "processing_cpu": 3251.862185185185
+        },
+        "cpu_below_wall": 24,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3461.3983703703702,
+          "zimg": 2833.2890370370374,
+          "usm": 628.1093333333333,
+          "processing_cpu": 1629.547111111111
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3201.9368148148146,
+          "zimg": 3046.3824444444444,
+          "usm": 155.55437037037038,
+          "processing_cpu": 1868.6644444444446
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2983.0513703703705,
+          "zimg": 2857.2697407407404,
+          "usm": 125.78162962962962,
+          "processing_cpu": 1863.2898148148147
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "duplicate": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3159.864777777778,
+          "zimg": 3021.265851851852,
+          "usm": 138.59892592592593,
+          "processing_cpu": 1976.9866666666667
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 5,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3380.617,
+          "zimg": 3048.2594444444444,
+          "usm": 332.35755555555556,
+          "processing_cpu": 1548.0339999999999
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3131.593185185185,
+          "zimg": 3018.8304444444448,
+          "usm": 112.76274074074074,
+          "processing_cpu": 1754.552037037037
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 6,
+    "source": "original",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3329.7084444444445,
+          "zimg": 3149.365,
+          "usm": 180.34344444444446,
+          "processing_cpu": 1564.0615185185186
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2903.4945925925927,
+          "zimg": 2784.706888888889,
+          "usm": 118.7877037037037,
+          "processing_cpu": 1769.2993703703703
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 6,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3455.807333333333,
+          "zimg": 3287.72762962963,
+          "usm": 168.0797037037037,
+          "processing_cpu": 3562.163
+        },
+        "cpu_below_wall": 14,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3834.6452222222224,
+          "zimg": 3042.4417407407404,
+          "usm": 792.2034814814814,
+          "processing_cpu": 3224.1085925925927
+        },
+        "cpu_below_wall": 25,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 6,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3171.2485185185187,
+          "zimg": 3040.4604814814816,
+          "usm": 130.78803703703704,
+          "processing_cpu": 1820.451851851852
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 23,
+          "2": 2,
+          "0": 2
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2684.3814444444442,
+          "zimg": 2549.947111111111,
+          "usm": 134.43433333333334,
+          "processing_cpu": 1971.0939629629631
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 6,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2748.1591481481482,
+          "zimg": 2629.25737037037,
+          "usm": 118.90177777777778,
+          "processing_cpu": 1902.5865555555556
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3082.197185185185,
+          "zimg": 2848.081222222222,
+          "usm": 234.11596296296298,
+          "processing_cpu": 1588.6066296296297
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 6,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2851.645925925926,
+          "zimg": 2742.861925925926,
+          "usm": 108.784,
+          "processing_cpu": 1771.7725925925927
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 19,
+          "0": 4,
+          "1": 3,
+          "2": 1
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3156.1452592592595,
+          "zimg": 3042.862888888889,
+          "usm": 113.28237037037036,
+          "processing_cpu": 1830.7423703703705
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 6,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3703.343407407407,
+          "zimg": 3508.4091481481482,
+          "usm": 194.93425925925928,
+          "processing_cpu": 3683.5981111111114
+        },
+        "cpu_below_wall": 17,
+        "phase_counts": {
+          "3": 25,
+          "1": 1,
+          "0": 1
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3555.084555555555,
+          "zimg": 3345.3435555555557,
+          "usm": 209.74099999999999,
+          "processing_cpu": 3739.118111111111
+        },
+        "cpu_below_wall": 14,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 7,
+    "source": "original",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3563.8772962962967,
+          "zimg": 3312.2275555555557,
+          "usm": 251.64974074074073,
+          "processing_cpu": 4286.68037037037
+        },
+        "cpu_below_wall": 5,
+        "phase_counts": {
+          "3": 17,
+          "1": 5,
+          "2": 1,
+          "0": 4
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 2949.6457777777778,
+          "zimg": 2770.3633703703704,
+          "usm": 179.28240740740742,
+          "processing_cpu": 3878.2225925925923
+        },
+        "cpu_below_wall": 2,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 7,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3310.7639999999997,
+          "zimg": 3191.859074074074,
+          "usm": 118.90492592592592,
+          "processing_cpu": 1862.3565185185184
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3609.6329629629627,
+          "zimg": 2921.4676296296298,
+          "usm": 688.1653333333334,
+          "processing_cpu": 1705.736111111111
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 7,
+    "source": "original",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3810.637444444444,
+          "zimg": 3605.2804444444446,
+          "usm": 205.357,
+          "processing_cpu": 4243.760666666667
+        },
+        "cpu_below_wall": 13,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 4102.540185185186,
+          "zimg": 2965.427740740741,
+          "usm": 1137.1124444444445,
+          "processing_cpu": 3596.7238888888887
+        },
+        "cpu_below_wall": 20,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 7,
+    "source": "extension",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3407.9898518518517,
+          "zimg": 3101.7548888888887,
+          "usm": 306.234962962963,
+          "processing_cpu": 1900.178074074074
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3425.1564444444443,
+          "zimg": 3307.006888888889,
+          "usm": 118.14955555555555,
+          "processing_cpu": 1858.0425555555557
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 17,
+          "2": 2,
+          "0": 6,
+          "1": 2
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 7,
+    "source": "extension",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3503.5023703703705,
+          "zimg": 3367.937740740741,
+          "usm": 135.56462962962962,
+          "processing_cpu": 1869.7792592592593
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3165.540074074074,
+          "zimg": 2943.6798148148146,
+          "usm": 221.86025925925927,
+          "processing_cpu": 1857.9272962962964
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 6,
+          "3": 17,
+          "2": 1,
+          "1": 3
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 7,
+    "source": "extension",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 4327.327333333334,
+          "zimg": 2972.824555555556,
+          "usm": 1354.5027777777777,
+          "processing_cpu": 1779.740037037037
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3300.715407407408,
+          "zimg": 3128.1767037037034,
+          "usm": 172.5387037037037,
+          "processing_cpu": 1876.4524814814813
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 8,
+    "source": "extension",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3567.129148148148,
+          "zimg": 3447.5007777777773,
+          "usm": 119.62837037037036,
+          "processing_cpu": 1872.5521851851852
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 17,
+          "1": 4,
+          "2": 4,
+          "0": 2
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3366.564592592593,
+          "zimg": 3245.0140370370373,
+          "usm": 121.55055555555556,
+          "processing_cpu": 1894.607925925926
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 8,
+    "source": "extension",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3667.7331851851854,
+          "zimg": 2651.562148148148,
+          "usm": 1016.171037037037,
+          "processing_cpu": 1815.5543703703704
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3523.2323703703705,
+          "zimg": 3306.3830740740736,
+          "usm": 216.8492962962963,
+          "processing_cpu": 1751.8514444444445
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 8,
+    "source": "extension",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 4913.985962962964,
+          "zimg": 2499.536555555556,
+          "usm": 2414.4494074074073,
+          "processing_cpu": 3358.04
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3723.2608148148147,
+          "zimg": 3441.337814814815,
+          "usm": 281.923,
+          "processing_cpu": 4362.826370370371
+        },
+        "cpu_below_wall": 5,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 8,
+    "source": "extension",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3705.5725555555555,
+          "zimg": 3490.334518518518,
+          "usm": 215.23803703703703,
+          "processing_cpu": 3981.9033703703703
+        },
+        "cpu_below_wall": 11,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3588.012925925926,
+          "zimg": 3397.2265555555555,
+          "usm": 190.78637037037038,
+          "processing_cpu": 3947.7382222222222
+        },
+        "cpu_below_wall": 12,
+        "phase_counts": {
+          "3": 23,
+          "0": 3,
+          "1": 1
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 8,
+    "source": "extension",
+    "diagnostics": {
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3603.9483333333333,
+          "zimg": 3343.743814814815,
+          "usm": 260.2045185185185,
+          "processing_cpu": 1893.7571481481482
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3932.1796666666664,
+          "zimg": 2608.0917407407405,
+          "usm": 1324.0879259259257,
+          "processing_cpu": 1800.063851851852
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 8,
+    "source": "extension",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3496.872444444444,
+          "zimg": 3373.037111111111,
+          "usm": 123.83533333333334,
+          "processing_cpu": 2049.1203703703704
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "1": 1,
+          "3": 22,
+          "0": 4
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3380.515111111111,
+          "zimg": 3259.5322962962964,
+          "usm": 120.98281481481482,
+          "processing_cpu": 1872.7014074074075
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 9,
+    "source": "extension",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 4483.724481481481,
+          "zimg": 2600.449666666667,
+          "usm": 1883.2748148148148,
+          "processing_cpu": 3297.6411851851853
+        },
+        "cpu_below_wall": 25,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3742.7021111111108,
+          "zimg": 3565.9831111111107,
+          "usm": 176.719,
+          "processing_cpu": 3792.736185185185
+        },
+        "cpu_below_wall": 18,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 9,
+    "source": "extension",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3835.6294444444443,
+          "zimg": 2798.9771851851856,
+          "usm": 1036.6522592592594,
+          "processing_cpu": 1639.044962962963
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3555.0196296296294,
+          "zimg": 3324.5790370370373,
+          "usm": 230.4405925925926,
+          "processing_cpu": 2007.4927407407408
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 9,
+    "source": "extension",
+    "diagnostics": {
+      "local": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 4027.237259259259,
+          "zimg": 2541.194296296296,
+          "usm": 1486.0429629629632,
+          "processing_cpu": 1866.562962962963
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3585.9575555555552,
+          "zimg": 3460.7766296296295,
+          "usm": 125.18092592592593,
+          "processing_cpu": 1967.8641481481482
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 9,
+    "source": "extension",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3580.707185185185,
+          "zimg": 3462.010074074074,
+          "usm": 118.69711111111111,
+          "processing_cpu": 1945.46
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 20,
+          "0": 6,
+          "1": 1
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3549.5297407407406,
+          "zimg": 3431.8582592592593,
+          "usm": 117.67148148148148,
+          "processing_cpu": 1897.0848888888888
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 9,
+    "source": "extension",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3299.3124444444443,
+          "zimg": 3116.3209629629628,
+          "usm": 182.99148148148146,
+          "processing_cpu": 4032.8476666666666
+        },
+        "cpu_below_wall": 4,
+        "phase_counts": {
+          "2": 1,
+          "3": 18,
+          "0": 6,
+          "1": 2
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3584.6011481481482,
+          "zimg": 3335.0611481481483,
+          "usm": 249.54,
+          "processing_cpu": 3907.430037037037
+        },
+        "cpu_below_wall": 12,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 9,
+    "source": "extension",
+    "diagnostics": {
+      "latency": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3456.543444444444,
+          "zimg": 3328.5384444444444,
+          "usm": 128.005,
+          "processing_cpu": 1860.830037037037
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "3": 22,
+          "2": 1,
+          "1": 2,
+          "0": 2
+        },
+        "includes_startup": true
+      },
+      "baseline": {
+        "tail_frames": 27,
+        "tail_mean_us": {
+          "total": 3639.5975185185184,
+          "zimg": 3415.6330740740736,
+          "usm": 223.96444444444444,
+          "processing_cpu": 1865.3855555555556
+        },
+        "cpu_below_wall": 26,
+        "phase_counts": {
+          "0": 27
+        },
+        "includes_startup": true
+      }
+    }
+  }
+]

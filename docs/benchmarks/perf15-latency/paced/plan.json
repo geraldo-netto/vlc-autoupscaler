@@ -1,0 +1,407 @@
+[
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 0,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "adaptive",
+    "repeat": 0,
+    "order": [
+      "adaptive",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 0,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "adaptive",
+    "repeat": 0,
+    "order": [
+      "adaptive",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 0,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 0,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "fixed4",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "fixed4"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "adaptive",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "adaptive"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "fixed4",
+    "repeat": 0,
+    "order": [
+      "fixed4",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "fixed4",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "fixed4"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 0,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "fixed4",
+    "repeat": 1,
+    "order": [
+      "fixed4",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "fixed4",
+    "repeat": 1,
+    "order": [
+      "fixed4",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "fixed4",
+    "repeat": 1,
+    "order": [
+      "fixed4",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 1,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 1,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 1,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "adaptive",
+    "repeat": 1,
+    "order": [
+      "adaptive",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 1,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "adaptive",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "adaptive"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "adaptive",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "adaptive"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "adaptive",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "adaptive"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 2,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "adaptive",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "adaptive"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "fixed4",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "fixed4"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "adaptive",
+    "repeat": 2,
+    "order": [
+      "adaptive",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 2,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "fixed4",
+    "repeat": 2,
+    "order": [
+      "fixed4",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "fixed4",
+    "repeat": 2,
+    "order": [
+      "fixed4",
+      "baseline"
+    ]
+  }
+]

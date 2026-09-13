@@ -309,3 +309,13 @@ The obsolete lifecycle mutation shims were removed without changing runtime
 behavior. SDK callback types remain unchanged: narrow cppcheck metadata
 documents its incompatible const suggestions rather than casting function
 pointers. No new production tuning policy was selected.
+
+## Latency-first and adaptive follow-up
+
+The user-selected B/D experiment and its raw evidence are documented in the
+[PERF-15 latency trial](PERF15_LATENCY_TRIAL.md). The pilot rejected all four
+candidates under its original guard. The user bounded the follow-up to
+[ten pairs per B/D option and clip](PERF15_TEN_PAIRS.md), now measured and
+analyzed using the clarified >5% gain review threshold. Local USM placement
+saved 14–16% processing CPU but increased p99 by 13–19%; experimental adaptive
+tuning established no latency gain above 5%. Keep production defaults.

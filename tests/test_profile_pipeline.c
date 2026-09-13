@@ -44,6 +44,7 @@ static void test_adaptive_pixels(void)
     BEGIN("PERF-11: trial counts preserve fixed-pool output pixels");
     pipeline_t fixed = {0}, adaptive = {0};
     args_t a = small_args();
+    a.verify_pixels = 1;
     int rc = initialize(&fixed, &a);
     a.adaptive = 1;
     rc = rc || initialize(&adaptive, &a);
@@ -56,6 +57,8 @@ static void test_adaptive_pixels(void)
             CHECK(frame(&fixed, i, &x) == 0);
             CHECK(frame(&adaptive, i, &y) == 0);
             CHECK(picture_hash(&fixed.output) == picture_hash(&adaptive.output));
+            CHECK(x.hash == y.hash && y.hash != 0);
+            CHECK(y.selected_workers == (1 << (i % 4)));
         }
     }
     destroy(&fixed);

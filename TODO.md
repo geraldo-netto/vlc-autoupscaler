@@ -19,7 +19,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| PERF-15 | blocked | M | Validate a worker/pinning policy across workloads before replacing reference defaults. | Corrected playback pinning evidence remains mixed (animation CPU 32.52% pinned versus 32.85% unpinned; live action 73.79% versus 67.46%). The [policy follow-up](docs/PLAYBACK_POLICY_EXPERIMENTS.md) measures USM-specific locality with fixed tile geometry: local placement lowers CPU but can worsen tails; worker-count changes also affect zimg seams. Adaptive mean/tail/CPU comparisons do not establish a stable winner. Native presentation controls now work, but end-to-end screen latency is unmeasured. Unblock stronger policy claims with stable matched repeats at production geometries on representative inputs/hosts, pixel controls and presentation evidence wherever the claim requires it. Defaults remain unchanged. |
 
 ## scalability
 
@@ -103,6 +102,12 @@
 
 ## Audit picks deliberately rejected
 
+- **PERF-15, promote the tested B/D latency policies:** rejected after the
+  user-bounded ten pairs per option and clip. B saves 14–16% processing CPU
+  but raises p99 by 13–19%; D establishes no latency gain above 5%. Neither
+  meets the retained 5% regression guard. Keep defaults; the CPU saving is
+  reviewable only with its latency cost. The [completed analysis](docs/PERF15_TEN_PAIRS.md)
+  preserves uncertainty, raw evidence and the limits of this machine's results.
 - **BUILD-44, driver-unload allocations as project leaks:** a loader-only
   `vkCreateInstance`/`vkEnumeratePhysicalDevices`/`vkDestroyInstance` program
   reproduces 512 bytes in two external allocations. The full GPU suite passes
@@ -144,11 +149,11 @@ non-findings:
   failure path. A memory-derived target would violate that runtime policy; no
   memory-pressure regression was reproduced within the bounded worker setup.
 - **SCAL-3b--SCAL-3d, automatic topology-aware pin ordering:** rejected as a
-  default change. The explicit USM placement experiment reduces CPU in some
-  cases but gives mixed latency tails; corrected playback pinning results also
-  vary by clip. Runtime topology discovery has no demonstrated universal
-  benefit. Keep the experimental controls and require the PERF-15 evidence
-  before adopting a new policy.
+  default change. PERF-15's ten-pair local USM placement comparisons save
+  14–16% processing CPU but increase p99 by 13–19%; corrected playback pinning
+  results also vary by clip. Runtime topology discovery has no demonstrated
+  universal benefit. Keep the experimental controls without adopting a new
+  production policy; see the [completed evidence](docs/PERF15_TEN_PAIRS.md).
 - **SCAL-P1d, dynamic work queues:** rejected. Completion skew occurs even with
   no partitioned work, identifying scheduler wake delay rather than unequal
   tile cost; a queue would add synchronization and failure paths without a

@@ -1,0 +1,232 @@
+[
+  {
+    "clip": "live-action-540",
+    "treatment": "fixed4",
+    "repeat": 1,
+    "order": [
+      "fixed4",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "motion",
+    "treatment": "fixed4",
+    "repeat": 1,
+    "order": [
+      "fixed4",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "animation",
+    "treatment": "fixed4",
+    "repeat": 1,
+    "order": [
+      "fixed4",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 1,
+    "order": [
+      "local",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "latency",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 1,
+    "order": [
+      "local",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "latency",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "motion",
+    "treatment": "adaptive",
+    "repeat": 1,
+    "order": [
+      "adaptive",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "animation",
+    "treatment": "adaptive",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "adaptive"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "adaptive",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "adaptive"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "latency"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "local",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "latency",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "animation",
+    "treatment": "adaptive",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "adaptive"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "local"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "motion",
+    "treatment": "adaptive",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "adaptive"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "animation",
+    "treatment": "fixed4",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "fixed4"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "latency",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "adaptive",
+    "repeat": 2,
+    "order": [
+      "adaptive",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "local"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "latency"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "motion",
+    "treatment": "fixed4",
+    "repeat": 2,
+    "order": [
+      "fixed4",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "fixed4",
+    "repeat": 2,
+    "order": [
+      "fixed4",
+      "baseline"
+    ],
+    "reason": "5% guard failed in an earlier repetition"
+  }
+]

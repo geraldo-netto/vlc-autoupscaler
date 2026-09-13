@@ -1,0 +1,10 @@
+{
+  "hashes_unchanged": true,
+  "completed_pairs": 51,
+  "paired_executions": 102,
+  "original_plan_complete": false,
+  "completed_plan_prefix": true,
+  "stop_reason": "User clarified 100 total executions",
+  "interrupted_pair": "pair-0051",
+  "interrupted_pair_used": false
+}

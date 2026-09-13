@@ -1,0 +1,5942 @@
+[
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 0,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 0,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 0,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 1,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 1,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 1,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 2,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 2,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 3,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 3,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 3,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 3,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 3,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 3,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 4,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 4,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 4,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 4,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 4,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 4,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 5,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 5,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 5,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 5,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 5,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 5,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 5,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 5,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 5,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 6,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 6,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 6,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 6,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 6,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 6,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 7,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 7,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 7,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 7,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 7,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 7,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 8,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 8,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 8,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 8,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 8,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 8,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 9,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 9,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 9,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 9,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 9,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 9,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 10,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 10,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 10,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 10,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 10,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 10,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 10,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 10,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 10,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 11,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 11,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 11,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 11,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 11,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 11,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 12,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 12,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 12,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 12,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 12,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 12,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 13,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 13,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 13,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 13,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 13,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 13,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 14,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 14,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 14,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 14,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 14,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 14,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 15,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 15,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 15,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 15,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 15,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 15,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 15,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 15,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 15,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 16,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 16,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 16,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 16,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 16,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 16,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 17,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 17,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 17,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 17,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 17,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 17,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 18,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 18,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 18,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 18,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 18,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 18,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 19,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 19,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 19,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 19,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 19,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 19,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 20,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 20,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 20,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 20,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 20,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 20,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 20,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 20,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 20,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 21,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 21,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 21,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 21,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 21,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 21,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 22,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 22,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 22,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 22,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 22,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 22,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 23,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 23,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 23,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 23,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 23,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 23,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 24,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 24,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 24,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 24,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 24,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 24,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 25,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 25,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 25,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 25,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 25,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 25,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 25,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 25,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 25,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 26,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 26,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 26,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 26,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 26,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 26,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 27,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 27,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 27,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 27,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 27,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 27,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 28,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 28,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 28,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 28,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 28,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 28,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 29,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 29,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 29,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 29,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 29,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 29,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 30,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 30,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 30,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 30,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 30,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 30,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 30,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 30,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 30,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 31,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 31,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 31,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 31,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 31,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 31,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 32,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 32,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 32,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 32,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 32,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 32,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 33,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 33,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 33,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 33,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 33,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 33,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 34,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 34,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 34,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 34,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 34,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 34,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 35,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 35,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 35,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 35,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 35,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 35,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 35,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 35,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 35,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 36,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 36,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 36,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 36,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 36,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 36,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 37,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 37,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 37,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 37,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 37,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 37,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 38,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 38,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 38,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 38,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 38,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 38,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 39,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 39,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 39,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 39,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 39,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 39,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 40,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 40,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 40,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 40,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 40,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 40,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 40,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 40,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 40,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 41,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 41,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 41,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 41,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 41,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 41,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 42,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 42,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 42,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 42,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 42,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 42,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 43,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 43,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 43,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 43,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 43,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 43,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 44,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 44,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 44,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 44,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 44,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 44,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 45,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 45,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 45,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 45,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 45,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 45,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 45,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 45,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 45,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 46,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 46,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 46,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 46,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 46,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 46,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 47,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 47,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 47,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 47,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 47,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 47,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 48,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 48,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 48,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 48,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 48,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 48,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 49,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 49,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 49,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 49,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 49,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 49,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 50,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 50,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 50,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 50,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 50,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 50,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 50,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 50,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 50,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 51,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 51,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 51,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 51,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 51,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 51,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 52,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 52,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 52,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 52,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 52,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 52,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 53,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 53,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 53,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 53,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 53,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 53,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 54,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 54,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 54,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 54,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 54,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 54,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 55,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 55,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 55,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 55,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 55,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 55,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 55,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 55,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 55,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 56,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 56,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 56,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 56,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 56,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 56,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 57,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 57,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 57,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 57,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 57,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 57,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 58,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 58,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 58,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 58,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 58,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 58,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 59,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 59,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 59,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 59,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 59,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 59,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 60,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 60,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 60,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 60,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 60,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 60,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 60,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 60,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 60,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 61,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 61,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 61,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 61,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 61,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 61,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 62,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 62,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 62,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 62,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 62,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 62,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 63,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 63,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 63,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 63,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 63,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 63,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 64,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 64,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 64,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 64,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 64,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 64,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 65,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 65,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 65,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 65,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 65,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 65,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 65,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 65,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 65,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 66,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 66,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 66,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 66,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 66,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 66,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 67,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 67,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 67,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 67,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 67,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 67,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 68,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 68,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 68,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 68,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 68,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 68,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 69,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 69,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 69,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 69,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 69,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 69,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 70,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 70,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 70,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 70,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 70,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 70,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 70,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 70,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 70,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 71,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 71,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 71,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 71,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 71,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 71,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 72,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 72,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 72,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 72,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 72,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 72,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 73,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 73,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 73,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 73,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 73,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 73,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 74,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 74,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 74,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 74,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 74,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 74,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 75,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 75,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 75,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 75,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 75,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 75,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 75,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 75,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 75,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 76,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 76,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 76,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 76,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 76,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 76,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 77,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 77,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 77,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 77,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 77,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 77,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 78,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 78,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 78,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 78,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 78,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 78,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 79,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 79,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 79,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 79,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 79,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 79,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 80,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 80,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 80,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 80,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 80,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 80,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 80,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 80,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 80,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 81,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 81,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 81,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 81,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 81,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 81,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 82,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 82,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 82,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 82,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 82,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 82,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 83,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 83,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 83,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 83,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 83,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 83,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 84,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 84,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 84,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 84,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 84,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 84,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 85,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 85,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 85,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 85,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 85,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 85,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 85,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 85,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 85,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 86,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 86,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 86,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 86,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 86,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 86,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 87,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 87,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 87,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 87,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 87,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 87,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 88,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 88,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 88,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 88,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 88,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 88,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 89,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 89,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 89,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 89,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 89,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 89,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 90,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 90,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 90,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 90,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 90,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 90,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 90,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 90,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 90,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 91,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 91,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 91,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 91,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 91,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 91,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 92,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 92,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 92,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 92,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 92,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 92,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 93,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 93,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 93,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 93,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 93,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 93,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 94,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 94,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 94,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 94,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 94,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 94,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 95,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 95,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "duplicate",
+    "repeat": 95,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 95,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "duplicate",
+    "repeat": 95,
+    "order": [
+      "duplicate",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 95,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 95,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "duplicate",
+    "repeat": 95,
+    "order": [
+      "baseline",
+      "duplicate"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 95,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 96,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 96,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 96,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 96,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 96,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 96,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 97,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 97,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 97,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 97,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 97,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 97,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 98,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 98,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 98,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 98,
+    "order": [
+      "local",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 98,
+    "order": [
+      "latency",
+      "baseline"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 98,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "latency",
+    "repeat": 99,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "latency",
+    "repeat": 99,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "latency",
+    "repeat": 99,
+    "order": [
+      "baseline",
+      "latency"
+    ]
+  },
+  {
+    "clip": "motion",
+    "treatment": "local",
+    "repeat": 99,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "live-action-540",
+    "treatment": "local",
+    "repeat": 99,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  },
+  {
+    "clip": "animation",
+    "treatment": "local",
+    "repeat": 99,
+    "order": [
+      "baseline",
+      "local"
+    ]
+  }
+]

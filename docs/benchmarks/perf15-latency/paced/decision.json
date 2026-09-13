@@ -1,0 +1,37 @@
+{
+  "p99_control_noise": {
+    "animation": 0.6466239382721797,
+    "motion": 0.1433725569829527,
+    "live-action-540": 0.3283124139476554
+  },
+  "decisions": [
+    {
+      "treatment": "fixed4",
+      "paired_runs": 3,
+      "guards_pass": false,
+      "qualifying_workloads": [],
+      "promote": false
+    },
+    {
+      "treatment": "local",
+      "paired_runs": 4,
+      "guards_pass": false,
+      "qualifying_workloads": [],
+      "promote": false
+    },
+    {
+      "treatment": "adaptive",
+      "paired_runs": 3,
+      "guards_pass": false,
+      "qualifying_workloads": [],
+      "promote": false
+    },
+    {
+      "treatment": "latency",
+      "paired_runs": 3,
+      "guards_pass": false,
+      "qualifying_workloads": [],
+      "promote": false
+    }
+  ]
+}

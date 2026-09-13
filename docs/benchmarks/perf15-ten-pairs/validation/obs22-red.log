@@ -1,0 +1,32 @@
+EE
+======================================================================
+ERROR: test_obs22_short_study_retains_guard_diagnostics (__main__.StatisticsTests.test_obs22_short_study_retains_guard_diagnostics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/backups/disk2/projects/vlc-autoupscaler/tests/test_perf15_confirmation.py", line 170, in test_obs22_short_study_retains_guard_diagnostics
+    self.assertEqual(value['individual_guard_failures'], 1)
+                     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'individual_guard_failures'
+
+======================================================================
+ERROR: test_obs22_missing_controls_prevent_promotion_without_exception (__main__.StatisticsTests.test_obs22_missing_controls_prevent_promotion_without_exception)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/backups/disk2/projects/vlc-autoupscaler/tests/test_perf15_confirmation.py", line 181, in test_obs22_missing_controls_prevent_promotion_without_exception
+    review = stats.candidate_review([row], 'local', {})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/backups/disk2/projects/vlc-autoupscaler/scripts/perf15_statistics.py", line 145, in candidate_review
+    guards = guard_summary(subset, controls)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/backups/disk2/projects/vlc-autoupscaler/scripts/perf15_statistics.py", line 130, in guard_summary
+    valid_outcomes_and_controls=all(row['valid_outcomes'] and controls[row['clip']]
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/backups/disk2/projects/vlc-autoupscaler/scripts/perf15_statistics.py", line 130, in <genexpr>
+    valid_outcomes_and_controls=all(row['valid_outcomes'] and controls[row['clip']]
+                                                              ~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'motion'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (errors=2)

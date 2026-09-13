@@ -23,6 +23,7 @@ void up_profile_zimg_experiment(int mode, int workers);
 void up_profile_usm_experiment(int mode);
 int up_profile_usm_affinity(int first, int count);
 int up_profile_usm_affinity_status(void);
+int up_profile_usm_selected_workers(void);
 void up_profile_zimg_finish(void);
 void up_profile_usm_finish(void);
 up_profile_frame_t up_profile_zimg_frame(void);
