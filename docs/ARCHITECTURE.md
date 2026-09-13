@@ -94,6 +94,10 @@ completion count, advances the generation under the gate mutex, and broadcasts.
 Workers process disjoint regions and decrement completion. The caller waits on
 a monotonic deadline. A synchronization failure poisons and retires the pool;
 retirement remains synchronous so storage is never freed under a callback.
+If joining fails, retirement waits for each worker's exit publication before
+returning borrowed pictures to the caller. The pool retains unreaped thread
+state for a later join attempt. Exit publication happens once per worker
+lifetime, including cancellation; it adds no per-frame atomic operation.
 
 A one-worker pool runs inline without a thread or barrier. Partial startup is
 allowed for USM and repartitions its stripes; zimg uses all-or-nothing startup

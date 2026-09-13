@@ -39,6 +39,7 @@
 
 #include <pthread.h>
 #include <stdalign.h>
+#include <stdatomic.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -60,6 +61,7 @@ typedef struct {
     bool              started;    /* pthread_create succeeded (pthread_t is
                                    * opaque: no portable "is it a handle?"
                                    * test, so track it explicitly) */
+    atomic_bool       exited;
     uint64_t          seen_gen;   /* worker-private: last dispatch handled */
     int               index;
     up_worker_pool_t *pool;
@@ -163,13 +165,16 @@ static inline bool up_worker_pool_inline(const up_worker_pool_t *p)
 
 /* ---------- start ---------- */
 
-static inline void *up__pool_worker_main(void *arg)
+/* Keep setjmp-based cancellation registration outside the hot loop. */
+#if defined(__GNUC__) || defined(__clang__)
+__attribute__((noinline))
+#endif
+static void up__pool_worker_loop(up_pool_thread_t *t)
 {
-    up_pool_thread_t *t = (up_pool_thread_t *)arg;
     up_worker_pool_t *p = t->pool;
     if (pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL) != 0) {
         up__pool_gate_report_worker_failure(&p->gate);
-        return NULL;
+        return;
     }
     for (;;) {
         const int gate_rc = up_pool_gate_wait_for_go(&p->gate, &t->seen_gen);
@@ -180,6 +185,19 @@ static inline void *up__pool_worker_main(void *arg)
 #endif
         up_pool_gate_worker_done(&p->gate);
     }
+}
+
+static inline void up__pool_worker_exited(void *arg)
+{
+    up_pool_thread_t *t = arg;
+    atomic_store_explicit(&t->exited, true, memory_order_release);
+}
+
+static inline void *up__pool_worker_main(void *arg)
+{
+    pthread_cleanup_push(up__pool_worker_exited, arg);
+    up__pool_worker_loop(arg);
+    pthread_cleanup_pop(1);
     return NULL;
 }
 
@@ -210,6 +228,7 @@ static inline int up__pool_spawn(up_worker_pool_t *p, int i)
     t->pool     = p;
     t->index    = i;
     t->seen_gen = p->gate.generation;   /* don't run before the first dispatch */
+    atomic_init(&t->exited, false);
 
     if (pthread_create(&t->thread, NULL, up__pool_worker_main, t) != 0)
         return -1;
@@ -376,7 +395,16 @@ static inline bool up_worker_pool_failed(const up_worker_pool_t *p)
 static inline void up_worker_pool_poison(up_worker_pool_t *p)
 {
     p->broken = true;
-    (void)up_worker_pool_stop(p);
+    if (up_worker_pool_stop(p) == 0) return;
+    /* UB-13: failed joins retain pool state, but callers own the borrowed
+     * pictures. Exit publication proves callbacks are done before returning. */
+    for (int i = 0; i < p->n_pref; i++) {
+        if (!p->threads[i].started) continue;
+        while (!atomic_load_explicit(&p->threads[i].exited, memory_order_acquire)) {
+            const struct timespec delay = { .tv_nsec = 1000000 };
+            (void)nanosleep(&delay, NULL);
+        }
+    }
 }
 
 /*
@@ -385,7 +413,7 @@ static inline void up_worker_pool_poison(up_worker_pool_t *p)
  * with a single broadcast, then wait once on the counting barrier.
  *
  * Returns 0 once every worker has completed. A barrier failure poisons the
- * pool (threads stopped and joined) and returns -1; the caller must treat the
+ * pool (callbacks finished, joins attempted) and returns -1; the caller must treat the
  * dispatch as fatal, not retry it. The completion wait has a monotonic bound,
  * but synchronous retirement does not: join waits for an owner callback that
  * was already running so its storage cannot be released underneath it.

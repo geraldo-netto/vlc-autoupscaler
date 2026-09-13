@@ -75,7 +75,8 @@ usm_pool_t *up_usm_pool_create(int n_threads, int width, int height,
  * Returns UP_USM_APPLY_OK on success,
  * UP_USM_APPLY_FAILED_UNCHANGED when validation or lazy initialization fails
  * before dst is touched, and UP_USM_APPLY_OUTPUT_UNCERTAIN when dispatch fails
- * after workers may have written dst. The latter drains and joins the workers,
+ * after workers may have written dst. The latter drains the workers and attempts
+ * to join them (failed joins retain pool state until a successful retry),
  * leaves the pool in a sticky failed state, and requires the caller to discard
  * the destination frame. The completion wait is timed, but safe retirement is
  * synchronous and may wait for an already-running worker callback; this API

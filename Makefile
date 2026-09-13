@@ -606,6 +606,8 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo
 	@echo "=== worker_pool (shared lifecycle) ==="
 	@$(BUILD)/test_worker_pool
+	@$(BUILD)/test_frame_retirement_usm
+	@$(if $(HAVE_PROFILE_SDKS),$(BUILD)/test_frame_retirement_zimg,echo "zimg frame retirement: SDK unavailable")
 	@echo
 	@echo "=== usm_pool ==="
 	@$(BUILD)/test_usm_pool
@@ -718,11 +720,19 @@ $(BUILD)/test_usm_adaptive: tests/test_usm_adaptive.c src/usm_adaptive.h src/wor
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
 
 test: $(BUILD)/test_experiment_executor
+test: $(BUILD)/test_frame_retirement_usm
+
+$(BUILD)/test_frame_retirement_usm: tests/test_frame_retirement.c src/usm_pool.c src/worker_pool.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS) -lpthread -Wl,--wrap=pthread_join
+
+$(BUILD)/test_frame_retirement_zimg: tests/test_frame_retirement.c src/scaler_zimg.c src/worker_pool.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) $(ZIMG_CFLAGS) -DTEST_RETIRE_ZIMG -o $@ $< $(TEST_LDFLAGS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -Wl,--wrap=pthread_join
 
 $(BUILD)/test_experiment_executor: tests/test_experiment_executor.c tests/experiment_executor.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS) -lpthread -Wl,--wrap=pthread_create
 
 ifneq ($(HAVE_PROFILE_SDKS),)
+test: $(BUILD)/test_frame_retirement_zimg
 test: $(BUILD)/test_bench_adaptive $(BUILD)/test_experiment_zimg $(BUILD)/test_profile_input
 test: $(BUILD)/test_profile_pipeline
 test: $(BUILD)/test_profile_pipeline_latency
