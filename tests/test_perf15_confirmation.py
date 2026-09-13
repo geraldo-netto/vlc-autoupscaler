@@ -14,17 +14,12 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'scripts'))
 import bench_perf15_confirm as confirm
 import perf15_statistics as stats
+from perf15_fixture import fake_pair
 
 
 def fixture_args(directory):
     return SimpleNamespace(output=Path(directory), repeats=100,
                            treatments=['local', 'latency'], seed=20260916)
-
-
-def fake_pair(args, **job):
-    job.pop('rows')
-    (args.output/'0.csv').write_text('frame,total\n0,1\n')
-    return dict(**job, valid_outcomes=False, ratios={'frame_p99': 1.2})
 
 
 class CaptureTests(unittest.TestCase):

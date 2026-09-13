@@ -26,9 +26,13 @@ pair in the stopped batch is excluded, with its files retained.
 - `trace-verification.json`, `trace-diagnostics.json`: independent validation
   of all 132 completed traces and exploratory slow-tail stage diagnostics.
   These derived files were produced after capture archival.
-- `analysis-sources.tar.gz`: exact post-measurement Python analysis dependencies,
-  permanent regression tests and helper scripts at their repository paths.
-  This deliberately differs from the earlier measured-source snapshot.
+- `analysis-sources.tar.gz`: repaired replay package (revision 2), containing
+  the original post-measurement analysis files plus the omitted
+  `scripts/bench_playback_policies.py` from `measured-sources.tar.gz`.
+  Original members are unchanged; this deliberately differs from the measured
+  source snapshot and does not include later generic-runner fixes.
+- `analysis-sources-v1.tar.gz`: unchanged original analysis package, retained
+  for provenance. It omits a transitive import and cannot replay by itself.
 - `analyze_ten_pairs.py`, `plot_ten_pairs.py`, `verify_ten_pairs.py`,
   `ten_pairs_extension.py`, `archive_ten_pairs.py`: readable copies of bounded
   capture, archival, verification and analysis helpers.
@@ -40,6 +44,11 @@ Source commit remains `0f6cee0`; measured and analysis changes were uncommitted.
 Historical manifests are not rewritten to match later documentation or Python
 fixes. The earlier pilot's pixel comparisons and sanitizer results are in the
 [pilot archive](../perf15-latency/README.md).
+
+BUILD-46 repaired only the replay package dependency closure. No capture,
+measurement manifest, measured source, executable or reported statistic changed.
+The permanent normal-suite archive test extracts the package into an empty
+directory and checks imports with no checkout on Python's search path.
 
 ## Reproduce analysis without playback
 

@@ -43,6 +43,19 @@ def trace_summary(path, adaptive):
                                      workers=int(row["workers"])) for row in rows if row["changed"] == "1"])
 
 
+def output_text(value):
+    return value.decode('utf-8', errors='replace') if isinstance(value, bytes) else value or ''
+
+
+def execute_capture(command, environment):
+    try:
+        result = subprocess.run(command, env=environment, capture_output=True, text=True, timeout=150)
+        return dict(returncode=result.returncode, stdout=result.stdout, stderr=result.stderr)
+    except subprocess.TimeoutExpired as error:
+        return dict(returncode=-1, failure='timeout', timeout_seconds=error.timeout,
+                    stdout=output_text(error.stdout), stderr=output_text(error.stderr))
+
+
 def capture(args, job, index, pixels=False):
     trace = args.output / (str(index) + ".csv")
     frames, period = (600, 0) if pixels else (2700, 33333)
@@ -55,12 +68,12 @@ def capture(args, job, index, pixels=False):
     env = {key: value for key, value in os.environ.items() if not key.startswith("UP_PROFILE_")}
     controls = {"UP_PROFILE_"+key: str(value) for key, value in values.items()}
     before = os.getloadavg()
-    result = subprocess.run(cmd, env=dict(env, **controls), capture_output=True, text=True, timeout=150)
+    result = execute_capture(cmd, dict(env, **controls))
     row = dict(job=job, command=cmd, environment=controls, trace=trace.name,
-               returncode=result.returncode, stdout=result.stdout, stderr=result.stderr,
+               **result,
                load_before=before, load_after=os.getloadavg())
-    if not result.returncode:
-        row.update(result=json.loads(result.stdout), summary=trace_summary(trace, job["adaptive"]))
+    if not row['returncode']:
+        row.update(result=json.loads(row['stdout']), summary=trace_summary(trace, job["adaptive"]))
     return row
 
 

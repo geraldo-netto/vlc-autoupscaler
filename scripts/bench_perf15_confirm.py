@@ -10,6 +10,7 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path.cwd() / 'scripts'))
 import bench_perf15 as bench
+from perf15_evidence import validate_pair
 
 
 def save(path, data):
@@ -74,7 +75,9 @@ def collect_pair(args, job, index):
     directory = args.output / ('pair-%04d' % index)
     completed = directory / 'pair.json'
     if completed.exists():
-        return json.loads(completed.read_text())
+        result = json.loads(completed.read_text())
+        validate_pair(args.output, result, job, index)
+        return result
     if directory.exists():
         raise RuntimeError('incomplete pair retained; inspect before starting a separate study')
     directory.mkdir()
@@ -85,15 +88,13 @@ def collect_pair(args, job, index):
     result.update(index=index, directory=directory.name, started=started, finished=time.time())
     result['hashes'] = {path.name: bench.digest(path) for path in directory.iterdir() if path.is_file()}
     save(completed, result)
+    validate_pair(args.output, result, job, index)
     return result
 
 
 def verify_evidence(args, rows):
     for row in rows:
-        directory = args.output / row['directory']
-        for name, expected in row['hashes'].items():
-            if bench.digest(directory / name) != expected:
-                raise RuntimeError('completed pair evidence changed; reject study')
+        validate_pair(args.output, row)
 
 
 def compare(args):

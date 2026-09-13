@@ -635,6 +635,9 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_gpu_pacing.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_decisions.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_confirmation.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_evidence.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_archive.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_profile_project.py
 	@echo
 	@echo "=== picture_view ==="
 	@$(BUILD)/test_picture_view

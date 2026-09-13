@@ -118,6 +118,15 @@ def summarize_empty(result):
     result["trace"] = [statistics.mean(row[i] for row in samples) for i in range(1, 9)]
 
 
+def profile_controls(case):
+    if case['kind'] == 'empty':
+        return {}
+    values = dict(WIDTH=case['width']//2, HEIGHT=case['height']//2, EXECUTOR=0,
+                  ACTIVE=0, ZEROCOPY=1, SHARP_THRESHOLD=0, ADAPTIVE=0, WARMUP=128,
+                  USM_CPU_FIRST=0, USM_CPU_COUNT=0, VERIFY_PIXELS=0)
+    return {'UP_PROFILE_' + key: str(value) for key, value in values.items()}
+
+
 def run_case(case, args, affinity, repetition, index):
     frames = 240 if case.get("period") else args.frames
     prefix = ["taskset", "-c", ",".join(map(str, affinity[case["mask"]]))]
@@ -128,12 +137,18 @@ def run_case(case, args, affinity, repetition, index):
         values = [case[k] for k in ["z", "u", "width", "height"]] + [frames]
         values += [case[k] for k in ["pin", "detail", "content", "period"]]
         cmd = [str(args.build / "profile_pipeline"), *map(str, values)]
-    completed = subprocess.run(prefix + cmd, text=True, capture_output=True, check=True, timeout=180)
+    controls = profile_controls(case)
+    env = {key: value for key, value in os.environ.items() if not key.startswith('UP_PROFILE_')}
+    completed = subprocess.run(prefix + cmd, env=dict(env, **controls), text=True,
+                               capture_output=True, check=True, timeout=180)
     result = json.loads(completed.stdout)
     if case["kind"] == "empty":
         summarize_empty(result)
+    else:
+        result['input'] = dict(kind='generated', width=case['width']//2,
+                               height=case['height']//2, content=case['content'])
     result.update(case, repetition=repetition, order=index, frames=frames,
-                  command=prefix + cmd, timestamp=time.time())
+                  command=prefix + cmd, environment=controls, timestamp=time.time())
     return result
 
 
@@ -156,13 +171,14 @@ def metadata(args, affinity):
                 ["cat", "/proc/sys/kernel/perf_event_paranoid"],
                 ["cat", "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"]]
     return {"platform": platform.platform(), "affinity": affinity,
+            "profile_environment_policy": "UP_PROFILE_* cleared; explicit generated-input controls recorded per case",
             "args": {k: str(v) for k, v in vars(args).items()},
             "commands": [command_output(command) for command in commands]}
 
 
 def write_csv(results, path):
     fields = sorted({key for row in results for key, value in row.items()
-                     if not isinstance(value, list)})
+                     if not isinstance(value, (list, dict))})
     with path.open("x") as out:
         writer = csv.DictWriter(out, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()

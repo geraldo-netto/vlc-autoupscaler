@@ -7,6 +7,7 @@ import random
 import statistics
 
 from bench_perf15 import METRICS
+from perf15_evidence import validate_pair
 
 
 def percentile(ordered, probability):
@@ -90,9 +91,8 @@ def checked_pairs(directory):
     plan = json.loads((directory/'plan.json').read_text())
     if len(rows) != len(plan):
         raise ValueError('incomplete confirmation matrix')
-    for row, job in zip(rows, plan):
-        if any(row[key] != value for key, value in job.items()):
-            raise ValueError('pair order or identity differs from plan')
+    for index, (row, job) in enumerate(zip(rows, plan)):
+        validate_pair(directory, row, job, index)
     return rows
 
 
