@@ -625,6 +625,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== autoupscale lifecycle ==="
 	@$(BUILD)/test_autoupscale_lifecycle
 	@$(BUILD)/test_pipeline_metrics
+	@$(if $(HAVE_ZIMG),PYTHONDONTWRITEBYTECODE=1 python3 tests/test_profile_scheduler.py $(BUILD)/profile_pipeline,echo "profile scheduler: zimg unavailable")
 	@$(BUILD)/test_vulkan_limits
 	@$(BUILD)/test_vulkan_timing
 	@$(if $(strip $(VLC_LIBS)),$(BUILD)/test_display_adapter,echo "display adapter: VLC SDK unavailable")

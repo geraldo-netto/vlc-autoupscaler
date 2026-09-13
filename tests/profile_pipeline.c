@@ -39,7 +39,7 @@ typedef struct {
     zt_pic_t input[PROFILE_INPUTS], output;
     usm_pool_t *usm;
     sample_t *samples;
-    up_profile_sched_t zbefore, ubefore, zafter, uafter;
+    up_profile_sched_t zbefore, ubefore, zafter, uafter, uretired;
     struct rusage before, after;
     double elapsed_us, cpu_us;
     up_profile_input_t raw;
@@ -160,9 +160,9 @@ static void destroy(pipeline_t *p)
     if (p->raw.file) fclose(p->raw.file);
 }
 
-static void probe_source(pipeline_t *p, const zt_pic_t *source)
+static int probe_source(pipeline_t *p, const zt_pic_t *source)
 {
-    if (!p->sharp_threshold || p->probe.frames >= UP_PROBE_WINDOW_FRAMES) return;
+    if (!p->sharp_threshold || p->probe.frames >= UP_PROBE_WINDOW_FRAMES) return 0;
     const plane_t *luma = &source->pic.p[0];
     up_probe_metrics_t metrics;
     up_probe_metrics(luma->p_pixels, luma->i_pitch, p->ctx.src_w, p->ctx.src_h, &metrics);
@@ -171,11 +171,13 @@ static void probe_source(pipeline_t *p, const zt_pic_t *source)
     if (p->probe.frames == UP_PROBE_WINDOW_FRAMES) {
         p->skip_usm = up_should_skip_usm_for_sharpness(&p->probe, p->sharp_threshold);
         if (p->skip_usm) {
+            if (p->usm && up_profile_usm_sched(p->usm, &p->uretired)) return -1;
             up_usm_adaptive_stop(&p->adaptive);
             up_usm_pool_destroy(p->usm);
             p->usm = NULL;
         }
     }
+    return 0;
 }
 
 static int frame(pipeline_t *p, int index, sample_t *sample)
@@ -186,7 +188,7 @@ static int frame(pipeline_t *p, int index, sample_t *sample)
     const double start = clock_us(CLOCK_MONOTONIC);
     const int phase = p->adaptive.tuner.phase;
     const unsigned changes = p->adaptive.tuner.changes;
-    probe_source(p, source);
+    if (probe_source(p, source)) return -1;
     up_usm_adaptive_begin(&p->adaptive);
     if (p->ctx.backend->process(&p->ctx, &source->pic,
                                 &p->output.pic) != SCALER_PROCESS_OK) return -1;
@@ -211,6 +213,8 @@ static int sched_snapshot(pipeline_t *p, up_profile_sched_t *z,
                            up_profile_sched_t *u)
 {
     if (up_profile_zimg_sched(&p->ctx, z)) return -1;
+    *u = p->uretired;
+    u->workers = 0;
     return p->usm ? up_profile_usm_sched(p->usm, u) : 0;
 }
 
