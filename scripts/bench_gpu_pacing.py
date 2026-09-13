@@ -44,8 +44,9 @@ def jobs():
 
 def collect(cmd, paths, log, enabled):
     samples = []
-    with log.open("w") as stream:
-        child = subprocess.Popen(cmd, stdout=stream, stderr=subprocess.PIPE, text=True)
+    diagnostics = log.with_suffix('.stderr')
+    with log.open("w") as stream, diagnostics.open("w") as errors:
+        child = subprocess.Popen(cmd, stdout=stream, stderr=errors, text=True)
         try:
             deadline = time.monotonic() + 90
             while child.poll() is None:
@@ -54,12 +55,11 @@ def collect(cmd, paths, log, enabled):
                 if enabled:
                     samples.append(read_sensors(paths))
                 time.sleep(.01)
-            _, errors = child.communicate(timeout=5)
         finally:
             if child.poll() is None:
                 child.kill()
                 child.wait()
-    return child.returncode, errors, samples
+    return child.returncode, diagnostics.read_text(errors='replace'), samples
 
 
 def sensor_statistics(active):

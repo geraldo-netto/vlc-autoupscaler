@@ -1,0 +1,51 @@
+"""ERR-9: GPU capture preserves diagnostics and reaps timed-out children."""
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import time
+import unittest
+from unittest.mock import patch
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'scripts'))
+import bench_gpu_pacing as gpu
+
+
+class GpuCaptureTests(unittest.TestCase):
+    def test_err9_stderr_larger_than_pipe_completes(self):
+        command = [sys.executable, '-c',
+                   "import sys; sys.stderr.write('x'*1048576); print('finished')"]
+        clock = time.monotonic
+        started = clock()
+        with tempfile.TemporaryDirectory() as root:
+            log = Path(root) / 'capture.log'
+            with patch.object(gpu.time, 'monotonic', side_effect=lambda: (clock()-started)*30):
+                rc, errors, samples = gpu.collect(command, {}, log, False)
+            self.assertEqual(rc, 0)
+            self.assertEqual(errors, 'x'*1048576)
+            self.assertEqual(log.read_text(), 'finished\n')
+            self.assertEqual(log.with_suffix('.stderr').read_text(), errors)
+            self.assertEqual(samples, [])
+
+    def test_err9_timeout_reaps_child_and_keeps_logs(self):
+        children = []
+        popen = subprocess.Popen
+
+        def launch(*args, **kwargs):
+            child = popen(*args, **kwargs)
+            children.append(child)
+            return child
+
+        with tempfile.TemporaryDirectory() as root:
+            log = Path(root) / 'capture.log'
+            with patch.object(gpu.subprocess, 'Popen', side_effect=launch), \
+                    patch.object(gpu.time, 'monotonic', side_effect=[0, 91]):
+                with self.assertRaisesRegex(TimeoutError, 'GPU benchmark timed out'):
+                    gpu.collect([sys.executable, '-c', 'import time; time.sleep(30)'], {}, log, False)
+            self.assertIsNotNone(children[0].returncode)
+            self.assertTrue(log.exists())
+            self.assertTrue(log.with_suffix('.stderr').exists())
+
+
+if __name__ == '__main__':
+    unittest.main()
