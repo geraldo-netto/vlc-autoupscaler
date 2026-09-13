@@ -50,11 +50,49 @@ def verify_hashes(directory, row):
             raise ValueError('raw capture hash differs')
 
 
+def check_command(command):
+    if not isinstance(command, list) or len(command) != 11:
+        raise ValueError('capture command must contain the protocol arguments')
+    if not all(isinstance(value, str) for value in command):
+        raise ValueError('capture arguments must be strings')
+
+
+def verify_invocation(directory, record):
+    command, environment = record['command'], record['environment']
+    check_command(command)
+    if not isinstance(environment, dict):
+        raise ValueError('capture environment must be an object')
+    trace = Path(command[-1])
+    if trace.name != record['trace'] or trace.parent.name != directory.name:
+        raise ValueError('command trace differs from capture location')
+    expected, controls = bench.capture_configuration(
+        Path(command[0]).parent, Path(environment['UP_PROFILE_INPUT']).parent, record['job'], trace)
+    actual = dict(environment)
+    # Historical captures cleared inherited controls and omitted these zero defaults.
+    for key in ('UP_PROFILE_EXECUTOR', 'UP_PROFILE_ACTIVE'):
+        actual.setdefault(key, '0')
+    if command != expected or actual != controls:
+        raise ValueError('capture invocation differs from treatment or timing protocol')
+    return controls
+
+
+def verify_runtime(record, controls):
+    result = record['result']
+    if json.loads(record['stdout']) != result:
+        raise ValueError('capture summary differs from process output')
+    expected = {key: int(controls['UP_PROFILE_' + key.upper()])
+                for key in ('executor', 'zerocopy', 'sharp_threshold', 'warmup')}
+    expected['tuner_policy'] = 'latency-experiment' if record['job']['treatment'] == 'latency' else 'legacy'
+    if any(type(result[key]) is not type(value) or result[key] != value for key, value in expected.items()):
+        raise ValueError('runtime controls differ from captured invocation')
+
+
 def verify_record(directory, record, clip, treatment, trace):
     if record['returncode'] != 0 or record.get('failure') or record['job'] != bench.settings(clip, treatment):
         raise ValueError('failed capture or mismatched capture identity')
     if record['trace'] != trace:
         raise ValueError('capture trace differs from pair')
+    verify_runtime(record, verify_invocation(directory, record))
     computed = trace_metrics(child(directory, trace))
     for metric, expected in computed.items():
         actual = record['result'][metric]

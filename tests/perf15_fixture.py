@@ -4,12 +4,29 @@ import json
 import bench_perf15 as bench
 
 
+def invocation(job, trace):
+    command = ['unused/' + job['binary'], '12', str(job['usm']),
+               str(job['size']*16//9), str(job['size']), '2700', '1', '0', '0',
+               '33333', str(trace)]
+    environment = dict(UP_PROFILE_INPUT='unused/' + job['clip'] + '.yuv',
+                       UP_PROFILE_WIDTH=str(job['width']), UP_PROFILE_HEIGHT=str(job['height']),
+                       UP_PROFILE_ADAPTIVE=str(job['adaptive']), UP_PROFILE_WARMUP='0',
+                       UP_PROFILE_SHARP_THRESHOLD='3500', UP_PROFILE_ZEROCOPY='1',
+                       UP_PROFILE_USM_CPU_FIRST='0', UP_PROFILE_USM_CPU_COUNT=str(job['affinity']),
+                       UP_PROFILE_VERIFY_PIXELS='0')
+    return dict(command=command, environment=environment)
+
+
 def write_capture(directory, clip, treatment, index, value, outcome):
     trace = directory / ('%d.csv' % index)
     trace.write_text('frame,total,processing_cpu\n' + ''.join(
         '%d,%.3f,%.3f\n' % (frame, value, value) for frame in range(2700)))
-    return dict(job=bench.settings(clip, treatment), trace=trace.name, returncode=0,
-                result=dict.fromkeys(bench.METRICS, value) | {'adaptive_outcome': outcome})
+    job = bench.settings(clip, treatment)
+    result = dict.fromkeys(bench.METRICS, value) | dict(
+        adaptive_outcome=outcome, executor=0, zerocopy=1, sharp_threshold=3500, warmup=0,
+        tuner_policy='latency-experiment' if treatment == 'latency' else 'legacy')
+    return dict(job=job, trace=trace.name, returncode=0, **invocation(job, trace),
+                result=result, stdout=json.dumps(result), stderr='')
 
 
 def fake_pair(args, **job):

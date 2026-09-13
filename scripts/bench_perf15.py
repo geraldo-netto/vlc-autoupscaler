@@ -59,17 +59,22 @@ def execute_capture(command, environment):
         return dict(returncode=-1, failure='launch', error=str(error), stdout='', stderr='')
 
 
-def capture(args, job, index, pixels=False):
-    trace = args.output / (str(index) + ".csv")
+def capture_configuration(build, clips, job, trace, pixels=False):
     frames, period = (600, 0) if pixels else (2700, 33333)
-    cmd = [str(args.build/job["binary"]), "12", str(job["usm"]),
+    cmd = [str(build/job["binary"]), "12", str(job["usm"]),
            str(job["size"]*16//9), str(job["size"]), str(frames), "1", "0", "0",
            str(period), str(trace)]
-    values = dict(INPUT=args.clips/(job["clip"]+".yuv"), WIDTH=job["width"], HEIGHT=job["height"],
+    values = dict(INPUT=clips/(job["clip"]+".yuv"), WIDTH=job["width"], HEIGHT=job["height"],
                   ADAPTIVE=job["adaptive"], WARMUP=0, SHARP_THRESHOLD=3500, ZEROCOPY=1,
-                  USM_CPU_FIRST=0, USM_CPU_COUNT=job["affinity"], VERIFY_PIXELS=int(pixels))
+                  USM_CPU_FIRST=0, USM_CPU_COUNT=job["affinity"], VERIFY_PIXELS=int(pixels),
+                  EXECUTOR=0, ACTIVE=0)
+    return cmd, {"UP_PROFILE_"+key: str(value) for key, value in values.items()}
+
+
+def capture(args, job, index, pixels=False):
+    trace = args.output / (str(index) + ".csv")
+    cmd, controls = capture_configuration(args.build, args.clips, job, trace, pixels)
     env = {key: value for key, value in os.environ.items() if not key.startswith("UP_PROFILE_")}
-    controls = {"UP_PROFILE_"+key: str(value) for key, value in values.items()}
     before = os.getloadavg()
     result = execute_capture(cmd, dict(env, **controls))
     row = dict(job=job, command=cmd, environment=controls, trace=trace.name,
