@@ -24,14 +24,20 @@ def send(player, command):
 
 
 def stop(player):
-    if player.poll() is None:
-        send(player, "quit")
     try:
+        if player.poll() is None:
+            send(player, "quit")
         return player.wait(timeout=10)
-    except subprocess.TimeoutExpired:
-        player.kill()
+    except BaseException:
+        if player.poll() is None:
+            player.kill()
         player.wait()
         raise
+    finally:
+        try:
+            player.stdin.close()
+        except OSError:
+            pass
 
 
 def resize(title):
@@ -85,7 +91,13 @@ def capture(args, env, clip, mode, repeat, index):
                                   stderr=stream, text=True)
         try:
             row = measure(player, title, args.build / "libautoupscale_plugin.so")
-        finally:
+        except BaseException as error:
+            try:
+                stop(player)
+            except BaseException as cleanup:
+                raise error from cleanup
+            raise
+        else:
             rc = stop(player)
     text = log.read_text()
     row.update(clip=clip, mode=mode, repeat=repeat, command=cmd, returncode=rc,
