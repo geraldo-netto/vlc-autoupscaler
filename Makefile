@@ -633,6 +633,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@$(BUILD)/test_autoupscale_lifecycle
 	@$(BUILD)/test_pipeline_metrics
 	@$(if $(HAVE_PROFILE_SDKS),PYTHONDONTWRITEBYTECODE=1 python3 tests/test_profile_scheduler.py $(BUILD)/profile_pipeline,echo "profile scheduler: zimg or VLC SDK unavailable")
+	@$(if $(HAVE_PROFILE_SDKS),PYTHONDONTWRITEBYTECODE=1 python3 tests/test_profile_scheduler.py $(BUILD)/profile_pipeline_latency,echo "latency profile scheduler: zimg or VLC SDK unavailable")
 	@$(BUILD)/test_vulkan_limits
 	@$(BUILD)/test_vulkan_timing
 	@$(if $(strip $(VLC_LIBS)),$(BUILD)/test_display_adapter,echo "display adapter: VLC SDK unavailable")
@@ -648,6 +649,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_decisions.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_confirmation.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_evidence.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_activity.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_archive.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_profile_project.py
 	@echo
@@ -760,7 +762,7 @@ test: $(BUILD)/test_frame_retirement_zimg
 test: $(BUILD)/test_bench_adaptive $(BUILD)/test_experiment_zimg $(BUILD)/test_profile_input
 test: $(BUILD)/test_profile_pipeline
 test: $(BUILD)/test_profile_pipeline_latency
-test: $(BUILD)/bench_adaptive $(BUILD)/profile_pipeline
+test: $(BUILD)/bench_adaptive $(BUILD)/profile_pipeline $(BUILD)/profile_pipeline_latency
 test: $(BUILD)/bench_scaler_zimg $(BUILD)/bench_pipeline
 test: $(BUILD)/test_bench_pipeline_arguments $(BUILD)/test_bench_zimg_arguments
 endif

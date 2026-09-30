@@ -37,7 +37,7 @@ TRACE_FIELDS = ('frame,total,zimg,usm,zdispatch,zfirst,zlast,zmin,zmax,zmean,zha
 def trace_rows(path):
     with path.open() as stream:
         reader = csv.DictReader(stream)
-        if reader.fieldnames != TRACE_FIELDS:
+        if reader.fieldnames not in (TRACE_FIELDS, TRACE_FIELDS + ['adaptive_active']):
             raise ValueError('trace requires the complete profiler schema')
         rows = list(reader)
     if [int(row['frame']) for row in rows] != list(range(2700)):
@@ -66,6 +66,36 @@ def verify_trace_row(row):
     bypass = int(row['skipped']) == 1
     if bypass != (int(row['workers']) == 0) or bypass != (int(row['selected_workers']) == 0):
         raise ValueError('trace worker counts contradict bypass state')
+    verify_activity_row(row)
+
+
+def verify_activity_row(row):
+    if 'adaptive_active' not in row:
+        return
+    if row['adaptive_active'] not in ('0', '1'):
+        raise ValueError('trace activity must use canonical boolean integers')
+    if row['adaptive_active'] == '1' and row['skipped'] == '1':
+        raise ValueError('trace activity contradicts bypass state')
+    if row['adaptive_active'] == '0' and row['changed'] == '1':
+        raise ValueError('inactive tuner reports activity')
+
+
+def verify_activity_transitions(rows):
+    for previous, current in zip(rows, rows[1:]):
+        if previous['adaptive_active'] == '0':
+            if current['adaptive_active'] == '1' or current['phase'] != previous['phase']:
+                raise ValueError('stopped tuner cannot restart activity or change phase')
+
+
+def verify_trace_activity(rows, adaptive, outcome):
+    if 'adaptive_active' not in rows[0]:
+        return
+    active = [row['adaptive_active'] == '1' for row in rows]
+    if (not adaptive or outcome == 'disabled') and any(active):
+        raise ValueError('trace activity contradicts disabled or fixed mode')
+    if active[-1] != (outcome in ('searching', 'settled')):
+        raise ValueError('terminal activity contradicts adaptive outcome')
+    verify_activity_transitions(rows)
 
 
 def trace_metrics(rows):
@@ -117,6 +147,7 @@ def verify_terminal_state(result, rows):
 def verify_trace(record, path):
     rows = trace_rows(path)
     adaptive = bool(record['job']['adaptive'])
+    verify_trace_activity(rows, adaptive, record['result']['adaptive_outcome'])
     verify_trace_counters(record['result'], rows)
     verify_trace_transitions(rows, adaptive)
     verify_terminal_state(record['result'], rows)

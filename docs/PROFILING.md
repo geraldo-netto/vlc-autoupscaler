@@ -367,6 +367,10 @@ on active frames with USM workers and no bypass; restarts require two adjacent
 active frames. A retained `phase` alone does not mean tuning is still active.
 Historical CSVs without the flag use the requested mode, worker count and
 `skipped` flag; these older fields cannot identify an unmarked tuner fallback.
+The PERF-15 evidence validator accepts both complete CSV schemas. When present,
+`adaptive_active` must be `0` or `1` and agree with bypass, requested mode and
+final outcome. Once inactive, tuning cannot restart or change phase within
+the same capture.
 
 `pin=1` enables the existing zimg affinity policy; USM remains scheduler-managed.
 For the empty-pool executable, `pin=1` pins its synthetic workers to the allowed
