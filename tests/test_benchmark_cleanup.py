@@ -11,6 +11,8 @@ from unittest.mock import Mock, patch
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'scripts'))
 import bench_gpu_pacing as gpu
 import bench_native_playback as playback
+import test_native_vout_runtime as native
+import os
 
 
 class GpuCaptureTests(unittest.TestCase):
@@ -105,6 +107,58 @@ class PlaybackCleanupTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'measurement failed') as caught:
                     playback.capture(args, {}, 'clip', 'native', 0, 0)
                 self.assertIsInstance(caught.exception.__cause__, BrokenPipeError)
+
+
+class NativeCleanupTests(unittest.TestCase):
+    def capture(self, child, control_error=None):
+        with tempfile.TemporaryDirectory() as root:
+            args = SimpleNamespace(output=Path(root), build=Path(root), clip=Path('clip'))
+            child.pid = os.getpid()
+            with patch.object(native.subprocess, 'Popen', return_value=child), \
+                    patch.object(native.time, 'sleep'), \
+                    patch.object(native, 'verify_plugin_maps'), \
+                    patch.object(native, 'controls', return_value={}, side_effect=control_error), \
+                    patch.object(native, 'window_state', return_value={}):
+                return native.playback(args, {}, 'title')
+
+    def test_rev9_broken_pipe_reaps_and_closes(self):
+        child = Mock()
+        child.poll.return_value = None
+        child.stdin.write.side_effect = BrokenPipeError('quit failed')
+        with self.assertRaises(BrokenPipeError):
+            self.capture(child)
+        child.kill.assert_called_once_with()
+        child.wait.assert_called_once_with()
+        child.stdin.close.assert_called_once_with()
+
+    def test_rev9_hung_quit_reaps_and_closes(self):
+        child = Mock()
+        child.poll.return_value = None
+        child.wait.side_effect = [subprocess.TimeoutExpired('vlc', 10), -9]
+        with self.assertRaises(subprocess.TimeoutExpired):
+            self.capture(child)
+        child.kill.assert_called_once_with()
+        self.assertEqual(child.wait.call_count, 2)
+        child.stdin.close.assert_called_once_with()
+
+    def test_rev9_preserves_control_error_when_cleanup_fails(self):
+        child = Mock()
+        child.poll.return_value = None
+        child.stdin.write.side_effect = BrokenPipeError('quit failed')
+        with self.assertRaisesRegex(ValueError, 'controls failed') as caught:
+            self.capture(child, ValueError('controls failed'))
+        self.assertIsInstance(caught.exception.__cause__, BrokenPipeError)
+        child.wait.assert_called_once_with()
+        child.stdin.close.assert_called_once_with()
+
+    def test_rev9_success_closes_without_kill(self):
+        child = Mock(returncode=0)
+        child.poll.return_value = None
+        self.assertEqual(self.capture(child)['returncode'], 0)
+        child.stdin.write.assert_called_once_with('quit\n')
+        child.wait.assert_called_once_with(timeout=10)
+        child.kill.assert_not_called()
+        child.stdin.close.assert_called_once_with()
 
 
 if __name__ == '__main__':

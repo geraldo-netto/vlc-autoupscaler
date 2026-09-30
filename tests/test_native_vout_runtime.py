@@ -11,6 +11,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 from playback_runtime import prepare_runtime, verify_plugin_maps
+from bench_native_playback import stop
 
 
 def execute(command):
@@ -116,10 +117,14 @@ def playback(args, env, title):
             verify_plugin_maps(maps, args.build / "libautoupscale_plugin.so")
             row = controls(player, title, args.output)
             row["maps"] = maps
-        finally:
-            if player.poll() is None:
-                send(player, "quit", 0)
-            player.wait(timeout=10)
+        except BaseException as error:
+            try:
+                stop(player)
+            except BaseException as cleanup:
+                raise error from cleanup
+            raise
+        else:
+            stop(player)
     row.update(command=command, returncode=player.returncode, after_exit=window_state(title))
     text = log.read_text()
     row["native_geometry"] = re.findall(r"AutoUpscale native vout:.*", text)
