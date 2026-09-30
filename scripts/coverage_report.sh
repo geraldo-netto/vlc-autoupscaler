@@ -12,10 +12,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 SCOPE_FILE="${COVERAGE_SCOPE_FILE:-$SCRIPT_DIR/coverage_scope.txt}"
 COV_DIR="${COV_DIR:-$REPO_ROOT/build/cov}"
-if [[ -z "${THRESHOLD:-}" ]]; then
-    echo "ERROR: THRESHOLD is required (normally set by make coverage)." >&2
-    exit 2
-fi
+source "$SCRIPT_DIR/coverage_threshold.sh"
 
 if [[ "$SCOPE_FILE" != /* ]]; then SCOPE_FILE="$REPO_ROOT/$SCOPE_FILE"; fi
 if [[ "$COV_DIR" != /* ]]; then COV_DIR="$REPO_ROOT/$COV_DIR"; fi
@@ -150,7 +147,7 @@ for t in "${TRACKED[@]}"; do
     fi
     flag=""
     if [[ "$runnable" -gt 0 ]]; then
-        below=$(awk "BEGIN{print ($covered*100.0/$runnable < $THRESHOLD)?1:0}")
+        below=$(awk -v threshold="$THRESHOLD" "BEGIN{print ($covered*100.0/$runnable < threshold)?1:0}")
         if [[ "$below" == "1" ]]; then flag=" <-- BELOW $THRESHOLD%"; fail=1; fi
     fi
     printf "%-30s %8d %8d %7s%%%s\n" "$t" "$runnable" "$covered" "$pct" "$flag"

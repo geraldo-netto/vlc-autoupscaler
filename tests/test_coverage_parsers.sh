@@ -149,4 +149,20 @@ set -e
 test "$partial_status" -eq 1 ||
     fail 'BUILD-39: one half-covered binary must fail the threshold'
 
+write_json_case valid
+printf '%s\n' '-:0:Source:src/upscale_logic.h' '1:1:int covered;' \
+    >"$cov_dir/upscale_logic.h.gcov"
+for parser in "$function_parser" "$repo_root/scripts/coverage_report.sh"; do
+    for threshold in nan NaN inf -inf Infinity -1 100.001 1e309 garbage '80;exit' ' 80' ''; do
+        expect_failure 2 'ERROR: THRESHOLD must be a finite percentage from 0 to 100.' \
+            env COV_DIR="$cov_dir" COVERAGE_SCOPE_FILE="$scope" THRESHOLD="$threshold" \
+            "$parser"
+    done
+    for threshold in 0 0.001 80 99.999 100; do
+        env COV_DIR="$cov_dir" COVERAGE_SCOPE_FILE="$scope" THRESHOLD="$threshold" \
+            "$parser" >"$tmp/stdout" 2>"$tmp/stderr" ||
+            fail "REV-4: valid threshold $threshold rejected by $parser"
+    done
+done
+
 echo "coverage parser checks OK"
