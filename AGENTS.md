@@ -22,11 +22,12 @@ the behavior defined here when interacting with this workspace.
 ## Rules
 
 - Don't assume. Don't hide confusion. Surface tradeoffs and ask the user when unclear.
-- ALWAYS record every contradiction, of any kind, in the matching category table in
-  `TODO.md` with status `blocked`, including contradictions between instructions,
-  requirements, documentation, code, tests, or observed behavior. Identify the
-  conflicting statements and their sources, and the decision or correction needed
-  to resolve them. Never report a contradiction only in chat.
+- ALWAYS record contradictions between instructions, requirements, documentation,
+  code, tests, or observed behavior in `TODO.md`. Identify the conflicting statements,
+  their sources, and the exact correction or evidence needed to resolve them. Use
+  `open` for actionable work; use `blocked` only for a named missing decision,
+  evidence, or prerequisite. A need for review alone is not a blocker. Move blocked
+  work to `open` when its obstacle is removed. Never report contradictions only in chat.
 - Write the minimum code that solves the problem. Avoid speculative or unneeded changes.
 - Touch only what you must. Clean up only your own mess and leave the workspace cleaner than you found it.
 - Define success criteria before making changes. Verify against those criteria and iterate until satisfied.
@@ -62,16 +63,28 @@ the behavior defined here when interacting with this workspace.
   (clang-tidy / cppcheck / SonarQube) — don't rely on "it compiles".
 - Prefer standard-library and well-defined constructs over platform tricks; if platform/
   compiler-specific behavior is required, isolate and document it.
-- ALWAYS record review findings in `TODO.md` — never report them only in chat. Any time you
-  scan, review, audit, or "look for issues" (not just major changes), add each finding to the
-  matching category table in `TODO.md` before/while reporting it.
-- ALWAYS remove completed items from `TODO.md` — once a finding is implemented + tested + merged,
-  delete its row from the table outright. No "shipped" sub-sections, no struck-through entries.
-  `git log` is the durable record. Exceptions: the "Open — parked" section keeps open-but-deferred
-  items with a why-not-now annotation; the "Audit picks deliberately rejected" section keeps the
-  rationale so future passes don't re-pick the same items.
-- When making major changes, rescan the whole project and create or update `TODO.md` with one table per review category.
-  Each table should use the format: `id | status | effort | description | notes`.
+- ALWAYS record review findings in `TODO.md` before or while reporting them, including
+  findings from small scans and reviews. Use exactly two tables: **Open items** for
+  `open`/`in_progress` work and **Other items** for `blocked`, `deferred`, `wont_fix`,
+  and other dispositions. Preserve columns `id | status | effort | description | notes`
+  and existing IDs. Put the review category in each description.
+- Order Open by implementation dependencies and priority, with prerequisites explicit.
+  Order Other with unresolved blockers first, deferred work next, and declined work last.
+  Each unresolved row must name the next decision, evidence, prerequisite, or review.
+  Preserve deferred reasons and declined dispositions; do not reopen them automatically.
+- Remove completed rows after implementation and verification; retain regression tests
+  permanently in the normal automated suite. `git log` records completion. Keep deferred
+  and declined rationale in Other items, without historical completion sections.
+- Every confirmed behavioral fix needs a permanent regression linked to its issue or
+  TODO ID: add it first, prove failure, then verify it passes after the fix. During review
+  only, record reproduction and required coverage in the ledger. If automation is unavailable,
+  record the exact obstacle and missing test and keep the bug unresolved. Documentation
+  and policy corrections need no artificial tests.
+- Code defines implemented behavior. Correct stale documentation directly; fix code that
+  violates an explicit requirement with regression coverage. Mark planned and historical
+  behavior clearly and support performance claims with measurements.
+- When making major changes, rescan the whole project and update the two TODO tables,
+  covering these review categories:
   - security
   - undefined behavior — UB and its cousins: signed overflow, OOB access, use-after-free,
     double-free, uninitialized reads, null-deref, data races, strict-aliasing/type-punning
