@@ -4,7 +4,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| REV-23 | open | small | Build/toolchain: clear ShellCheck findings introduced by coverage/profile fixes. | `make analyze` reports SC1091 for the new shared threshold source in both coverage gates and SC2129 for repeated profile environment redirects. Supply source metadata and group redirects; rerun ShellCheck and existing parser/profile regressions. No behavioral change or new artificial test is needed. |
 
 ## Other items
 

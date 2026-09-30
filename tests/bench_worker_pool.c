@@ -69,7 +69,7 @@ static int parse_args(int argc, char **argv, long *workers, long *iterations)
     return 0;
 }
 
-static bool completion_valid(up_worker_pool_t *pool)
+static bool completion_valid(const up_worker_pool_t *pool)
 {
     for (int i = 0; i < pool->n_workers; i++) {
         const bench_slot_t *slot = up_worker_pool_slot(pool, i);
