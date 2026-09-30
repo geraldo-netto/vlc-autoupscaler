@@ -1,16 +1,21 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include <time.h>
 #include <stdint.h>
+#include <limits.h>
+#include <stdbool.h>
 #include "test_harness.h"
 
 static uint64_t wall_clock, cpu_clock;
 static unsigned clock_calls;
 static int clock_failure;
+static bool raw_clock;
+static struct timespec raw_time;
 
 static int fake_metrics_clock(clockid_t clock, struct timespec *time)
 {
     clock_calls++;
     if (clock_failure) return -1;
+    if (raw_clock) { *time = raw_time; return 0; }
     uint64_t value = clock == CLOCK_MONOTONIC ? wall_clock : cpu_clock;
     time->tv_sec = (time_t)(value / UINT64_C(1000000000));
     time->tv_nsec = (long)(value % UINT64_C(1000000000));
@@ -81,10 +86,63 @@ static void test_failed_frames_and_clocks(void)
     END();
 }
 
+static void test_clock_boundaries(void)
+{
+    BEGIN("REV-2: invalid clocks and nanosecond boundaries");
+    const struct timespec cases[] = {
+        { -1, 0 }, { 0, -1 }, { 0, 1000000000L },
+        { (time_t)(UINT64_MAX / UINT64_C(1000000000) + 1), 0 },
+    };
+    raw_clock = true;
+    for (unsigned i = 0; i < sizeof(cases) / sizeof(cases[0]); i++) {
+        raw_time = cases[i];
+        uint64_t value = 42;
+        CHECK(!up_metrics_clock(CLOCK_MONOTONIC, &value));
+        CHECK(value == 42);
+    }
+    for (long nanos = 0; nanos < 1000000000L; nanos += 999999999L) {
+        raw_time = (struct timespec){ 0, nanos };
+        uint64_t value = 42;
+        CHECK(up_metrics_clock(CLOCK_MONOTONIC, &value));
+        CHECK(value == (uint64_t)nanos);
+    }
+    raw_clock = false;
+    END();
+}
+
+static void test_field_and_window_boundaries(void)
+{
+    BEGIN("REV-2: bounded invalid fields and full windows");
+    up_pipeline_metrics_t m = {0};
+    wall_clock = cpu_clock = 10000;
+    up_metrics_begin(&m);
+    for (unsigned field = 2; field < 260; field++) {
+        up_metrics_stage(&m, field, UINT64_MAX);
+        CHECK(m.valid);
+        CHECK(up_metrics_score(&m, field).mean_us == 0);
+    }
+    up_metrics_stage(&m, UINT_MAX, 0);
+    CHECK(m.valid);
+    up_metrics_stage(&m, 0, wall_clock + 1);
+    CHECK(!m.valid);
+    up_metrics_begin(&m);
+    clock_failure = 1;
+    CHECK(up_metrics_mark(&m) == 0 && !m.valid);
+    clock_failure = 0;
+    up_metrics_begin(&m);
+    m.used = UP_METRICS_WINDOW;
+    up_metrics_store(&m, wall_clock, cpu_clock);
+    CHECK(m.used == UP_METRICS_WINDOW);
+    CHECK(up_metrics_score(&m, UINT_MAX).mean_us == 0);
+    END();
+}
+
 int main(void)
 {
     test_disabled();
     test_distribution();
     test_failed_frames_and_clocks();
+    test_clock_boundaries();
+    test_field_and_window_boundaries();
     return test_harness_report();
 }

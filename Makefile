@@ -1360,6 +1360,7 @@ COV_CFLAGS  := -O0 -g $(MARCH_FLAG) $(WARN) -MMD -MP \
 COV_LDFLAGS := --coverage
 
 COV_TESTS := \
+    $(COV_BUILD)/test_pipeline_metrics \
     $(COV_BUILD)/test_frame_retirement_usm \
     $(if $(HAVE_PROFILE_SDKS),$(COV_BUILD)/test_frame_retirement_zimg) \
     $(COV_BUILD)/test_worker_tuner \
@@ -1403,6 +1404,8 @@ $(COV_BUILD): | $(BUILD_MARKER)
 	mkdir -p "$(COV_BUILD)"
 
 $(COV_BUILD)/test_worker_tuner: tests/test_worker_tuner.c src/worker_tuner.h src/thread_policy.h $(BUILD_CONFIG) | $(COV_BUILD)
+	$(COV_CC) $(COV_CFLAGS) -o $@ $< $(COV_LDFLAGS)
+$(COV_BUILD)/test_pipeline_metrics: tests/test_pipeline_metrics.c src/pipeline_metrics.h $(BUILD_CONFIG) | $(COV_BUILD)
 	$(COV_CC) $(COV_CFLAGS) -o $@ $< $(COV_LDFLAGS)
 $(COV_BUILD)/test_frame_retirement_usm: tests/test_frame_retirement.c src/usm_pool.c src/worker_pool.h $(BUILD_CONFIG) | $(COV_BUILD)
 	$(COV_CC) $(COV_CFLAGS) -o $@ $< $(COV_LDFLAGS) -lpthread -Wl,--wrap=pthread_join

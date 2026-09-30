@@ -24,6 +24,11 @@ class CoverageBuildTests(unittest.TestCase):
         self.assertIn("test_frame_retirement_usm", names)
         self.assertNotIn("test_frame_retirement_zimg", names)
 
+    def test_rev2_metrics_instrumented_and_gated(self):
+        self.assertIn('test_pipeline_metrics', self.coverage_tests())
+        scope = (ROOT / 'scripts/coverage_scope.txt').read_text().splitlines()
+        self.assertIn('src/pipeline_metrics.h', scope)
+
 
 if __name__ == "__main__":
     unittest.main()

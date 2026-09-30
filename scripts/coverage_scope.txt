@@ -10,6 +10,7 @@ src/autoupscale.c
 src/usm.h
 src/thread_policy.h
 src/pool_gate.h
+src/pipeline_metrics.h
 src/worker_pool.h
 src/plane_utils.h
 src/zimg_helpers.h
