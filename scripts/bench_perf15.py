@@ -8,7 +8,7 @@ from pathlib import Path
 import random
 import subprocess
 
-from bench_playback_policies import digest
+from bench_playback_policies import digest, tuning_summary
 from capture_attempt import execute_capture, output_text
 
 CLIPS = ("animation", "motion", "live-action-540")
@@ -34,11 +34,7 @@ def settings(clip, treatment):
 def trace_summary(path, adaptive):
     with path.open() as stream:
         rows = list(csv.DictReader(stream))
-    settled = sum(row["phase"] == "3" for row in rows) if adaptive else 0
-    transitions = zip(rows, rows[1:])
-    return dict(settled_frames=settled,
-                exploration_frames=len(rows)-settled if adaptive else 0,
-                restarts=sum(a["phase"] == "3" and b["phase"] != "3" for a, b in transitions),
+    return dict(**tuning_summary(rows, adaptive),
                 selected_workers=sorted({int(row["selected_workers"]) for row in rows}),
                 changed_frames=[dict(frame=int(row["frame"]), us=float(row["total"]),
                                      workers=int(row["workers"])) for row in rows if row["changed"] == "1"])

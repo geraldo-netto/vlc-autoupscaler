@@ -50,10 +50,25 @@ def environment(args, job):
     return env
 
 
+def active_tuning(row, adaptive):
+    return (adaptive and row.get('adaptive_active', '1') == '1'
+            and row['skipped'] != '1' and int(row['workers']) > 0)
+
+
+def tuning_summary(rows, adaptive):
+    active = [row for row in rows if active_tuning(row, adaptive)]
+    settled = sum(row['phase'] == '3' for row in active)
+    restarts = sum(a['phase'] == '3' and b['phase'] != '3'
+                   for a, b in zip(rows, rows[1:])
+                   if active_tuning(a, adaptive) and active_tuning(b, adaptive))
+    return dict(exploration_frames=len(active) - settled, settled_frames=settled,
+                restarts=restarts)
+
+
 def summarize_trace(path, adaptive=False):
     with path.open() as stream:
         rows = list(csv.DictReader(stream))
-    return dict(exploration_frames=sum(row["phase"] != "3" for row in rows) if adaptive else 0,
+    return dict(**tuning_summary(rows, adaptive),
                 changed_frames=[int(row["frame"]) for row in rows if row["changed"] == "1"],
                 bypass_frames=sum(row["skipped"] == "1" for row in rows),
                 incumbent_worker_counts=sorted({int(row["workers"]) for row in rows}),

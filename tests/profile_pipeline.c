@@ -30,7 +30,7 @@ typedef struct {
     double total, zimg, usm;
     up_profile_frame_t ztrace, utrace;
     double cpu;
-    int phase, workers, changed, skipped, selected_workers;
+    int phase, workers, changed, skipped, selected_workers, adaptive_active;
     uint64_t hash;
 } sample_t;
 
@@ -204,7 +204,8 @@ static int frame(pipeline_t *p, int index, sample_t *sample)
                           clock_us(CLOCK_PROCESS_CPUTIME_ID) - cpu,
                           phase, up_usm_pool_effective_threads(p->usm),
                           changes != p->adaptive.tuner.changes, p->skip_usm,
-                          p->usm ? up_profile_usm_selected_workers() : 0, 0 };
+                          p->usm ? up_profile_usm_selected_workers() : 0,
+                          p->adaptive.enabled, 0 };
     if (p->verify_pixels) sample->hash = picture_hash(&p->output);
     return up_profile_usm_affinity_status();
 }
@@ -378,15 +379,15 @@ static int write_samples(const pipeline_t *p, int n, const char *path)
     if (!f) return -1;
     fprintf(f, "frame,total,zimg,usm,zdispatch,zfirst,zlast,zmin,zmax,zmean,zhandoff,zcpu,"
                "udispatch,ufirst,ulast,umin,umax,umean,uhandoff,ucpu,"
-               "processing_cpu,phase,workers,changed,skipped,selected_workers,pixel_hash\n");
+               "processing_cpu,phase,workers,changed,skipped,selected_workers,pixel_hash,adaptive_active\n");
     for (int i = 0; i < n; i++) {
         const sample_t *s = &p->samples[i];
         fprintf(f, "%d,%.3f,%.3f,%.3f", i, s->total, s->zimg, s->usm);
         trace_row(f, &s->ztrace);
         trace_row(f, &s->utrace);
-        fprintf(f, ",%.3f,%d,%d,%d,%d,%d,%016llx\n", s->cpu, s->phase,
+        fprintf(f, ",%.3f,%d,%d,%d,%d,%d,%016llx,%d\n", s->cpu, s->phase,
                 s->workers, s->changed, s->skipped, s->selected_workers,
-                (unsigned long long)s->hash);
+                (unsigned long long)s->hash, s->adaptive_active);
     }
     const int failed = ferror(f);
     return fclose(f) || failed ? -1 : 0;

@@ -1,15 +1,31 @@
 """OBS-27: scheduler counters survive mid-capture USM retirement."""
+import csv
 import json
 import os
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import unittest
 
 BINARY = Path(sys.argv.pop(1)).resolve()
 
 
 class SchedulerTests(unittest.TestCase):
+    def test_rev28_trace_marks_sharpness_bypass_inactive(self):
+        env = {key: value for key, value in os.environ.items() if not key.startswith('UP_PROFILE_')}
+        env.update(UP_PROFILE_WARMUP='0', UP_PROFILE_SHARP_THRESHOLD='3500',
+                   UP_PROFILE_ADAPTIVE='1')
+        with tempfile.TemporaryDirectory() as directory:
+            trace = Path(directory) / 'trace.csv'
+            result = subprocess.run([str(BINARY), '1', '8', '128', '128', '70',
+                                     '0', '0', '0', '0', str(trace)], env=env,
+                                    capture_output=True, text=True, timeout=20, check=True)
+            with trace.open() as stream:
+                rows = list(csv.DictReader(stream))
+        self.assertEqual(json.loads(result.stdout)['adaptive_outcome'], 'sharpness-bypass')
+        self.assertEqual([row.get('adaptive_active') for row in rows], ['1'] * 59 + ['0'] * 11)
+
     def capture(self, workers, threshold, warmup=1):
         env = {key: value for key, value in os.environ.items() if not key.startswith('UP_PROFILE_')}
         env.update(UP_PROFILE_WARMUP=str(warmup), UP_PROFILE_SHARP_THRESHOLD=str(threshold))

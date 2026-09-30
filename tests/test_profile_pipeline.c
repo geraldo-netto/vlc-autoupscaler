@@ -58,6 +58,8 @@ static void test_adaptive_pixels(void)
             CHECK(frame(&adaptive, i, &y) == 0);
             CHECK(picture_hash(&fixed.output) == picture_hash(&adaptive.output));
             CHECK(x.hash == y.hash && y.hash != 0);
+            CHECK(x.adaptive_active == 0);
+            CHECK(y.adaptive_active == 1);
             CHECK(y.selected_workers == (1 << (i % 4)));
         }
     }
@@ -84,11 +86,41 @@ static void test_trial_fallback(void)
         CHECK(frame(&p, 0, &s) == 0);
         CHECK(picture_hash(&fixed.output) == picture_hash(&p.output));
         CHECK(strcmp(adaptive_outcome(&p), "fallback") == 0);
+        CHECK(s.adaptive_active == 0);
         CHECK(p.usm != NULL);
         fail_create = 0;
     }
     destroy(&p);
     destroy(&fixed);
+    END();
+}
+
+static void check_rev28_inactive(int phase, int stopped)
+{
+    pipeline_t p = {0};
+    args_t a = small_args();
+    a.adaptive = 1;
+    const int rc = initialize(&p, &a);
+    CHECK(rc == 0);
+    if (!rc) {
+        up_usm_adaptive_init(&p.adaptive, 1, 1, 64, 64, 0);
+        p.adaptive.tuner.phase = (up_tuner_phase_t)phase;
+        if (stopped) up_usm_adaptive_stop(&p.adaptive);
+        sample_t s;
+        CHECK(frame(&p, 0, &s) == 0);
+        CHECK(s.adaptive_active == 0);
+        CHECK(s.phase == phase);
+    }
+    destroy(&p);
+}
+
+static void test_rev28_inactive_trace(void)
+{
+    BEGIN("REV-28: disabled/stopped tuning stays inactive for every retained phase");
+    for (int phase = UP_TUNER_BASE; phase <= UP_TUNER_SETTLED; phase++) {
+        check_rev28_inactive(phase, 0);
+        check_rev28_inactive(phase, 1);
+    }
     END();
 }
 
@@ -122,6 +154,7 @@ int main(void)
     test_gate_retirement();
     test_adaptive_pixels();
     test_trial_fallback();
+    test_rev28_inactive_trace();
     test_affinity();
     return test_harness_report();
 }
