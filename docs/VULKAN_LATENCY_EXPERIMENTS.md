@@ -240,6 +240,10 @@ python3 scripts/bench_vulkan_matrix.py build-perf10 \
 ```
 
 The runner requires a new evidence directory and at least 32 decoded frames.
+It discovers available non-CPU Vulkan devices; `--devices 0` selects a subset.
+`make test-vulkan` checks every discovered hardware device and reports an
+unsupported configuration when none are available. Device indices follow the
+active Vulkan loader environment; `build-perf10/list_vulkan_devices` lists them.
 The source excerpt and public download URL are documented in the
 [earlier reproduction steps](DECISION_EXPERIMENTS.md#reproduction). The benchmark
 itself uses direct libvulkan; file decoding is fixture preparation.

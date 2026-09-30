@@ -252,12 +252,16 @@ Build the Vulkan benchmarks with the SDK/runtime options in the
 [Vulkan report](VULKAN_LATENCY_EXPERIMENTS.md#reproduction), then run:
 
 ```sh
-python3 scripts/bench_gpu_pacing.py build/policies decoded-clips/live-action-540.yuv results-gpu
+build/policies/list_vulkan_devices
+build/policies/list_vulkan_devices --identity 0
+python3 scripts/bench_gpu_pacing.py build/policies decoded-clips/live-action-540.yuv results-gpu --vulkan-device 0
 ```
 
-The cadence runner uses Vulkan device index 0 and defaults to DRM `card1`
-for telemetry on this host; `--device` selects another DRM sysfs device path.
-Check that both refer to the same GPU before interpreting telemetry elsewhere.
+Select the desired available Vulkan index explicitly with `--vulkan-device`.
+The cadence runner resolves its PCI/vendor/device identity to Linux sysfs and
+records that identity with the measurements. Optional `--device` overrides
+must match it. Missing hwmon sensors and power-policy files are recorded as
+unavailable. GPUs without usable PCI/sysfs identity cannot provide this telemetry.
 
 The normal test suite retains regression coverage for benchmark sharpness-gate
 retirement (REL-23), adaptive output/fallback behavior, verified USM placement,
