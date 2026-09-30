@@ -9,6 +9,11 @@ pairs in the [stopped-batch archive](../perf15-reduced/README.md): ten pairs per
 B/D option and clip, plus two duplicate-control pairs per clip. The unfinished
 pair in the stopped batch is excluded, with its files retained.
 
+Link erratum: the frozen `protocol.md` has an incorrect relative link to the
+stopped-batch evidence. Its correct destination is
+[the reduced archive](../perf15-reduced/README.md). The protocol's original
+bytes and recorded hash remain unchanged.
+
 - `captures.tar.gz`: all continuation captures, commands, traces, outcomes and
   completed plans, preserved before later Python reporting changes.
 - `measured-sources.tar.gz`: exact sources and profiling executables checked
