@@ -40,9 +40,16 @@ static int parse_fill_mode(const char *fill)
     return -1;
 }
 
+static int parse_alias_mode(const char *mode)
+{
+    if (!strcmp(mode, "out")) return 0;
+    if (!strcmp(mode, "in")) return 1;
+    return -1;
+}
+
 static int parse_args(int argc, char **argv, struct bench_args *a)
 {
-    if (argc < 4) {
+    if (argc < 4 || argc > 8) {
         fprintf(stderr, "usage: %s <threads> <width> <height> [frames] "
                         "[amount] [fill] [out|in]\n", argv[0]);
         return 2;
@@ -79,11 +86,8 @@ static int parse_args(int argc, char **argv, struct bench_args *a)
     if (a->mode < 0) {
         fprintf(stderr, "unknown fill mode '%s'\n", a->fill); return 2;
     }
-    if (!strcmp(alias_mode, "out")) {
-        a->in_place = 0;
-    } else if (!strcmp(alias_mode, "in")) {
-        a->in_place = 1;
-    } else {
+    a->in_place = parse_alias_mode(alias_mode);
+    if (a->in_place < 0) {
         fprintf(stderr, "unknown alias mode '%s'\n", alias_mode);
         return 2;
     }

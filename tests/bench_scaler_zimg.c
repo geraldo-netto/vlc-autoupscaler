@@ -39,7 +39,7 @@ struct bargs {
 
 static int parse(int argc, char **argv, struct bargs *a)
 {
-    if (argc < 7) {
+    if (argc < 7 || argc > 10) {
         fprintf(stderr, "usage: %s <threads> <chroma> <sw> <sh> <dw> <dh> "
                         "[frames] [zc] [pin]\n", argv[0]);
         return 2;

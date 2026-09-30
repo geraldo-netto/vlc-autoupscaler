@@ -110,7 +110,7 @@ static int parse_args(int argc, char **argv, bench_args_t *a)
     const long maximums[] = { UP_THREADS_MAX, INT_MAX, 1, 128, 256 };
     long *values[] = { &a->threads, &a->frames, &a->pin,
                        &a->zimg_lines, &a->usm_lines };
-    if (argc < 2) return 2;
+    if (argc < 2 || argc > 6) return 2;
     for (int i = 0; i < 5 && i + 1 < argc; i++) {
         long minimum = i < 2 ? 1 : 0;
         if (!up_cli_parse_long(argv[i + 1], minimum, maximums[i], values[i]))

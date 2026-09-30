@@ -608,6 +608,9 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@$(BUILD)/test_worker_pool
 	@$(BUILD)/test_frame_retirement_usm
 	@$(BUILD)/test_bench_worker_pool
+	@$(BUILD)/test_bench_usm_arguments
+	@$(if $(HAVE_PROFILE_SDKS),$(BUILD)/test_bench_pipeline_arguments,echo "pipeline arguments: SDK unavailable")
+	@$(if $(HAVE_PROFILE_SDKS),$(BUILD)/test_bench_zimg_arguments,echo "zimg arguments: SDK unavailable")
 	@$(if $(HAVE_PROFILE_SDKS),$(BUILD)/test_frame_retirement_zimg,echo "zimg frame retirement: SDK unavailable")
 	@echo
 	@echo "=== usm_pool ==="
@@ -714,10 +717,20 @@ $(BUILD)/test_usm_pool_dispatch_fallback: tests/test_usm_pool_dispatch.c src/usm
 
 test: $(BUILD)/test_worker_tuner $(BUILD)/test_usm_adaptive $(BUILD)/stress_usm_adaptive
 test: $(BUILD)/test_bench_worker_pool
+test: $(BUILD)/test_bench_usm_arguments
 test: $(BUILD)/profile_worker_pool $(BUILD)/bench_worker_pool $(BUILD)/bench_usm_pool
 
 $(BUILD)/test_bench_worker_pool: tests/test_bench_worker_pool.c tests/bench_worker_pool.c src/worker_pool.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS) -lpthread -Wl,--wrap=aligned_alloc -Wl,--wrap=pthread_create
+
+$(BUILD)/test_bench_usm_arguments: tests/test_bench_arguments.c tests/bench_usm_pool.c $(BUILD)/usm_pool_test.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) -o $@ $< $(BUILD)/usm_pool_test.o $(TEST_LDFLAGS) -lpthread -Wl,--wrap=aligned_alloc
+
+$(BUILD)/test_bench_pipeline_arguments: tests/test_bench_arguments.c tests/bench_pipeline.c $(BUILD)/scaler_zimg_asan.o $(BUILD)/usm_pool_test.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -DTEST_BENCH_PIPELINE -o $@ $< $(BUILD)/scaler_zimg_asan.o $(BUILD)/usm_pool_test.o $(TEST_LDFLAGS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -Wl,--wrap=aligned_alloc
+
+$(BUILD)/test_bench_zimg_arguments: tests/test_bench_arguments.c tests/bench_scaler_zimg.c $(BUILD)/scaler_zimg_asan.o $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) $(VLC_CFLAGS) -DTEST_BENCH_ZIMG -o $@ $< $(BUILD)/scaler_zimg_asan.o $(TEST_LDFLAGS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -Wl,--wrap=aligned_alloc
 
 test: $(BUILD)/test_latency_tuner
 
@@ -749,6 +762,7 @@ test: $(BUILD)/test_profile_pipeline
 test: $(BUILD)/test_profile_pipeline_latency
 test: $(BUILD)/bench_adaptive $(BUILD)/profile_pipeline
 test: $(BUILD)/bench_scaler_zimg $(BUILD)/bench_pipeline
+test: $(BUILD)/test_bench_pipeline_arguments $(BUILD)/test_bench_zimg_arguments
 endif
 
 $(BUILD)/test_profile_input: tests/test_profile_input.c tests/profile_input.h $(BUILD_CONFIG) | $(BUILD)
