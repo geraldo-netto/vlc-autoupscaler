@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Run sequential direct-Vulkan controls; preserve commands, hashes and raw output."""
 import argparse
-import hashlib
 import json
 import os
 from pathlib import Path
 import subprocess
+from bench_playback_policies import digest
 
 
 def hashes(paths):
-    return {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
+    return {str(path): digest(path) for path in paths}
 
 
 def jobs():
