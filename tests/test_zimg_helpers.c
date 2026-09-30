@@ -516,6 +516,55 @@ static void test_decide_tile_grid_src_bound(void)
     END();
 }
 
+static void check_rev26_axis(int count, int src, int dst, int minimum)
+{
+    int previous = 0;
+    for (int i = 0; i < count; i++) {
+        up_stripe_bounds_t b;
+        CHECK(up_compute_stripe_bounds(i, count, src, dst, &b));
+        CHECK_EQ(b.dst_start, previous);
+        CHECK(count == 1 || b.dst_end - b.dst_start >= minimum);
+        previous = b.dst_end;
+    }
+    CHECK_EQ(previous, dst);
+}
+
+static void test_rev26_aligned_minimum(void)
+{
+    BEGIN("REV-26: aligned stripes respect the requested minimum");
+    up_zimg_io_req_t req = { 12, 320, 180, 1280, 720, 65, 64, false, false };
+    up_zimg_io_plan_t plan;
+    up_zimg_resolve_io_plan(&req, &plan);
+    CHECK_EQ(plan.n_rows, 10);
+    CHECK_EQ(plan.n_cols, 1);
+    check_rev26_axis(plan.n_rows, req.src_h, req.dst_h, req.stripe_min);
+    req.stripe_min = UP_STRIPE_MIN_DST_LINES;
+    up_zimg_resolve_io_plan(&req, &plan);
+    CHECK_EQ(plan.n_rows, 12);
+    END();
+}
+
+static void test_rev26_minimum_properties(void)
+{
+    static const int minimums[] = { INT_MIN, -1, 0, 1, 15, 16, 17, 63, 64, 65, 128, INT_MAX };
+    static const up_tile_geom_t geometries[] = {
+        { 320, 180, 1280, 720 }, { 7, 5, 93, 71 },
+        { 31, 17, 257, 129 }, { 1, 1, 1, 1 },
+        { 128, 256, 61, 39 }, { INT_MAX, INT_MAX, INT_MAX, INT_MAX },
+    };
+    BEGIN("REV-26: bounded odd/even stripe and column minimum properties");
+    for (size_t g = 0; g < sizeof geometries / sizeof *geometries; g++)
+        for (size_t m = 0; m < sizeof minimums / sizeof *minimums; m++)
+            for (int budget = -1; budget <= 65; budget++) {
+                const up_tile_geom_t *geom = &geometries[g];
+                int rows, cols;
+                up_decide_tile_grid(budget, geom, minimums[m], minimums[m], &rows, &cols);
+                check_rev26_axis(rows, geom->src_h, geom->dst_h, minimums[m]);
+                check_rev26_axis(cols, geom->src_w, geom->dst_w, minimums[m]);
+            }
+    END();
+}
+
 /* PAT-1: the io-plan resolver owns the grid/zero-copy invariant chain. */
 static void test_resolve_io_plan(void)
 {
@@ -611,6 +660,8 @@ int main(void)
     test_zimg_stripe_min_lines_boundaries();
     test_decide_tile_grid();
     test_decide_tile_grid_src_bound();
+    test_rev26_aligned_minimum();
+    test_rev26_minimum_properties();
     test_resolve_io_plan();
 
     return test_harness_report();

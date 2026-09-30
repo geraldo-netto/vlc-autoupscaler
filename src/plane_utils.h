@@ -146,23 +146,26 @@ static inline int up__tile_axis_limit(int extent, int minimum,
  * by UP_TILE_THREADS_MAX on both axes, this is at most ~4k iterations, once,
  * at open.
  */
-static inline int up__axis_partition_ok(int n, int src, int dst)
+static inline int up__axis_partition_ok(int n, int src, int dst, int minimum)
 {
     if (src <= 0 || dst <= 0)
         return 1;   /* geometry is invalid anyway; the caller rejects it */
     up_stripe_bounds_t b;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
         if (!up_compute_stripe_bounds(i, n, src, dst, &b))
             return 0;
+        if (n > 1 && b.dst_end - b.dst_start < minimum)
+            return 0;
+    }
     return 1;
 }
 
 /* Largest cell count <= start that partitions the axis without a degenerate
  * cell. Always >= 1: a single cell spans the whole axis. */
-static inline int up__largest_valid_split(int start, int src, int dst)
+static inline int up__largest_valid_split(int start, int src, int dst, int minimum)
 {
     for (int n = start; n > 1; n--)
-        if (up__axis_partition_ok(n, src, dst))
+        if (up__axis_partition_ok(n, src, dst, minimum))
             return n;
     return 1;
 }
@@ -178,21 +181,21 @@ static inline void up_decide_tile_grid(int n_threads,
 
     const int row_limit = up__largest_valid_split(
         up__tile_axis_limit(geom->dst_h, stripe_min, budget, budget),
-        geom->src_h, geom->dst_h);
+        geom->src_h, geom->dst_h, stripe_min);
     const int col_limit = up__largest_valid_split(
         up__tile_axis_limit(geom->dst_w, col_min, 1, budget),
-        geom->src_w, geom->dst_w);
+        geom->src_w, geom->dst_w, col_min);
 
     int best_rows = 1;
     int best_cols = 1;
     int best_cells = 1;
 
     for (int r = 1; r <= row_limit; r++) {
-        if (!up__axis_partition_ok(r, geom->src_h, geom->dst_h))
+        if (!up__axis_partition_ok(r, geom->src_h, geom->dst_h, stripe_min))
             continue;
         int c = budget / r;
         if (c > col_limit) c = col_limit;
-        c = up__largest_valid_split(c, geom->src_w, geom->dst_w);
+        c = up__largest_valid_split(c, geom->src_w, geom->dst_w, col_min);
         int cells = r * c;
         if (cells >= best_cells) {
             best_rows = r;

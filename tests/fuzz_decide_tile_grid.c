@@ -78,19 +78,24 @@ static long long grid_cells(int n_threads, const up_tile_geom_t *geom,
  * every grid the chooser returns must therefore be non-degenerate on BOTH axes.
  * Only meaningful when the geometry itself is valid; hostile/degenerate dims
  * are covered by the shape and floor properties. */
-static int cells_nondegenerate(int rows, int cols, const up_tile_geom_t *geom)
+static int axis_minimum_ok(int count, int src, int dst, int minimum)
+{
+    for (int i = 0; i < count; i++) {
+        up_stripe_bounds_t b;
+        if (!up_compute_stripe_bounds(i, count, src, dst, &b)) return 0;
+        if (count > 1 && b.dst_end - b.dst_start < minimum) return 0;
+    }
+    return 1;
+}
+
+static int cells_nondegenerate(int rows, int cols, const up_tile_geom_t *geom,
+                              int stripe_min, int col_min)
 {
     if (geom->src_w <= 0 || geom->src_h <= 0
         || geom->dst_w <= 0 || geom->dst_h <= 0)
         return 1;
-    up_stripe_bounds_t b;
-    for (int r = 0; r < rows; r++)
-        if (!up_compute_stripe_bounds(r, rows, geom->src_h, geom->dst_h, &b))
-            return 0;
-    for (int c = 0; c < cols; c++)
-        if (!up_compute_stripe_bounds(c, cols, geom->src_w, geom->dst_w, &b))
-            return 0;
-    return 1;
+    return axis_minimum_ok(rows, geom->src_h, geom->dst_h, stripe_min)
+        && axis_minimum_ok(cols, geom->src_w, geom->dst_w, col_min);
 }
 
 static int check_grid(int n_threads, const up_tile_geom_t *geom,
@@ -103,7 +108,7 @@ static int check_grid(int n_threads, const up_tile_geom_t *geom,
     int bad = !grid_shape_ok(rows, cols, clamped_budget(n_threads))
            || !grid_floors_ok(rows, cols, geom->dst_w, geom->dst_h,
                               stripe_min, col_min)
-           || !cells_nondegenerate(rows, cols, geom)
+           || !cells_nondegenerate(rows, cols, geom, stripe_min, col_min)
            /* Monotonicity: one more thread never shrinks the grid. */
            || (n_threads > INT_MIN
                && grid_cells(n_threads - 1, geom, stripe_min, col_min) > cells);

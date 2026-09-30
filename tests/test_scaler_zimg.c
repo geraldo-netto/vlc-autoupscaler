@@ -1005,7 +1005,7 @@ static void zt_pic_fill_smooth(zt_pic_t *tp)
  * the SCAL-3 seam oracle: threads=1 is the single-graph untiled reference.
  * smooth=1 uses a gradient (realistic), smooth=0 uses noise (worst case). */
 static int run_zimg_threads_in(const struct zcfg *c, int threads, int smooth,
-                               uint32_t seed, zt_pic_t *out)
+                               uint32_t seed, int stripe_min, zt_pic_t *out)
 {
     zt_pic_t src;
     memset(out, 0, sizeof *out);
@@ -1020,6 +1020,7 @@ static int run_zimg_threads_in(const struct zcfg *c, int threads, int smooth,
 
     scaler_ctx_t ctx;
     zt_ctx_init(&ctx, c->chroma, c->sw, c->sh, c->dw, c->dh, threads, 0);
+    ctx.zimg.min_stripe_lines = stripe_min;
     int rc = -2;
     if (ctx.backend->open(&ctx) == 0) {
         rc = ctx.backend->process(&ctx, &src.pic, &out->pic);
@@ -1048,7 +1049,7 @@ static void test_tiling_matches_untiled(void)
     static const int TCOUNTS[] = { 2, 4, 8, 16 };
     for (size_t i = 0; i < NCFG; i++) {
         zt_pic_t ref;
-        if (run_zimg_threads_in(&CFGS[i], 1, 1, 0, &ref)
+        if (run_zimg_threads_in(&CFGS[i], 1, 1, 0, 0, &ref)
                 != SCALER_PROCESS_OK) {
             CHECK(0);
             zt_pic_free(&ref);
@@ -1056,7 +1057,7 @@ static void test_tiling_matches_untiled(void)
         }
         for (size_t t = 0; t < sizeof TCOUNTS / sizeof *TCOUNTS; t++) {
             zt_pic_t tiled;
-            int r = run_zimg_threads_in(&CFGS[i], TCOUNTS[t], 1, 0, &tiled);
+            int r = run_zimg_threads_in(&CFGS[i], TCOUNTS[t], 1, 0, 0, &tiled);
             CHECK(r == SCALER_PROCESS_OK);
             if (r == SCALER_PROCESS_OK) {
                 int maxd = 0; size_t big = 0;
@@ -1070,6 +1071,26 @@ static void test_tiling_matches_untiled(void)
         }
         zt_pic_free(&ref);
     }
+    END();
+}
+
+static void test_rev26_minimum_seams(void)
+{
+    BEGIN("REV-26: odd stripe minimum retains the smooth seam bound");
+    const struct zcfg c = { VLC_CODEC_I420, "REV-26", 320, 180, 1280, 720, 12, 1 };
+    zt_pic_t ref = { 0 }, tiled = { 0 };
+    int ref_rc = run_zimg_threads_in(&c, 1, 1, 0, 65, &ref);
+    int tiled_rc = run_zimg_threads_in(&c, 12, 1, 0, 65, &tiled);
+    CHECK(ref_rc == SCALER_PROCESS_OK);
+    CHECK(tiled_rc == SCALER_PROCESS_OK);
+    if (ref_rc == SCALER_PROCESS_OK && tiled_rc == SCALER_PROCESS_OK) {
+        int maxd = 0;
+        size_t big = 0;
+        cmp_visible_mag(&ref, &tiled, &maxd, &big);
+        CHECK(maxd <= SEAM_MAX_DELTA);
+    }
+    zt_pic_free(&ref);
+    zt_pic_free(&tiled);
     END();
 }
 
@@ -1382,6 +1403,7 @@ int main(void)
     test_tile_scratch_diagnostic();
     test_pin_cpus_matches();
     test_tiling_matches_untiled();
+    test_rev26_minimum_seams();
     test_process_failure_emits_nothing();
     test_run_zimg_failure_leaves_out_free_safe();
     test_pic_alloc_partial_failure();
