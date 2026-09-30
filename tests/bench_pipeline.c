@@ -135,5 +135,5 @@ int main(int argc, char **argv)
                       &max_rss_kb, &frame_us) != 0) return 1;
     printf("%ld,%ld,%ld,%ld,%ld,%.2f,%ld,%.2f\n", a.threads, a.frames,
            a.pin, a.zimg_lines, a.usm_lines, lazy_us, max_rss_kb, frame_us);
-    return 0;
+    return fflush(stdout) == EOF || ferror(stdout) ? 1 : 0;
 }

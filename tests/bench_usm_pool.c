@@ -210,5 +210,6 @@ int main(int argc, char **argv)
 out:
     up_usm_pool_destroy(pool);
     free(src); free(dst);
+    if (fflush(stdout) == EOF || ferror(stdout)) rc_run = 1;
     return rc_run;
 }

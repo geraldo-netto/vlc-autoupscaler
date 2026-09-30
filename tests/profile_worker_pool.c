@@ -122,5 +122,6 @@ int main(int argc, char **argv)
     if (!rc && !p.pin_failed) rc = measure(&p, (int)values[1], samples);
     free(samples);
     const int retired = up_worker_pool_destroy(&p.pool);
+    if (fflush(stdout) == EOF || ferror(stdout)) rc = -1;
     return rc || retired || p.pin_failed ? 1 : 0;
 }

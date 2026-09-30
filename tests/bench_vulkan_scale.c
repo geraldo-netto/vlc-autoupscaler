@@ -311,5 +311,6 @@ int main(int argc, char **argv)
     if (ok) ok = setup_gpu(&f, argv[1], argc == 6 ? NULL : argv[7], (unsigned)device);
     if (ok) ok = run(&f, argv);
     cleanup(&f);
+    if (fflush(stdout) == EOF || ferror(stdout)) ok = false;
     return ok ? 0 : 1;
 }

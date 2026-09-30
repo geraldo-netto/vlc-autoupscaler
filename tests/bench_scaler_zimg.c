@@ -167,5 +167,5 @@ int main(int argc, char **argv)
     printf("%d,%s,%dx%d,%dx%d,%d,%d,%d,%.2f,%ld,%.2f\n",
            a.threads, a.chroma_name, a.sw, a.sh, a.dw, a.dh,
            a.frames, a.zc, a.pin, lazy_us, max_rss_kb, us);
-    return 0;
+    return fflush(stdout) == EOF || ferror(stdout) ? 1 : 0;
 }

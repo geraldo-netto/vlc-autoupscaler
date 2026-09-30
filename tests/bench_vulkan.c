@@ -143,5 +143,6 @@ int main(int argc, char **argv)
     if (ok) ok = validate(&f);
     if (ok) ok = measure(&f, strcmp(argv[8], "gpu") == 0, count, period);
     cleanup(&f);
+    if (fflush(stdout) == EOF || ferror(stdout)) ok = false;
     return ok ? 0 : 1;
 }

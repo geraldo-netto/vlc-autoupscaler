@@ -702,6 +702,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then $(BUILD)/test_profile_pipeline; fi
 	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then $(BUILD)/test_profile_pipeline_latency; fi
 	@if [ -n "$(HAVE_PROFILE_SDKS)" ]; then bash tests/test_benchmark_output.sh "$(BUILD)"; fi
+	@bash tests/test_benchmark_output.sh "$(BUILD)" core
 
 $(BUILD)/test_usm_pool_dispatch: tests/test_usm_pool_dispatch.c src/usm_pool_dispatch.c src/usm_pool_variants.h src/usm_pool.h src/cpu_level.h tests/test_harness.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS)
@@ -712,6 +713,7 @@ $(BUILD)/test_usm_pool_dispatch_fallback: tests/test_usm_pool_dispatch.c src/usm
 
 test: $(BUILD)/test_worker_tuner $(BUILD)/test_usm_adaptive $(BUILD)/stress_usm_adaptive
 test: $(BUILD)/test_bench_worker_pool
+test: $(BUILD)/profile_worker_pool $(BUILD)/bench_worker_pool $(BUILD)/bench_usm_pool
 
 $(BUILD)/test_bench_worker_pool: tests/test_bench_worker_pool.c tests/bench_worker_pool.c src/worker_pool.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS) -lpthread -Wl,--wrap=aligned_alloc -Wl,--wrap=pthread_create
@@ -745,6 +747,7 @@ test: $(BUILD)/test_bench_adaptive $(BUILD)/test_experiment_zimg $(BUILD)/test_p
 test: $(BUILD)/test_profile_pipeline
 test: $(BUILD)/test_profile_pipeline_latency
 test: $(BUILD)/bench_adaptive $(BUILD)/profile_pipeline
+test: $(BUILD)/bench_scaler_zimg $(BUILD)/bench_pipeline
 endif
 
 $(BUILD)/test_profile_input: tests/test_profile_input.c tests/profile_input.h $(BUILD_CONFIG) | $(BUILD)
@@ -1245,8 +1248,9 @@ VULKAN_LIBS ?= -lvulkan
 build-vulkan-bench: $(BUILD)/bench_vulkan $(BUILD)/bench_vulkan_scale $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_spline36.spv $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_fused.spv
 
 .PHONY: test-vulkan
-test-vulkan: $(BUILD)/test_vulkan_pipeline $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_fused.spv
+test-vulkan: build-vulkan-bench $(BUILD)/test_vulkan_pipeline $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_fused.spv
 	$(BUILD)/test_vulkan_pipeline $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_fused.spv
+	bash tests/test_benchmark_output.sh "$(BUILD)" vulkan
 
 $(BUILD)/experiment_vulkan_test.o: tests/experiment_vulkan.c tests/experiment_vulkan.h tests/vulkan_limits.h tests/vulkan_timing.h tests/vulkan_coefficients.h tests/vulkan_bench_util.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) $(VULKAN_CFLAGS) -c -o $@ $<

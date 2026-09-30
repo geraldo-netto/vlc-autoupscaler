@@ -134,5 +134,6 @@ int main(int argc, char **argv)
                           sizeof(bench_slot_t));
     int result = measure(&bench, workers, iterations);
     if (up_worker_pool_destroy(&bench.pool) != 0) result = 1;
+    if (fflush(stdout) == EOF || ferror(stdout)) result = 1;
     return result;
 }
