@@ -30,6 +30,9 @@ trap finish EXIT
 echo "Waiting for the isolated userspace sweep: $ready"
 while [[ ! -f $ready ]]; do sleep 2; done
 printf 'kernel=%s\n' "$(uname -r)" > "$output/environment.txt"
+for control in "${!UP_PROFILE_@}"; do unset "$control"; done
+printf 'profile_controls=cleared; binary defaults apply\n' >> "$output/environment.txt"
+sha256sum -- "$build/profile_pipeline" >> "$output/environment.txt"
 perf version >> "$output/environment.txt"
 perf list --raw-dump > "$output/events.txt"
 

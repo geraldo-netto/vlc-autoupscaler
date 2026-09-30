@@ -8,7 +8,13 @@ mkdir -p "$fixture/bin" "$fixture/build"
 touch "$fixture/ready"
 cat > "$fixture/build/profile_pipeline" <<'EOF'
 #!/bin/sh
-exit 0
+env | LC_ALL=C sort | sed -n '/^UP_PROFILE_/p'
+printf 'arguments=%s\n' "$*"
+EOF
+cat > "$fixture/bin/runuser" <<'EOF'
+#!/bin/sh
+shift 3
+exec "$@"
 EOF
 cat > "$fixture/bin/id" <<'EOF'
 #!/bin/sh
@@ -32,12 +38,18 @@ if [[ ${1:-} == c2c && ${2:-} == record ]]; then
     fi
     if [[ ${PERF_FIXTURE_FAIL:-0} == 1 ]]; then exit 1; fi
 fi
+while [[ $# != 0 ]]; do
+    if [[ $1 == -- ]]; then shift; exec "$@"; fi
+    shift
+done
 printf 'fixture perf output\n'
 EOF
 chmod +x "$fixture/bin/"* "$fixture/build/profile_pipeline"
 
 collect() {
     PATH="$fixture/bin:$PATH" SUDO_USER=fixture SUDO_UID=1000 SUDO_GID=1000 \
+        UP_PROFILE_EXECUTOR=3 UP_PROFILE_ADAPTIVE=1 UP_PROFILE_INPUT=alternate.yuv \
+        UP_PROFILE_FUTURE_CONTROL=unexpected \
         PERF_FIXTURE_FAIL="$2" bash "$repo_root/scripts/profile_perf.sh" \
         "$fixture/build" "$fixture/$1" "$fixture/ready" attribution \
         > "$fixture/$1.log" 2>&1
@@ -47,6 +59,15 @@ failures=0
 if ! collect success 0 || [[ ! -s $fixture/success/w12.c2c.txt \
                          || ! -s $fixture/success/w32.c2c.txt ]]; then
     echo 'FAIL PERF-12: attribution must collect IBS in system-wide mode' >&2
+    failures=$((failures + 1))
+fi
+if grep -q '^UP_PROFILE_' "$fixture/success/w12.cpu.stdout"; then
+    echo 'FAIL REV-15: privileged capture inherited profile controls' >&2
+    failures=$((failures + 1))
+fi
+if ! grep -q '^profile_controls=cleared; binary defaults apply$' "$fixture/success/environment.txt" ||
+   ! grep -q '^arguments=12 12 1920 1080 12000 1 0 1 0$' "$fixture/success/w12.cpu.stdout"; then
+    echo 'FAIL REV-15: capture lacks effective invocation provenance' >&2
     failures=$((failures + 1))
 fi
 if collect unavailable 1; then
