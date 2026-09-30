@@ -9,6 +9,59 @@ For the worker coordination, hardware-counter and shared-nothing evaluation,
 see [Worker and pipeline profiling](PROFILING.md), including reproducible tools
 and the host-specific results.
 
+## Resolution-specific USM rounding
+
+PERF-17 uses equivalent nonnegative Q8 division at exactly 1280x720 with
+1–8 effective USM workers and 1920x1080 with 1–12 workers. Every other geometry
+or worker count retains signed-floor division. Selection uses the actual worker
+count after startup, including partial thread creation. Thread counts, target
+geometry and sharpening strength do not change.
+
+The clamped sharpening product is in `[-1044480, 1044480]`. Adding `1048576`
+before shifting right by eight, then subtracting `4096`, preserves negative
+floor rounding without shifting a negative value. Permanent tests compare every
+integer in that product range against the original division, test resolution
+and worker-count boundaries, and compare pool pixels against the original
+rounding path at invalid, normal and maximum clamped amounts.
+
+The 30 September 2026 evaluation uses a Ryzen 9 7945HX, GCC 13.3.0, the
+performance governor, synthetic I420 inputs and the standalone non-LTO pipeline.
+All captures are sequential, with alternating baseline/candidate order and 128
+warmup frames. The final implementation has 20 unpaced pairs of 1,200 frames per
+profile, and five paced pairs of 300 frames per enabled automatic profile.
+zimg uses 12 workers; the table gives the USM count. Negative percentages mean
+less time or CPU. Values are geometric means of within-pair ratios.
+
+| Output | USM workers | Frame interval | Processing mean | Processing p99 | Processing CPU |
+|---|---:|---:|---:|---:|---:|
+| 1280x720 | 8 | unpaced | -2.1% | -1.6% | -2.5% |
+| 1920x1080 | 12 | unpaced | -8.2% | -20.6% | -7.6% |
+| 1280x720 | 8 | 16,667 us | -7.8% | -6.7% | -7.9% |
+| 1920x1080 | 12 | 16,667 us | -2.3% | -3.0% | ~0.0% |
+
+Earlier prototypes also tried unrestricted rounding, and geometry-only
+selection. Unrestricted 4K had worse unpaced p99; the 720p/12-worker prototype
+had mixed paced results, including higher median p95 and CPU. These profiles
+retain the original arithmetic. The final selector keeps its mode stable for
+each worker invocation.
+
+The [final ISA matrix](benchmarks/usm-q8-2026-09-30/kernel-final-isa.csv) measures
+SSE2, AVX2 and AVX-512 on this same CPU. Enabled cells saved 3.6–21.0% USM time
+in three pairs per cell. A 4K/SSE2/16-worker fallback cell measured +5.0% in
+that screen; its separate 20-pair confirmation measured +0.8%. Both captures
+are retained. ISA variants are not independent validation on different CPUs.
+
+The [raw pipeline samples](benchmarks/usm-q8-2026-09-30/pipeline.csv),
+[paired summaries](benchmarks/usm-q8-2026-09-30/summary.json) and
+[environment and reproduction commands](benchmarks/usm-q8-2026-09-30/environment.json)
+retain all prototype and final runs, including unfavorable results. Run-to-run
+drift is substantial: the archive also retains ratios of unpaired medians,
+which can disagree with paired estimates. These are descriptive local results,
+not confidence bounds or a promise of equal performance on other hosts.
+Final aggregate paired p95/p99 estimates meet the existing 5% tail-regression
+guard for enabled automatic profiles and fallback controls. Individual runs
+vary. Processing measurements do not establish VLC presentation or dropped-frame rates.
+
 ## Run
 
 ```sh

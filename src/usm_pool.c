@@ -142,6 +142,7 @@ typedef struct usm_worker_s {
     int             src_stride;
     int             dst_stride;
     int             amount_q8;
+    int             biased_rounding; /* Fixed at partitioning; uses slot padding. */
 
     /* In-place support (SYS-4): when dst aliases src, a neighbour worker
      * concurrently OVERWRITES the two src rows this worker's boundary
@@ -253,7 +254,9 @@ static const uint8_t *usm_worker_src_row(const usm_worker_t *w, int y)
     return w->src + (size_t)y * (size_t)w->src_stride;
 }
 
-static void usm_worker_sweep(usm_worker_t *w)
+/* Stable final-link symbol for the multiversion ISA regression gate. */
+static void USM_ISA_ANCHOR usm_pool_run_worker(usm_worker_t *w,
+                                             int biased_rounding)
 {
     const int W = w->width;
     const int H = w->height;
@@ -269,10 +272,10 @@ static void usm_worker_sweep(usm_worker_t *w)
     for (; y < w->y_end; y++) {
         int y_dn = (y < H - 1) ? (y + 1) : (H - 1);
         up_usm__hblur_row(dn, usm_worker_src_row(w, y_dn), W);
-        up_usm__combine_row(
+        up_usm__combine_row_mode(
             w->dst + (size_t)y * (size_t)w->dst_stride,
             w->src + (size_t)y * (size_t)w->src_stride,
-            up, mid, dn, W, w->amount_q8);
+            up, mid, dn, W, w->amount_q8, biased_rounding);
         uint8_t *t = up; up = mid; mid = dn; dn = t;
     }
 }
@@ -285,7 +288,8 @@ static void usm_worker_run(usm_worker_t *w)
         return;
     }
 #endif
-    usm_worker_sweep(w);
+    if (w->biased_rounding) usm_pool_run_worker(w, 1);
+    else usm_pool_run_worker(w, 0);
 }
 
 /* ===========================================================================
@@ -337,8 +341,7 @@ static int usm_pool_construct_worker(void *owner, int i)
     return 0;
 }
 
-/* Stable final-link symbol for the multiversion ISA regression gate. */
-static void USM_ISA_ANCHOR usm_pool_run_worker(void *owner, int i)
+static void usm_pool_execute_worker(void *owner, int i)
 {
     usm_worker_run(&usm_workers((usm_pool_t *)owner)[i]);
 }
@@ -356,6 +359,8 @@ static void usm_pool_repartition_stripes(usm_worker_t *workers, int n,
         workers[i].y_end   = (i == n - 1)
             ? height
             : (int)((int64_t)(i + 1) * height / n);
+        workers[i].biased_rounding = up_usm__use_biased_rounding(
+            workers[i].width, height, n);
     }
 }
 
@@ -377,7 +382,7 @@ static void usm_pool_finalize(void *owner, int n_workers)
 
 static const up_worker_pool_ops_t usm_pool_ops = {
     .construct      = usm_pool_construct_worker,
-    .run            = usm_pool_run_worker,
+    .run            = usm_pool_execute_worker,
     .prepare        = usm_pool_prepare,
     .finalize       = usm_pool_finalize,
     .all_or_nothing = false,   /* stripes repartition over a partial spawn */

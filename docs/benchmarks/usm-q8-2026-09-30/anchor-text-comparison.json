@@ -1,0 +1,26 @@
+[
+  {
+    "isa": "x86-64",
+    "text_identical": true,
+    "before_sha256": "d93746630d927d754e59843bb71cff04071fd5c1c3f1c1e7e49b489509239097",
+    "after_sha256": "d93746630d927d754e59843bb71cff04071fd5c1c3f1c1e7e49b489509239097"
+  },
+  {
+    "isa": "x86-64-v3",
+    "text_identical": true,
+    "before_sha256": "12296e8d86d14dab85be620dccaf62973dd1aa020b52a19562c9e60f047524a5",
+    "after_sha256": "12296e8d86d14dab85be620dccaf62973dd1aa020b52a19562c9e60f047524a5"
+  },
+  {
+    "isa": "x86-64-v4",
+    "text_identical": true,
+    "before_sha256": "1720da2bd00f1af5f079b7ff64728141b529da91a4c3698e76dec56e0939ecc5",
+    "after_sha256": "1720da2bd00f1af5f079b7ff64728141b529da91a4c3698e76dec56e0939ecc5"
+  },
+  {
+    "binary": "native profile_pipeline",
+    "text_identical": true,
+    "before_sha256": "992d4454c690d1d2571a54ca6f0277506f05ca57b0441f2c4a382a5bfd4b10ff",
+    "after_sha256": "992d4454c690d1d2571a54ca6f0277506f05ca57b0441f2c4a382a5bfd4b10ff"
+  }
+]

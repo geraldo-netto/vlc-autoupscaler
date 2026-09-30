@@ -107,6 +107,39 @@ static void test_combine_negative_fraction(void)
     END();
 }
 
+static void test_biased_q8_equivalence(void)
+{
+    BEGIN("PERF-17: biased Q8 matches floor across every bounded product");
+    const int limit = UP_USM_AMOUNT_Q8_MAX * 255;
+    for (int product = -limit; product <= limit; product++) {
+        if (up_usm__floor_div_q8_biased(product)
+                == up_usm__floor_div_q8(product)) continue;
+        CHECK(0);
+        break;
+    }
+    END();
+}
+
+static void test_biased_q8_geometry(void)
+{
+    BEGIN("PERF-17: faster rounding only for measured resolutions and budgets");
+    const struct { int width, height, workers, expected; } cases[] = {
+        { 1280, 720, 1, 1 }, { 1280, 720, 8, 1 }, { 1280, 720, 9, 0 },
+        { 1920, 1080, 1, 1 }, { 1920, 1080, 12, 1 }, { 1920, 1080, 13, 0 },
+        { 3840, 2160, 16, 0 }, { 1280, 720, 0, 0 }, { 1920, 1080, -1, 0 },
+        { 1280, 720, INT_MIN, 0 }, { 1920, 1080, INT_MAX, 0 },
+        { 1279, 720, 1, 0 }, { 1281, 720, 1, 0 }, { 1280, 719, 1, 0 },
+        { 1280, 721, 1, 0 }, { 1919, 1080, 1, 0 }, { 1921, 1080, 1, 0 },
+        { 1920, 1079, 1, 0 }, { 1920, 1081, 1, 0 }, { 720, 1280, 1, 0 },
+        { 0, 720, 1, 0 }, { 1280, -1, 1, 0 }, { INT_MIN, INT_MAX, 1, 0 },
+    };
+    for (size_t i = 0; i < sizeof cases / sizeof cases[0]; i++)
+        CHECK_EQ(up_usm__use_biased_rounding(cases[i].width, cases[i].height,
+                                            cases[i].workers),
+                 cases[i].expected);
+    END();
+}
+
 /* ---------------------- apply_plane ---------------------- */
 
 static void test_apply_amount_zero_is_identity(void)
@@ -461,6 +494,8 @@ int main(void)
     test_hblur_constant_invariant();
     test_q8_floor_division();
     test_combine_negative_fraction();
+    test_biased_q8_equivalence();
+    test_biased_q8_geometry();
     test_apply_amount_zero_is_identity();
     test_apply_constant_input();
     test_apply_impulse_amount_one();

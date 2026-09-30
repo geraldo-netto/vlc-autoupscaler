@@ -299,6 +299,17 @@ static void test_auto_resolution_preserves_pixels(void)
     END();
 }
 
+static void test_resolution_rounding_amount_boundaries(void)
+{
+    BEGIN("PERF-17: measured resolutions preserve pixels at amount boundaries");
+    const int amounts[] = { INT_MIN, -1, 0, 1, 51, 512, 4095, 4096, INT_MAX };
+    for (size_t i = 0; i < sizeof amounts / sizeof amounts[0]; i++) {
+        CHECK(run_compare_inplace(8, 1280, 720, amounts[i], 0x1700 + i) == 0);
+        CHECK(run_compare(12, 1920, 1080, amounts[i], 0x1800 + i) == 0);
+    }
+    END();
+}
+
 /* A completion-notification failure must fail that dispatch and poison the
  * pool, never hang or silently succeed. */
 static void test_completion_signal_failure_poisons_pool(void)
@@ -872,6 +883,7 @@ int main(void)
     test_typical_30pct();
     test_inplace_matches_oracle();
     test_auto_resolution_preserves_pixels();
+    test_resolution_rounding_amount_boundaries();
     test_completion_signal_failure_poisons_pool();
     test_create_clamps_huge_thread_count();
     test_worker_preferences_respect_geometry();

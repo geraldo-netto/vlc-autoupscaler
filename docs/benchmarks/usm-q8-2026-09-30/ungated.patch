@@ -1,0 +1,5 @@
+--- a/src/usm.h
++++ b/src/usm.h
+@@ -149 +149 @@
+-        int sharpened = s + up_usm__floor_div_q8(amount_q8 * hi);
++        int sharpened = s + ((amount_q8 * hi + 1048576) >> 8) - 4096;

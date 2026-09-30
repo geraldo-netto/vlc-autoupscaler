@@ -1,0 +1,50 @@
+--- a/src/usm.h
++++ b/src/usm.h
+@@ -118,0 +119,13 @@
++static inline int up_usm__floor_div_q8_biased(int value)
++{
++    /* Clamped amount times byte detail is in [-1044480, 1044480]. */
++    return ((value + UP_USM_AMOUNT_Q8_MAX * 256) >> 8)
++         - UP_USM_AMOUNT_Q8_MAX;
++}
++
++static inline int up_usm__use_biased_rounding(int width, int height)
++{
++    return (width == 1280 && height == 720)
++        || (width == 1920 && height == 1080);
++}
++
+@@ -135 +148 @@
+-static inline void up_usm__combine_row(
++static inline void up_usm__combine_row_mode(
+@@ -142 +155 @@
+-    int amount_q8)
++    int amount_q8, int biased_rounding)
+@@ -149 +162,4 @@
+-        int sharpened = s + up_usm__floor_div_q8(amount_q8 * hi);
++        int product = amount_q8 * hi;
++        int detail = biased_rounding ? up_usm__floor_div_q8_biased(product)
++                                     : up_usm__floor_div_q8(product);
++        int sharpened = s + detail;
+@@ -153,0 +170,9 @@
++}
++
++static inline void up_usm__combine_row(
++    uint8_t *dst_row, const uint8_t *src_row,
++    const uint8_t *restrict up_row, const uint8_t *restrict mid,
++    const uint8_t *restrict dn_row, int width, int amount_q8)
++{
++    up_usm__combine_row_mode(dst_row, src_row, up_row, mid, dn_row,
++                             width, amount_q8, 0);
+--- a/src/usm_pool.c
++++ b/src/usm_pool.c
+@@ -144,0 +145 @@
++    int             biased_rounding; /* Fixed at construction; uses slot padding. */
+@@ -272 +273 @@
+-        up_usm__combine_row(
++        up_usm__combine_row_mode(
+@@ -275 +276 @@
+-            up, mid, dn, W, w->amount_q8);
++            up, mid, dn, W, w->amount_q8, w->biased_rounding);
+@@ -336,0 +338 @@
++    w->biased_rounding = up_usm__use_biased_rounding(p->width, p->height);

@@ -116,6 +116,20 @@ static inline int up_usm__floor_div_q8(int value)
     return quotient;
 }
 
+static inline int up_usm__floor_div_q8_biased(int value)
+{
+    /* Clamped amount times byte detail is in [-1044480, 1044480]. */
+    return ((value + UP_USM_AMOUNT_Q8_MAX * 256) >> 8)
+         - UP_USM_AMOUNT_Q8_MAX;
+}
+
+static inline int up_usm__use_biased_rounding(int width, int height, int workers)
+{
+    return workers > 0
+        && ((width == 1280 && height == 720 && workers <= 8)
+            || (width == 1920 && height == 1080 && workers <= 12));
+}
+
 /*
  * Internal: combine one row's blur and source values into the sharpened
  * destination row. The triangle blur kernel reads three workspace rows
@@ -132,25 +146,37 @@ static inline int up_usm__floor_div_q8(int value)
  * carry `restrict`. The three blur rows are private scratch and never
  * alias dst/src; their `restrict` is what the vectorizer needs.
  */
-static inline void up_usm__combine_row(
+static inline void up_usm__combine_row_mode(
     uint8_t       *dst_row,
     const uint8_t *src_row,
     const uint8_t *restrict up_row,
     const uint8_t *restrict mid,
     const uint8_t *restrict dn_row,
     int width,
-    int amount_q8)
+    int amount_q8, int biased_rounding)
 {
     for (int x = 0; x < width; x++) {
         int blur = ((int)up_row[x] + ((int)mid[x] << 1)
                   + (int)dn_row[x] + 2) >> 2;
         int s = (int)src_row[x];
         int hi = s - blur;
-        int sharpened = s + up_usm__floor_div_q8(amount_q8 * hi);
+        int product = amount_q8 * hi;
+        int detail = biased_rounding ? up_usm__floor_div_q8_biased(product)
+                                     : up_usm__floor_div_q8(product);
+        int sharpened = s + detail;
         if (sharpened < 0) sharpened = 0;
         else if (sharpened > 255) sharpened = 255;
         dst_row[x] = (uint8_t)sharpened;
     }
+}
+
+static inline void up_usm__combine_row(
+    uint8_t *dst_row, const uint8_t *src_row,
+    const uint8_t *restrict up_row, const uint8_t *restrict mid,
+    const uint8_t *restrict dn_row, int width, int amount_q8)
+{
+    up_usm__combine_row_mode(dst_row, src_row, up_row, mid, dn_row,
+                             width, amount_q8, 0);
 }
 
 /* Shared plane-argument core: non-null buffers and strides wide enough for
