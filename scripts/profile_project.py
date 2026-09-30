@@ -140,21 +140,23 @@ def run_case(case, args, affinity, repetition, index):
         cmd = [str(args.build / "profile_pipeline"), *map(str, values)]
     controls = profile_controls(case)
     env = {key: value for key, value in os.environ.items() if not key.startswith('UP_PROFILE_')}
+    attempt_file = f'{repetition}-{index}.attempt.json'
     row = dict(command=prefix + cmd, environment=controls, case=case, repetition=repetition,
-               order=index, timestamp=time.time())
+               order=index, attempt_file=attempt_file, timestamp=time.time())
     def parse(text):
         result = json_object(text)
         if case['kind'] == 'empty':
             summarize_empty(result)
         return dict(result=result)
-    attempt = checked_attempt(args.output / f'{index}.attempt.json', row,
+    attempt = checked_attempt(args.output / attempt_file, row,
                               dict(env, **controls), parse, 180)
     result = attempt['result']
     if case["kind"] != "empty":
         result['input'] = dict(kind='generated', width=case['width']//2,
                                height=case['height']//2, content=case['content'])
     result.update(case, repetition=repetition, order=index, frames=frames,
-                  command=prefix + cmd, environment=controls, timestamp=time.time())
+                  command=prefix + cmd, environment=controls, attempt_file=attempt_file,
+                  timestamp=time.time())
     return result
 
 

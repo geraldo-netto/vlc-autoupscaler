@@ -201,7 +201,8 @@ class CapturePreservationTests(unittest.TestCase):
                     with patch.object(subprocess, 'run', return_value=result, side_effect=error):
                         with self.assertRaises(RuntimeError):
                             self.run_capture(runner, Path(root))
-                    saved = json.loads((Path(root) / '0.attempt.json').read_text())
+                    filename = '0-0.attempt.json' if runner == 'profile' else '0.attempt.json'
+                    saved = json.loads((Path(root) / filename).read_text())
                     self.assertTrue(saved['command'])
                     self.assertTrue(saved['failure'])
                     self.assertIn('returncode', saved)

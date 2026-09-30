@@ -14,6 +14,28 @@ import profile_project as profile
 
 
 class EnvironmentTests(unittest.TestCase):
+    def test_rev24_repetitions_keep_distinct_raw_attempts(self):
+        for kind in ('pipeline', 'empty'):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as root:
+                args = SimpleNamespace(build=Path('unused'), frames=8, output=Path(root))
+                case = dict(profile.pipeline_case('review', 4, 4, 1280, 720),
+                            kind=kind, workers=4)
+                captures = [subprocess.CompletedProcess([], 0,
+                            json.dumps(dict(frame_mean=repeat, samples=[[repeat] * 9])),
+                            f'diagnostic-{repeat}') for repeat in range(2)]
+                with patch.object(profile.subprocess, 'run', side_effect=captures):
+                    summaries = [profile.run_case(case, args, {'all': [0]}, repeat, 0)
+                                 for repeat in range(2)]
+                self.assertEqual(len(list(Path(root).glob('*.attempt.json'))), 2)
+                for repeat, summary in enumerate(summaries):
+                    saved = json.loads((Path(root) / summary['attempt_file']).read_text())
+                    self.assertEqual(saved['repetition'], repeat)
+                    self.assertEqual(saved['order'], summary['order'])
+                    self.assertEqual(saved['case'], case)
+                    self.assertEqual(saved['attempt_file'], summary['attempt_file'])
+                    self.assertEqual(saved['stdout'], captures[repeat].stdout)
+                    self.assertEqual(saved['stderr'], captures[repeat].stderr)
+
     def test_obs24_inherited_controls_are_scrubbed_and_effective_controls_recorded(self):
         controls = dict(INPUT='/unexpected.yuv', WIDTH='320', HEIGHT='180', EXECUTOR='2',
                         ACTIVE='1', ZEROCOPY='0', ADAPTIVE='1', WARMUP='0',
