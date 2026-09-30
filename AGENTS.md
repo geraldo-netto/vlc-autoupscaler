@@ -120,6 +120,10 @@ the behavior defined here when interacting with this workspace.
   behavior.)
 - Still one logical change per commit, Conventional Commits format, and only commit
   or push when the user asks.
+- Keep the plugin source version in `src/version.h` as a UTC `yyyy-mm-dd` date.
+  Update it with changes to shipped plugin code or plugin build behavior. Preserve
+  it for documentation/test-only changes and unchanged rebuilds. Same-day changes
+  share the date; binary hashes distinguish exact installed artifacts.
 
 ## File Editing
 

@@ -782,8 +782,23 @@ static void test_processing_metrics(void)
     END();
 }
 
+static void test_plugin_version(void)
+{
+    BEGIN("Plugin date version appears in module metadata and engagement log");
+    filter_t filter;
+    reset_state();
+    lifecycle_messages[0] = '\0';
+    init_filter(&filter);
+    CHECK(strstr(lifecycle_module_descriptor[1], "(" UP_VERSION ")") != NULL);
+    CHECK(up_autoupscale_open_checked((vlc_object_t *)&filter) == VLC_SUCCESS);
+    CHECK(strstr(lifecycle_messages, "version=" UP_VERSION) != NULL);
+    Close((vlc_object_t *)&filter);
+    END();
+}
+
 int main(void)
 {
+    test_plugin_version();
     test_processing_metrics();
     test_output_permission();
     test_success_copies_properties_and_tears_down();

@@ -8,7 +8,7 @@
     static const char *const lifecycle_module_descriptor[] __attribute__((unused)) = {
 #define vlc_module_end() NULL };
 #define set_shortname(...) "",
-#define set_description(...) "",
+#define set_description(value) value,
 #define set_help(...) "",
 #define set_capability(...) "",
 #define set_category(...) "",

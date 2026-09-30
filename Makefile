@@ -17,6 +17,7 @@
 .DEFAULT_GOAL := all
 
 PLUGIN := libautoupscale_plugin
+PLUGIN_VERSION := $(shell sed -n 's/^\#define UP_VERSION "\(.*\)"$$/\1/p' src/version.h)
 
 CC      ?= gcc
 CLANG   ?= clang
@@ -1665,6 +1666,7 @@ clean:
 	@./scripts/safe-rm-tree.sh remove "$(BUILD)" ".vlc-autoscaler-build-root" "$(CURDIR)"
 
 info:
+	@echo "Plugin version : $(PLUGIN_VERSION)"
 	@echo "VLC plugin dir : $(VLC_PLUGIN_DIR)"
 	@echo "VLC cflags     : $(VLC_CFLAGS)"
 	@echo "VLC libs       : $(VLC_LIBS)"

@@ -3,6 +3,7 @@
 #define AUTOUPSCALE_MODULE_H
 
 #include <vlc_common.h>
+#include "version.h"
 
 #define UP_CFG_PREFIX "autoupscale-"
 

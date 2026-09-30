@@ -59,6 +59,26 @@ plugin_root=$(pkg-config --variable=pluginsdir vlc-plugin)
 sudo vlc-cache-gen "$plugin_root"
 ```
 
+### Check the plugin version
+
+The plugin uses a `yyyy-mm-dd` source version from `src/version.h`. It appears
+in VLC's module description and the `AutoUpscale engaged` log line. Compare the
+checkout's version with the installed module:
+
+```sh
+make -s info | grep '^Plugin version'
+vlc --no-plugins-cache --list 2>/dev/null | grep -E '^[[:space:]]*autoupscale[[:space:]]'
+```
+
+Install the current build if the installed date is older or absent. Rebuilding
+unchanged source preserves its date. Multiple changes on the same day share a
+date; compare binary hashes when an exact match is needed:
+
+```sh
+sha256sum build/libautoupscale_plugin.so \
+  "$(pkg-config --variable=pluginsdir vlc-plugin)/video_filter/libautoupscale_plugin.so"
+```
+
 ### Rootless install (no sudo)
 
 VLC 3 also searches every directory listed in the `VLC_PLUGIN_PATH`

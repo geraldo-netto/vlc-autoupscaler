@@ -207,7 +207,8 @@ static void Close( vlc_object_t *p_this )
 
 vlc_module_begin()
     set_shortname( N_("AutoUpscale") )
-    set_description( N_("Automatic video upscaler with presets through 8K") )
+    set_description( N_("Automatic video upscaler with presets through 8K ("
+                        UP_VERSION ")") )
     set_help( N_("AUTO upscales eligible low-resolution video to 720p or 1080p. "
                  "Explicit presets extend through 8K, subject to the scaling-ratio cap. "
                  "Backends: zimg (preferred) and swscale.") )

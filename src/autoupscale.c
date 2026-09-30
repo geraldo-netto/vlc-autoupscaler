@@ -441,7 +441,7 @@ static void LogEngaged( filter_t *p_filter, const filter_sys_t *p_sys,
     msg_Info( p_filter,
               "AutoUpscale engaged: %dx%d -> %dx%d "
               "(backend=%s preset=%d algo=%d "
-              "threads_budget=%d cores=%d simd=%s)",
+              "threads_budget=%d cores=%d simd=%s version=" UP_VERSION ")",
               sc->src_w, sc->src_h, sc->dst_w, sc->dst_h,
               sc->backend->name,
               preset, sc->algo,
