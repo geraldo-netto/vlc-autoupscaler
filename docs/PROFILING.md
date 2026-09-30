@@ -341,6 +341,11 @@ The output directory must not already contain `runs.jsonl` or `runs.csv`.
 `baseline`, `empty`, `detail`, `paced`, and `observer`. The last group shuffles
 matching detail modes within each repetition to assess instrumentation effects.
 
+The current runner retains raw stdout/stderr and capture metadata in
+`<repetition>-<order>.attempt.json`, using zero-based indices. Each summary's
+`attempt_file` links to that evidence, so repetitions cannot overwrite one
+another. Failed attempts retain their raw evidence before reporting failure.
+
 The general runner clears inherited `UP_PROFILE_*` variables and records the
 effective controls and generated source dimensions/content per case. It does
 not accept raw input through the environment. Use the dedicated video runners
@@ -354,6 +359,14 @@ Direct interfaces:
 profile_pipeline zworkers uworkers width height frames pin detail content period-us [samples.csv]
 profile_worker_pool workers frames pin detail
 ```
+
+Current frame CSVs append `adaptive_active`: one when tuning remains enabled
+after the frame, zero for fixed, disabled, stopped or sharpness-bypassed tuning.
+The playback-policy and PERF-15 summaries count exploration and settlement only
+on active frames with USM workers and no bypass; restarts require two adjacent
+active frames. A retained `phase` alone does not mean tuning is still active.
+Historical CSVs without the flag use the requested mode, worker count and
+`skipped` flag; these older fields cannot identify an unmarked tuner fallback.
 
 `pin=1` enables the existing zimg affinity policy; USM remains scheduler-managed.
 For the empty-pool executable, `pin=1` pins its synthetic workers to the allowed

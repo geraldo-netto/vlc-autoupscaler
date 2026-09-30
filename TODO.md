@@ -4,7 +4,6 @@
 
 | id | status | effort | description | notes |
 |---|---|---|---|---|
-| REV-29 | open | S | documentation — zimg coverage rationale describes removed harness limitations | `Makefile:1111-1118` says `log_zimg_open` needs a live VLC logger and references an unreachable partial-construction retry. Current `tests/test_scaler_zimg.c:__wrap_vlc_Log`, `test_pin_diagnostics` and `test_tile_scratch_diagnostic` exercise logging through the wrapped logger; `src/scaler_zimg.c:zimg_pool_ops` uses the shared all-or-nothing worker lifecycle. The same comment and `sonar-project.properties:18` describe the gated suite as VLC-free although `Makefile` conditionally includes `test_frame_retirement_zimg` when SDKs exist. Update comments to describe current harness coverage and optional SDK-backed tests, retaining the explicitly agreed informational zimg coverage scope. Resolve by checking prose against current targets, wrappers and lifecycle; documentation-only correction needs no artificial regression test. |
 
 ## Other items
 

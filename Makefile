@@ -1123,14 +1123,11 @@ stress-zimg: $(BUILD)/test_scaler_zimg $(BUILD)/test_scaler_zimg_tsan
 	@echo "=== scaler_zimg invariants (ThreadSanitizer) ==="
 	@$(BUILD)/test_scaler_zimg_tsan
 
-# Informational line coverage for scaler_zimg.c via the harness. NOT part of
-# the gated `coverage` target (which stays VLC-free and requires every tracked
-# file and function to reach the configured threshold):
-# scaler_zimg.c cannot reach complete coverage in a unit harness —
-# log_zimg_open's msg_Info
-# needs a live VLC logger object, the partial-construction retry is unreachable
-# given zimg_open's stripe clamp, and a couple of zimg-internal failure returns
-# need fault injection. The harness reports its coverage as informational.
+# Informational scaler_zimg.c coverage, separate from the gated coverage scope.
+# The real VLC/zimg harness wraps logging and injects allocation/thread faults;
+# zimg uses the shared all-or-nothing worker pool. The gated `coverage` core
+# works without those SDKs, adding the real zimg retirement harness when present.
+# Every tracked file and function must reach its configured coverage threshold.
 coverage-zimg: | $(BUILD_MARKER)
 	@set -eu; \
 	covz="$(abspath $(BUILD))/covz"; \
