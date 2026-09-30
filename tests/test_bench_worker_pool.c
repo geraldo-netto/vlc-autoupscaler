@@ -71,8 +71,29 @@ static void test_cleanup_failure(int fault)
     END();
 }
 
+static void test_completion_failure(void)
+{
+    BEGIN("REV-7: completion clock failure rejects measurement and permits next run");
+    fail_start = fail_allocate = fail_spawn = fail_dispatch = 0;
+    const int failures[] = { 1, 100, 102 };
+    for (unsigned i = 0; i < sizeof(failures) / sizeof(failures[0]); i++) {
+        fail_clock = failures[i];
+        dispatch_calls = clock_calls = destroy_calls = 0;
+        char *args[] = { "bench_worker_pool", "1", "1" };
+        CHECK(benchmark_main(3, args) == 1);
+        CHECK(destroy_calls == 1);
+    }
+    fail_clock = 0;
+    dispatch_calls = clock_calls = destroy_calls = 0;
+    char *args[] = { "bench_worker_pool", "1", "1" };
+    CHECK(benchmark_main(3, args) == 0);
+    CHECK(destroy_calls == 1);
+    END();
+}
+
 int main(void)
 {
     for (int fault = 0; fault < 7; fault++) test_cleanup_failure(fault);
+    test_completion_failure();
     return test_harness_report();
 }

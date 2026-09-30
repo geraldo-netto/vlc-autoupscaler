@@ -9,6 +9,7 @@
 typedef struct {
     alignas(UP_POOL_CACHELINE) unsigned char count;
     struct timespec finished;
+    bool finished_valid;
 } bench_slot_t;
 
 _Static_assert(sizeof(bench_slot_t) % UP_POOL_CACHELINE == 0,
@@ -36,7 +37,7 @@ static void record_finish(void *owner, int index)
 {
     bench_pool_t *bench = (bench_pool_t *)owner;
     bench_slot_t *slot = up_worker_pool_slot(&bench->pool, index);
-    (void)clock_gettime(CLOCK_MONOTONIC, &slot->finished);
+    slot->finished_valid = clock_gettime(CLOCK_MONOTONIC, &slot->finished) == 0;
 }
 
 static const up_worker_pool_ops_t ops = {
@@ -68,10 +69,21 @@ static int parse_args(int argc, char **argv, long *workers, long *iterations)
     return 0;
 }
 
+static bool completion_valid(up_worker_pool_t *pool)
+{
+    for (int i = 0; i < pool->n_workers; i++) {
+        const bench_slot_t *slot = up_worker_pool_slot(pool, i);
+        if (!slot->finished_valid) return false;
+    }
+    return true;
+}
+
 static int dispatch_many(up_worker_pool_t *pool, long iterations)
 {
-    for (long i = 0; i < iterations; i++)
+    for (long i = 0; i < iterations; i++) {
         if (up_worker_pool_dispatch(pool) != 0) return 1;
+        if (!completion_valid(pool)) return 1;
+    }
     return 0;
 }
 
