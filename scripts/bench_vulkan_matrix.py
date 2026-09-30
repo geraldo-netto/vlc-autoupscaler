@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import subprocess
 from bench_playback_policies import digest
+from capture_attempt import checked_attempt, json_object
 
 
 def hashes(paths):
@@ -45,15 +46,19 @@ def command(build, clip, job, timing=False):
             str(job["period"]), "12", str(job["sequence"])]
 
 
-def capture(build, clip, job, timing=False):
+def parse_measurements(text):
+    rows = [json_object(line) for line in text.splitlines() if line.startswith('{')]
+    if not rows:
+        raise ValueError('missing Vulkan measurements')
+    return dict(measurements=rows, host_load_end=os.getloadavg())
+
+
+def capture(build, clip, job, timing=False, *, output, index=0):
     cmd = command(build, clip, job, timing)
     load = os.getloadavg()
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
-    row = dict(job=job, timing=timing, command=cmd, returncode=result.returncode,
-               stdout=result.stdout, stderr=result.stderr, host_load_start=load,
-               host_load_end=os.getloadavg())
-    row["measurements"] = [json.loads(line) for line in result.stdout.splitlines() if line.startswith("{")]
-    print(job, result.returncode, row["measurements"][-1:], flush=True)
+    row = dict(job=job, timing=timing, command=cmd, host_load_start=load)
+    checked_attempt(output / f'{index}.attempt.json', row, None, parse_measurements, 90)
+    print(job, row['returncode'], row["measurements"][-1:], flush=True)
     return row
 
 
@@ -66,7 +71,7 @@ def run(args):
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     rows = []
     for job in jobs():
-        row = capture(args.build, args.clip, job)
+        row = capture(args.build, args.clip, job, output=args.output, index=len(rows))
         rows.append(row)
         (args.output / "matrix.json").write_text(json.dumps(rows, indent=2) + "\n")
         if row["returncode"]:
@@ -83,7 +88,7 @@ def profiles(args, rows):
             for variant in ("naive", "lookup-direct", "lookup-fused-direct", "lookup-fused-resident"):
                 job = dict(device=device, factor=factor, combined=variant != "naive",
                            variant=variant, period=0, sequence=1, pair=0)
-                row = capture(args.build, args.clip, job, True)
+                row = capture(args.build, args.clip, job, True, output=args.output, index=len(rows))
                 rows.append(row)
                 (args.output / "matrix.json").write_text(json.dumps(rows, indent=2) + "\n")
                 if row["returncode"]:

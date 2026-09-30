@@ -6,6 +6,7 @@ import subprocess
 import sys
 from types import SimpleNamespace
 import unittest
+import tempfile
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'scripts'))
@@ -20,7 +21,9 @@ class EnvironmentTests(unittest.TestCase):
         inherited = {'UP_PROFILE_' + key: value for key, value in controls.items()}
         inherited['UP_PROFILE_FUTURE_CONTROL'] = 'unexpected'
         case = profile.pipeline_case('review', 4, 4, 1280, 720)
-        args = SimpleNamespace(build=Path('unused'), frames=8)
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        args = SimpleNamespace(build=Path('unused'), frames=8, output=Path(temporary.name))
         completed = subprocess.CompletedProcess([], 0, stdout=json.dumps({}))
         with patch.dict(os.environ, inherited), patch.object(profile.subprocess, 'run', return_value=completed) as run:
             result = profile.run_case(case, args, {'all': [0]}, 0, 0)

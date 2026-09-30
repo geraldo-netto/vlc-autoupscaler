@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import random
 import subprocess
+from capture_attempt import checked_attempt, json_object
 
 
 def digest(path):
@@ -66,14 +67,12 @@ def capture(args, job, repeat, index):
            "1", "0", "0", "33333", str(trace)]
     env = environment(args, job)
     before = os.getloadavg()
-    result = subprocess.run(cmd, env=env, capture_output=True, text=True, timeout=120)
-    row = dict(job=job, repeat=repeat, command=cmd, returncode=result.returncode,
-               stdout=result.stdout, stderr=result.stderr, load_before=before,
-               load_after=os.getloadavg(), trace=str(trace),
+    row = dict(job=job, repeat=repeat, command=cmd, load_before=before, trace=str(trace),
                environment={k: v for k, v in env.items() if k.startswith("UP_PROFILE_")})
-    if not result.returncode:
-        row.update(result=json.loads(result.stdout), trace_summary=summarize_trace(trace, bool(job["adaptive"])))
-    return row
+    def parse(text):
+        return dict(result=json_object(text), load_after=os.getloadavg(),
+                    trace_summary=summarize_trace(trace, bool(job['adaptive'])))
+    return checked_attempt(args.output / f'{index}.attempt.json', row, env, parse, 120)
 
 
 def run(args):

@@ -13,6 +13,10 @@ import bench_gpu_pacing as gpu
 import bench_native_playback as playback
 import test_native_vout_runtime as native
 import os
+import json
+import bench_playback_policies as policies
+import bench_vulkan_matrix as matrix
+import profile_project as profile
 
 
 class GpuCaptureTests(unittest.TestCase):
@@ -159,6 +163,38 @@ class NativeCleanupTests(unittest.TestCase):
         child.wait.assert_called_once_with(timeout=10)
         child.kill.assert_not_called()
         child.stdin.close.assert_called_once_with()
+
+
+class CapturePreservationTests(unittest.TestCase):
+    def run_capture(self, runner, root):
+        args = SimpleNamespace(output=root, build=Path('build'), clips=Path('clips'), frames=8)
+        if runner == 'policies':
+            return policies.capture(args, policies.jobs('cpu')[0], 0, 0)
+        if runner == 'matrix':
+            return matrix.capture(args.build, Path('clip'), next(matrix.jobs()), output=root)
+        case = profile.pipeline_case('review', 4, 4, 1280, 720)
+        return profile.run_case(case, args, {'all': [0]}, 0, 0)
+
+    def test_rev14_failed_attempts_preserve_raw_evidence(self):
+        failures = [subprocess.CompletedProcess([], 0, '{broken', 'useful diagnostic'),
+                    subprocess.CompletedProcess([], 3, 'partial', 'useful diagnostic'),
+                    subprocess.TimeoutExpired('benchmark', 90, output=b'partial', stderr=b'useful diagnostic'),
+                    OSError('launch failed')]
+        for runner in ('policies', 'matrix', 'profile'):
+            for failure in failures:
+                with self.subTest(runner=runner, failure=failure), tempfile.TemporaryDirectory() as root:
+                    result = failure if isinstance(failure, subprocess.CompletedProcess) else None
+                    error = failure if isinstance(failure, BaseException) else None
+                    with patch.object(subprocess, 'run', return_value=result, side_effect=error):
+                        with self.assertRaises(RuntimeError):
+                            self.run_capture(runner, Path(root))
+                    saved = json.loads((Path(root) / '0.attempt.json').read_text())
+                    self.assertTrue(saved['command'])
+                    self.assertTrue(saved['failure'])
+                    self.assertIn('returncode', saved)
+                    if not isinstance(failure, OSError):
+                        self.assertEqual(saved['stderr'], 'useful diagnostic')
+                        self.assertTrue(saved['stdout'])
 
 
 if __name__ == '__main__':

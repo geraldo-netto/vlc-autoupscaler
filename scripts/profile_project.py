@@ -10,6 +10,7 @@ import platform
 import random
 import statistics
 import subprocess
+from capture_attempt import checked_attempt, json_object
 import time
 
 
@@ -139,12 +140,17 @@ def run_case(case, args, affinity, repetition, index):
         cmd = [str(args.build / "profile_pipeline"), *map(str, values)]
     controls = profile_controls(case)
     env = {key: value for key, value in os.environ.items() if not key.startswith('UP_PROFILE_')}
-    completed = subprocess.run(prefix + cmd, env=dict(env, **controls), text=True,
-                               capture_output=True, check=True, timeout=180)
-    result = json.loads(completed.stdout)
-    if case["kind"] == "empty":
-        summarize_empty(result)
-    else:
+    row = dict(command=prefix + cmd, environment=controls, case=case, repetition=repetition,
+               order=index, timestamp=time.time())
+    def parse(text):
+        result = json_object(text)
+        if case['kind'] == 'empty':
+            summarize_empty(result)
+        return dict(result=result)
+    attempt = checked_attempt(args.output / f'{index}.attempt.json', row,
+                              dict(env, **controls), parse, 180)
+    result = attempt['result']
+    if case["kind"] != "empty":
         result['input'] = dict(kind='generated', width=case['width']//2,
                                height=case['height']//2, content=case['content'])
     result.update(case, repetition=repetition, order=index, frames=frames,

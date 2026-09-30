@@ -9,6 +9,7 @@ import random
 import subprocess
 
 from bench_playback_policies import digest
+from capture_attempt import execute_capture, output_text
 
 CLIPS = ("animation", "motion", "live-action-540")
 TREATMENTS = ("duplicate", "fixed4", "local", "adaptive", "latency")
@@ -41,22 +42,6 @@ def trace_summary(path, adaptive):
                 selected_workers=sorted({int(row["selected_workers"]) for row in rows}),
                 changed_frames=[dict(frame=int(row["frame"]), us=float(row["total"]),
                                      workers=int(row["workers"])) for row in rows if row["changed"] == "1"])
-
-
-def output_text(value):
-    return value.decode('utf-8', errors='replace') if isinstance(value, bytes) else value or ''
-
-
-def execute_capture(command, environment):
-    try:
-        result = subprocess.run(command, env=environment, capture_output=True, text=True,
-                                errors='replace', timeout=150)
-        return dict(returncode=result.returncode, stdout=result.stdout, stderr=result.stderr)
-    except subprocess.TimeoutExpired as error:
-        return dict(returncode=-1, failure='timeout', timeout_seconds=error.timeout,
-                    stdout=output_text(error.stdout), stderr=output_text(error.stderr))
-    except OSError as error:
-        return dict(returncode=-1, failure='launch', error=str(error), stdout='', stderr='')
 
 
 def capture_configuration(build, clips, job, trace, pixels=False):
