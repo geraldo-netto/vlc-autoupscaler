@@ -114,6 +114,19 @@ class PlaybackCleanupTests(unittest.TestCase):
 
 
 class NativeCleanupTests(unittest.TestCase):
+    def test_rev21_subtitle_uses_single_block_ocr(self):
+        state = {'1': {}}
+        child = Mock()
+        with tempfile.TemporaryDirectory() as root, \
+                patch.object(native, 'window_state', return_value=state), \
+                patch.object(native, 'volume_probe', return_value=[]), \
+                patch.object(native, 'send'), patch.object(native.time, 'sleep'), \
+                patch.object(native.subprocess, 'run'), \
+                patch.object(native, 'execute', return_value='AUTOUPSCALE SUBTITLE TEST') as execute:
+            native.controls(child, 'title', Path(root))
+            execute.assert_called_once_with(
+                ['tesseract', str(Path(root) / 'subtitle.png'), 'stdout', '--psm', '6'])
+
     def capture(self, child, control_error=None):
         with tempfile.TemporaryDirectory() as root:
             args = SimpleNamespace(output=Path(root), build=Path(root), clip=Path('clip'))

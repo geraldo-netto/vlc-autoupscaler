@@ -53,7 +53,7 @@ def controls(player, title, output):
     row["resized"] = window_state(title)
     shot = output / "subtitle.png"
     subprocess.run(["import", "-window", next(iter(row["before"])), str(shot)], check=True)
-    row["subtitle"] = execute(["tesseract", str(shot), "stdout"])
+    row["subtitle"] = execute(["tesseract", str(shot), "stdout", "--psm", "6"])
     send(player, "fullscreen", 2)
     row["fullscreen"] = window_state(title)
     send(player, "fullscreen", 2)
