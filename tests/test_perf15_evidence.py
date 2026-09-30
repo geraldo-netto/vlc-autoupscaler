@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'scripts'))
 import bench_perf15 as bench
 import bench_perf15_confirm as confirm
 import perf15_statistics as stats
-from perf15_fixture import fake_pair
+from perf15_fixture import fake_pair, set_outcome
 
 
 class PixelEvidenceTests(unittest.TestCase):
@@ -161,6 +161,51 @@ class InvocationTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             stats.checked_pairs(args.output)
 
+    def test_rev12_rejects_rehashed_false_adaptive_metadata(self):
+        changes = [('adaptive_changes', -1), ('adaptive_changes', 2701),
+                   ('adaptive_changes', 1), ('adaptive_changes', True),
+                   ('first_settled_frame', 99999999), ('first_settled_frame', 1),
+                   ('adaptive_outcome', 'settled'), ('usm_effective', 65)]
+        for key, value in changes:
+            with self.subTest(key=key, value=value), tempfile.TemporaryDirectory() as root:
+                args, job, row = study(Path(root), treatment='latency')
+                def edit(record):
+                    record['result'][key] = value
+                    record['stdout'] = json.dumps(record['result'])
+                self.check_rejected(args, job, row, edit)
+
+    def test_rev12_rejects_rehashed_false_summary(self):
+        with tempfile.TemporaryDirectory() as root:
+            args, job, row = study(Path(root), treatment='latency')
+            self.check_rejected(args, job, row,
+                                lambda record: record['summary'].update(selected_workers=[-100]))
+
+    def test_rev12_rejects_rehashed_corrupt_trace_fields(self):
+        changes = [('phase', '-1'), ('phase', '4'), ('workers', '-1'), ('workers', '65'),
+                   ('selected_workers', '-100'), ('changed', '2'), ('skipped', '2'),
+                   ('skipped', '1'), ('pixel_hash', 'bad'), ('zimg', 'nan'),
+                   ('phase', None)]
+        for key, value in changes:
+            with self.subTest(key=key, value=value), tempfile.TemporaryDirectory() as root:
+                args, _, row = study(Path(root), treatment='latency')
+                directory = args.output / row['directory']
+                path = directory / row['candidate']
+                with path.open() as stream:
+                    reader = csv.DictReader(stream)
+                    fields, rows = reader.fieldnames, list(reader)
+                if value is None:
+                    fields.remove(key)
+                else:
+                    rows[0][key] = value
+                with path.open('w') as stream:
+                    writer = csv.DictWriter(stream, fieldnames=fields, extrasaction='ignore')
+                    writer.writeheader()
+                    writer.writerows(rows)
+                row['hashes'][row['candidate']] = bench.digest(path)
+                edit_pair(args.output, row)
+                with self.assertRaises(RuntimeError):
+                    stats.checked_pairs(args.output)
+
     def test_obs25_rejects_each_contradictory_invocation_field(self):
         changes = [('command', 0, 'unused/wrong-profiler'), ('command', 1, '1'),
                    ('command', 2, '4'), ('command', 3, '1920'), ('command', 4, '1080'),
@@ -204,12 +249,10 @@ class InvocationTests(unittest.TestCase):
                 args, job, row = study(Path(root), treatment=treatment)
                 path = args.output / row['directory'] / 'results.json'
                 records = json.loads(path.read_text())
-                bypass = outcome == 'sharpness-bypass'
-                records[1]['result'].update(adaptive_outcome=outcome, skip_usm=int(bypass),
-                                             lap_mean=4000 if bypass else 1000)
-                records[1]['stdout'] = json.dumps(records[1]['result'])
+                set_outcome(path.parent, records[1], outcome)
                 bench.save(path, records)
                 row['hashes']['results.json'] = bench.digest(path)
+                row['hashes'][records[1]['trace']] = bench.digest(path.parent / records[1]['trace'])
                 row['valid_outcomes'] = outcome in ('fixed', 'settled', 'searching')
                 edit_pair(args.output, row)
                 self.assertEqual(confirm.collect_pair(args, job, 0), row)

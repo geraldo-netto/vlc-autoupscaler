@@ -1,5 +1,6 @@
 """Small deterministic capture data for PERF-15 evidence regressions."""
 import json
+import csv
 
 import bench_perf15 as bench
 
@@ -19,16 +20,43 @@ def invocation(job, trace):
 
 def write_capture(directory, clip, treatment, index, value, outcome):
     trace = directory / ('%d.csv' % index)
-    trace.write_text('frame,total,processing_cpu\n' + ''.join(
-        '%d,%.3f,%.3f\n' % (frame, value, value) for frame in range(2700)))
     job = bench.settings(clip, treatment)
     result = dict.fromkeys(bench.METRICS, value) | dict(
         adaptive_outcome=outcome, executor=0, zerocopy=1, sharp_threshold=3500, warmup=0,
         skip_usm=int(outcome == 'sharpness-bypass'),
         lap_mean=4000 if outcome == 'sharpness-bypass' else 1000,
         tuner_policy='latency-experiment' if treatment == 'latency' else 'legacy')
-    return dict(job=job, trace=trace.name, returncode=0, **invocation(job, trace),
-                result=result, stdout=json.dumps(result), stderr='')
+    record = dict(job=job, trace=trace.name, returncode=0, **invocation(job, trace),
+                  result=result, stdout=json.dumps(result), stderr='')
+    set_outcome(directory, record, outcome)
+    return record
+
+
+def set_outcome(directory, record, outcome):
+    path = directory / record['trace']
+    fields = ('frame,total,zimg,usm,zdispatch,zfirst,zlast,zmin,zmax,zmean,zhandoff,zcpu,'
+              'udispatch,ufirst,ulast,umin,umax,umean,uhandoff,ucpu,processing_cpu,'
+              'phase,workers,changed,skipped,selected_workers,pixel_hash').split(',')
+    value = record['result']['frame_mean']
+    bypass = outcome == 'sharpness-bypass'
+    with path.open('w') as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields)
+        writer.writeheader()
+        for frame in range(2700):
+            skipped = int(bypass and frame >= 59)
+            workers = 0 if skipped else record['job']['usm']
+            row = dict.fromkeys(fields, 0)
+            row.update(frame=frame, total=value, zimg=value, processing_cpu=value,
+                       phase=3 if outcome == 'settled' and frame >= 66 else 0,
+                       workers=workers, selected_workers=workers, skipped=skipped,
+                       pixel_hash='0000000000000000')
+            writer.writerow(row)
+    record['result'].update(adaptive_outcome=outcome, adaptive_changes=0,
+                            first_settled_frame=66 if outcome == 'settled' else 0,
+                            usm_effective=0 if bypass else record['job']['usm'],
+                            skip_usm=int(bypass), lap_mean=4000 if bypass else 1000)
+    record['stdout'] = json.dumps(record['result'])
+    record['summary'] = bench.trace_summary(path, record['job']['adaptive'])
 
 
 def fake_pair(args, **job):

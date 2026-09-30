@@ -29,16 +29,101 @@ def trace_values(rows, field):
     return values
 
 
-def trace_metrics(path):
+TRACE_FIELDS = ('frame,total,zimg,usm,zdispatch,zfirst,zlast,zmin,zmax,zmean,zhandoff,zcpu,'
+                'udispatch,ufirst,ulast,umin,umax,umean,uhandoff,ucpu,processing_cpu,'
+                'phase,workers,changed,skipped,selected_workers,pixel_hash').split(',')
+
+
+def trace_rows(path):
     with path.open() as stream:
-        rows = list(csv.DictReader(stream))
+        reader = csv.DictReader(stream)
+        if reader.fieldnames != TRACE_FIELDS:
+            raise ValueError('trace requires the complete profiler schema')
+        rows = list(reader)
     if [int(row['frame']) for row in rows] != list(range(2700)):
         raise ValueError('missing, duplicate or unexpected frames')
+    for field in TRACE_FIELDS[1:21]:
+        trace_values(rows, field)
+    for row in rows:
+        verify_trace_row(row)
+    return rows
+
+
+def bounded_integer(value, low, high):
+    if type(value) is not int or not low <= value <= high:
+        raise ValueError('invalid bounded state or counter')
+    return value
+
+
+def verify_trace_row(row):
+    for field, high in (('phase', 3), ('workers', 64), ('selected_workers', 64),
+                        ('changed', 1), ('skipped', 1)):
+        bounded_integer(int(row[field]), 0, high)
+        if row[field] != str(int(row[field])):
+            raise ValueError('trace state must use canonical integers')
+    if row['pixel_hash'] != '0000000000000000':
+        raise ValueError('timing protocol must disable pixel hashing')
+    bypass = int(row['skipped']) == 1
+    if bypass != (int(row['workers']) == 0) or bypass != (int(row['selected_workers']) == 0):
+        raise ValueError('trace worker counts contradict bypass state')
+
+
+def trace_metrics(rows):
     times = sorted(trace_values(rows, 'total'))
     return dict(frame_mean=statistics.fmean(times),
                 frame_p95=times[(len(times)-1)*95//100],
                 frame_p99=times[(len(times)-1)*99//100],
                 processing_cpu_mean=statistics.fmean(trace_values(rows, 'processing_cpu')))
+
+
+def verify_trace_counters(result, rows):
+    changes = bounded_integer(result['adaptive_changes'], 0, len(rows))
+    settled = bounded_integer(result['first_settled_frame'], 0, len(rows))
+    if changes != sum(int(row['changed']) for row in rows):
+        raise ValueError('adaptive change counter differs from trace')
+    first = next((i for i, row in enumerate(rows) if int(row['phase']) == 3), None)
+    expected = {first} if first is not None else {0, len(rows)}
+    if settled not in expected:
+        raise ValueError('first settled frame differs from trace')
+    if result['skip_usm'] != int(rows[-1]['skipped']):
+        raise ValueError('final bypass differs from trace')
+    if bounded_integer(result['usm_effective'], 0, 64) != int(rows[-1]['workers']):
+        raise ValueError('final worker count differs from trace')
+
+
+def verify_trace_transitions(rows, adaptive):
+    allowed = {0: {0, 1, 3}, 1: {1, 2}, 2: {0, 2}, 3: {0, 3}}
+    if int(rows[0]['phase']) != 0:
+        raise ValueError('trace does not start in the initial phase')
+    for previous, current in zip(rows, rows[1:]):
+        if int(current['phase']) not in allowed[int(previous['phase'])]:
+            raise ValueError('invalid adaptive phase transition')
+        if int(current['skipped']) < int(previous['skipped']):
+            raise ValueError('sharpness bypass cannot restart USM')
+    if not adaptive and any(int(row['phase']) or int(row['changed']) for row in rows):
+        raise ValueError('fixed mode contains adaptive activity')
+
+
+def verify_terminal_state(result, rows):
+    outcome, phase = result['adaptive_outcome'], int(rows[-1]['phase'])
+    if outcome == 'settled' and (phase not in (0, 3) or not result['first_settled_frame']):
+        raise ValueError('settled outcome contradicts trace phase')
+    if outcome == 'disabled' and any(int(row['phase']) or int(row['changed']) for row in rows):
+        raise ValueError('disabled tuner contains adaptive activity')
+    if result['first_settled_frame'] == len(rows) and outcome != 'settled':
+        raise ValueError('last-frame settlement contradicts outcome')
+
+
+def verify_trace(record, path):
+    rows = trace_rows(path)
+    adaptive = bool(record['job']['adaptive'])
+    verify_trace_counters(record['result'], rows)
+    verify_trace_transitions(rows, adaptive)
+    verify_terminal_state(record['result'], rows)
+    expected = bench.trace_summary(path, adaptive)
+    if json.dumps(record['summary'], sort_keys=True) != json.dumps(expected, sort_keys=True):
+        raise ValueError('derived adaptive summary differs from trace')
+    return trace_metrics(rows)
 
 
 def verify_hashes(directory, row):
@@ -114,7 +199,7 @@ def verify_record(directory, record, clip, treatment, trace):
     if record['trace'] != trace:
         raise ValueError('capture trace differs from pair')
     verify_runtime(record, verify_invocation(directory, record))
-    computed = trace_metrics(child(directory, trace))
+    computed = verify_trace(record, child(directory, trace))
     for metric, expected in computed.items():
         actual = record['result'][metric]
         if actual <= 0:
