@@ -7,14 +7,15 @@ from pathlib import Path
 import subprocess
 from bench_playback_policies import digest
 from capture_attempt import checked_attempt, json_object
+from vulkan_devices import discover, select
 
 
 def hashes(paths):
     return {str(path): digest(path) for path in paths}
 
 
-def jobs():
-    for device in (0, 1):
+def jobs(devices=(0,)):
+    for device in devices:
         for factor in (2, 4):
             for combined, variants in (
                 (False, ("cpu", "naive", "separable", "lookup-direct")),
@@ -64,13 +65,14 @@ def capture(build, clip, job, timing=False, *, output, index=0):
 
 def run(args):
     args.output.mkdir(parents=True, exist_ok=False)
+    args.devices = select(discover(args.build), args.devices)
     paths = [args.build / "bench_vulkan_scale"] + sorted(args.build.glob("vulkan_*.spv"))
     paths += sorted(Path("tests").glob("*vulkan*"))
     paths += [Path(__file__), Path("scripts/compile_vulkan_shader.py"), args.clip]
     manifest = hashes(paths)
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     rows = []
-    for job in jobs():
+    for job in jobs(args.devices):
         row = capture(args.build, args.clip, job, output=args.output, index=len(rows))
         rows.append(row)
         (args.output / "matrix.json").write_text(json.dumps(rows, indent=2) + "\n")
@@ -83,7 +85,7 @@ def run(args):
 
 
 def profiles(args, rows):
-    for device in (0, 1):
+    for device in args.devices:
         for factor in (2, 4):
             for variant in ("naive", "lookup-direct", "lookup-fused-direct", "lookup-fused-resident"):
                 job = dict(device=device, factor=factor, combined=variant != "naive",
@@ -100,4 +102,5 @@ if __name__ == "__main__":
     parser.add_argument("build", type=Path)
     parser.add_argument("clip", type=Path, help="960x540 I420 with at least 32 decoded frames")
     parser.add_argument("output", type=Path, help="new evidence directory")
+    parser.add_argument('--devices', type=int, nargs='+', help='available Vulkan indices; default: all')
     run(parser.parse_args())

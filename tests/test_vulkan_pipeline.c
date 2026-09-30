@@ -2,6 +2,7 @@
 #include "experiment_vulkan.h"
 #include "usm_reference.h"
 #include "prng.h"
+#include "vulkan_devices.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -177,7 +178,12 @@ int main(int argc, char **argv)
     if (argc != 4) return 2;
     static const int shapes[][4] = {{2, 2, 2, 2}, {4, 2, 10, 6}, {16, 10, 34, 22},
         {64, 36, 128, 72}, {2, 2, 8, 6}, {72, 10, 136, 22}};
-    for (unsigned device = 0; device < 2; device++) {
+    unsigned devices[16];
+    int count = up_vk_devices(devices);
+    if (count < 0) return 1;
+    if (!count) { fputs("unsupported: no compatible Vulkan devices\n", stderr); return 77; }
+    for (int selected = 0; selected < count; selected++) {
+        unsigned device = devices[selected];
         for (unsigned direct = 0; direct < 8; direct++) {
             for (unsigned shape = 0; shape < sizeof(shapes) / sizeof(shapes[0]); shape++)
                 if (!check_shape(shapes[shape], device, argv, direct)) return 1;
