@@ -91,9 +91,34 @@ static void test_completion_failure(void)
     END();
 }
 
+static void test_arguments(void)
+{
+    BEGIN("REV-8: reject surplus, missing, malformed and out-of-range arguments");
+    char *extra[] = { "bench_worker_pool", "1", "1", "unexpected" };
+    long workers, iterations;
+    CHECK(parse_args(4, extra, &workers, &iterations) == 2);
+    CHECK(parse_args(1, extra, &workers, &iterations) == 2);
+    char above[32], maximum[32], max_iterations[32];
+    snprintf(above, sizeof(above), "%d", UP_THREADS_MAX + 1);
+    snprintf(maximum, sizeof(maximum), "%d", UP_THREADS_MAX);
+    snprintf(max_iterations, sizeof(max_iterations), "%d", INT_MAX);
+    const char *invalid[] = { "", "-1", "0", above, "1x", "99999999999999999999" };
+    for (unsigned i = 0; i < sizeof(invalid) / sizeof(invalid[0]); i++) {
+        char *args[] = { "bench_worker_pool", (char *)invalid[i] };
+        CHECK(parse_args(2, args, &workers, &iterations) == 2);
+    }
+    char *bounds[] = { "bench_worker_pool", maximum, max_iterations };
+    CHECK(parse_args(3, bounds, &workers, &iterations) == 0);
+    CHECK(workers == UP_THREADS_MAX && iterations == INT_MAX);
+    CHECK(parse_args(3, extra, &workers, &iterations) == 0);
+    CHECK(workers == 1 && iterations == 1);
+    END();
+}
+
 int main(void)
 {
     for (int fault = 0; fault < 7; fault++) test_cleanup_failure(fault);
     test_completion_failure();
+    test_arguments();
     return test_harness_report();
 }

@@ -60,7 +60,7 @@ static int elapsed_us(const struct timespec *start, const struct timespec *end,
 static int parse_args(int argc, char **argv, long *workers, long *iterations)
 {
     *iterations = 10000;
-    if (argc < 2 ||
+    if (argc < 2 || argc > 3 ||
         !up_cli_parse_long(argv[1], 1, UP_THREADS_MAX, workers) ||
         (argc >= 3 && !up_cli_parse_long(argv[2], 1, INT_MAX, iterations))) {
         fprintf(stderr, "usage: %s <workers> [iterations]\n", argv[0]);
