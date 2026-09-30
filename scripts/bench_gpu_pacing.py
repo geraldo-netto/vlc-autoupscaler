@@ -11,31 +11,21 @@ import time
 
 from bench_playback_policies import digest
 from bench_vulkan_matrix import command
-
-
-def sensor_paths(device):
-    hwmon = next((device / "hwmon").glob("hwmon*"))
-    return dict(clock_hz=hwmon / "freq1_input", memory_hz=hwmon / "freq2_input",
-                power_uw=hwmon / "power1_average", temperature_mc=hwmon / "temp1_input",
-                busy_percent=device / "gpu_busy_percent")
+from vulkan_devices import discover, select, identity
+from linux_gpu_telemetry import resolve_device, sensor_paths, sensor_value, power_policy
 
 
 def read_sensors(paths):
-    values = {}
-    for name, path in paths.items():
-        try:
-            values[name] = int(path.read_text())
-        except (OSError, ValueError) as error:
-            values[name] = str(error)
+    values = {name: sensor_value(path) for name, path in paths.items()}
     return dict(time_us=time.monotonic_ns() / 1000, **values)
 
 
-def jobs():
-    rows = [dict(device=0, factor=2, combined=True, variant=variant,
+def jobs(device):
+    rows = [dict(device=device, factor=2, combined=True, variant=variant,
                  period=period, sequence=1, telemetry=telemetry, timing=0)
             for variant in ("lookup-direct", "lookup-fused-direct")
             for period in (0, 8333, 16667, 33333, 41667) for telemetry in (0, 1)]
-    rows.extend(dict(device=0, factor=2, combined=True, variant=variant,
+    rows.extend(dict(device=device, factor=2, combined=True, variant=variant,
                      period=period, sequence=1, telemetry=1, timing=1)
                 for variant in ("lookup-direct", "lookup-fused-direct")
                 for period in (0, 33333))
@@ -78,36 +68,51 @@ def telemetry_summary(samples, measurements):
     result = dict(samples=len(active), bounds=bounds)
     if active:
         result.update(sensor_statistics(active))
+        result['unavailable'] = {name: value for row in active for name, value in row.items()
+                                 if isinstance(value, str)}
     return result
 
 
 def capture(args, job, repeat, index):
+    if job['device'] != args.vulkan_device:
+        raise ValueError('job device does not match selected Vulkan identity')
     cmd = command(args.build, args.clip, job, bool(job["timing"]))
     log = args.output / (str(index) + ".log")
     rc, errors, samples = collect(cmd, sensor_paths(args.device), log, job["telemetry"])
     measurements = [json.loads(line) for line in log.read_text().splitlines() if line.startswith("{")]
-    row = dict(job=job, repeat=repeat, command=cmd, returncode=rc, stderr=errors,
+    row = dict(job=job, repeat=repeat, command=cmd, returncode=rc, stderr=errors, identity=args.identity,
                measurements=measurements, telemetry=samples, load=os.getloadavg())
     if not rc:
+        names = {row['device'] for row in measurements if 'device' in row}
+        if names != {args.identity['name']}:
+            raise ValueError('benchmark output does not match selected Vulkan identity')
         row["telemetry_summary"] = telemetry_summary(samples, measurements)
     return row
 
 
 def run(args):
     args.output.mkdir(parents=True, exist_ok=False)
+    select(discover(args.build), [args.vulkan_device])
+    args.identity = identity(args.build, args.vulkan_device)
+    args.device = resolve_device(args.identity, args.device)
     paths = [args.build / "bench_vulkan_scale", Path(__file__), args.clip,
+             args.build / 'list_vulkan_devices', Path('scripts/vulkan_devices.py'),
+             Path('scripts/linux_gpu_telemetry.py'),
              Path("scripts/bench_playback_policies.py"), Path("scripts/bench_vulkan_matrix.py")]
     paths += sorted(args.build.glob("vulkan_*.spv"))
     paths += sorted(Path("tests").glob("*vulkan*"))
     manifest = {str(path): digest(path) for path in paths}
-    policy = (args.device / "power_dpm_force_performance_level").read_text()
+    policy = power_policy(args.device)
     manifest["power_policy"] = policy
     manifest["sysfs_device"] = str(args.device.resolve())
+    manifest['identity'] = args.identity
+    manifest['sensors'] = {key: str(path) if path is not None else None
+                           for key, path in sensor_paths(args.device).items()}
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     randomizer = random.Random(20260914)
     rows = []
     for repeat in range(3):
-        cases = jobs()
+        cases = jobs(args.vulkan_device)
         randomizer.shuffle(cases)
         for job in cases:
             row = capture(args, job, repeat, len(rows))
@@ -117,8 +122,10 @@ def run(args):
             if row["returncode"]:
                 raise RuntimeError("benchmark failed; partial evidence retained")
     after = {str(path): digest(path) for path in paths}
-    after["power_policy"] = (args.device / "power_dpm_force_performance_level").read_text()
+    after["power_policy"] = power_policy(args.device)
     after["sysfs_device"] = str(args.device.resolve())
+    after['identity'] = identity(args.build, args.vulkan_device)
+    after['sensors'] = manifest['sensors']
     if after != manifest:
         raise RuntimeError("inputs or power policy changed; reject these results")
     (args.output / "verified.json").write_text('{"hashes_and_policy_unchanged": true}\n')
@@ -129,7 +136,8 @@ def main():
     parser.add_argument("build", type=Path)
     parser.add_argument("clip", type=Path)
     parser.add_argument("output", type=Path)
-    parser.add_argument("--device", type=Path, default=Path("/sys/class/drm/card1/device"))
+    parser.add_argument('--vulkan-device', type=int, required=True, help='Vulkan index to benchmark and monitor')
+    parser.add_argument("--device", type=Path, help='optional sysfs device; must match Vulkan PCI identity')
     run(parser.parse_args())
 
 

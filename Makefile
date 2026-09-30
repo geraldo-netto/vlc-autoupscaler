@@ -1247,7 +1247,7 @@ VULKAN_LIBS ?= -lvulkan
 .PHONY: build-vulkan-bench display-prototype native-vout-prototype test-native-vout-runtime
 build-vulkan-bench: $(BUILD)/list_vulkan_devices $(BUILD)/bench_vulkan $(BUILD)/bench_vulkan_scale $(BUILD)/vulkan_usm.spv $(BUILD)/vulkan_spline36.spv $(BUILD)/vulkan_separable.spv $(BUILD)/vulkan_fused.spv
 
-$(BUILD)/list_vulkan_devices: tests/list_vulkan_devices.c tests/vulkan_devices.h $(BUILD_CONFIG) | $(BUILD)
+$(BUILD)/list_vulkan_devices: tests/list_vulkan_devices.c tests/vulkan_devices.h tests/vulkan_identity.h tests/cli_parse.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(BENCH_CFLAGS) $(VULKAN_CFLAGS) -o $@ $< $(VULKAN_LIBS)
 
 .PHONY: test-vulkan
@@ -1259,10 +1259,11 @@ test-vulkan: build-vulkan-bench $(BUILD)/test_vulkan_devices $(BUILD)/test_vulka
 $(BUILD)/experiment_vulkan_test.o: tests/experiment_vulkan.c tests/experiment_vulkan.h tests/vulkan_limits.h tests/vulkan_timing.h tests/vulkan_coefficients.h tests/vulkan_bench_util.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) $(VULKAN_CFLAGS) -c -o $@ $<
 
-$(BUILD)/test_vulkan_devices: tests/test_vulkan_devices.c tests/vulkan_devices.h $(BUILD_CONFIG) | $(BUILD)
+$(BUILD)/test_vulkan_devices: tests/test_vulkan_devices.c tests/vulkan_devices.h tests/vulkan_identity.h $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) $(VULKAN_CFLAGS) -o $@ $< $(TEST_LDFLAGS) \
 	    -Wl,--wrap=vkCreateInstance -Wl,--wrap=vkEnumeratePhysicalDevices \
-	    -Wl,--wrap=vkGetPhysicalDeviceProperties -Wl,--wrap=vkDestroyInstance
+	    -Wl,--wrap=vkGetPhysicalDeviceProperties -Wl,--wrap=vkDestroyInstance \
+	    -Wl,--wrap=vkEnumerateDeviceExtensionProperties -Wl,--wrap=vkGetPhysicalDeviceProperties2
 
 $(BUILD)/test_vulkan_pipeline: tests/test_vulkan_pipeline.c $(BUILD)/experiment_vulkan_test.o $(BUILD_CONFIG) | $(BUILD)
 	$(CC) $(TEST_CFLAGS) $(VULKAN_CFLAGS) -o $@ $< $(BUILD)/experiment_vulkan_test.o $(TEST_LDFLAGS) $(VULKAN_LIBS) -lm

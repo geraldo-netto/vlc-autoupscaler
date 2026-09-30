@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "vulkan_devices.h"
+#include "vulkan_identity.h"
 #include "test_harness.h"
 #include <stddef.h>
 #include <stdbool.h>
@@ -8,6 +9,27 @@
 static max_align_t tokens[17];
 static unsigned available, destroyed;
 static bool fail_create, fail_enumerate, software;
+static bool has_pci = true;
+
+VkResult __wrap_vkEnumerateDeviceExtensionProperties(VkPhysicalDevice device, const char *layer,
+                                                     uint32_t *count, VkExtensionProperties *properties)
+{
+    (void)device; (void)layer;
+    *count = has_pci ? 1 : 0;
+    if (has_pci) strcpy(properties[0].extensionName, VK_EXT_PCI_BUS_INFO_EXTENSION_NAME);
+    return VK_SUCCESS;
+}
+
+void __wrap_vkGetPhysicalDeviceProperties2(VkPhysicalDevice device, VkPhysicalDeviceProperties2 *properties)
+{
+    (void)device;
+    properties->properties.vendorID = 0x1002;
+    properties->properties.deviceID = 0x73ff;
+    if (properties->pNext) {
+        VkPhysicalDevicePCIBusInfoPropertiesEXT *pci = properties->pNext;
+        pci->pciBus = 3;
+    }
+}
 
 VkResult __wrap_vkCreateInstance(const VkInstanceCreateInfo *info,
                                 const VkAllocationCallbacks *allocator, VkInstance *instance)
@@ -77,5 +99,15 @@ int main(void)
 {
     test_enumeration();
     test_errors();
+    BEGIN("REV-10: native PCI identity and unsupported identity remain distinct");
+    available = 2;
+    up_vk_identity_t identity = {0};
+    CHECK(up_vk_identity(1, &identity));
+    CHECK(identity.has_pci && identity.pci.pciBus == 3);
+    CHECK(identity.properties.vendorID == 0x1002 && identity.properties.deviceID == 0x73ff);
+    CHECK(!up_vk_identity(16, &identity));
+    has_pci = false;
+    CHECK(up_vk_identity(0, &identity) && !identity.has_pci);
+    END();
     return test_harness_report();
 }

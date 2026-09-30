@@ -14,6 +14,8 @@ import bench_vulkan_matrix as matrix
 import vulkan_devices as devices_backend
 import subprocess
 from types import SimpleNamespace
+import tempfile
+import bench_gpu_pacing as gpu
 
 
 class BoundedStream(BytesIO):
@@ -60,6 +62,34 @@ class DeviceSelectionTests(unittest.TestCase):
 
 
 class TelemetryTests(unittest.TestCase):
+    def device_fixture(self, root, card, pci):
+        device = root / 'pci' / pci
+        device.mkdir(parents=True, exist_ok=True)
+        (device / 'vendor').write_text('0x1002')
+        (device / 'device').write_text('0x73ff')
+        link = root / 'drm' / card / 'device'
+        link.parent.mkdir(parents=True)
+        link.symlink_to(device)
+        return link
+
+    def test_rev10_reordered_cards_use_selected_pci_identity(self):
+        identity = dict(index=1, pci='0000:03:00.0', vendor_id=0x1002, device_id=0x73ff)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            wrong = self.device_fixture(root, 'card1', '0000:08:00.0')
+            right = self.device_fixture(root, 'card7', identity['pci'])
+            selected = gpu.resolve_device(identity, None, root / 'drm')
+            self.assertEqual(selected, right.resolve())
+            with self.assertRaisesRegex(ValueError, 'does not match'):
+                gpu.resolve_device(identity, wrong, root / 'drm')
+            self.assertEqual({job['device'] for job in gpu.jobs(1)}, {1})
+
+    def test_rev10_missing_hwmon_is_explicitly_unavailable(self):
+        with tempfile.TemporaryDirectory() as directory:
+            values = gpu.read_sensors(gpu.sensor_paths(Path(directory)))
+            self.assertIn('unavailable', values['clock_hz'])
+            self.assertIn('unavailable', values['power_uw'])
+
     def test_measurement_interval(self):
         samples = [dict(time_us=0, clock_hz=999), dict(time_us=100, clock_hz=200),
                    dict(time_us=200, clock_hz=400), dict(time_us=300, clock_hz=999)]

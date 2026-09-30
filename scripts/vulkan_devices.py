@@ -29,3 +29,13 @@ def select(available, requested=None):
     if not set(chosen).issubset(available):
         raise ValueError('selected Vulkan device is unavailable')
     return chosen
+
+
+def identity(build, index):
+    validate_indices([index])
+    result = subprocess.run([str(build / 'list_vulkan_devices'), '--identity', str(index)],
+                            capture_output=True, text=True, check=True, timeout=30)
+    device = json.loads(result.stdout)
+    if device['index'] != index:
+        raise ValueError('Vulkan identity differs from requested index')
+    return device
