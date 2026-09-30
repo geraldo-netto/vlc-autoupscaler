@@ -635,6 +635,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@$(if $(strip $(VLC_LIBS)),$(BUILD)/test_native_vout,echo "native vout: VLC SDK unavailable")
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_playback_runtime.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_make_jobserver.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_coverage_build.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_policy_summary.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_gpu_pacing.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_benchmark_cleanup.py
@@ -1359,6 +1360,8 @@ COV_CFLAGS  := -O0 -g $(MARCH_FLAG) $(WARN) -MMD -MP \
 COV_LDFLAGS := --coverage
 
 COV_TESTS := \
+    $(COV_BUILD)/test_frame_retirement_usm \
+    $(if $(HAVE_PROFILE_SDKS),$(COV_BUILD)/test_frame_retirement_zimg) \
     $(COV_BUILD)/test_worker_tuner \
     $(COV_BUILD)/test_usm_adaptive \
     $(COV_BUILD)/test_upscale_logic \
@@ -1401,6 +1404,10 @@ $(COV_BUILD): | $(BUILD_MARKER)
 
 $(COV_BUILD)/test_worker_tuner: tests/test_worker_tuner.c src/worker_tuner.h src/thread_policy.h $(BUILD_CONFIG) | $(COV_BUILD)
 	$(COV_CC) $(COV_CFLAGS) -o $@ $< $(COV_LDFLAGS)
+$(COV_BUILD)/test_frame_retirement_usm: tests/test_frame_retirement.c src/usm_pool.c src/worker_pool.h $(BUILD_CONFIG) | $(COV_BUILD)
+	$(COV_CC) $(COV_CFLAGS) -o $@ $< $(COV_LDFLAGS) -lpthread -Wl,--wrap=pthread_join
+$(COV_BUILD)/test_frame_retirement_zimg: tests/test_frame_retirement.c src/scaler_zimg.c src/worker_pool.h $(BUILD_CONFIG) | $(COV_BUILD)
+	$(COV_CC) $(COV_CFLAGS) $(VLC_CFLAGS) $(ZIMG_CFLAGS) -DTEST_RETIRE_ZIMG -o $@ $< $(COV_LDFLAGS) $(VLC_LIBS) $(ZIMG_LIBS) -lpthread -Wl,--wrap=pthread_join
 $(COV_BUILD)/test_usm_adaptive: tests/test_usm_adaptive.c src/usm_adaptive.h src/worker_tuner.h src/usm_pool.h $(BUILD_CONFIG) | $(COV_BUILD)
 	$(COV_CC) $(COV_CFLAGS) -o $@ $< $(COV_LDFLAGS)
 $(COV_BUILD)/test_upscale_logic: tests/test_upscale_logic.c src/upscale_logic.h $(BUILD_CONFIG) | $(COV_BUILD)
