@@ -74,26 +74,40 @@ def window_sizes(states):
     return sorted(sizes)
 
 
+def require(condition, message):
+    if not condition:
+        raise RuntimeError(message)
+
+
 def validate_windows(row):
-    assert row["fullscreen"], "fullscreen window vanished"
-    assert all("_NET_WM_STATE_FULLSCREEN" in w["state"] for w in row["fullscreen"].values())
-    assert row["restored"], "window did not restore"
-    assert all("_NET_WM_STATE_FULLSCREEN" not in w["state"] for w in row["restored"].values())
-    assert window_sizes(row["resized"]) == [(1280, 720)], "resize did not take effect"
-    assert window_sizes(row["restored"]) == window_sizes(row["resized"]), "restored size differs"
-    assert not row["after_exit"], "owned window leaked"
+    require(row["fullscreen"], "fullscreen window vanished")
+    require(all("_NET_WM_STATE_FULLSCREEN" in w["state"] for w in row["fullscreen"].values()),
+            "fullscreen state absent")
+    require(row["restored"], "window did not restore")
+    require(all("_NET_WM_STATE_FULLSCREEN" not in w["state"] for w in row["restored"].values()),
+            "fullscreen state retained")
+    require(window_sizes(row["resized"]) == [(1280, 720)], "resize did not take effect")
+    require(window_sizes(row["restored"]) == window_sizes(row["resized"]), "restored size differs")
+    require(not row["after_exit"], "owned window leaked")
+
+
+def validate_volume(volume):
+    require(len(volume) == 3, "incomplete native volume probes")
+    for result, expected in zip(volume, ("100%", "25%", "50%")):
+        require(result["percentages"], "native audio stream absent")
+        require(all(result["percentages"]), "native audio channels absent")
+        require(all(value == expected for channels in result["percentages"] for value in channels),
+                "native volume differs")
 
 
 def validate(row):
-    assert row["returncode"] == 0, "VLC exit failed"
-    assert row["native_geometry"], "native upscaling module did not engage"
+    require(row["returncode"] == 0, "VLC exit failed")
+    require(row["native_geometry"], "native upscaling module did not engage")
     validate_windows(row)
-    assert "AUTOUPSCALE" in row["subtitle"].upper(), "subtitle not visible"
-    assert row["time_responses"][-2:] == ["10", "1"], "seek commands did not take effect"
-    assert row["displayed"] and int(row["displayed"][-1]) > 0, "presentation not observed"
-    for result, expected in zip(row["volume"], ("100%", "25%", "50%")):
-        assert result["percentages"], "native audio stream absent"
-        assert all(value == expected for channels in result["percentages"] for value in channels)
+    require("AUTOUPSCALE" in row["subtitle"].upper(), "subtitle not visible")
+    require(row["time_responses"][-2:] == ["10", "1"], "seek commands did not take effect")
+    require(row["displayed"] and int(row["displayed"][-1]) > 0, "presentation not observed")
+    validate_volume(row["volume"])
 
 
 def playback(args, env, title):

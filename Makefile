@@ -640,6 +640,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_policy_summary.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_gpu_pacing.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_benchmark_cleanup.py
+	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_native_runtime_validation.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_sdk_boundary.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_decisions.py
 	@PYTHONDONTWRITEBYTECODE=1 python3 tests/test_perf15_confirmation.py
