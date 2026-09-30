@@ -197,6 +197,7 @@ See [usage and troubleshooting](docs/USAGE.md) for practical variants.
 | `--autoupscale-zerocopy-dst` | 0–1 | 1 | Direct zimg writes on compatible row grids. `0` forces copy-out. |
 | `--autoupscale-zerocopy-src` | 0–1 | 1 | Direct zimg reads. `0` forces copy-in and disables column tiling. A resulting grid change can create bounded resampling seams, so copy and direct modes are byte-identical only when their grid is unchanged. |
 | `--autoupscale-content-probe` | 0–1 | 1 | Emit one advisory for soft and blocky sources. It never changes output. |
+| `--autoupscale-metrics` | 0–1 | 0 | Log bounded processing latency and process CPU metrics. Does not measure presentation or dropped frames; quality and worker policy stay unchanged. |
 | `--autoupscale-usm-stripe-min-rows` | 0–256 | 0 | Minimum USM rows per worker. `0` selects 8. |
 | `--autoupscale-zimg-stripe-lines` | 0–128 | 0 | Advanced minimum zimg output lines per stripe. It can change the row/column grid and output seams; benchmark it with integration quality checks. `0` selects the validated default of 16. |
 | `--autoupscale-usm-sharp-threshold` | 0–20000 | 3500 | Skip USM on grainy sources above this metric. `0` disables skipping. |

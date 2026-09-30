@@ -5,7 +5,6 @@
 | id | status | effort | description | notes |
 |---|---|---|---|---|
 | REV-21 | open | small | Reliability: avoid false subtitle failures from OCR page segmentation in native acceptance. | `build/rev9-native-acceptance/subtitle.png` visibly contains `AUTOUPSCALE SUBTITLE TEST`, but default `tesseract` segmentation splits the word and `validate` rejects it. Child exited 0 and owned window vanished. Use a suitable explicit segmentation mode with permanent invocation regression and rerun native acceptance; preserve actual subtitle visibility checks. |
-| REV-19 | open | small | Documentation: include processing metrics in the README option reference. | The option table at `README.md:185` omits implemented `--autoupscale-metrics`, already documented in `docs/USAGE.md` and registered by `src/autoupscale_module.c`. Add its 0/1 range, default 0, and processing-only effect; retain the distinction from native presentation/drop counters. Verify against module registration and existing metrics tests; no artificial documentation test is needed. |
 | REV-20 | open | small | Documentation: declare Python for the normal verification suite. | `README.md:96` lists only a compiler and sanitizer runtimes for `make test`, while the `Makefile:test` recipe unconditionally executes Python regression suites. State Python 3 as a dependency for `make test` and its dependent targets, keeping the C-only fuzz-smoke prerequisites distinct. Verify the table against actual recipes; no behavioral test is needed. |
 
 ## Other items
