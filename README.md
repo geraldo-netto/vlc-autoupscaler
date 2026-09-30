@@ -92,11 +92,13 @@ the verification targets you intend to run:
 
 | Targets | Additional software |
 |---|---|
-| `make test`, `make fuzz-smoke` | GCC or Clang with ASan and UBSan runtime support |
+| `make test` | Python 3 and GCC or Clang with ASan and UBSan runtime support |
+| `make fuzz-smoke` | GCC or Clang with ASan and UBSan runtime support |
 | `make mutation-test` | Python 3 and a C compiler |
 | `make stress` | GCC or Clang with ASan, UBSan, and TSan runtime support |
 | `make fuzz` | Clang with libFuzzer support |
-| `make check`, `make complexity` | Python 3 and Lizard |
+| `make check` | All `make test` prerequisites, plus Lizard |
+| `make complexity` | Python 3 and Lizard |
 | `make analyze` | Lizard, cppcheck, ShellCheck, actionlint, rumdl, and lychee |
 | `make scan-build` | Clang and `scan-build` (`clang-tools`) |
 | `make coverage` | GCC, gcov, Python 3, gzip, and standard POSIX shell tools |
