@@ -2,6 +2,7 @@
 from contextlib import redirect_stdout
 from io import StringIO
 import json
+import csv
 from pathlib import Path
 import subprocess
 import sys
@@ -16,6 +17,47 @@ import bench_perf15 as bench
 import bench_perf15_confirm as confirm
 import perf15_statistics as stats
 from perf15_fixture import fake_pair
+
+
+class PixelEvidenceTests(unittest.TestCase):
+    def write_pixels(self, path, change):
+        rows = [dict(frame=i, pixel_hash='1234567890abcdef') for i in range(600)]
+        if change == 'missing-row':
+            rows.pop()
+        elif change == 'duplicate':
+            rows[1]['frame'] = 0
+        elif change == 'reordered':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif change != 'valid':
+            rows[0]['pixel_hash'] = change
+        fields = ['frame'] if change == 'missing-field' else ['frame', 'pixel_hash']
+        with path.open('w') as stream:
+            writer = csv.DictWriter(stream, fieldnames=fields, extrasaction='ignore')
+            writer.writeheader()
+            writer.writerows(rows)
+
+    def test_rev13_valid_pixel_evidence(self):
+        with tempfile.TemporaryDirectory() as root:
+            path = Path(root) / 'pixels.csv'
+            self.write_pixels(path, 'valid')
+            self.assertEqual(bench.pixel_hashes(path), ['1234567890abcdef'] * 600)
+
+    def test_rev13_rejects_corruption_even_when_optimized(self):
+        cases = ('', 'missing-field', 'missing-row', 'duplicate', 'reordered',
+                 '0' * 16, 'g' * 16, '1' * 15, '1' * 17, '-123456789abcdef')
+        for change in cases:
+            with self.subTest(change=change), tempfile.TemporaryDirectory() as root:
+                path = Path(root) / 'pixels.csv'
+                self.write_pixels(path, change)
+                with self.assertRaises(ValueError):
+                    bench.pixel_hashes(path)
+                result = subprocess.run(
+                    [sys.executable, '-O', '-c',
+                     'from pathlib import Path; import bench_perf15; '
+                     'bench_perf15.pixel_hashes(Path(__import__("sys").argv[1]))', str(path)],
+                    cwd=Path(bench.__file__).parent, capture_output=True, text=True)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('ValueError', result.stderr)
 
 
 def study(directory, clip='animation', treatment='local', reverse=False):

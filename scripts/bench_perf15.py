@@ -161,10 +161,18 @@ def compare(args):
 def pixel_hashes(path):
     with path.open() as stream:
         rows = list(csv.DictReader(stream))
-    assert len(rows) == 600
-    hashes = [row["pixel_hash"] for row in rows]
-    assert all(value != "0000000000000000" for value in hashes)
+    if [row.get('frame') for row in rows] != [str(i) for i in range(600)]:
+        raise ValueError('pixel evidence requires ordered frames 0..599')
+    hashes = [row.get('pixel_hash', '') for row in rows]
+    if not all(valid_pixel_hash(value) for value in hashes):
+        raise ValueError('pixel hashes must be nonzero 16-digit hexadecimal values')
     return hashes
+
+
+def valid_pixel_hash(value):
+    return (isinstance(value, str) and len(value) == 16
+            and all(char in '0123456789abcdefABCDEF' for char in value)
+            and int(value, 16) != 0)
 
 
 def verify_pixels(args):
