@@ -607,6 +607,7 @@ test: $(BUILD)/test_upscale_logic $(BUILD)/test_geometry_edge_cases $(BUILD)/tes
 	@echo "=== worker_pool (shared lifecycle) ==="
 	@$(BUILD)/test_worker_pool
 	@$(BUILD)/test_frame_retirement_usm
+	@$(BUILD)/test_bench_worker_pool
 	@$(if $(HAVE_PROFILE_SDKS),$(BUILD)/test_frame_retirement_zimg,echo "zimg frame retirement: SDK unavailable")
 	@echo
 	@echo "=== usm_pool ==="
@@ -710,6 +711,11 @@ $(BUILD)/test_usm_pool_dispatch_fallback: tests/test_usm_pool_dispatch.c src/usm
 	    -o $@ $< $(TEST_LDFLAGS)
 
 test: $(BUILD)/test_worker_tuner $(BUILD)/test_usm_adaptive $(BUILD)/stress_usm_adaptive
+test: $(BUILD)/test_bench_worker_pool
+
+$(BUILD)/test_bench_worker_pool: tests/test_bench_worker_pool.c tests/bench_worker_pool.c src/worker_pool.h $(BUILD_CONFIG) | $(BUILD)
+	$(CC) $(TEST_CFLAGS) -o $@ $< $(TEST_LDFLAGS) -lpthread -Wl,--wrap=aligned_alloc -Wl,--wrap=pthread_create
+
 test: $(BUILD)/test_latency_tuner
 
 $(BUILD)/test_latency_tuner: tests/test_latency_tuner.c tests/latency_tuner.h src/worker_tuner.h $(BUILD_CONFIG) | $(BUILD)

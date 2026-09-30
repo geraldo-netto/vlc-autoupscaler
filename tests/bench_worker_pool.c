@@ -93,6 +93,23 @@ static double completion_skew_us(const bench_pool_t *bench, int workers)
          + (high->tv_nsec - low->tv_nsec) / 1000.0;
 }
 
+static int measure(bench_pool_t *bench, long workers, long iterations)
+{
+    if (up_worker_pool_ensure_started(&bench->pool) != 0) return 1;
+    if (dispatch_many(&bench->pool, 100) != 0) return 1;
+
+    struct timespec start, end;
+    if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) return 1;
+    if (dispatch_many(&bench->pool, iterations) != 0) return 1;
+    if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) return 1;
+
+    double us = 0.0;
+    if (elapsed_us(&start, &end, (int)iterations, &us) != 0) return 1;
+    printf("%ld,%ld,%.3f,%.3f\n", workers, iterations, us,
+           completion_skew_us(bench, (int)workers));
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     long workers = 0;
@@ -103,17 +120,7 @@ int main(int argc, char **argv)
     bench_pool_t bench = {0};
     up_worker_pool_config(&bench.pool, &ops, &bench, (int)workers,
                           sizeof(bench_slot_t));
-    if (up_worker_pool_ensure_started(&bench.pool) != 0) return 1;
-    if (dispatch_many(&bench.pool, 100) != 0) return 1;
-
-    struct timespec start, end;
-    if (clock_gettime(CLOCK_MONOTONIC, &start) != 0) return 1;
-    if (dispatch_many(&bench.pool, iterations) != 0) return 1;
-    if (clock_gettime(CLOCK_MONOTONIC, &end) != 0) return 1;
-
-    double us = 0.0;
-    if (elapsed_us(&start, &end, (int)iterations, &us) != 0) return 1;
-    printf("%ld,%ld,%.3f,%.3f\n", workers, iterations, us,
-           completion_skew_us(&bench, (int)workers));
-    return up_worker_pool_destroy(&bench.pool) == 0 ? 0 : 1;
+    int result = measure(&bench, workers, iterations);
+    if (up_worker_pool_destroy(&bench.pool) != 0) result = 1;
+    return result;
 }
